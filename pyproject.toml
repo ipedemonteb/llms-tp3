@@ -1,0 +1,6 @@
+[project]
+name = "llms-tp3"
+version = "0.1.0"
+description = "RAG para corregir dependencias alucinadas o deprecadas en código Python"
+requires-python = ">=3.11"
+dependencies = []
