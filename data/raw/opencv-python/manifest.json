@@ -1,0 +1,360 @@
+{
+  "package": "opencv-python",
+  "category": "imagenes",
+  "repo": "github.com/opencv/opencv",
+  "commit": "a9ea97659a120ac23d2219dfc819deb9f4082416",
+  "pypi_version": "5.0.0.93",
+  "fetched_at": "2026-10-18T23:58:49Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "doc/py_tutorials"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_bindings/py_bindings_basics/py_bindings_basics.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_bindings/py_table_of_contents_bindings.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_calib3d/py_calibration/py_calibration.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_calib3d/py_depthmap/py_depthmap.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_calib3d/py_epipolar_geometry/py_epipolar_geometry.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_calib3d/py_pose/py_pose.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_calib3d/py_table_of_contents_calib3d.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_core/py_basic_ops/py_basic_ops.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_core/py_optimization/py_optimization.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_core/py_table_of_contents_core.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_features/py_fast/py_fast.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_features/py_feature_homography/py_feature_homography.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_features/py_features_harris/py_features_harris.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_features/py_features_meaning/py_features_meaning.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_features/py_matcher/py_matcher.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_features/py_orb/py_orb.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_features/py_shi_tomasi/py_shi_tomasi.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_features/py_sift_intro/py_sift_intro.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_features/py_table_of_contents_features.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_gui/py_drawing_functions/py_drawing_functions.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_gui/py_image_display/py_image_display.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_gui/py_table_of_contents_gui.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_gui/py_trackbar/py_trackbar.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_gui/py_video_display/py_video_display.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_canny/py_canny.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_contours/py_contour_features/py_contour_features.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_contours/py_contour_properties/py_contour_properties.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_contours/py_contours_begin/py_contours_begin.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_contours/py_contours_hierarchy/py_contours_hierarchy.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_contours/py_contours_more_functions/py_contours_more_functions.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_contours/py_table_of_contents_contours.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_filtering/py_filtering.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_geometric_transformations/py_geometric_transformations.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_grabcut/py_grabcut.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_gradients/py_gradients.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_histograms/py_2d_histogram/py_2d_histogram.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_histograms/py_histogram_backprojection/py_histogram_backprojection.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_histograms/py_histogram_begins/py_histogram_begins.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_histograms/py_histogram_equalization/py_histogram_equalization.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_histograms/py_table_of_contents_histograms.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_houghcircles/py_houghcircles.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_houghlines/py_houghlines.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_pyramids/py_pyramids.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_table_of_contents_imgproc.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_template_matching/py_template_matching.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_thresholding/py_thresholding.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_transforms/py_fourier_transform/py_fourier_transform.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_transforms/py_table_of_contents_transforms.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_imgproc/py_watershed/py_watershed.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_ml/py_kmeans/py_kmeans_index.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_ml/py_kmeans/py_kmeans_opencv/py_kmeans_opencv.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_ml/py_kmeans/py_kmeans_understanding/py_kmeans_understanding.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_ml/py_table_of_contents_ml.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_objdetect/py_table_of_contents_objdetect.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_photo/py_chromatic_aberration/py_chromatic_aberration.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_photo/py_hdr/py_hdr.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_photo/py_inpainting/py_inpainting.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_photo/py_non_local_means/py_non_local_means.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_photo/py_table_of_contents_photo.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_tutorials.markdown",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_video/py_bg_subtraction/py_bg_subtraction.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_video/py_lucas_kanade/py_lucas_kanade.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_video/py_meanshift/py_meanshift.markdown",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/py_tutorials/py_video/py_table_of_contents_video.markdown",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

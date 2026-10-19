@@ -1,0 +1,120 @@
+{
+  "package": "tornado",
+  "category": "web_apis",
+  "repo": "github.com/tornadoweb/tornado",
+  "commit": "e2042373bf13ec274bc75b95a85c7e2cf327d52d",
+  "pypi_version": "6.5.10",
+  "fetched_at": "2026-10-18T23:57:52Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/caresresolver.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/coroutine.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/async.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/coroutines.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/intro.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/queues.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/running.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/structure.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/templates.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/http.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/integration.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/networking.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/twisted.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/utilities.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/web.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/webframework.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

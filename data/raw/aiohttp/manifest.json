@@ -1,0 +1,190 @@
+{
+  "package": "aiohttp",
+  "category": "http_redes",
+  "repo": "github.com/aio-libs/aiohttp",
+  "commit": "a53d03aa8054eb7cebce91d3a3c406a97e241e43",
+  "pypi_version": "3.14.5",
+  "fetched_at": "2026-10-18T23:57:46Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/abc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/built_with.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/client.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/client_advanced.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/client_middleware_cookbook.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/client_quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/client_reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/essays.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/external.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/http_request_lifecycle.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/logging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/migration_to_2xx.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/misc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/multipart.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/multipart_reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/new_router.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/powered_by.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/streams.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/structures.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/testing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/third_party.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/threat_model.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/tracing_reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/utilities.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/web.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/web_advanced.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/web_exceptions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/web_lowlevel.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/web_quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/web_reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/websocket_utilities.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

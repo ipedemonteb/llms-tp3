@@ -1,0 +1,285 @@
+{
+  "package": "cryptography",
+  "category": "seguridad_cripto",
+  "repo": "github.com/pyca/cryptography",
+  "commit": "784596f85e0e389b0a6ba84996f10036c2431e95",
+  "pypi_version": "50.0.2",
+  "fetched_at": "2026-10-18T23:59:28Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/api-stability.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/cobblestone.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/community.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/exceptions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/fernet.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/asn1/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/asn1/reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/asn1/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/decrepit/ciphers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/decrepit/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/decrepit/modes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/aead.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/cloudhsm.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/dh.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/dsa.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/ec.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/ed25519.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/ed448.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/mldsa.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/mlkem.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/rsa.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/serialization.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/utils.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/x25519.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/asymmetric/x448.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/constant-time.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/cryptographic-hashes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/hpke.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/key-derivation-functions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/keywrap.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/mac/cmac.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/mac/hmac.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/mac/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/mac/poly1305.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/padding.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/symmetric-encryption.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/hazmat/primitives/twofactor.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/limitations.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/openssl.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/random-numbers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/statements/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/statements/state-of-openssl.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/x509/certificate-transparency.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/x509/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/x509/ocsp.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/x509/reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/x509/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/x509/verification.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "package": "configobj",
+  "category": "config_serializacion",
+  "repo": "github.com/DiffSK/configobj",
+  "commit": "b7707c94c0317b8f89b704a01525a68eb6c72521",
+  "pypi_version": "5.0.9",
+  "fetched_at": "2026-10-18T23:59:13Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/configobj.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/validate.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

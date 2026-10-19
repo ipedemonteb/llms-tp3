@@ -1,0 +1,1762 @@
+{
+  "package": "scikit-learn",
+  "category": "ml_ia",
+  "repo": "github.com/scikit-learn/scikit-learn",
+  "commit": "d1b6d438b53e5e6b22d6e1280a2d4b3cf881a87e",
+  "pypi_version": "1.9.1",
+  "fetched_at": "2026-10-18T23:58:05Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [
+    "examples"
+  ],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/about.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/callbacks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/common_pitfalls.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/communication_team.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/communication_team_emeritus.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/computing/computational_performance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/computing/parallelism.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/computing/scaling_strategies.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/computing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/contributor_experience_team.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/contributor_experience_team_emeritus.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/data_interoperability.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/data_transforms.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/datasets/loading_other_datasets.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/datasets/sample_generators.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/datasets.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/documentation_team.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/getting_started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/images/ml_map.README.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/inspection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/institutional_support.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/logos/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/machine_learning_map.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/maintainers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/maintainers_emeritus.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/metadata_routing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/model_persistence.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/model_selection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/array_api.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/biclustering.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/calibration.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/classification_threshold.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/clustering.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/compose.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/covariance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/cross_decomposition.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/cross_validation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/decomposition.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/density.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/df_output_transform.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/ensemble.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/feature_extraction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/feature_selection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/gaussian_process.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/grid_search.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/impute.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/isotonic.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/kernel_approximation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/kernel_ridge.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/lda_qda.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/learning_curve.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/linear_model.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/manifold.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/metrics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/mixture.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/model_evaluation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/multiclass.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/naive_bayes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/neighbors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/neural_networks_supervised.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/neural_networks_unsupervised.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/outlier_detection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/partial_dependence.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/permutation_importance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/pipeline.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/preprocessing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/preprocessing_targets.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/random_projection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/semi_supervised.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/sgd.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/svm.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/tree.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/modules/unsupervised_reduction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/presentations.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/related_projects.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/supervised_learning.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/support.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/templates/numpydoc_docstring.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/testimonials/testimonials.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/unsupervised_learning.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/visualizations.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "examples/applications/plot_cyclical_feature_engineering.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_digits_denoising.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_face_recognition.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_model_complexity_influence.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_out_of_core_classification.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_outlier_detection_wine.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_prediction_latency.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_species_distribution_modeling.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_stock_market.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_time_series_lagged_features.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_tomography_l1_reconstruction.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_topics_extraction_with_nmf_lda.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/applications/plot_wikipedia_principal_eigenvector.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/bicluster/plot_spectral_biclustering.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/bicluster/plot_spectral_coclustering.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/calibration/plot_calibration.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/calibration/plot_calibration_curve.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/calibration/plot_calibration_multiclass.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/calibration/plot_compare_calibration.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/callbacks/plot_callback_support.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/callbacks/plot_scoring_monitor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/classification/plot_classification_probability.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/classification/plot_classifier_comparison.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/classification/plot_digits_classification.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/classification/plot_lda.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/classification/plot_lda_qda.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_adjusted_for_chance_measures.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_affinity_propagation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_agglomerative_clustering_metrics.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_agglomerative_dendrogram.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_birch_vs_minibatchkmeans.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_bisect_kmeans.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_cluster_comparison.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_coin_segmentation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_coin_ward_segmentation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_dbscan.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_dict_face_patches.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_digits_agglomeration.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_digits_linkage.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_face_compress.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_feature_agglomeration_vs_univariate_selection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_hdbscan.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_inductive_clustering.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_kmeans_assumptions.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_kmeans_digits.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_kmeans_plusplus.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_kmeans_silhouette_analysis.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_kmeans_stability_low_dim_dense.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_linkage_comparison.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_mean_shift.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_mini_batch_kmeans.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_optics.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_segmentation_toy.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster/plot_ward_structured_vs_unstructured.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/compose/plot_column_transformer.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/compose/plot_column_transformer_mixed_types.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/compose/plot_compare_reduction.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/compose/plot_digits_pipe.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/compose/plot_feature_union.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/compose/plot_transformed_target.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/covariance/plot_covariance_estimation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/covariance/plot_lw_vs_oas.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/covariance/plot_mahalanobis_distances.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/covariance/plot_robust_vs_empirical_covariance.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/covariance/plot_sparse_cov.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cross_decomposition/plot_compare_cross_decomposition.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cross_decomposition/plot_pcr_vs_pls.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/datasets/plot_random_multilabel_dataset.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_faces_decomposition.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_ica_blind_source_separation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_ica_vs_pca.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_image_denoising.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_incremental_pca.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_kernel_pca.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_pca_iris.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_pca_vs_fa_model_selection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_pca_vs_lda.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_sparse_coding.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/decomposition/plot_varimax_fa.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/developing_estimators/sklearn_is_fitted.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_adaboost_multiclass.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_adaboost_regression.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_adaboost_twoclass.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_bias_variance.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_ensemble_oob.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_feature_transformation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_forest_hist_grad_boosting_comparison.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_forest_importances.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_forest_iris.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_gradient_boosting_categorical.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_gradient_boosting_early_stopping.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_gradient_boosting_oob.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_gradient_boosting_quantile.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_gradient_boosting_regression.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_gradient_boosting_regularization.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_hgbt_regression.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_isolation_forest.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_monotonic_constraints.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_random_forest_embedding.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_random_forest_regression_multioutput.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_stack_predictors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_voting_decision_regions.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ensemble/plot_voting_regressor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/feature_selection/plot_f_test_vs_mi.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/feature_selection/plot_feature_selection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/feature_selection/plot_feature_selection_pipeline.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/feature_selection/plot_rfe_digits.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/feature_selection/plot_rfe_with_cross_validation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/feature_selection/plot_select_from_model_diabetes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/frozen/plot_frozen_examples.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_compare_gpr_krr.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_gpc.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_gpc_iris.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_gpc_isoprobability.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_gpc_xor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_gpr_co2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_gpr_noisy.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_gpr_noisy_targets.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_gpr_on_structured_data.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/gaussian_process/plot_gpr_prior_posterior.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/impute/plot_iterative_imputer_variants_comparison.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/impute/plot_missing_values.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/inspection/plot_causal_interpretation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/inspection/plot_linear_model_coefficient_interpretation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/inspection/plot_partial_dependence.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/inspection/plot_partial_dependence_visualization_api.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/inspection/plot_permutation_importance.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/inspection/plot_permutation_importance_multicollinear.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/kernel_approximation/plot_scalable_poly_kernels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_ard.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_bayesian_ridge_curvefit.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_elastic_net_precomputed_gram_matrix_with_weighted_samples.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_huber_vs_ridge.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_lasso_and_elasticnet.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_lasso_dense_vs_sparse_data.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_lasso_lars_ic.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_lasso_lasso_lars_elasticnet_path.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_lasso_model_selection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_logistic_l1_l2_sparsity.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_logistic_multinomial.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_logistic_path.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_multi_task_lasso_support.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_nnls.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_ols_ridge.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_omp.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_poisson_regression_non_normal_loss.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_polynomial_interpolation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_quantile_regression.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_ransac.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_ridge_coeffs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_ridge_path.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_robust_fit.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_sgd_early_stopping.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_sgd_iris.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_sgd_loss_functions.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_sgd_penalties.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_sgd_separating_hyperplane.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_sgd_weighted_samples.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_sgdocsvm_vs_ocsvm.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_sparse_logistic_regression_mnist.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_theilsen.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/linear_model/plot_tweedie_regression_insurance_claims.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/manifold/plot_compare_methods.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/manifold/plot_lle_digits.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/manifold/plot_manifold_sphere.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/manifold/plot_mds.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/manifold/plot_swissroll.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/manifold/plot_t_sne_perplexity.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_anomaly_comparison.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_display_object_visualization.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_estimator_representation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_isotonic_regression.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_johnson_lindenstrauss_bound.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_kernel_approximation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_kernel_ridge_regression.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_metadata_routing.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_multilabel.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_multioutput_face_completion.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_outlier_detection_bench.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_pipeline_display.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_roc_curve_visualization_api.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/miscellaneous/plot_set_output.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/mixture/plot_concentration_prior.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/mixture/plot_gmm.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/mixture/plot_gmm_covariances.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/mixture/plot_gmm_init.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/mixture/plot_gmm_pdf.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/mixture/plot_gmm_selection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/mixture/plot_gmm_sin.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_confusion_matrix.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_cost_sensitive_learning.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_cv_indices.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_cv_predict.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_det.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_grid_search_digits.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_grid_search_refit_callable.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_grid_search_stats.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_grid_search_text_feature_extraction.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_learning_curve.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_likelihood_ratios.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_multi_metric_evaluation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_nested_cross_validation_iris.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_permutation_tests_for_classification.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_precision_recall.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_randomized_search.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_roc.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_roc_crossval.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_successive_halving_heatmap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_successive_halving_iterations.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_train_error_vs_test_error.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_tuned_decision_threshold.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/model_selection/plot_underfitting_overfitting.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/multiclass/plot_multiclass_overview.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/multioutput/plot_classifier_chain_yeast.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/approximate_nearest_neighbors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_caching_nearest_neighbors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_classification.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_digits_kde_sampling.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_kde_1d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_lof_novelty_detection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_lof_outlier_detection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_nca_classification.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_nca_dim_reduction.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_nca_illustration.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_nearest_centroid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_regression.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neighbors/plot_species_kde.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neural_networks/plot_mlp_alpha.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neural_networks/plot_mlp_training_curves.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neural_networks/plot_mnist_filters.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/neural_networks/plot_rbm_logistic_classification.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/preprocessing/plot_all_scaling.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/preprocessing/plot_discretization.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/preprocessing/plot_discretization_classification.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/preprocessing/plot_discretization_strategies.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/preprocessing/plot_map_data_to_normal.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/preprocessing/plot_scaling_importance.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/preprocessing/plot_target_encoder.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/preprocessing/plot_target_encoder_cross_val.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/semi_supervised/plot_label_propagation_digits.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/semi_supervised/plot_label_propagation_digits_active_learning.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/semi_supervised/plot_label_propagation_structure.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/semi_supervised/plot_self_training_varying_threshold.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/semi_supervised/plot_semi_supervised_versus_svm_iris.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_custom_kernel.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_iris_svc.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_linearsvc_support_vectors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_oneclass.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_rbf_parameters.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_separating_hyperplane.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_separating_hyperplane_unbalanced.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_svm_anova.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_svm_kernels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_svm_margin.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_svm_regression.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_svm_scale_c.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_svm_tie_breaking.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/svm/plot_weighted_samples.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/text/plot_document_clustering.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/text/plot_hashing_vs_dict_vectorizer.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tree/plot_cost_complexity_pruning.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tree/plot_iris_dtc.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tree/plot_tree_regression.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tree/plot_unveil_tree_structure.py",
+      "kind": "examples",
+      "format": "py"
+    }
+  ]
+}

@@ -1,0 +1,915 @@
+{
+  "package": "torch",
+  "category": "ml_ia",
+  "repo": "github.com/pytorch/pytorch",
+  "commit": "9d18b95219c1c16b653b5e43e8201c0d80e98b8f",
+  "pypi_version": "2.14.1",
+  "fetched_at": "2026-10-18T23:58:05Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/cpp/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/cpp/cpp_coverage.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/cpp/cpp_html_issues.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/cpp/source/faq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/cpp/source/frontend.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/cpp/source/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/libtorch.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/accelerator/amp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/autoload.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/ci.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/device.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/distributed.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/guard.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/hooks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/operators.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/profiler.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/accelerator/testing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/autograd.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/checkpoint.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/complex_numbers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/cpp_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/cuda._sanitizer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/cuda.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/cuda_environment_variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/cudnn_persistent_rnn.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/data.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/debugging_environment_variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/deterministic.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/custom_backends.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/ddp_comm_hooks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/elastic/customization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/elastic/examples.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/elastic/kubernetes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/elastic/quickstart.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/elastic/train_script.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/elastic.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/functional_collectives.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/pipelining.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/rpc/distributed_autograd.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/rpc/rref.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/rpc.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/symmetric_memory.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed/transport.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/distributed.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/foreach.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/func.api.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/func.batch_norm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/func.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/func.migrating.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/func.ux_limitations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/func.whirlwind_tour.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/fx.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/higher_order_ops/associative_scan.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/higher_order_ops/cond.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/higher_order_ops/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/higher_order_ops/map.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/higher_order_ops/scan.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/higher_order_ops/switch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/higher_order_ops/while_loop.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/hub.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/library.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/masked.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/meta.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/miscellaneous_environment_variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/mps_environment_variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/nested.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/nn.attention.experimental.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/amp_examples.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/autograd.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/broadcasting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/cpu_threading_torchscript_inference.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/cuda.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/custom_operators.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/ddp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/extending.func.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/extending.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/faq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/get_start_xpu.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/gradcheck.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/hip.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/notes/large_scale_deployments.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/libtorch_stable_abi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/local_tensor_tutorial.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/mkldnn.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/modules.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/mps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/multiprocessing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/numerical_accuracy.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/out.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/randomness.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/serialization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/tensor_iterator.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes/windows.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/notes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/onnx.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/onnx_export.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/onnx_ops.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/optim.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/package.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/pytorch-api.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/size.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/sparse.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/storage.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/tensor_attributes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/tensor_view.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/tensorboard.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/tensors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/threading_environment_variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/torch.compiler_api.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/torch.compiler_troubleshooting_old.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/torch.intermediate_debug_printer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/torch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/torch_cuda_memory.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/torch_environment_variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/torch_nccl_environment_variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/type_info.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/pytorch_main_components.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/advanced.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/dynamic_shapes_advanced_control_options.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/dynamic_shapes_backed_unbacked.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/dynamic_shapes_beyond_the_basics.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/dynamic_shapes_core_concepts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/dynamic_shapes_debugging_tlparse_torch_logs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/dynamic_shapes_troubleshooting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/dynamic_shapes_troubleshooting_guardon_errors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/dynamic_shapes_zero_one_specialization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.common_graph_breaks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.compiler_disable.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.custom_ops.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.dynamo_core_concepts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.dynamo_nonstrict_trace.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.error_on_graph_break.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.fullgraph_false.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.fullgraph_true.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.graph_breaks_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.nested_graph_breaks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.non_strict_tracing_model.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.observability.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.recompilation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.reducing_compile_time.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.reducing_guard_overhead.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.skipped_functions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/compile/programming_model.where_to_apply_compile.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/core_concepts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/export/draft_export.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/export/ir_spec.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/export/programming_model.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/export/pt2_archive.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/export.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/performance.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_aot_compile.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_aot_inductor.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_aot_inductor_debugging_guide.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_aot_inductor_minifier.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_backward.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_complex_number_support.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_cudagraph_trees.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_custom_backends.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_dynamic_shapes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_dynamo_deepdive.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_dynamo_overview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_fake_tensor.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_faq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_get_started.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_inductor_profiling.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_inductor_provenance.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_ir.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_nn_module.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_performance_dashboard.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_profiling_torch_compile.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_transformations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/torch.compiler_troubleshooting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/user_guide/torch_compiler/troubleshooting_faqs.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "package": "wand",
+  "category": "imagenes",
+  "repo": "github.com/emcconville/wand",
+  "commit": "e938f86e253b03b50e29af115c58b2565f2b928a",
+  "pypi_version": "0.7.2",
+  "fetched_at": "2026-10-18T23:58:51Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/cli.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/colorenhancement.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/colorspace.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/distortion.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/draw.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/effect.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/exif.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/fx.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/layers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/montage.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/morphology.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/quantize.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/read.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/resizecrop.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/resource.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/sequence.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/threshold.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/transform.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide/write.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/talks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/test.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

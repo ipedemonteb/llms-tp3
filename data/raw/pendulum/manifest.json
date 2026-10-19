@@ -1,0 +1,105 @@
+{
+  "package": "pendulum",
+  "category": "fechas",
+  "repo": "github.com/sdispater/pendulum",
+  "commit": "e06dacedc4cdea90fa1286b3965d180ab94cf251",
+  "pypi_version": "3.3.0",
+  "fetched_at": "2026-10-18T23:59:04Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/docs/addition_subtraction.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/attributes_properties.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/comparison.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/difference.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/duration.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/fluent_helpers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/instantiation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/interval.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/introduction.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/limitations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/localization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/modifiers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/parsing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/string_formatting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/testing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/timezones.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

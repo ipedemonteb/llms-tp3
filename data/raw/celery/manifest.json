@@ -1,0 +1,245 @@
+{
+  "package": "celery",
+  "category": "async_reintentos_tareas",
+  "repo": "github.com/celery/celery",
+  "commit": "0731c053b0e09f231363ec62988fded6c9846878",
+  "pypi_version": "5.6.3",
+  "fetched_at": "2026-10-18T23:59:32Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/community.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/copyright.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/django/first-steps-with-django.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/django/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/backends-and-brokers/gcpubsub.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/backends-and-brokers/index.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/backends-and-brokers/kafka.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/backends-and-brokers/pgmq.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/backends-and-brokers/rabbitmq.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/backends-and-brokers/redis.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/backends-and-brokers/sqs.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/first-steps-with-celery.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/index.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/introduction.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/next-steps.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/getting-started/resources.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/includes/introduction.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/includes/resources.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/sec/CELERYSA-0001.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/sec/CELERYSA-0002.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/sec/CELERYSA-0003.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorials/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorials/task-cookbook.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/application.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/calling.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/canvas.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/concurrency/eventlet.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/concurrency/gevent.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/concurrency/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/configuration.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/daemonizing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/debugging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/extending.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/monitoring.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/optimizing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/periodic-tasks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/routing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/signals.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/tasks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/testing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/userguide/workers.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

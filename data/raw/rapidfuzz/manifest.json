@@ -1,0 +1,110 @@
+{
+  "package": "rapidfuzz",
+  "category": "texto",
+  "repo": "github.com/rapidfuzz/RapidFuzz",
+  "commit": "11b59de303e3d6d3a570c98a3917d1a21a8294de",
+  "pypi_version": "3.14.6",
+  "fetched_at": "2026-10-18T23:59:38Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/References.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/Usage/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "src/rapidfuzz/fuzz_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/process_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/utils_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/DamerauLevenshtein_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/Hamming_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/Indel_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/JaroWinkler_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/Jaro_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/LCSseq_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/Levenshtein_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/OSA_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/Postfix_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/Prefix_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/_initialize_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    },
+    {
+      "path": "src/rapidfuzz/distance/metrics_py.py",
+      "kind": "docstrings",
+      "format": "py"
+    }
+  ]
+}

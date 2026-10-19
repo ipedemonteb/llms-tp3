@@ -1,0 +1,385 @@
+{
+  "package": "authlib",
+  "category": "seguridad_cripto",
+  "repo": "github.com/authlib/authlib",
+  "commit": "8a308fc39c378c1090608903a09318a4267f418a",
+  "pypi_version": "1.9.1",
+  "fetched_at": "2026-10-18T23:59:30Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/basic/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/intro.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/logging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jose/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jose/jwe.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jose/jwk.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jose/jws.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jose/jwt.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jose/specs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jose/specs/rfc7518.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jose/specs/rfc7638.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jose/specs/rfc8037.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client/http/httpx.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client/http/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client/http/requests.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client/web/django.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client/web/fastapi.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client/web/flask.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client/web/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client/web/starlette.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/concepts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/provider/django/authorization-server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/provider/django/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/provider/django/resource-server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/provider/flask/authorization-server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/provider/flask/customize.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/provider/flask/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/provider/flask/resource-server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/provider/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/specs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/django/authorization-server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/django/endpoints.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/django/grants.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/django/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/django/openid-connect.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/flask/authorization-server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/flask/endpoints.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/flask/grants.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/flask/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/flask/openid-connect.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/authorization-server/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/client/http/httpx.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/client/http/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/client/http/requests.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/client/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/client/web/django.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/client/web/fastapi.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/client/web/flask.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/client/web/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/client/web/starlette.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/concepts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/resource-server/django.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/resource-server/flask.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/resource-server/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/id-jag.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/oidc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rfc7009.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rfc7523.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rfc7591.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rfc7592.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rfc7636.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rfc7662.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rfc8628.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rfc9101.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rfc9207.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/specs/rpinitiated.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/upgrades/index.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/upgrades/jose.rst",
+      "kind": "migration",
+      "format": "rst"
+    }
+  ]
+}

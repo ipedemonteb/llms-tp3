@@ -1,0 +1,765 @@
+{
+  "package": "sympy",
+  "category": "datos_numerico",
+  "repo": "github.com/sympy/sympy",
+  "commit": "bcd3a171919e08f940d5e97b165b5191f37ed901",
+  "pypi_version": "1.14.0",
+  "fetched_at": "2026-10-18T23:57:57Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/README.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/citing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/explanation/active-deprecations.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/explanation/best-practices.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/explanation/gotchas.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/implementation/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/implementation/laplace.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/explanation/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/matrices/matrixderivatives.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/biomechanics/biomechanics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/biomechanics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/advanced.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/autolev_parser.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/joints.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/kane.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/lagrange.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/linearize.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/masses.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/sympy_mechanics_for_autolev_users.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/mechanics/symsystem.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/vector/advanced.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/vector/fields.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/vector/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/vector/kinematics/kinematics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/modules/physics/vector/vectors/vectors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/solve_output.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/special_topics/classification.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/special_topics/finite_diff_derivatives.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/explanation/special_topics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/guides/assumptions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/guides/booleans.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/guides/custom-functions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/guides/logo.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/guides/physics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/guides/solving/find-roots-polynomial.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/reduce-inequalities-algebraically.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/solve-de-laplace.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/solve-diophantine-equation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/solve-equation-algebraically.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/solve-matrix-equation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/solve-numerically.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/solve-ode.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/solve-system-of-equations-algebraically.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/guides/solving/solving-guidance.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/src/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/assumptions/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/codegen.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/combinatorics/fp_groups.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/combinatorics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/combinatorics/pc_groups.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/concrete.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/core.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/diffgeom.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/evalf.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/functions/combinatorial.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/geometry/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/holonomic/about.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/holonomic/operations.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/holonomic/represent.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/holonomic/uses.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/integrals/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/integrals/integrals.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/logic.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/matrices/expressions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/matrices/immutablematrices.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/matrices/matrices.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/ntheory.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/numeric-computation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/parsing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/physics/continuum_mechanics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/physics/control/control.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/physics/control/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/physics/optics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/physics/quantum/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/physics/units/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/physics/units/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/physics/units/philosophy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/plotting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/agca.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/domainmatrix.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/domainsintro.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/domainsref.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/literature.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/ringseries.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/series.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/polys/wester.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/printing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/rewriting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/series/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/series/series.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/simplify/fu.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/simplify/hyperexpand.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/simplify/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/solvers/diophantine.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/solvers/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/solvers/solvers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/solvers/solveset.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/utilities/autowrap.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/utilities/codegen.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/utilities/iterables.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/vector/basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/vector/coordsys.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/vector/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/vector/fields.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/vector/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/vector/intro.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/modules/vector/vector_integration.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/basic_operations.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/calculus.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/features.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/gotchas.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/intro.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/manipulation.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/matrices.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/next.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/preliminaries.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/printing.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/simplification.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/intro-tutorial/solvers.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/biomechanics/biomechanical-model-example.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/biomechanics/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/continuum_mechanics/beam_problems.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/continuum_mechanics/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/control/control_problems.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/control/electrical_problems.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/control/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/control/mechanics_problems.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/atwoods_machine_example.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/bicycle_example.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/duffing-example.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/four_bar_linkage_example.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/lin_pend_nonmin_example.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/multi_degree_freedom_holonomic_system.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/muscle_model_example.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/rollingdisc_example.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/rollingdisc_example_kane.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/rollingdisc_example_kane_constraints.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/tutorials/physics/mechanics/rollingdisc_example_lagrange.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    }
+  ]
+}

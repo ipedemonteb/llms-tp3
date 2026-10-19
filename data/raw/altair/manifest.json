@@ -1,0 +1,360 @@
+{
+  "package": "altair",
+  "category": "visualizacion",
+  "repo": "github.com/vega/altair",
+  "commit": "e98486cac6dbf8d47092355bf1b535945379c21a",
+  "pypi_version": "6.3.0",
+  "fetched_at": "2026-10-18T23:58:16Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/about/citing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/about/versioning.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/case_studies/exploring-weather.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/case_studies/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/case_studies/numpy-tooltip-images.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/getting_started/getting_help.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/getting_started/overview.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/getting_started/project_philosophy.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/getting_started/resources.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/getting_started/starting.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/compound_charts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/configuration.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/custom_renderers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/customization.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/data.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/data_transformers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/display_frontends.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/encodings/channel_options.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/encodings/channels.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/encodings/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/interactions/bindings_widgets.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/interactions/expressions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/interactions/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/interactions/jupyter_chart.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/interactions/parameters.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/large_datasets.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/arc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/area.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/bar.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/boxplot.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/circle.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/errorband.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/errorbar.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/geoshape.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/image.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/line.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/point.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/rect.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/rule.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/square.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/text.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/tick.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/marks/trail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/saving_charts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/scale_resolve.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/times_and_dates.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/aggregate.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/bin.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/calculate.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/density.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/extent.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/filter.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/flatten.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/fold.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/impute.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/joinaggregate.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/loess.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/lookup.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/pivot.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/quantile.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/regression.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/sample.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/stack.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/timeunit.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/transform/window.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

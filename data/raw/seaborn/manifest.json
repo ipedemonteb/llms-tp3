@@ -1,0 +1,490 @@
+{
+  "package": "seaborn",
+  "category": "visualizacion",
+  "repo": "github.com/mwaskom/seaborn",
+  "commit": "c1cb287835852406691aed60ea0c62710f2c6b18",
+  "pypi_version": "0.13.2",
+  "fetched_at": "2026-10-18T23:58:15Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/_docstrings/FacetGrid.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/JointGrid.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/PairGrid.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/axes_style.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/barplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/blend_palette.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/boxenplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/boxplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/catplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/clustermap.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/color_palette.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/countplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/cubehelix_palette.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/dark_palette.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/displot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/diverging_palette.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/ecdfplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/heatmap.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/histplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/hls_palette.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/husl_palette.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/jointplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/kdeplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/light_palette.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/lineplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/lmplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/move_legend.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/mpl_palette.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Agg.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Area.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Band.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Bar.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Bars.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Count.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Dash.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Dodge.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Dot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Dots.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Est.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Hist.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Jitter.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.KDE.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Line.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Lines.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Norm.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Path.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Paths.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Perc.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.add.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.config.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.facet.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.label.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.layout.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.limit.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.on.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.pair.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.scale.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.share.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Plot.theme.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Range.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Shift.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Stack.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/objects.Text.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/pairplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/plotting_context.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/pointplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/regplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/relplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/residplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/rugplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/scatterplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/set_context.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/set_style.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/set_theme.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/stripplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/swarmplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_docstrings/violinplot.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/aesthetics.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/axis_grids.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/categorical.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/color_palettes.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/data_structure.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/distributions.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/error_bars.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/function_overview.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/introduction.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/objects_interface.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/properties.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/regression.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/_tutorial/relational.ipynb",
+      "kind": "tutorial",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/citing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "package": "trafilatura",
+  "category": "html_xml_scraping",
+  "repo": "github.com/adbar/trafilatura",
+  "commit": "e2f85c965662c7df26b73290ef175b2c2a5fdca6",
+  "pypi_version": "2.3.1",
+  "fetched_at": "2026-10-18T23:58:29Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/Trafilatura_Overview.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/background.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/compendium.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/corpus-data.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/crawls.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deduplication.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deprecations.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/downloads.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/evaluation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extraction-overview.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/settings.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/sources.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tests.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/troubleshooting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial-chromadb.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial-corpus.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial-datasets.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial-dwds.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial-frequencies.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial-rag.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial-tei.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorials.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/url-management.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/usage-api.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/usage-cli.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/usage-gui.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/usage-python.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/usage-r.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

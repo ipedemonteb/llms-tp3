@@ -1,0 +1,105 @@
+{
+  "package": "psutil",
+  "category": "sistema_archivos",
+  "repo": "github.com/giampaolo/psutil",
+  "commit": "ebec52254c5ecb192b57ccd1307fa1764f2b5ec1",
+  "pypi_version": "7.2.2",
+  "fetched_at": "2026-10-18T23:59:41Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/404.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/DEVNOTES.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/about.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/adoption.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/alternatives.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/api-overview.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/blog.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/devguide.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/migration.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/performance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/platform.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/shell-equivalents.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/stdlib-equivalents.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

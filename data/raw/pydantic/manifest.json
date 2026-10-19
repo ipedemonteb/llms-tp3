@@ -1,0 +1,275 @@
+{
+  "package": "pydantic",
+  "category": "validacion_modelos",
+  "repo": "github.com/pydantic/pydantic",
+  "commit": "5adfeaaaea947f81f0f01868604f219084ec151a",
+  "pypi_version": "2.14.1",
+  "fetched_at": "2026-10-18T23:59:13Z",
+  "docs_tool": "mkdocs",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/alias.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/config.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/conversion_table.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/dataclasses.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/experimental.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/fields.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/forward_annotations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/json.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/json_schema.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/models.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/performance.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/pydantic_settings.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/serialization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/strict_mode.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/type_adapter.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/types.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/unions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/validation_decorator.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts/validators.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/enterprise-support.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/errors/errors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/errors/troubleshooting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/errors/usage_errors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/errors/validation_errors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/custom_validators.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/cyclic_references.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/dynamic_models.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/files.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/orms.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/pydantic_ai.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/queues.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/requests.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/help_with_pydantic.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/aws_lambda.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/datamodel_code_generator.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/devtools.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/documentation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/hypothesis.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/linting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/llms.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/logfire.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/mypy.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/pycharm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/pyrefly.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/rich.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/integrations/visual_studio_code.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/migration.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "docs/pydantic_people.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/version-policy.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/why.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "package": "rq",
+  "category": "async_reintentos_tareas",
+  "repo": "github.com/rq/rq",
+  "commit": "a0048377aceaadef3bea0e71c70b3e326fb78687",
+  "pypi_version": "2.12.0",
+  "fetched_at": "2026-10-18T23:59:33Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/benchmark.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/chat/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/contrib/docs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/contrib/github.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/contrib/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/contrib/testing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/contrib/vagrant.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/connections.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/cron.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/exceptions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/job_registries.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/jobs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/monitoring.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/results.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/scheduling.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/testing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/docs/workers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/patterns/django.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/patterns/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/patterns/sentry.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/patterns/supervisor.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/patterns/systemd.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

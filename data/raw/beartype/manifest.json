@@ -1,0 +1,85 @@
+{
+  "package": "beartype",
+  "category": "validacion_modelos",
+  "repo": "github.com/beartype/beartype",
+  "commit": "cffbad2e669df8060686829051d0b85798859668",
+  "pypi_version": "0.23.1",
+  "fetched_at": "2026-10-18T23:59:16Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/api_claw.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/api_decor.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/api_door.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/api_roar.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/api_vale.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/code.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/eli5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/faq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/math.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/moar.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/pep.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/tldr.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "package": "python-docx",
+  "category": "documentos",
+  "repo": "github.com/python-openxml/python-docx",
+  "commit": "e45454602b53e8e572b179ccf1c91093ec9f4ed7",
+  "pypi_version": "1.2.0",
+  "fetched_at": "2026-10-18T23:58:33Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/api-concepts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/comments.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/documents.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/hdrftr.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/sections.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/shapes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/styles-understanding.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/styles-using.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/tables.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/text.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

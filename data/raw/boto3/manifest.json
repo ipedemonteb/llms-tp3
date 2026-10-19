@@ -1,0 +1,355 @@
+{
+  "package": "boto3",
+  "category": "sdks",
+  "repo": "github.com/boto/boto3",
+  "commit": "3701f39273ca475587170a8caec92dc33e286068",
+  "pypi_version": "1.43.114",
+  "fetched_at": "2026-10-18T23:59:44Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs/source/guide"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/clients.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/cloud9.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/collections.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/configuration.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/credentials.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/cw-example-creating-alarms.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/cw-example-events.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/cw-example-metrics.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/cw-example-subscription-filters.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/cw-example-using-alarms.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/cw-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/dynamodb.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ec2-example-elastic-ip-addresses.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ec2-example-key-pairs.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ec2-example-managing-instances.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ec2-example-regions-avail-zones.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ec2-example-security-group.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ec2-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/error-handling.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/events.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/iam-example-managing-access-keys.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/iam-example-managing-account-aliases.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/iam-example-managing-users.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/iam-example-policies.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/iam-example-server-certificates.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/iam-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/kms-example-encrypt-decrypt-file.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/kms-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/migration.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/migrationec2.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/migrationpy3.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/migrations3.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/new.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/paginators.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/resources.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/retries.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-example-access-permissions.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-example-bucket-policies.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-example-configuring-buckets.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-example-creating-buckets.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-example-download-file.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-example-mrap.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-example-privatelink.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-example-static-web-host.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-presigned-urls.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3-uploading-files.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/s3.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/secrets-manager.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ses-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ses-filters.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ses-rules.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ses-template.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/ses-verify.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/session.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/sqs-example-dead-letter-queue.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/sqs-example-long-polling.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/sqs-example-sending-receiving-msgs.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/sqs-example-using-queues.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/sqs-example-visibility-timeout.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/sqs-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/sqs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/guide/upgrading.rst",
+      "kind": "migration",
+      "format": "rst"
+    }
+  ]
+}

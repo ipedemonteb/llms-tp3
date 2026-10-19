@@ -1,0 +1,1282 @@
+{
+  "package": "xlsxwriter",
+  "category": "documentos",
+  "repo": "github.com/jmcnamara/XlsxWriter",
+  "commit": "5d4606d89a955226d2d0825a0f44309043ae7251",
+  "pypi_version": "3.2.9",
+  "fetched_at": "2026-10-18T23:58:32Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "dev/docs/source"
+  ],
+  "examples_dirs": [
+    "examples"
+  ],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/alternatives.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/author.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/bugs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/chart.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/chart_examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/chartsheet.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/color.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/contents.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_array_formula.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_autofilter.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_autofit.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_autofit_manually.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_background.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_area.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_bar.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_clustered.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_column.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_combined.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_data_labels.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_data_table.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_data_tools.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_date_axis.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_doughnut.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_gauge.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_gradient.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_line.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_pareto.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_pattern.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_pie.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_radar.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_scatter.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_secondary_axis.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_simple.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_stock.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chart_styles.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_chartsheet.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_check_close.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_checkbox.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_comments1.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_comments2.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_conditional_format.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_data_validate.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_datetimes.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_defined_name.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_demo.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_diagonal_border.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_django_simple.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_doc_properties.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_dynamic_arrays.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_embedded_images.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_headers_footers.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_hello_world.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_hide_row_col.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_hide_sheet.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_http_server.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_hyperlink.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_ignore_errors.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_images.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_images_bytesio.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_inheritance1.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_inheritance2.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_lambda.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_macros.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_merge1.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_merge_rich.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_outline1.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_outline2.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_autofilter.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_chart.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_chart_columns.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_chart_line.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_column_formats.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_conditional.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_datetime.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_header_format.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_multiple.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_percentage.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_positioning.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_simple.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_pandas_table.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_panes.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_chart.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_checkbox.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_conditional.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_format_custom.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_format_default.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_multiple.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_positioning.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_simple.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_sparklines.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_polars_xlsxwriter.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_protection.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_rich_strings.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_right_to_left.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_sensitivity_label.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_sparklines1.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_sparklines2.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_tab_colors.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_tables.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_textbox.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_unicode.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_unicode_polish_utf8.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_unicode_shift_jis.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_user_types1.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_user_types2.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_user_types3.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/example_watermark.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/exceptions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/format.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/getting_started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/introduction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/page_setup.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/pandas_examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/polars_examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/third_party.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/tutorial01.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/tutorial02.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/tutorial03.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/utility.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/workbook.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_autofilters.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_cell_comments.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_cell_notation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_charts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_colors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_conditional_formats.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_data.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_data_validation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_dates_and_time.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_formulas.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_macros.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_memory.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_object_positioning.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_outlines.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_pandas.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_polars.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_sparklines.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_tables.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/working_with_textboxes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "dev/docs/source/worksheet.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "examples/array_formula.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/autofilter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/autofit.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/autofit_manually.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/background.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cell_indentation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_area.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_bar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_clustered.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_column.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_combined.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_data_labels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_data_table.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_data_tools.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_date_axis.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_doughnut.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_gauge.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_gradient.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_line.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_pareto.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_pattern.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_pie.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_radar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_scatter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_secondary_axis.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_stock.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chart_styles.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/chartsheet.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/check_close.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/checkbox.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/comments1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/comments2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/conditional_format.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/context_manager.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/data_validate.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/datetimes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/defined_name.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/diagonal_border.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/django_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/doc_properties.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/docs/color_intro.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/docs/color_types.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic_arrays.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/embedded_images.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/headers_footers.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/hello_world.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/hide_row_col.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/hide_sheet.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/http_server.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/hyperlink.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ignore_errors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/images.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/images_bytesio.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/inheritance1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/inheritance2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/lambda.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/macros.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/merge1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/merge_rich_string.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/outline.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/outline_collapsed.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_autofilter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_chart.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_chart_columns.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_chart_line.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_column_formats.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_conditional_format.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_datetime.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_header_format.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_multiple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_percentage.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_positioning.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pandas_table.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/panes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_chart.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_checkbox.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_conditional_format.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_format_custom.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_format_default.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_multiple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_positioning.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_sparklines.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/polars_xlsxwriter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/rich_strings.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/right_to_left.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/sensitivity_label.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/sparklines1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/sparklines2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tab_colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tables.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/text_indent.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/textbox.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tutorial1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tutorial2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tutorial3.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/unicode.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/unicode_polish_utf8.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/unicode_shift_jis.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/user_types1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/user_types2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/user_types3.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/vba_extract.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/watermark.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/worksheet_protection.py",
+      "kind": "examples",
+      "format": "py"
+    }
+  ]
+}

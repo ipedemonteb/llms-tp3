@@ -1,0 +1,25 @@
+{
+  "package": "pydantic-settings",
+  "category": "config_serializacion",
+  "repo": "github.com/pydantic/pydantic-settings",
+  "commit": "993b59e1682799d5ad33b721b7158718b6278944",
+  "pypi_version": "2.16.0",
+  "fetched_at": "2026-10-18T23:59:10Z",
+  "docs_tool": "mkdocs",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

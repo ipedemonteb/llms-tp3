@@ -1,0 +1,135 @@
+{
+  "package": "eliot",
+  "category": "logging",
+  "repo": "github.com/itamarst/eliot",
+  "commit": "92ecc03d3e557e2a55c78eefc763193587650600",
+  "pypi_version": "1.18.0",
+  "fetched_at": "2026-10-18T23:59:41Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/actions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/asyncio.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/errors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/loglevels.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/messages.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/migrating.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/testing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/threads.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/twisted.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/generating/types.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/introduction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/outputting/elasticsearch.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/outputting/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/outputting/journald.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/outputting/output.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python2.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/reading/fields.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/reading/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/reading/reading.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/scientific-computing.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

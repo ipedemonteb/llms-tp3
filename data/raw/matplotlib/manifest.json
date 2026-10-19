@@ -1,0 +1,2982 @@
+{
+  "package": "matplotlib",
+  "category": "visualizacion",
+  "repo": "github.com/matplotlib/matplotlib",
+  "commit": "5d4e0518fc5dcaa320de69db61fed4f3eec5fb52",
+  "pypi_version": "3.11.2",
+  "fetched_at": "2026-10-18T23:58:14Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [
+    "galleries"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/README.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/project/citing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/project/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/project/mission.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/thirdpartypackages/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/users/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/users/getting_started/index.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/users/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/users/resources/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "galleries/examples/animation/animate_decay.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/animated_histogram.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/animation_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/bayes_update.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/double_pendulum.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/dynamic_image.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/frame_grabbing_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/multiple_axes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/pause_resume.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/rain.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/random_walk.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/simple_anim.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/simple_scatter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/strip_chart.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/animation/unchained.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_anchored_direction_arrows.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_axes_divider.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_axes_grid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_axes_grid2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_axes_hbox_divider.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_axes_rgb.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_colorbar_with_axes_divider.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_colorbar_with_inset_locator.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_edge_colorbar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_fixed_size_axes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/demo_imagegrid_aspect.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/inset_locator_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/inset_locator_demo2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/make_room_for_ylabel_using_axesgrid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/parasite_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/parasite_simple2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/scatter_hist_locatable_axes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/simple_anchored_artists.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/simple_axes_divider1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/simple_axes_divider3.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/simple_axesgrid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/simple_axesgrid2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axes_grid1/simple_axisline4.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/axis_direction.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_axis_direction.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_axisline_style.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_curvelinear_grid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_curvelinear_grid2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_floating_axes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_floating_axis.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_parasite_axes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_parasite_axes2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_ticklabel_alignment.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/demo_ticklabel_direction.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/simple_axis_direction01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/simple_axis_direction03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/simple_axis_pad.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/simple_axisartist1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/simple_axisline.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/axisartist/simple_axisline3.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/color_by_yvalue.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/color_cycle_default.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/color_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/color_sequences.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/colorbar_basics.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/colorbar_histogram.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/colormap_reference.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/custom_cmap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/individual_colors_from_cmap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/named_colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/color/set_alpha.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/close_event.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/coords_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/cursor_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/data_browser.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/figure_axes_enter_leave.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/ginput_manual_clabel_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/image_slices_viewer.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/keypress_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/lasso_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/legend_picking.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/looking_glass.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/path_editor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/pick_event_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/pick_event_demo2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/poly_editor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/pong_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/resample.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/timers.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/trifinder_event_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/viewlims.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/event_handling/zoom_window.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/affine_image.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/barb_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/barcode_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/colormap_interactive_adjustment.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/colormap_normalizations.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/colormap_normalizations_symlognorm.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/contour_corner_mask.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/contour_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/contour_image.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/contour_label_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/contourf_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/contourf_hatching.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/contourf_log.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/contours_in_optimization_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/demo_bboximage.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/figimage_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/image_annotated_heatmap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/image_antialiasing.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/image_clip_path.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/image_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/image_exact_placement.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/image_masked.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/image_nonuniform.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/image_transparency_blend.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/image_zcoord.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/interpolation_methods.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/irregulardatagrid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/layer_images.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/matshow.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/multi_image.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/pcolor_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/pcolormesh_grids.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/pcolormesh_levels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/plot_streamplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/quadmesh_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/quiver_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/quiver_simple_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/shading_example.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/specgram_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/spy_demos.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/tricontour_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/tricontour_smooth_delaunay.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/tricontour_smooth_user.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/trigradient_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/triinterp_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/tripcolor_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/triplot_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/images_contours_and_fields/watermark_image.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/axline.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/bar_colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/bar_label_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/bar_stacked.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/barchart.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/barh.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/broken_barh.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/capstyle.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/categorical_variables.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/eventcollection_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/eventplot_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/fill.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/fill_between_alpha.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/fill_between_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/fill_betweenx_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/gradient_bar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/hat_graph.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/horizontal_barchart_distribution.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/joinstyle.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/line_demo_dash_control.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/lines_with_ticks_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/linestyles.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/marker_reference.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/markevery_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/masked_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/multicolored_line.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/multivariate_marker_plot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/pareto_chart.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/scatter_demo2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/scatter_hist.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/scatter_masked.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/scatter_star_poly.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/scatter_with_legend.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/simple_plot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/span_regions.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/spectrum_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/stackplot_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/stairs_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/stem_plot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/step_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/lines_bars_and_markers/vline_hline_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/anchored_artists.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/bbox_intersect.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/contour_manual.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/coords_report.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/custom_projection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/customize_rc.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/demo_agg_filter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/demo_ribbon_box.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/fig_x.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/fill_spiral.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/findobj_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/font_indexing.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/ftface_props.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/histogram_path.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/hyperlinks_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/keyword_plotting.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/logos2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/multipage_pdf.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/multiprocess_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/packed_bubbles.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/patheffect_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/print_stdout_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/rasterization_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/set_and_get.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/svg_filter_line.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/svg_filter_pie.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/table_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/tickedstroke_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/transoffset.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/misc/zorder_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/2dcollections3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/3d_bars.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/axlim_clip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/bars3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/box3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/contour3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/contour3d_2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/contour3d_3.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/contourf3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/contourf3d_2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/custom_shaded_3d_surface.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/errorbar3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/fillbetween3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/fillunder3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/hist3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/imshow3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/intersecting_planes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/lines3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/lorenz_attractor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/mixed_subplots.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/offset.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/pathpatch3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/polys3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/projections.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/quiver3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/rotate_axes3d_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/scales3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/scatter3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/stem3d_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/subplot3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/surface3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/surface3d_2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/surface3d_3.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/surface3d_radial.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/text3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/tricontour3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/tricontourf3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/trisurf3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/trisurf3d_2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/view_planes_3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/voxels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/voxels_numpy_logo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/voxels_rgb.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/voxels_torus.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/wire3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/wire3d_animation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/mplot3d/wire3d_zero_stride.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/bar_of_pie.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/nested_pie.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/pie_and_donut_labels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/pie_features.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/pie_label.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/polar_bar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/polar_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/polar_error_caps.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/polar_legend.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pie_and_polar_charts/polar_scatter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pyplots/multiple_figs_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pyplots/pyplot_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/pyplots/pyplot_two_subplots.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/scales/asinh_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/scales/aspect_loglog.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/scales/custom_scale.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/scales/log_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/scales/logit_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/scales/power_norm.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/scales/scales.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/scales/symlog_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/arrow_guide.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/artist_reference.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/collections.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/compound_path.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/dolphin.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/donut.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/ellipse_arrow.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/ellipse_collection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/ellipse_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/fancybox_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/fill_rule_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/hatch_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/hatch_style_reference.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/hatchcolor_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/line_collection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/patch_collection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/path_patch.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/quad_bezier.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/shapes_and_collections/scatter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/showcase/anatomy.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/showcase/firefox.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/showcase/integral.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/showcase/mandelbrot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/showcase/pan_zoom_overlap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/showcase/stock_prices.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/showcase/xkcd.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/advanced_hillshading.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/anscombe.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/hinton_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/ishikawa_diagram.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/leftventricle_bullseye.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/mri_with_eeg.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/radar_chart.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/sankey_basics.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/sankey_rankine.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/skewt.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/specialty_plots/topographic_hillshading.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/spines/centered_spines_with_arrows.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/spines/spine_placement_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/spines/spines.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/spines/spines_dropped.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/boxplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/boxplot_color.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/boxplot_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/boxplot_vs_violin.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/bxp.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/cohere.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/confidence_ellipse.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/csd_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/curve_error_band.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/customized_violin.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/errorbar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/errorbar_features.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/errorbar_limits.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/errorbar_limits_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/errorbar_subsample.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/errorbars_and_boxes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/hexbin_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/hist.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/histogram_bihistogram.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/histogram_cumulative.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/histogram_histtypes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/histogram_multihist.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/histogram_normalization.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/multiple_histograms_side_by_side.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/psd_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/time_series_histogram.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/violinplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/statistics/xcorr_acorr_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/style_sheets/bmh.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/style_sheets/dark_background.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/style_sheets/fivethirtyeight.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/style_sheets/ggplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/style_sheets/grayscale.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/style_sheets/petroff10.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/style_sheets/plot_solarizedlight2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/style_sheets/style_sheets_reference.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/align_labels_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/auto_subplots_adjust.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/axes_box_aspect.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/axes_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/axes_margins.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/axes_props.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/axes_zoom_effect.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/axhspan_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/axis_equal_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/axis_labels_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/broken_axis.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/custom_figure_class.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/demo_constrained_layout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/demo_tight_layout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/fahrenheit_celsius_scales.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/figure_size_units.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/figure_title.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/ganged_plots.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/geo_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/gridspec_and_subplots.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/gridspec_customization.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/gridspec_multicolumn.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/gridspec_nested.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/invert_axes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/multiple_yaxis_with_spines.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/secondary_axis.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/shared_axis_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/subfigures.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/subplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/subplot2grid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/subplots_adjust.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/subplots_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/twin_axes_zorder.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/two_scales.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/subplots_axes_and_figures/zoom_inset_axes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/accented_text.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/angle_annotation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/angles_on_bracket_arrows.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/annotation_basic.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/annotation_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/annotation_polar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/arrow_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/autowrap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/custom_legends.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/demo_annotation_box.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/demo_text_path.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/demo_text_rotation_mode.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/dfrac_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/fancyarrow_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/fancytextbox_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/figlegend_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/font_family_rc.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/font_file.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/font_table.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/fonts_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/fonts_demo_kw.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/label_subplots.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/legend.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/legend_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/line_with_text.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/mathtext_asarray.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/mathtext_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/mathtext_examples.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/mathtext_fontfamily_example.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/multiline.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/placing_text_boxes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/rainbow_text.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/stix_fonts_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/tex_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/text_alignment.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/text_commands.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/text_fontdict.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/text_rotation_relative_to_line.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/titles_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/unicode_minus.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/usetex_baseline_test.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/usetex_fonteffects.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/text_labels_and_annotations/watermark_text.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/align_ticklabels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/auto_ticks.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/centered_ticklabels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/colorbar_tick_labelling_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/custom_ticker1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/date.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/date_concise_formatter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/date_demo_convert.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/date_demo_rrule.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/date_formatters_locators.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/date_index_formatter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/date_precision_and_epochs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/dollar_ticks.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/engformatter_offset.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/engineering_formatter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/fig_axes_customize_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/major_minor_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/multilevel_ticks.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/scalarformatter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/tick-formatters.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/tick-locators.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/tick_labels_from_values.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/ticklabels_rotation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/ticks_too_many.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/ticks/ticks_top_right.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/annotate_with_units.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/artist_tests.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/bar_demo2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/bar_unit_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/basic_units.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/ellipse_with_units.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/evans_test.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/radian_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/units_sample.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/units/units_scatter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/canvasagg.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_gtk3_panzoom_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_gtk3_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_gtk4_panzoom_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_gtk4_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_qt_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_tk_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_wx2_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_wx3_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_wx4_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_in_wx5_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/embedding_webagg_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/fourier_demo_wx_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/gtk3_spreadsheet_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/gtk4_spreadsheet_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/mathtext_wx_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/mpl_with_glade3_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/mplcvd.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/pylab_with_gtk3_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/pylab_with_gtk4_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/svg_histogram_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/svg_tooltip_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/toolmanager_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/web_application_server_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/user_interfaces/wxcursor_demo_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/annotated_cursor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/buttons.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/check_buttons.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/cursor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/lasso_selector_demo_sgskip.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/mouse_cursor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/multicursor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/polygon_selector_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/polygon_selector_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/radio_buttons.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/radio_buttons_grid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/range_slider.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/rectangle_selector.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/slider_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/slider_snap_demo.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/span_selector.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/examples/widgets/textbox.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/bar3d_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/fill_between3d_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/plot3d_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/quiver3d_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/scatter3d_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/stem3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/surface3d_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/trisurf3d_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/voxels_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/3D/wire3d_simple.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/arrays/barbs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/arrays/contour.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/arrays/contourf.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/arrays/imshow.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/arrays/pcolormesh.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/arrays/quiver.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/arrays/streamplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/basic/bar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/basic/fill_between.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/basic/plot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/basic/scatter_plot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/basic/stackplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/basic/stairs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/basic/stem.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/stats/boxplot_plot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/stats/ecdf.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/stats/errorbar_plot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/stats/eventplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/stats/hexbin.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/stats/hist2d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/stats/hist_plot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/stats/pie.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/stats/violin.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/unstructured/tricontour.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/unstructured/tricontourf.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/unstructured/tripcolor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/plot_types/unstructured/triplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/tutorials/artists.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/tutorials/coding_shortcuts.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/tutorials/images.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/tutorials/lifecycle.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/tutorials/pyplot.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/animations/animations.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/animations/blitting.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/artists/color_cycle.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/artists/imshow_extent.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/artists/patheffects_guide.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/artists/paths.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/artists/transforms_tutorial.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/arranging_axes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/autoscale.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/axes_scales.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/axes_ticks.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/axes_units.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/colorbar_placement.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/constrainedlayout_guide.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/legend_guide.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/mosaic.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/axes/tight_layout_guide.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/colors/blend_groups.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/colors/blend_modes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/colors/colorbar_only.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/colors/colormap-manipulation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/colors/colormapnorms.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/colors/colormaps.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/colors/colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/configuration.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/customizing.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/quick_start.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/text/annotations.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/text/fonts.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/text/mathtext.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/text/pgf.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/text/text_intro.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/text/text_props.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "galleries/users_explain/text/usetex.py",
+      "kind": "examples",
+      "format": "py"
+    }
+  ]
+}

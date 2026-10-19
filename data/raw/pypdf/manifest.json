@@ -1,0 +1,160 @@
+{
+  "package": "pypdf",
+  "category": "documentos",
+  "repo": "github.com/py-pdf/pypdf",
+  "commit": "1a6de8d43c3a931b1ab3643c8dee2c9b51a32d42",
+  "pypi_version": "6.21.1",
+  "fetched_at": "2026-10-18T23:58:32Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/meta/comparisons.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/meta/faq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/meta/migration-1-to-2.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "docs/meta/scope-of-pypdf.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/meta/taking-ownership.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/add-javascript.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/add-watermark.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/adding-pdf-annotations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/cropping-and-transforming.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/encryption-decryption.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/extract-images.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/extract-text.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/file-size.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/forms.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/handle-attachments.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/handling-outlines.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/merging-pdfs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/metadata.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/pdf-version-support.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/pdfa-compliance.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/post-processing-in-text-extraction.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/reading-pdf-annotations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/robustness.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/security.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/streaming-data.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/suppress-warnings.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/user/viewer-preferences.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "package": "tenacity",
+  "category": "async_reintentos_tareas",
+  "repo": "github.com/jd/tenacity",
+  "commit": "32ac68f0941319c0d2f4fb927f96e4ee29bb46c6",
+  "pypi_version": "9.2.1",
+  "fetched_at": "2026-10-18T23:59:32Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "package": "redis",
+  "category": "bases_de_datos",
+  "repo": "github.com/redis/redis-py",
+  "commit": "08e2499b01e9ed90b238baf961e5fd7789c5c73d",
+  "pypi_version": "8.1.0",
+  "fetched_at": "2026-10-18T23:59:18Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced_features.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/clustering.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/commands.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/connections.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/README.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/asyncio_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/connection_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/hash_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/opentelemetry/README.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/opentelemetry_api_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/pipeline_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/pubsub_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/redis-stream-example.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/search_json_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/search_vector_similarity_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/set_and_get_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/ssl_connection_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples/timeseries_examples.ipynb",
+      "kind": "examples",
+      "format": "ipynb"
+    },
+    {
+      "path": "docs/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/geographic_failover.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/lua_scripting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/opentelemetry.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/redismodules.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/resp3_features.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/retry.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/unified_responses.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

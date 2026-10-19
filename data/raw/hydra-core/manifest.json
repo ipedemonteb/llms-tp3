@@ -1,0 +1,395 @@
+{
+  "package": "hydra-core",
+  "category": "config_serializacion",
+  "repo": "github.com/facebookresearch/hydra",
+  "commit": "89d0affcaad2de8972c141cf3fad3e5136123c7d",
+  "pypi_version": "1.3.7",
+  "fetched_at": "2026-10-18T23:59:11Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "website/docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/compose_api.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/decorating_main.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/execution_whitelist/authorization_rules.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/execution_whitelist/restricted_targets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/execution_whitelist/scopes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/execution_whitelist.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/hydra-command-line-flags.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/hydra_main.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/instantiate_objects/config_files.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/instantiate_objects/overview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/instantiate_objects/structured_config.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/jupyter_notebooks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/override_aliases.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/override_grammar/basic.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/override_grammar/extended.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/overriding_packages.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/packaging.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/plugins/develop.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/plugins/intro.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/search_path/hydra_searchpath.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/search_path.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/terminology.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/advanced/unit_testing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/configure_hydra/Intro.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/configure_hydra/app_help.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/configure_hydra/job.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/configure_hydra/logging.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/configure_hydra/workdir.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/experimental/callbacks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/experimental/intro.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/intro.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/landscape.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/patterns/configuring_experiments.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/patterns/configuring_plugins.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/patterns/environment_specific_overrides.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/patterns/select_multiple_configs_from_config_group.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/patterns/write_protect_config_node.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/plugins/colorlog.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/plugins/joblib_launcher.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/plugins/optuna_sweeper.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/plugins/rq_launcher.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/plugins/submitit_launcher.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/running_your_app/2_multirun.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/running_your_app/3_working_directory.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/running_your_app/4_logging.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/running_your_app/5_debugging.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/running_your_app/6_tab_completion.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/your_first_app/1_simple_cli.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/your_first_app/2_config_file.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/your_first_app/3_using_config.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/your_first_app/4_config_groups.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/your_first_app/5_defaults.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/basic/your_first_app/6_composition.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/intro.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/structured_config/0_intro.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/structured_config/10_config_store.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/structured_config/1_minimal_example.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/structured_config/3_config_groups.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/structured_config/4_defaults.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/tutorials/structured_config/5_schema.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/0.11_to_1.0/adding_a_package_directive.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/0.11_to_1.0/strict_mode_flag_deprecated.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.0_to_1.1/automatic_schema_matching.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.0_to_1.1/defaults_list_override.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.0_to_1.1/hydra_main_config_path.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.1_to_1.2/hydra_main_config_path.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.3_to_1.4/config_store_collisions.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.3_to_1.4/execution_whitelist.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.3_to_1.4/hydra_job_override_dirname.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.3_to_1.4/instantiate_resolution.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.3_to_1.4/nevergrad_sweeper.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.3_to_1.4/plugin_discovery.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.3_to_1.4/prepare_for_1_4.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/upgrades/1.3_to_1.4/slash_in_default.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "website/docs/version_archive.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

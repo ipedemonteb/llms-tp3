@@ -1,0 +1,313 @@
+{
+  "package": "kubernetes",
+  "category": "sdks",
+  "repo": "github.com/kubernetes-client/python",
+  "commit": "f65a97e431d4596196c8b6f82689d615a5f11826",
+  "pypi_version": "37.0.1",
+  "fetched_at": "2026-10-18T23:59:46Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc",
+    "examples"
+  ],
+  "examples_dirs": [
+    "examples"
+  ],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/html/_sources/index.rst.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/html/_sources/modules.rst.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/html/_sources/usage.rst.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/patch_types.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/modules.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "examples/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "examples/notebooks/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "examples/notebooks/create_configmap.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "examples/notebooks/create_deployment.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "examples/notebooks/create_pod.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "examples/notebooks/create_secret.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "examples/notebooks/create_service.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "examples/notebooks/intro_notebook.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "examples/watch/timeout-settings.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "examples/annotate_deployment.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/api_discovery.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/apply_from_dict.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/apply_from_directory.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/apply_from_single_file.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cluster_scoped_custom_object.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cronjob_crud.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/deployment_create.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/deployment_crud.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/duration-gep2257.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic-client/accept_header.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic-client/cluster_scoped_custom_resource.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic-client/configmap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic-client/deployment_rolling_restart.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic-client/namespaced_custom_resource.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic-client/node.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic-client/replication_controller.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic-client/request_timeout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic-client/service.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/enable_debug_logging.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/in_cluster_config.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/informer_example.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/ingress_create.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/job_crud.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/metrics_example.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/multiple_clusters.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/namespaced_custom_object.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/node_labels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/out_of_cluster_config.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/patch_namespaced_config_map.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pick_kube_config_context.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pod_config_list.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pod_exec.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pod_logs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pod_logs_non_blocking.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/pod_portforward.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/remote_cluster.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/rollout-daemonset.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/rollout-statefulset.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/watch/pod_namespace_watch.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/watch/watch_recovery.py",
+      "kind": "examples",
+      "format": "py"
+    }
+  ]
+}

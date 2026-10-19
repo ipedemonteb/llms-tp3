@@ -1,0 +1,85 @@
+{
+  "package": "dynaconf",
+  "category": "config_serializacion",
+  "repo": "github.com/dynaconf/dynaconf",
+  "commit": "455ee38569d76cd3707c73209b660cf60bd97b29",
+  "pypi_version": "3.3.5",
+  "fetched_at": "2026-10-18T23:59:11Z",
+  "docs_tool": "mkdocs",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/cli.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/configuration.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/django.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/dynamic.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/envvars.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/faq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/flask.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/merging.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/secrets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/settings_files.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/validation.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

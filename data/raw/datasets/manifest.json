@@ -1,0 +1,300 @@
+{
+  "package": "datasets",
+  "category": "ml_ia",
+  "repo": "github.com/huggingface/datasets",
+  "commit": "18378f7322c7eb1c2d93f895dd8e9f71f8623934",
+  "pypi_version": "5.1.0",
+  "fetched_at": "2026-10-18T23:58:05Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs/source"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/about_arrow.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/about_cache.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/about_dataset_features.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/about_dataset_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/about_map_batch.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/about_mapstyle_vs_iterable.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/access.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/audio_dataset.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/audio_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/audio_process.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/cache.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/cli.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/create_dataset.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/dataset_card.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/depth_estimation.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/document_dataset.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/document_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/faiss_es.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/filesystems.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/harbor_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/how_to.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/image_classification.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/image_dataset.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/image_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/image_process.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/index.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/load_hub.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/loading.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/mesh_dataset.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/mesh_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/nifti_dataset.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/nlp_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/nlp_process.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/object_detection.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/process.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/quickstart.mdx",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/repository_structure.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/semantic_segmentation.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/share.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/stream.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/tabular_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/troubleshoot.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/tsfile_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/tutorial.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/upload_dataset.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/use_dataset.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/use_with_jax.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/use_with_numpy.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/use_with_pandas.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/use_with_polars.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/use_with_pyarrow.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/use_with_pytorch.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/use_with_spark.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/use_with_tensorflow.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/video_dataset.mdx",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/video_load.mdx",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

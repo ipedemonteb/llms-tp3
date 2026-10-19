@@ -1,0 +1,180 @@
+{
+  "package": "pyarrow",
+  "category": "datos_numerico",
+  "repo": "github.com/apache/arrow",
+  "commit": "9f0341314ca96eb58081d4132c77b460d880b2b0",
+  "pypi_version": "26.0.0",
+  "fetched_at": "2026-10-18T23:57:57Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs/source/python"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/python/compute.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/csv.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/data.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/dataset.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/dlpack.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/env_vars.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/extending_types.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/feather.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/filesystems.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/flight.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/getstarted.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/getting_involved.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/integration/cuda.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/integration/extending.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/integration/python_java.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/integration/python_r.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/integration/substrait.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/integration.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/interchange_protocol.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/ipc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/json.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/memory.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/numpy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/orc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/pandas.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/parquet/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/parquet/parquet.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/parquet/parquet_datasets.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/parquet/parquet_encryption.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/parquet/parquet_type_handling.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/python/timestamps.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

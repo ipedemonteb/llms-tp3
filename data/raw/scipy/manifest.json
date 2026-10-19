@@ -1,0 +1,980 @@
+{
+  "package": "scipy",
+  "category": "datos_numerico",
+  "repo": "github.com/scipy/scipy",
+  "commit": "6fc15de8f374545cb99328b4ec98d642133bf294",
+  "pypi_version": "1.18.1",
+  "fetched_at": "2026-10-18T23:57:57Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/building/blas_lapack.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/compilers_and_options.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/contributor.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/cross_compilation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/redistributable_binaries.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/system_level.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/understanding_meson.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/_LaTeXMathMacros.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/arpack.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/csgraph.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/fft.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/integrate.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/interpolate/1D.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/interpolate/2D_fill_from_border.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/interpolate/ND_regular_grid.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/interpolate/ND_unstructured.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/interpolate/extrapolation_examples.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/interpolate/interp_transition_guide.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/interpolate/smoothing_splines.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/interpolate/splines_and_polynomials.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/interpolate.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/io.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/linalg.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/linalg_batch.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/ndimage.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/optimize.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/parallel_execution.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/security.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/signal.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/sparse.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/spatial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/special.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/analysing_one_sample.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/comparing_two_samples.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_alpha.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_anglit.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_arcsine.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_beta.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_betaprime.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_bradford.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_burr.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_burr12.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_cauchy.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_chi.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_chi2.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_cosine.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_dgamma.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_dpareto_lognorm.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_dweibull.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_erlang.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_expon.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_exponpow.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_exponweib.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_f.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_fatiguelife.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_fisk.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_foldcauchy.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_foldnorm.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_gamma.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_gausshyper.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_genexpon.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_genextreme.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_gengamma.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_genhalflogistic.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_genhyperbolic.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_geninvgauss.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_genlogistic.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_gennorm.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_genpareto.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_gibrat.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_gompertz.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_gumbel_l.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_gumbel_r.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_halfcauchy.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_halflogistic.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_halfnorm.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_hypsecant.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_invgamma.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_invgauss.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_invweibull.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_jf_skew_t.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_johnsonsb.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_johnsonsu.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_ksone.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_kstwo.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_kstwobign.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_landau.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_laplace.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_laplace_asymmetric.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_levy.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_levy_l.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_loggamma.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_logistic.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_loglaplace.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_lognorm.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_loguniform.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_lomax.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_maxwell.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_mielke.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_nakagami.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_ncf.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_nct.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_ncx2.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_norm.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_norminvgauss.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_pareto.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_powerlaw.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_powerlognorm.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_powernorm.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_rayleigh.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_rdist.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_recipinvgauss.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_rel_breitwigner.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_rice.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_semicircular.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_skewcauchy.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_studentized_range.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_t.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_trapezoid.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_triang.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_truncexpon.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_truncnorm.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_truncpareto.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_truncweibull_min.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_tukeylambda.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_uniform.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_vonmises.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_wald.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_weibull_max.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_weibull_min.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/continuous_wrapcauchy.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_bernoulli.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_betabinom.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_betanbinom.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_binom.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_boltzmann.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_dlaplace.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_geom.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_hypergeom.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_logser.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_nbinom.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_nchypergeom_fisher.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_nchypergeom_wallenius.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_nhypergeom.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_planck.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_poisson.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_randint.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_yulesimon.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_zipf.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/discrete_zipfian.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_bartlett.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_chi2_contingency.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_chisquare.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_dunnett.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_fisher_exact.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_fligner.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_friedmanchisquare.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_normaltest.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_odds_ratio.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_shapiro.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/hypothesis_tests.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/kernel_density_estimation.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/landau_energy_loss.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/missing_data.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/multiscale_graphcorr.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/outliers.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/probability_distributions.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/quasi_monte_carlo.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/resampling.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/rv_infrastructure.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/sampling.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/tutorial/stats/sampling_dau.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/sampling_dgt.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/sampling_hinv.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/sampling_pinv.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/sampling_srou.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats/sampling_tdr.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/stats.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/thread_safety.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    }
+  ]
+}

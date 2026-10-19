@@ -1,0 +1,70 @@
+{
+  "package": "invoke",
+  "category": "cli_terminal",
+  "repo": "github.com/pyinvoke/invoke",
+  "commit": "6a71e680c535ba6520e935c497099fbca011d03c",
+  "pypi_version": "3.0.3",
+  "fetched_at": "2026-10-18T23:58:58Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "sites/docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/concepts/configuration.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/concepts/invoking-tasks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/concepts/library.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/concepts/loading.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/concepts/namespaces.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/concepts/testing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/concepts/watchers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/getting-started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "sites/docs/invoke.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

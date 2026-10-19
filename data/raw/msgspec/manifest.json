@@ -1,0 +1,120 @@
+{
+  "package": "msgspec",
+  "category": "validacion_modelos",
+  "repo": "github.com/msgspec/msgspec",
+  "commit": "2da729cf4c8b06fcd74ca95d32f872e64188052e",
+  "pypi_version": "0.22.0",
+  "fetched_at": "2026-10-18T23:59:16Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/benchmarks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/constraints.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/converters.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/asyncio-kv.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/conda-repodata.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/geojson.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/index.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/pyproject-toml.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extending.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/inspect.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/jsonschema.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/perf-tips.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/porting/index.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/porting/orjson.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/schema-evolution.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/structs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/supported-types.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/why.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

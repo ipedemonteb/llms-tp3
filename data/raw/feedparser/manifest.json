@@ -1,0 +1,515 @@
+{
+  "package": "feedparser",
+  "category": "html_xml_scraping",
+  "repo": "github.com/kurtmckee/feedparser",
+  "commit": "a22c5521cbb109871f1a2318948581901bd47e26",
+  "pypi_version": "6.0.14",
+  "fetched_at": "2026-10-18T23:58:28Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/annotated-atom03.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/annotated-atom10.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/annotated-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/annotated-rss10.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/annotated-rss20-dc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/annotated-rss20.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/atom-detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic-existence.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/bozo.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/character-encoding.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/colophon.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/common-atom-elements.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/common-rss-elements.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/content-normalization.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/date-parsing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/html-sanitization.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/http-authentication.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/http-etag.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/http-other.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/http-redirect.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/http-useragent.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/http.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/introduction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/namespace-handling.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-bozo.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-bozo_exception.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-encoding.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-author.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-author_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-comments.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-content.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-created.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-created_parsed.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-enclosures.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-expired.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-expired_parsed.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-id.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-link.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-links.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-published.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-published_parsed.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-publisher.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-publisher_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-source.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-summary.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-summary_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-tags.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-title.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-title_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-updated.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry-updated_parsed.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-entry.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-etag.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-author.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-author_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-cloud.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-docs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-errorreportsto.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-generator.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-generator_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-icon.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-id.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-image.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-info-detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-info.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-language.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-link.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-links.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-logo.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-published.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-published_parsed.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-publisher.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-publisher_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-rights.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-rights_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-subtitle.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-subtitle_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-tags.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-textinput.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-title.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-title_detail.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-ttl.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-updated.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed-updated_parsed.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-feed.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-headers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-href.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-modified.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-namespaces.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-status.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference-version.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/resolving-relative-links.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/uncommon-atom.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/uncommon-rss.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/version-detection.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

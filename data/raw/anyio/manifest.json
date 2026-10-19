@@ -1,0 +1,120 @@
+{
+  "package": "anyio",
+  "category": "async_reintentos_tareas",
+  "repo": "github.com/agronholm/anyio",
+  "commit": "6219807568bd7c32f2c08f923c7d93f95c836127",
+  "pypi_version": "4.15.1",
+  "fetched_at": "2026-10-18T23:59:32Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/cancellation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/contextmanagers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/fileio.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/migration.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/networking.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/signals.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/streams.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/subinterpreters.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/subprocesses.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/support.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/synchronization.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tasks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tempfile.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/testing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/threads.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/typedattrs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/why.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

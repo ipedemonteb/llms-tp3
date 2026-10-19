@@ -1,0 +1,100 @@
+{
+  "package": "huey",
+  "category": "async_reintentos_tareas",
+  "repo": "github.com/coleifer/huey",
+  "commit": "c5afa051a9663be479669e687c7460bdbbfd204d",
+  "pypi_version": "3.4.0",
+  "fetched_at": "2026-10-18T23:59:33Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/asyncio.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/consumer.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/contrib.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/django.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/flask_admin.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/imports.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/mini.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/monitoring.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/shared_resources.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/signals.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/stats.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/troubleshooting.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

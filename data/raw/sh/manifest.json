@@ -1,0 +1,155 @@
+{
+  "package": "sh",
+  "category": "sistema_archivos",
+  "repo": "github.com/amoffat/sh",
+  "commit": "5e1c810236225ab9a41280cc1a7d9d38ef575086",
+  "pypi_version": "2.4.0",
+  "fetched_at": "2026-10-18T23:59:42Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/examples/done.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/fulldoc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/ref_to_fulldoc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/architecture.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/asynchronous_execution.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/baking.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/command_class.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/contrib.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/default_arguments.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/envs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/exit_codes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/migration.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/passing_arguments.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/piping.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/redirection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/special_arguments.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/stdin.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/subcommands.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/sudo.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/sections/with.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/tutorials/interacting_with_processes.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/tutorials/real_time_output.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/tutorials.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

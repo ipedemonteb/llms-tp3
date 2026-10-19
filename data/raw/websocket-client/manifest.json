@@ -1,0 +1,50 @@
+{
+  "package": "websocket-client",
+  "category": "http_redes",
+  "repo": "github.com/websocket-client/websocket-client",
+  "commit": "318d1bc3b8de4b1dc2c9ea49d4b4825d200cff13",
+  "pypi_version": "1.9.2",
+  "fetched_at": "2026-10-18T23:57:45Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/about.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/getting_started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/threading.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

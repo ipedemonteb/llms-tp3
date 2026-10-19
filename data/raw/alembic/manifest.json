@@ -1,0 +1,65 @@
+{
+  "package": "alembic",
+  "category": "bases_de_datos",
+  "repo": "github.com/sqlalchemy/alembic",
+  "commit": "723d9c2cc83b77b071db967faf49640295b6f15a",
+  "pypi_version": "1.20.0",
+  "fetched_at": "2026-10-18T23:59:17Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/build/autogenerate.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/build/batch.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/build/branches.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/build/cookbook.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/build/front.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/build/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/build/naming.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/build/offline.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/build/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    }
+  ]
+}

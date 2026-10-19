@@ -1,0 +1,60 @@
+{
+  "package": "pytest-django",
+  "category": "testing",
+  "repo": "github.com/pytest-dev/pytest-django",
+  "commit": "ad5867df0bbb8ba4743694fbf5489a6b58c00a07",
+  "pypi_version": "4.14.0",
+  "fetched_at": "2026-10-18T23:59:27Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/configuring_django.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/database.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/helpers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/managing_python_path.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

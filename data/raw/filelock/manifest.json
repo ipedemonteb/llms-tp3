@@ -1,0 +1,40 @@
+{
+  "package": "filelock",
+  "category": "sistema_archivos",
+  "repo": "github.com/tox-dev/py-filelock",
+  "commit": "84dc80cf65493c8232033ecff41d1edac38c6808",
+  "pypi_version": "4.2.2",
+  "fetched_at": "2026-10-18T23:59:41Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/concepts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/how-to.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorials.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    }
+  ]
+}

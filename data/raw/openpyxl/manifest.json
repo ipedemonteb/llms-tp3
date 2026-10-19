@@ -1,0 +1,235 @@
+{
+  "package": "openpyxl",
+  "category": "documentos",
+  "repo": "foss.heptapod.net/openpyxl/openpyxl",
+  "commit": "52c77fdee169dceefc11aceef956aa0367e9759a",
+  "pypi_version": "3.1.5",
+  "fetched_at": "2026-10-18T23:58:32Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/anchors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/area.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/bar.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/bubble.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/chart_layout.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/chartsheet.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/doughnut.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/gauge.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/graphical.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/introduction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/limits_and_scaling.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/line.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/pattern.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/pie.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/radar.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/scatter.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/secondary.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/stock.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/charts/surface.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/comments.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/datetime.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/defined_names.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/editing_worksheets.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/filters.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/formatting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/formula.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/images.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/optimized.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/pandas.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/performance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/pivot.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/print_settings.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/protection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/rich_text.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/simple_formulae.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/styles.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/validation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/workbook_custom_doc_props.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/worksheet_properties.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/worksheet_tables.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

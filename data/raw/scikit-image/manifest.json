@@ -1,0 +1,847 @@
+{
+  "package": "scikit-image",
+  "category": "imagenes",
+  "repo": "github.com/scikit-image/scikit-image",
+  "commit": "b700edc8005e4ee9e74fc83259f09e8df3213f15",
+  "pypi_version": "0.26.0",
+  "fetched_at": "2026-10-18T23:58:50Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc/source"
+  ],
+  "examples_dirs": [
+    "doc/examples"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/about/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/about/report_handling_manual.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/about/values.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/gitwash/configure_git.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/gitwash/following_latest.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/gitwash/forking_hell.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/gitwash/git_intro.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/gitwash/git_resources.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/gitwash/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/gitwash/maintainer_workflow.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/gitwash/patching.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/gitwash/set_up_fork.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/data_types.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/geometrical_transform.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/getting_help.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/getting_started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/numpy_images.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/plugins.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/transforming_image_data.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/tutorial_parallelization.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/tutorial_segmentation.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/tutorials.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/video.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/visualization.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/applications/plot_3d_image_processing.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_3d_interaction.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_3d_structure_tensor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_coins_segmentation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_colocalization_metrics.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_cornea_spot_inpainting.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_face_detection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_fluorescence_nuclear_envelope.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_haar_extraction_selection_classification.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_human_mitosis.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_image_comparison.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_morphology.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_pixel_graphs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_rank_filters.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_solidification_tracking.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_text.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/applications/plot_thresholding_guide.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_adapt_hist_eq_3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_adapt_rgb.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_equalize.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_histogram_matching.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_ihc_color_separation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_local_equalize.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_log_gamma.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_regional_maxima.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_rgb_to_gray.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_rgb_to_hsv.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/color_exposure/plot_tinting_grayscale_images.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/data/plot_3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/data/plot_general.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/data/plot_scientific.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/data/plot_specific.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_active_contours.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_canny.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_circular_elliptical_hough_transform.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_contours.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_convex_hull.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_edge_filter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_line_hough_transform.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_marching_cubes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_polygon.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_random_shapes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_ridge_filter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_shapes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/edges/plot_skeleton.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_blob.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_brief.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_censure.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_corner.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_daisy.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_fisher_vector.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_gabor.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_gabors_from_astronaut.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_glcm.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_haar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_hog.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_holes_and_peaks.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_local_binary_pattern.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_multiblock_local_binary_pattern.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_orb.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_remove_objects.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_shape_index.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_sift.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_template.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/features_detection/plot_windowed_histogram.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_attribute_operators.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_blur_effect.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_butterworth.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_cycle_spinning.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_deconvolution.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_denoise.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_denoise_wavelet.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_dog.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_entropy.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_hysteresis.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_inpaint.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_j_invariant.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_j_invariant_tutorial.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_nonlocal_means.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_phase_unwrap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_rank_mean.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_restoration.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_tophat.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_unsharp_mask.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/filters/plot_window.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/numpy_operations/plot_camera_numpy.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/numpy_operations/plot_footprint_decompositions.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/numpy_operations/plot_structuring_elements.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/numpy_operations/plot_view_as_blocks.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/registration/plot_masked_register_translation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/registration/plot_opticalflow.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/registration/plot_register_rotation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/registration/plot_register_translation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/registration/plot_stitching.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_boundary_merge.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_chan_vese.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_compact_watershed.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_euler_number.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_expand_labels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_extrema.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_floodfill.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_hausdorff_distance.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_join_segmentations.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_label.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_marked_watershed.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_mask_slic.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_metrics.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_morphsnakes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_multiotsu.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_ncut.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_niblack_sauvola.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_peak_local_max.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_perimeters.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_rag.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_rag_boundary.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_rag_draw.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_rag_mean_color.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_rag_merge.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_random_walker_segmentation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_regionprops.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_regionprops_table.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_rolling_ball.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_segmentations.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_thresholding.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_trainable_segmentation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/segmentation/plot_watershed.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_edge_modes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_fundamental_matrix.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_geometric.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_matching.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_piecewise_affine.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_pyramid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_radon_transform.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_ransac.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_rescale.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_ssim.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_swirl.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_tps_deformation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "doc/examples/transform/plot_transform_types.py",
+      "kind": "examples",
+      "format": "py"
+    }
+  ]
+}

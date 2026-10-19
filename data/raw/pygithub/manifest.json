@@ -1,0 +1,125 @@
+{
+  "package": "pygithub",
+  "category": "sdks",
+  "repo": "github.com/pygithub/pygithub",
+  "commit": "5aeb43916b197a0fe8016600817b868fc894af5a",
+  "pypi_version": "2.10.0",
+  "fetched_at": "2026-10-18T23:59:46Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/Design.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/examples/Authentication.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/Branch.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/Commit.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/Exceptions.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/Issue.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/LazyMode.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/MainClass.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/Milestone.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/PullRequest.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/Repository.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples/Webhook.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/getting-started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/graphql.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/introduction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/openapi.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/scripts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/testing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/utilities.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

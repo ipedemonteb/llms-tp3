@@ -1,0 +1,95 @@
+{
+  "package": "google-api-python-client",
+  "category": "sdks",
+  "repo": "github.com/googleapis/google-api-python-client",
+  "commit": "6ee20fa2fb4f621bd551ebe305936a70a1184492",
+  "pypi_version": "2.201.0",
+  "fetched_at": "2026-10-18T23:59:48Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/api-keys.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/auth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/batch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/client-secrets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/dyn/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/logging.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/media.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/mocks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/oauth-server.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/oauth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/pagination.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/performance.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/start.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/thread_safety.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

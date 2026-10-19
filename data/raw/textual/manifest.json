@@ -1,0 +1,2407 @@
+{
+  "package": "textual",
+  "category": "cli_terminal",
+  "repo": "github.com/Textualize/textual",
+  "commit": "5e5b7ef58b8c5572c13a3ff9027d756623661495",
+  "pypi_version": "8.2.8",
+  "fetched_at": "2026-10-18T23:58:58Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [
+    "docs/examples"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/FAQ.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/_template.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/border.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/color.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/hatch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/horizontal.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/integer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/keyline.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/name.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/number.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/overflow.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/percentage.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/pointer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/position.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/scalar.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/text_align.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/text_style.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/css_types/vertical.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/events/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/styles/README.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/getting_started.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/CSS.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/actions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/animation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/command_palette.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/content.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/design.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/devtools.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/events.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/input.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/layout.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/queries.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/reactivity.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/screens.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/styles.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/testing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/widgets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/guide/workers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/help.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/how-to/center-things.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/how-to/design-a-layout.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/how-to/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/how-to/package-with-hatch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/how-to/render-and-compose.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/how-to/style-inline-apps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/how-to/work-with-containers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/linux-console.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/snippets/border_sub_title_align_all_example.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/snippets/border_title_color.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/snippets/border_vs_outline_example.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/snippets/see_also_border.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/snippets/syntax_block_end.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/snippets/syntax_block_start.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/_template.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/align.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/background.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/background_tint.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/border.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/border_subtitle_align.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/border_subtitle_background.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/border_subtitle_color.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/border_subtitle_style.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/border_title_align.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/border_title_background.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/border_title_color.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/border_title_style.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/box_sizing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/color.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/content_align.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/display.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/dock.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/grid/column_span.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/grid/grid_columns.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/grid/grid_gutter.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/grid/grid_rows.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/grid/grid_size.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/grid/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/grid/row_span.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/hatch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/height.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/keyline.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/layer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/layers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/layout.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/links/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/links/link_background.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/links/link_background_hover.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/links/link_color.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/links/link_color_hover.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/links/link_style.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/links/link_style_hover.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/margin.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/max_height.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/max_width.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/min_height.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/min_width.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/offset.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/opacity.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/outline.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/overflow.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/padding.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/pointer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/position.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_colors/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_colors/scrollbar_background.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_colors/scrollbar_background_active.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_colors/scrollbar_background_hover.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_colors/scrollbar_color.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_colors/scrollbar_color_active.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_colors/scrollbar_color_hover.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_colors/scrollbar_corner_color.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_gutter.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_size.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/scrollbar_visibility.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/text_align.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/text_opacity.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/text_overflow.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/text_style.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/text_wrap.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/tint.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/visibility.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/styles/width.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/tutorial.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/widget_gallery.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/_template.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/button.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/checkbox.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/collapsible.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/content_switcher.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/data_table.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/digits.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/directory_tree.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/footer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/header.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/input.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/label.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/link.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/list_item.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/list_view.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/loading_indicator.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/log.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/markdown.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/markdown_viewer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/masked_input.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/option_list.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/placeholder.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/pretty.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/progress_bar.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/radiobutton.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/radioset.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/rich_log.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/rule.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/select.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/selection_list.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/sparkline.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/static.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/switch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/tabbed_content.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/tabs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/text_area.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/toast.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/widgets/tree.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples/app/event01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/question01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/question02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/question03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/question_title01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/question_title02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/simple01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/simple02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/suspend.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/suspend_process.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/widgets01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/widgets02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/widgets03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/app/widgets04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/events/custom01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/events/dictionary.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/events/on_decorator01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/events/on_decorator02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/events/prevent.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/getting_started/console.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/actions/actions01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/actions/actions02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/actions/actions03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/actions/actions04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/actions/actions05.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/actions/actions06.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/actions/actions07.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/animator/animation01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/command_palette/command01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/command_palette/command02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/compound/byte01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/compound/byte02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/compound/byte03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/compound/compound01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/content/content01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/content/playground.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/content/renderables.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/css/nesting01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/css/nesting02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/dom1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/dom2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/dom3.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/dom4.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/input/binding01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/input/key01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/input/key02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/input/key03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/input/mouse01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/combining_layouts.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/dock_layout1_sidebar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/dock_layout2_sidebar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/dock_layout3_sidebar_header.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/grid_layout1.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/grid_layout2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/grid_layout3_row_col_adjust.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/grid_layout4_row_col_adjust.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/grid_layout5_col_span.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/grid_layout6_row_span.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/grid_layout7_gutter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/grid_layout_auto.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/horizontal_layout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/horizontal_layout_overflow.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/layers.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/utility_containers.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/utility_containers_using_with.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/vertical_layout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/layout/vertical_layout_scrolled.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/computed01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/dynamic_watch.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/recompose01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/recompose02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/refresh01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/refresh02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/refresh03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/set_reactive01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/set_reactive02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/set_reactive03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/validate01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/watch01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/world_clock01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/world_clock02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/reactivity/world_clock03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/screens/modal01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/screens/modal02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/screens/modal03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/screens/modes01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/screens/questions01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/screens/screen01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/screens/screen02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/structure.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/border01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/border_title.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/box_sizing01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/colors01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/colors02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/dimensions01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/dimensions02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/dimensions03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/dimensions04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/margin01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/outline01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/padding01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/padding02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/screen.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/styles/widget.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/testing/rgb.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/testing/test_rgb.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/checker01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/checker02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/checker03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/checker04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/counter01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/counter02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/fizzbuzz01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/fizzbuzz02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/hello01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/hello02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/hello03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/hello04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/hello05.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/hello06.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/loading01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/tooltip01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/widgets/tooltip02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/workers/weather01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/workers/weather02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/workers/weather03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/workers/weather04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/guide/workers/weather05.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center05.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center06.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center07.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center08.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center09.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/center10.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/containers01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/containers02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/containers03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/containers04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/containers05.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/containers06.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/containers07.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/containers08.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/containers09.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/inline01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/inline02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/layout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/layout01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/layout02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/layout03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/layout04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/layout05.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/layout06.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/how-to/render_compose.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/align.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/align_all.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/background.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/background_tint.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/background_transparency.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/border.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/border_all.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/border_sub_title_align_all.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/border_subtitle_align.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/border_title_align.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/border_title_colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/box_sizing.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/color.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/color_auto.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/column_span.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/content_align.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/content_align_all.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/display.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/dock_all.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/grid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/grid_columns.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/grid_gutter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/grid_rows.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/grid_size_both.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/grid_size_columns.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/hatch.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/height.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/height_comparison.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/keyline.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/keyline_horizontal.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/layout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/link_background.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/link_background_hover.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/link_color.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/link_color_hover.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/link_style.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/link_style_hover.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/links.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/margin.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/margin_all.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/max_height.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/max_width.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/min_height.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/min_width.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/offset.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/opacity.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/outline.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/outline_all.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/outline_vs_border.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/overflow.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/padding.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/padding_all.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/position.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/row_span.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/scrollbar_corner_color.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/scrollbar_gutter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/scrollbar_size.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/scrollbar_size2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/scrollbar_visibility.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/scrollbars.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/scrollbars2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/text_align.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/text_opacity.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/text_overflow.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/text_style.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/text_style_all.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/text_wrap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/tint.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/visibility.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/visibility_containers.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/width.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/styles/width_comparison.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/themes/colored_text.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/themes/muted_backgrounds.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/themes/todo_app.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/tutorial/stopwatch.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/tutorial/stopwatch01.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/tutorial/stopwatch02.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/tutorial/stopwatch03.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/tutorial/stopwatch04.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/tutorial/stopwatch05.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/tutorial/stopwatch06.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/button.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/checkbox.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/clock.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/collapsible.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/collapsible_custom_symbol.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/collapsible_nested.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/content_switcher.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/data_table.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/data_table_cursors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/data_table_fixed.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/data_table_labels.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/data_table_renderables.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/data_table_sort.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/digits.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/directory_tree.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/directory_tree_filtered.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/footer.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/header.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/header_app_title.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/horizontal_rules.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/input.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/input_types.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/input_validation.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/label.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/link.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/list_view.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/loading_indicator.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/log.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/markdown.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/markdown_viewer.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/masked_input.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/option_list_options.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/option_list_strings.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/option_list_tables.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/placeholder.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/pretty.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/progress_bar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/progress_bar_gradient.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/progress_bar_isolated.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/progress_bar_isolated_.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/progress_bar_styled.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/progress_bar_styled_.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/radio_button.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/radio_set.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/radio_set_changed.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/rich_log.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/select_from_values_widget.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/select_widget.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/select_widget_no_blank.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/selection_list_selected.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/selection_list_selections.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/selection_list_tuples.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/sparkline.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/sparkline_basic.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/sparkline_colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/static.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/switch.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/tabbed_content.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/tabbed_content_label_color.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/tabs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/text_area_custom_language.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/text_area_custom_theme.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/text_area_example.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/text_area_extended.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/text_area_selection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/toast.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/tree.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs/examples/widgets/vertical_rules.py",
+      "kind": "examples",
+      "format": "py"
+    }
+  ]
+}

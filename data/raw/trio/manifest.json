@@ -1,0 +1,60 @@
+{
+  "package": "trio",
+  "category": "async_reintentos_tareas",
+  "repo": "github.com/python-trio/trio",
+  "commit": "4630d02872c0aa5778ce0afd702c5d532a2ccf60",
+  "pypi_version": "0.34.0",
+  "fetched_at": "2026-10-18T23:59:32Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/awesome-trio-libraries.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/design.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/reference-core.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/reference-io.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/reference-lowlevel.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/releasing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    }
+  ]
+}

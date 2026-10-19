@@ -1,0 +1,325 @@
+{
+  "package": "pytest",
+  "category": "testing",
+  "repo": "github.com/pytest-dev/pytest",
+  "commit": "420cf37a3fc8c03c9a4769c2635a03773d27be10",
+  "pypi_version": "9.1.1",
+  "fetched_at": "2026-10-18T23:59:23Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/adopt.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/announce/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/announce/sprint2016.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/backwards-compatibility.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/builtin.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/contact.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/contents.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/deprecations.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/attic.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/customdirectory.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/index.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/markers.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/nonpython.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/parametrize.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/pythoncollection.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/reportingdemo.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/simple.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/example/special.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/explanation/anatomy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/explanation/ci.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/explanation/fixtures.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/explanation/flaky.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/explanation/goodpractices.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/explanation/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/explanation/pythonpath.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/explanation/types.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/funcarg_compare.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/funcargs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/getting-started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/historical-notes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/assert.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/bash-completion.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/cache.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/capture-stdout-stderr.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/capture-warnings.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/doctest.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/existingtestsuite.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/failures.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/fixtures.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/logging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/mark.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/monkeypatch.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/output.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/parametrize.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/plugins.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/skipping.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/subtests.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/tmp_path.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/unittest.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/writing_hook_functions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/writing_plugins.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/how-to/xunit_setup.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/naming20.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/proposals/parametrize_with_fixtures.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/recwarn.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/talks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/tidelift.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/en/yieldfixture.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

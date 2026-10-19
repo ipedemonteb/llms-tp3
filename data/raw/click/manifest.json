@@ -1,0 +1,185 @@
+{
+  "package": "click",
+  "category": "cli_terminal",
+  "repo": "github.com/pallets/click",
+  "commit": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+  "pypi_version": "8.5.0",
+  "fetched_at": "2026-10-18T23:58:53Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/arguments.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/click-concepts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/command-line-reference.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/commands-and-groups.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/commands.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/complex.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/contrib.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/design-opinions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/documentation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/entry-points.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/exceptions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extending-click.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/faqs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/handling-files.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/option-decorators.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/options.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/parameter-types.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/parameters.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/prompts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/quickstart.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/setuptools.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/shell-completion.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/standalone-apps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/support-multiple-versions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/testing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/unicode-support.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/upgrade-guides.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "docs/utils.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/virtualenv.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/why.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/wincmd.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

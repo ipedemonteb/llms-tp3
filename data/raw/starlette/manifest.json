@@ -1,0 +1,135 @@
+{
+  "package": "starlette",
+  "category": "web_apis",
+  "repo": "github.com/Kludex/starlette",
+  "commit": "dc20b216f065af3a487722141da9a29dcac388d1",
+  "pypi_version": "1.9.0",
+  "fetched_at": "2026-10-18T23:57:49Z",
+  "docs_tool": "mkdocs",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/applications.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/authentication.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/background.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/config.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/database.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/early-hints.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/endpoints.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/exceptions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/graphql.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/lifespan.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/middleware.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/requests.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/responses.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/routing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/schemas.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/server-push.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/staticfiles.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/templates.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/testclient.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/third-party-packages.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/threadpool.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/websockets.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

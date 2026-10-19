@@ -1,0 +1,105 @@
+{
+  "package": "structlog",
+  "category": "logging",
+  "repo": "github.com/hynek/structlog",
+  "commit": "19c4f21059e853114efa7a93b6e675d93bf7934e",
+  "pypi_version": "26.1.0",
+  "fetched_at": "2026-10-18T23:59:39Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/bound-loggers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/configuration.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/console-output.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/contextvars.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/frameworks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/getting-started.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/logging-best-practices.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/performance.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/processors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/recipes.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/standard-library.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/testing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/thread-local.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/twisted.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/typing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/why.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

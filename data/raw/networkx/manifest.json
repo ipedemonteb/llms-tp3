@@ -1,0 +1,492 @@
+{
+  "package": "networkx",
+  "category": "datos_numerico",
+  "repo": "github.com/networkx/networkx",
+  "commit": "abf2feda2252ee4e0d5a66964addf179225dfe76",
+  "pypi_version": "3.7",
+  "fetched_at": "2026-10-18T23:57:57Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [
+    "examples"
+  ],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/README.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/backends.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/tutorial.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "examples/3d_drawing/mayavi2_spring.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/3d_drawing/plot_3d_animation_basic.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/3d_drawing/plot_3d_animation_walk.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/3d_drawing/plot_basic.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/3d_drawing/plot_facebook_3d.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_beam_search.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_betweenness_centrality.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_bipartite_motif_abcore.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_blockmodel.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_circuits.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_cycle_detection.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_davis_club.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_dedensification.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_girvan_newman.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_greedy_coloring.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_image_segmentation_spectral_graph_partition.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_iterated_dynamical_systems.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_krackhardt_centrality.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_lca.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_maximum_independent_set.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_metric_closure.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_parallel_betweenness.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_rcm.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_shortest_path.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_snap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_subgraphs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/algorithms/plot_trust_rank.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/basic/plot_basic_directed.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/basic/plot_properties.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/basic/plot_read_write.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/basic/plot_simple_graph.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_center_node.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_chess_masters.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_clusters.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_custom_node_icons.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_degree.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_directed.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_edge_colormap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_ego_graph.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_eigenvalues.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_four_grids.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_house_with_colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_knuth_miles.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_labels_and_colors.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_multigraphs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_multipartite_graph.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_node_colormap.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_rainbow_coloring.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_random_geometric_graph.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_sampson.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_selfloops.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_simple_path.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_spectral_grid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_spring_layout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_tsp.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_unix_email.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/drawing/plot_weighted_graph.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/external/javascript_force.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/external/plot_hiveplotlib.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/external/plot_igraph.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/external/plot_iplotx.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/geospatial/plot_delaunay.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/geospatial/plot_lines.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/geospatial/plot_osmnx.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/geospatial/plot_points.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/geospatial/plot_polygons.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_dag_layout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_degree_sequence.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_erdos_renyi.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_expected_degree_sequence.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_football.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_karate_club.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_morse_trie.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_mst.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_napoleon_russian_campaign.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_roget.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_triad_types.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_visibility_graph.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graph/plot_words.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graphviz_drawing/plot_attributes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graphviz_drawing/plot_conversion.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graphviz_drawing/plot_grid.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graphviz_drawing/plot_mini_atlas.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graphviz_layout/plot_atlas.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graphviz_layout/plot_circular_tree.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graphviz_layout/plot_decomposition.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graphviz_layout/plot_giant_component.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/graphviz_layout/plot_lanl_routes.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/subclass/plot_antigraph.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/subclass/plot_printgraph.py",
+      "kind": "examples",
+      "format": "py"
+    }
+  ]
+}

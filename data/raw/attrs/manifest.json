@@ -1,0 +1,75 @@
+{
+  "package": "attrs",
+  "category": "validacion_modelos",
+  "repo": "github.com/python-attrs/attrs",
+  "commit": "ee66e7274852438cc23d4240a1a9cd632fda8b52",
+  "pypi_version": "26.1.0",
+  "fetched_at": "2026-10-18T23:59:13Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/api-attr.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/comparison.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/examples.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/extending.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/how-does-it-work.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/init.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/names.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/overview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/types.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/why.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

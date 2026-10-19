@@ -1,0 +1,3175 @@
+{
+  "package": "transformers",
+  "category": "ml_ia",
+  "repo": "github.com/huggingface/transformers",
+  "commit": "d4804f9d76b8c071b993d813e9e87067b780cbee",
+  "pypi_version": "5.20.1",
+  "fetched_at": "2026-10-18T23:58:05Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs/source/en"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/accelerate.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/add_audio_processing_components.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/add_new_model.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/add_new_pipeline.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/add_vision_processing_components.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/amd_gpu.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/apple_silicon.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/assisted_decoding.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/attention_interface.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/auto_docstring.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/aws_trainium.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/backbones.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/cache_explanation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/chat_content_patterns.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/chat_extras.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/chat_response_parsing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/chat_templating.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/chat_templating_multimodal.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/chat_templating_writing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/axolotl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/candle.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/executorch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/litert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/llama_cpp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/mlx.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/nanotron.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/nemo_automodel_finetuning.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/nemo_automodel_pretraining.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/sglang.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/tensorrt-llm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/torchtitan.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/transformers_as_backend.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/trl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/unsloth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/community_integrations/vllm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/continuous_batching.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/continuous_batching_architecture.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/conversations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/cpu.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/custom_models.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/custom_tokenizers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/data_collators.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/ddp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/debugging.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/deepspeed.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/deepspeed_alst.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/expert_parallelism.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/experts_interface.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/exporters.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/exporters_extend.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/exporters_quantization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/fast_tokenizers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/feature_extractors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/fsdp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/fusion_mapping.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/generation_features.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/generation_strategies.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/google_tpu.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/grad_accumulation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/grad_checkpointing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/hardware.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/heterogeneous_configurations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/how_to_hack_models.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/hpo_train.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/image_processors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/intel_gaudi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/intel_gpu.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/kernel_doc/loading_kernels.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/kernel_doc/overview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/kernel_doc/writing_kernels.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/kernels.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/kv_cache.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/llm_tutorial.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/llm_tutorial_optimization.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/main_classes/callback.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/main_classes/image_processor.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/main_classes/logging.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/main_classes/output.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/main_classes/pipelines.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/main_classes/tokenizer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/main_classes/video_processor.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/mixed_precision_training.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/afmoe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/aimv2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/albert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/align.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/altclip.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/apertus.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/arcee.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/aria.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/audio-spectrogram-transformer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/audioflamingo3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/auto.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/axk1.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/axk2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/aya_vision.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bailing_hybrid.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bamba.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bark.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bart.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/barthez.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bartpho.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/beam.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/beit.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bert-generation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bert-japanese.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bertweet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/big_bird.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bigbird_pegasus.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/biogpt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bitnet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/blenderbot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/blip.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/blt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bridgetower.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/bros.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/byt5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/camembert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/canary.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/canine.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/chameleon.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/chinese_clip.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/chmv2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/clap.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/clip.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/clvp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/code_llama.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/codegen.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cohere.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cohere2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cohere2_vision.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cohere_asr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cohere_compass.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/colmodernvbert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/colpali.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/colqwen2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cosmos3_edge.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cosmos3_omni.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cpmant.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/csm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cvt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/cwm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/d_fine.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/dab-detr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/dac.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/data2vec.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/dbrx.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deberta-v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deberta.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deepseek_ocr2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deepseek_v3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deepseek_v32.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deepseek_vl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deepseek_vl_hybrid.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deformable_detr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deimv2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deit.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/deplot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/depth_anything.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/depth_anything_v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/depth_pro.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/detr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/dia.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/diffusion_gemma.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/dinov2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/dinov3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/distilbert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/doge.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/donut.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/dots1.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/dpt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/edgetam.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/edgetam_video.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/efficientloftr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/electra.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/embedding_gemma2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/emu3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/encodec.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/encoder-decoder.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/eomt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/eomt_dinov3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ernie.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ernie4_5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ernie4_5_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ernie4_5_vl_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/esmc.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/esmfold2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/eurobert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/evolla.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/exaone4.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/exaone4_5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/exaone_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/falcon.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/falcon3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/falcon_h1.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/falcon_mamba.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/fast_vlm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/fastspeech2_conformer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/flan-t5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/flan-ul2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/flex_olmo.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/florence2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/fun_asr_nano.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/fuyu.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gemma.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gemma2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gemma3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gemma3n.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gemma4.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gemma4_assistant.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gemma4_unified.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gemma4_unified_assistant.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/glm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/glm4_moe_lite.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/glm4v.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/glm_image.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/glm_ocr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/glmasr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/got_ocr2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gpt-sw3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gpt2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gpt_bigcode.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gpt_neo.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gpt_neox.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gpt_neox_japanese.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gpt_oss.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gptj.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granite.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granite4_vision.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granite_speech.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granite_speech5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granite_speech_plus.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granite_swa.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granitemoe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granitemoe_swa.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granitemoehybrid.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granitemoeshared.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/granitevision.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/grounding-dino.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/gte.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/helium.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/herbert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hgnet_v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/higgs_audio_v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/higgs_audio_v2_tokenizer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hrm_text.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hubert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hunyuan_v1_dense.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hunyuan_v1_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hunyuan_vl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hy_v3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hy_v4.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hyperclovax.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/hyperclovax_vision_v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/idefics2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/idefics3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ijepa.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/inkling.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/internvl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/jamba.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/janus.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/jina_embeddings_v3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/kimi_k25.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/kimi_linear.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/kolibri1.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/kosmos-2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/kosmos2_5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/kyutai_speech_to_text.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/laguna.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/lasr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/layoutlm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/layoutlmv2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/layoutxlm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/led.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/lfm2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/lfm2_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/lfm2_vl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/lightglue.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/lighton_ocr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/lilt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/llama.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/llama2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/llama3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/llama4.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/llava.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/llava_next.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/llava_next_video.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/llava_onevision.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/longcat_flash.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/longformer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/longt5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/luke.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/lw_detr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/m2m_100.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/madlad-400.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mamba.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mamba2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/marian.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/markuplm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/matcha.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mbart.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mellum.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/metaclip_2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mgp-str.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mimi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mimo_v2_flash.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/minicpm3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/minicpmv4_6.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/minicpmv4_7.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/minimax.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/minimax_m2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/minimax_m3_vl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ministral.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ministral3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mistral.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mistral3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mistral4.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mixtral.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mlcd.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mllama.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mluke.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mm-grounding-dino.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mms.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mobilebert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mobilenet_v1.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mobilenet_v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mobilevit.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/modernbert-decoder.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/modernbert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/modernvbert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/molmo2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/moonshine.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/moonshine_streaming.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/moshi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/moss_transcribe_diarize.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mt5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/muse_glimmer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/muse_glimmer_assistant.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/muse_spark.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/musicflamingo.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/musicgen.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/musicgen_melody.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/mvp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nanochat.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nemotron.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nemotron3_5_asr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nemotron3_diarization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nemotron_asr_streaming.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nemotron_h.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nemotron_h_omni.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/neomme.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/neucodec.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nllb-moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nllb.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nomic_bert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/nougat.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/olmo.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/olmo2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/olmo3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/olmo_hybrid.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/olmoe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/omdet-turbo.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/openai-gpt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/openai_privacy_filter.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/opt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ovis2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/owlv2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/owlvit.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/paddleocr_vl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/paligemma.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/parakeet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/patchtsmixer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pe_audio.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pe_audio_video.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pe_video.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pegasus.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pegasus_x.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/persimmon.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/phi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/phi3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/phi4_multimodal.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/phimoe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/phobert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pi0.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pixio.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pixtral.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/plbart.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pop2piano.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_chart2table.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_doclayout_v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_doclayout_v3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_doclayout_v4.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_formulanet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_lcnet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_ocrv5_mobile_det.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_ocrv5_mobile_rec.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_ocrv5_server_det.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_ocrv5_server_rec.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_ocrv6_medium_det.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_ocrv6_small_det.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_ocrv6_small_rec.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pp_ocrv6_tiny_rec.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/prompt_depth_anything.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/pvt_v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qianfan_ocr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen2_5_omni.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen2_5_vl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen2_audio.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen2_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen2_vl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen3_5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen3_5_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen3_asr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen3_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen3_next.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen3_omni_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen3_vl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/qwen3_vl_moe.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/radio.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/rag.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/reformer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/rf_detr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/roberta.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/roc_bert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/roformer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/rt_detr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/rt_detr_v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/rwkv.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sam.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sam2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sam2_video.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sam3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sam3_lite_text.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sam3_tracker.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sam3_tracker_video.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sam3_video.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sam_hq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/sapiens2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/seamless_m4t.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/seamless_m4t_v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/seed_oss.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/segformer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/seggpt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/shieldgemma2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/siglip.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/siglip2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/slanet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/slanext.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/smollm3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/smolvlm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/solar_open.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/speech-encoder-decoder.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/speech_to_text.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/stablelm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/starcoder2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/step3p7.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/superglue.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/superpoint.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/swin.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/swinv2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/switch_transformers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/t5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/t5gemma.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/t5gemma2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/t5v1.1.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/tapas.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/timesfm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/timesfm2_5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/timm_wrapper.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/tipsv2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/tipsv2_dpt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/trocr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/tvp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/udop.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ul2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/ultrabert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/umt5.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/univnet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/unlimited_ocr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/upernet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/uvdoc.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vaultgemma.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vibevoice.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vibevoice_acoustic_tokenizer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vibevoice_asr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/video_llama_3.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/video_llava.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/videomae.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/videomt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/videoprism.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vipllava.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vision-encoder-decoder.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/visual_bert.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vit.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vit_mae.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vit_msn.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vitpose.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vits.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vivit.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/vjepa2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/voxtral.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/voxtral_realtime.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/wav2vec2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/whisper.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/xcodec.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/xcodec2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/xlm-roberta-xl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/xlm-roberta.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/xlm-v.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/xlm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/xls_r.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/xlsr_wav2vec2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/xmod.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/yolos.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/youtu.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/zamba.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/zamba2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/zaya.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_doc/zoedepth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_memory_anatomy.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_output_tracing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/model_sharing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/modeling_rules.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/models.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/modular_transformers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/monkey_patching.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/multimodal_processing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/nvidia_gpu.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/optimization_overview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/optimizers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/padding_free.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/paged_attention.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/peft.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/perf_infer_gpu_multi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/perf_torch_compile.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/perf_train_gpu_many.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/perplexity.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/philosophy.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/pipeline_gradio.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/pipeline_tutorial.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/pipeline_webserver.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/pr_checks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/processors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/aqlm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/auto_round.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/awq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/bitnet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/bitsandbytes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/compressed_tensors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/concept_guide.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/contribute.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/eetq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/fbgemm_fp8.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/finegrained_fp8.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/fouroversix.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/fp_quant.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/gguf.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/gptq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/higgs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/hqq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/metal.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/mxfp4.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/nvfp4.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/optimum.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/overview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/quanto.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/quark.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/selecting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/sinq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/spqr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/torchao.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quantization/vptq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quicktour.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/serialization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/serve-cli/cursor.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/serve-cli/jan.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/serve-cli/openweb_ui.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/serve-cli/serving.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/serve-cli/serving_optims.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/serve-cli/tiny_agents.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/any_to_any.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/asr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/audio_classification.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/audio_text_to_text.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/document_question_answering.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/image_captioning.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/image_classification.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/image_feature_extraction.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/image_text_to_text.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/instance_segmentation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/keypoint_detection.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/keypoint_matching.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/knowledge_distillation_for_image_classification.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/language_modeling.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/mask_generation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/masked_language_modeling.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/monocular_depth_estimation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/multiple_choice.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/object_detection.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/prompting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/question_answering.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/semantic_segmentation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/sequence_classification.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/summarization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/text-to-speech.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/token_classification.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/training_vision_backbone.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/translation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/video_classification.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/video_text_to_text.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/visual_document_retrieval.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/visual_question_answering.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/zero_shot_image_classification.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tasks/zero_shot_object_detection.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tensor_parallelism.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/testing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/tokenizer_summary.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/torch_compile.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/trainer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/trainer_callbacks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/trainer_customize.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/trainer_recipes.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/training.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/troubleshooting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/video_processors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/weightconverter.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

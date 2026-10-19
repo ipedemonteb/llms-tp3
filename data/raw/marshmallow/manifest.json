@@ -1,0 +1,125 @@
+{
+  "package": "marshmallow",
+  "category": "validacion_modelos",
+  "repo": "github.com/marshmallow-code/marshmallow",
+  "commit": "d08471b17880c62b789971ada638707a11d3f8d4",
+  "pypi_version": "4.3.1",
+  "fetched_at": "2026-10-18T23:59:14Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/custom_fields.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/donate.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/index.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/inflection.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/quotes_api.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples/validating_package_json.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extending/custom_error_handling.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extending/custom_error_messages.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extending/custom_options.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extending/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extending/overriding_attribute_access.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extending/pre_and_post_processing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extending/schema_validation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extending/using_original_input_data.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/kudos.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/nesting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/upgrading.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/whos_using.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/why.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "package": "factory-boy",
+  "category": "testing",
+  "repo": "github.com/FactoryBoy/factory_boy",
+  "commit": "ae9f2f4650afef0bc9b0925de97f618603233ff8",
+  "pypi_version": "3.3.3",
+  "fetched_at": "2026-10-18T23:59:25Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/fuzzy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ideas.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/introduction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/orms.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

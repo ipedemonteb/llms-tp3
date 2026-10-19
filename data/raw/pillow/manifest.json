@@ -1,0 +1,90 @@
+{
+  "package": "pillow",
+  "category": "imagenes",
+  "repo": "github.com/python-pillow/Pillow",
+  "commit": "3f6d442cad44adca7d008b72391ba5877afe362a",
+  "pypi_version": "13.0.0",
+  "fetched_at": "2026-10-18T23:58:48Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/about.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deprecations.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/appendices.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/concepts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/image-file-formats.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/overview.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/text-anchors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/third-party-plugins.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/handbook/writing-your-own-image-plugin.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/porting.rst",
+      "kind": "migration",
+      "format": "rst"
+    }
+  ]
+}

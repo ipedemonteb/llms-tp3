@@ -1,0 +1,140 @@
+{
+  "package": "lxml",
+  "category": "html_xml_scraping",
+  "repo": "github.com/lxml/lxml",
+  "commit": "584df5c85997bebdb23a4ab4aee15b0ffe96ac66",
+  "pypi_version": "6.1.3",
+  "fetched_at": "2026-10-18T23:58:21Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/FAQ.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/capi.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/compatibility.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/cssselect.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/element_classes.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/elementsoup.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/extensions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/html5parser.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/intro.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/lxml-source-howto.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/lxml2.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/lxmlhtml.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/main.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/memorymanagement.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/objectify.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/parsing.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/performance.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/resolvers.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/s5/lxml-ep2008.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/sax.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/tutorial.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/validation.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/xpathxslt.txt",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

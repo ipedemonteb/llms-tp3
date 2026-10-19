@@ -1,0 +1,375 @@
+{
+  "package": "pycryptodome",
+  "category": "seguridad_cripto",
+  "repo": "github.com/Legrandin/pycryptodome",
+  "commit": "c8de72eb141fd6c4b8394e4c388a3aec971fa319",
+  "pypi_version": "4.0.1",
+  "fetched_at": "2026-10-18T23:59:29Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/aes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/arc2.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/arc4.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/blowfish.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/cast.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/chacha20.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/chacha20_poly1305.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/cipher.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/classic.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/des.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/des3.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/modern.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/oaep.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/pkcs1_v1_5.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cipher/salsa20.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/contribute_support.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/exceptions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/features.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/blake2b.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/blake2s.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/cmac.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/cshake128.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/cshake256.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/hash.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/hmac.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/k12.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/keccak.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/kmac128.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/kmac256.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/md2.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/md4.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/md5.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/poly1305.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/ripemd160.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/sha1.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/sha224.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/sha256.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/sha384.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/sha3_224.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/sha3_256.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/sha3_384.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/sha3_512.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/sha512.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/shake128.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/shake256.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/tuplehash128.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/tuplehash256.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/hash/turboshake.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/introduction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/io/io.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/io/kdf_limits.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/io/pkcs8.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/protocol/dh.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/protocol/hpke.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/protocol/kdf.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/protocol/protocol.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/protocol/ss.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/public_key/dsa.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/public_key/ecc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/public_key/public_key.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/public_key/rsa.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/random/random.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/signature/dsa.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/signature/eddsa.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/signature/pkcs1_pss.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/signature/pkcs1_v1_5.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/signature/signature.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/util/util.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

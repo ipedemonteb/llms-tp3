@@ -1,0 +1,85 @@
+{
+  "package": "logbook",
+  "category": "logging",
+  "repo": "github.com/getlogbook/logbook",
+  "commit": "e96f5fbe52f42145635e7b331d7df31a90396c54",
+  "pypi_version": "1.10.1",
+  "fetched_at": "2026-10-18T23:59:41Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/compat.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/cookbook.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/designdefense.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/designexplained.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/features.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/libraries.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/performance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/setups.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/stacks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ticketing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/unittesting.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "package": "werkzeug",
+  "category": "web_apis",
+  "repo": "github.com/pallets/werkzeug",
+  "commit": "665e760ca6325a348ce03e5cf780b17e4be01848",
+  "pypi_version": "3.1.9",
+  "fetched_at": "2026-10-18T23:57:50Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/debug.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/apache-httpd.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/eventlet.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/gevent.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/gunicorn.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/mod_wsgi.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/nginx.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/proxy_fix.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/uwsgi.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deployment/waitress.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/exceptions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/local.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/middleware/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/request_data.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/routing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/serving.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/terms.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/test.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/utils.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/wrappers.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

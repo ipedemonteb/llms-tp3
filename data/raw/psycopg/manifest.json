@@ -1,0 +1,120 @@
+{
+  "package": "psycopg",
+  "category": "bases_de_datos",
+  "repo": "github.com/psycopg/psycopg",
+  "commit": "99356800e90aa0e7b604f652d714ef0f33422b47",
+  "pypi_version": "3.3.6",
+  "fetched_at": "2026-10-18T23:59:17Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/README.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced/adapt.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced/async.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced/cursors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced/pipeline.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced/pool.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced/prepare.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced/rows.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced/typing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/adapt.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/copy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/from_pg2.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/params.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/pgtypes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/transactions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/tstrings.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/basic/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

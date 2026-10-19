@@ -1,0 +1,160 @@
+{
+  "package": "hypothesis",
+  "category": "testing",
+  "repo": "github.com/HypothesisWorks/hypothesis",
+  "commit": "718686d1e392968eb0953c043ef249c5d9d11a59",
+  "pypi_version": "6.170.1",
+  "fetched_at": "2026-10-18T23:59:24Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "hypothesis/docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "hypothesis/docs/community.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/compatibility.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/explanation/domain.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/explanation/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/explanation/test-case-count.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/extensions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/extras.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/how-to/custom-database.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/how-to/detect-hypothesis-tests.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/how-to/external-fuzzers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/how-to/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/how-to/suppress-healthchecks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/how-to/type-strategies.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/packaging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/prolog.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/stateful.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/tutorial/adapting-strategies.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/tutorial/adding-notes.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/tutorial/builtin-strategies.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/tutorial/custom-strategies.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/tutorial/flaky.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/tutorial/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/tutorial/introduction.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/tutorial/replaying-failures.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/tutorial/settings.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "hypothesis/docs/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

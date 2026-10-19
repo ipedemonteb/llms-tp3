@@ -1,0 +1,395 @@
+{
+  "package": "pandas",
+  "category": "datos_numerico",
+  "repo": "github.com/pandas-dev/pandas",
+  "commit": "1493a54f37e602025cafcfdf200ce4e962d5d273",
+  "pypi_version": "3.0.6",
+  "fetched_at": "2026-10-18T23:57:56Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/cheatsheet/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/comparison_with_r.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/comparison_with_sas.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/comparison_with_spreadsheets.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/comparison_with_spss.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/comparison_with_sql.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/comparison_with_stata.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/case.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/column_operations.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/column_selection.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/construct_dataframe.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/copies.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/extract_substring.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/filtering.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/find_substring.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/groupby.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/if_then.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/introduction.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/length.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/limit.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/merge.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/merge_setup.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/missing.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/missing_intro.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/nth_word.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/sorting.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/time_date.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/includes/transform.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/comparison/index.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/index.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/01_table_oriented.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/02_read_write.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/03_subset_data.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/04_plotting.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/05_add_columns.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/06_calculate_statistics.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/07_reshape_table_layout.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/08_combine_dataframes.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/09_timeseries.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/10_text_data.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/includes/air_quality_no2.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/includes/titanic.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/intro_tutorials/index.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/overview.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started/tutorials.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/10min.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/advanced.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/boolean.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/categorical.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/cookbook.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/dsintro.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/duplicates.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/enhancingperf.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/gotchas.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/groupby.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/indexing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/integer_na.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/io.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/merging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/migration.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/missing_data.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/options.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/pyarrow.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/reshaping.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/scale.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/sparse.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/style.ipynb",
+      "kind": "guide",
+      "format": "ipynb"
+    },
+    {
+      "path": "doc/source/user_guide/text.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/timedeltas.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/timeseries.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/user_defined_functions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/visualization.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user_guide/window.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "package": "cattrs",
+  "category": "config_serializacion",
+  "repo": "github.com/python-attrs/cattrs",
+  "commit": "73fa273b1239fc5c110c4f9b6674972284a2f456",
+  "pypi_version": "26.2.1",
+  "fetched_at": "2026-10-18T23:59:12Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/basics.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/benchmarking.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/customizing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/defaulthooks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/indepth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/migrations.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/preconf.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/recipes.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "docs/strategies.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/unions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/usage.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/validation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/why.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

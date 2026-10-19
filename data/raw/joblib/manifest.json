@@ -1,0 +1,65 @@
+{
+  "package": "joblib",
+  "category": "ml_ia",
+  "repo": "github.com/joblib/joblib",
+  "commit": "878c9e05995b4425079e8f204b3502f5658a67e5",
+  "pypi_version": "1.6.0",
+  "fetched_at": "2026-10-18T23:58:09Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/developing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/custom_parallel_backend.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/memory.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/parallel.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/parallel_numpy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/persistence.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/user_guide/why.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

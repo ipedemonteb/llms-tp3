@@ -1,0 +1,245 @@
+{
+  "package": "websockets",
+  "category": "http_redes",
+  "repo": "github.com/python-websockets/websockets",
+  "commit": "8549c240e4c36a2a6002ef157abfe41bdc92c19e",
+  "pypi_version": "17.2",
+  "fetched_at": "2026-10-18T23:57:46Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploy/fly.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploy/haproxy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploy/heroku.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploy/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploy/koyeb.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploy/kubernetes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploy/nginx.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploy/render.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploy/supervisor.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/asyncio.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/client.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/connection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/misc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/autoreload.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/debugging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/django.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/encryption.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/extensions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/patterns.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/sansio.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/upgrade.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial1.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial2.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial3.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/project/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/project/support.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/project/tidelift.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/authentication.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/broadcast.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/compression.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/design.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/keepalive.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/logging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/memory.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/performance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/proxies.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/routing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

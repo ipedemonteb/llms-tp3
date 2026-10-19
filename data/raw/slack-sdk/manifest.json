@@ -1,0 +1,105 @@
+{
+  "package": "slack-sdk",
+  "category": "sdks",
+  "repo": "github.com/slackapi/python-slack-sdk",
+  "commit": "ab4e4983ba02789f5854e711450f9340d4cd53f2",
+  "pypi_version": "3.45.0",
+  "fetched_at": "2026-10-18T23:59:48Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/audit-logs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/legacy/auth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/legacy/basic_usage.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/legacy/conversations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/legacy/faq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/legacy/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/legacy/real_time_messaging.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/oauth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/rtm.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/scim.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/socket-mode.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/tutorial/understanding-oauth-scopes.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/tutorial/uploading-files.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/v3-migration.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/web.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/english/webhook.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

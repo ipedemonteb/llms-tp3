@@ -1,0 +1,337 @@
+{
+  "package": "rich",
+  "category": "cli_terminal",
+  "repo": "github.com/Textualize/rich",
+  "commit": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+  "pypi_version": "15.0.0",
+  "fetched_at": "2026-10-18T23:58:55Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [
+    "examples"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/appendix/box.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/appendix/colors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/appendix.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/columns.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/console.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/group.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/highlighting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/introduction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/layout.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/live.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/logging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/markdown.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/markup.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/padding.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/panel.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/pretty.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/progress.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/prompt.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/protocol.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/style.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/syntax.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/tables.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/text.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/traceback.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/source/tree.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "examples/attrs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/bars.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/columns.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/cp_progress.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/downloader.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/dynamic_progress.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/exception.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/export.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/file_progress.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/fullscreen.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/group.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/group2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/highlighter.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/jobs.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/justify.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/justify2.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/layout.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/link.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/listdir.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/live_progress.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/log.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/overflow.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/padding.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/print_calendar.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/rainbow.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/recursive_error.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/repr.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/save_table_svg.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/screen.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/spinners.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/status.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/suppress.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/table.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/table_movie.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/top_lite_simulator.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "examples/tree.py",
+      "kind": "examples",
+      "format": "py"
+    }
+  ]
+}

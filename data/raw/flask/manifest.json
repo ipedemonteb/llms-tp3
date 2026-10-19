@@ -1,0 +1,370 @@
+{
+  "package": "flask",
+  "category": "web_apis",
+  "repo": "github.com/pallets/flask",
+  "commit": "d086db856be187255b8ec61ef409357393020f32",
+  "pypi_version": "3.1.3",
+  "fetched_at": "2026-10-18T23:57:48Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/appcontext.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/async-await.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/blueprints.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/cli.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/config.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/debugging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/apache-httpd.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/asgi.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/eventlet.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/gevent.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/gunicorn.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/mod_wsgi.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/nginx.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/proxy_fix.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/uwsgi.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/deploying/waitress.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/design.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/errorhandling.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extensiondev.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/extensions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/gevent.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/lifecycle.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/logging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/appdispatch.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/appfactories.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/caching.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/celery.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/deferredcallbacks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/favicon.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/fileuploads.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/flashing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/javascript.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/jquery.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/lazyloading.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/methodoverrides.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/mongoengine.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/packages.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/requestchecksum.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/singlepageapplications.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/sqlalchemy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/sqlite3.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/streaming.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/subclassing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/templateinheritance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/urlprocessors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/viewdecorators.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/patterns/wtforms.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/reqcontext.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/shell.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/signals.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/templating.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/testing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/blog.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/database.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/deploy.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/factory.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/layout.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/next.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/static.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/templates.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/tests.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial/views.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/views.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/web-security.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "package": "pymupdf",
+  "category": "documentos",
+  "repo": "github.com/pymupdf/pymupdf",
+  "commit": "b8904b27efa0c4e2258f0e46ab4498a6173ffa22",
+  "pypi_version": "1.28.2",
+  "fetched_at": "2026-10-18T23:58:40Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/404.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/README.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/about-feature-matrix.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/about-performance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/about.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/algebra.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/annot.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/app1.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/app2.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/app3.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/app4.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/archive-class.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/batch-result.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/chunk-metadata.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/chunk.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/chunked-document.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/classes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/colors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/colorspace.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/compressing-files.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/converting-files.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/coop_low.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/device.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/displaylist.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/document-writer-class.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/document.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/font.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/footer.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/functions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/grounding.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/header-404.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/header.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/how-to-open-a-file.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/identity.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/irect.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/link.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/linkdest.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/lowlevel.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/matrix.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ocr/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ocr/tesseract-language-packs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/outline.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/packaging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/page.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pixmap.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/point.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pymupdf-office/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pymupdf4llm/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pymupdf4llm/ocr-plugins.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pyodide.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/quad.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/rag.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-annotations.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-common-issues-and-their-solutions.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-drawing-and-graphics.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-images.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-journalling.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-low-level-interfaces.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-multiprocessing.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-optional-content.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-stories.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes-text.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/recipes.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/rect.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/resources.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/shape.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/story-class.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/supported-files-table.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/textpage.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/textwriter.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/the-basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tools.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/vars.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/version.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/widget.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/xml-class.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/znames.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

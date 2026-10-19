@@ -1,0 +1,40 @@
+{
+  "package": "requests",
+  "category": "http_redes",
+  "repo": "github.com/psf/requests",
+  "commit": "611c6162cbc4ac2020a2f91c7cfa4f3abf9bbb60",
+  "pypi_version": "2.34.2",
+  "fetched_at": "2026-10-18T23:57:45Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/advanced.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/authentication.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    }
+  ]
+}

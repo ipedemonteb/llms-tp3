@@ -1,0 +1,115 @@
+{
+  "package": "httpx",
+  "category": "http_redes",
+  "repo": "github.com/encode/httpx",
+  "commit": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+  "pypi_version": "0.28.1",
+  "fetched_at": "2026-10-18T23:57:45Z",
+  "docs_tool": "mkdocs",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/authentication.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/clients.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/event-hooks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/extensions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/proxies.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/resource-limits.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/ssl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/text-encodings.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/timeouts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced/transports.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/async.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/compatibility.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/environment_variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/http2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/logging.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/quickstart.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/third_party_packages.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/troubleshooting.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

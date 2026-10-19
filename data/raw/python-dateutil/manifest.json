@@ -1,0 +1,50 @@
+{
+  "package": "python-dateutil",
+  "category": "fechas",
+  "repo": "github.com/dateutil/dateutil",
+  "commit": "2642afacc33fb839c404b75b230fff58b79793f2",
+  "pypi_version": "2.9.0.post0",
+  "fetched_at": "2026-10-18T23:59:01Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/exercises/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/exercises/solutions/mlk-day-rrule.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/relativedelta.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/rrule.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

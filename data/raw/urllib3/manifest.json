@@ -1,0 +1,45 @@
+{
+  "package": "urllib3",
+  "category": "http_redes",
+  "repo": "github.com/urllib3/urllib3",
+  "commit": "a37bc93b65d6bcf00d3dc43d966bab6bd130ecd8",
+  "pypi_version": "2.8.0",
+  "fetched_at": "2026-10-18T23:57:45Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/advanced-usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user-guide.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/v2-migration-guide.rst",
+      "kind": "migration",
+      "format": "rst"
+    }
+  ]
+}

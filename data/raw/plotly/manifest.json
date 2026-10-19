@@ -1,0 +1,815 @@
+{
+  "package": "plotly",
+  "category": "visualizacion",
+  "repo": "github.com/plotly/plotly.py",
+  "commit": "38374acdce011d08a71cf92ade2abd4a1e4c7c92",
+  "pypi_version": "7.1.0",
+  "fetched_at": "2026-10-18T23:58:13Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "doc/python"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/2D-Histogram.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/2d-histogram-contour.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-axes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-bubble-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-camera-controls.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-isosurface-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-line-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-mesh.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-scatter-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-subplots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-surface-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/3d-volume.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/LaTeX.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/animations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/annotated-heatmap.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/axes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/bar-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/bio-alignment-chart.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/bio-clustergram.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/bio-manhattanplot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/bio-volcano-plot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/box-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/bubble-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/bubble-maps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/builtin-colorscales.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/bullet-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/candlestick-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/carpet-contour.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/carpet-plot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/carpet-scatter.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/categorical-axes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/choropleth-maps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/click-events.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/colorscales.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/cone-plot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/configuration-options.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/continuous-error-bars.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/contour-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/creating-and-updating-figures.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/custom-buttons.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/dash.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/dendrogram.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/density-heatmaps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/discrete-color.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/distplot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/dot-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/dropdowns.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/dumbbell-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ecdf-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/error-bars.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/facet-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/figure-factories.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/figure-factory-subplots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/figure-factory-table.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/figure-introspection.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/figure-labels.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/figure-structure.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/figurewidget-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/figurewidget.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/filled-area-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/filled-area-tile-maps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/funnel-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/gantt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/gauge-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/getting-started.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/graph-objects.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/graphing-multiple-chart-types.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/heatmaps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/hexbin-map.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/histograms.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/horizontal-bar-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/horizontal-vertical-shapes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/hover-text-and-formatting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/icicle-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/images.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/imshow.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/indicator.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/interactive-html-export.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ipython-vs-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/jupyter-lab-tools.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/legend.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/line-and-scatter.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/line-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/linear-fits.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/lines-on-maps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/lines-on-tile-maps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/location-mode.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/log-plot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/map-configuration.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/map-subplots-and-small-multiples.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/marginal-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/marker-style.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/migrate-to-maplibre.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/mixed-subplots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ml-knn.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ml-pca.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ml-regression.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ml-roc-pr.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ml-tsne-umap-projections.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ml_apps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/multiple-axes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/network-graphs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ohlc-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/orca-management.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/pandas-backend.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/parallel-categories-diagram.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/parallel-coordinates-plot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/pattern-hatching-texture.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/peak-finding.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/performance.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/pie-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/plot-data-from-csv.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/plotly-express.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/polar-chart.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/px-arguments.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/quiver-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/radar-chart.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/random-walk.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/range-slider.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/renderers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/sankey-diagram.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/scatter-plots-on-maps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/selections.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/setting-graph-size.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/shapes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/sliders.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/smith-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/smoothing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/splom.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/static-image-export.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/static-image-generation-migration.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/streamline-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/streamtube-plot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/strip-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/styling-plotly-express.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/subplots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/sunburst-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/supported-colors.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/table-subplots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/table.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/templates.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ternary-contour.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ternary-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/ternary-scatter-contour.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/text-and-annotations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/tick-formatting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/tile-county-choropleth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/tile-map-layers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/tile-scatter-maps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/time-series.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/tree-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/treemaps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/trisurf.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/troubleshooting.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/v4-migration.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/violin.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/waterfall-charts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/wide-form.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "doc/python/wind-rose-charts.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

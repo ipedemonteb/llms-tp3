@@ -1,0 +1,2527 @@
+{
+  "package": "fastapi",
+  "category": "web_apis",
+  "repo": "github.com/fastapi/fastapi",
+  "commit": "3070b5105fe02c4afdba5e3aea6c2cf2e3796c7f",
+  "pypi_version": "0.146.0",
+  "fetched_at": "2026-10-18T23:57:48Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs/en"
+  ],
+  "examples_dirs": [
+    "docs_src"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/_llm-test.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/about/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/additional-responses.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/additional-status-codes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/advanced-dependencies.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/advanced-python-types.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/async-tests.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/behind-a-proxy.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/custom-response.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/dataclasses.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/events.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/generate-clients.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/json-base64-bytes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/middleware.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/openapi-callbacks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/openapi-webhooks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/opentelemetry.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/path-operation-advanced-configuration.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/response-change-status-code.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/response-cookies.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/response-directly.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/response-headers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/security/http-basic-auth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/security/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/security/oauth2-scopes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/settings.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/stream-data.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/strict-content-type.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/sub-applications.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/templates.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/testing-dependencies.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/testing-events.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/testing-websockets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/using-request-directly.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/websockets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/advanced/wsgi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/alternatives.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/async.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/benchmarks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/deployment/cloud.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/deployment/concepts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/deployment/docker.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/deployment/fastapicloud.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/deployment/https.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/deployment/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/deployment/manually.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/deployment/server-workers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/deployment/versions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/editor-support.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/environment-variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/external-links.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/fastapi-cli.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/fastapi-people.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/features.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/help-fastapi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/authentication-error-status-code.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/conditional-openapi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/configure-swagger-ui.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/custom-docs-ui-assets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/custom-request-and-route.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/extending-openapi.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/general.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/graphql.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/migrate-from-pydantic-v1-to-pydantic-v2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/separate-openapi-schemas.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/how-to/testing-database.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/learn/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/management.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/project-generation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/python-types.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/resources/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/translation-banner.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/translations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/background-tasks.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/bigger-applications.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/body-fields.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/body-multiple-params.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/body-nested-models.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/body-updates.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/body.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/cookie-param-models.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/cookie-params.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/cors.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/debugging.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/dependencies/classes-as-dependencies.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/dependencies/dependencies-in-path-operation-decorators.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/dependencies/dependencies-with-yield.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/dependencies/global-dependencies.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/dependencies/index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/dependencies/sub-dependencies.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/encoder.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/extra-data-types.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/extra-models.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/first-steps.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/frontend.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/handling-errors.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/header-param-models.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/header-params.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/metadata.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/middleware.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/path-operation-configuration.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/path-params-numeric-validations.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/path-params.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/query-param-models.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/query-params-str-validations.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/query-params.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/request-files.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/request-form-models.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/request-forms-and-files.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/request-forms.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/response-model.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/response-status-code.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/schema-extra-example.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/security/first-steps.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/security/get-current-user.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/security/index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/security/oauth2-jwt.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/security/simple-oauth2.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/server-sent-events.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/sql-databases.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/static-files.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/stream-json-lines.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/tutorial/testing.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "docs/en/docs/virtual-environments.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs_src/additional_responses/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/additional_responses/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/additional_responses/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/additional_responses/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/additional_status_codes/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/additional_status_codes/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/advanced_middleware/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/advanced_middleware/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/advanced_middleware/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/app_a_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/app_a_py310/test_main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/app_b_an_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/app_b_an_py310/test_main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/app_b_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/app_b_py310/test_main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/app_testing/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/async_tests/app_a_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/async_tests/app_a_py310/test_main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/authentication_error_status_code/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/background_tasks/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/background_tasks/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/background_tasks/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/behind_a_proxy/tutorial001_01_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/behind_a_proxy/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/behind_a_proxy/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/behind_a_proxy/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/behind_a_proxy/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/bigger_applications/app_an_py310/dependencies.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/bigger_applications/app_an_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/bigger_applications/app_an_py310/routers/items.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/bigger_applications/app_an_py310/routers/users.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_fields/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_fields/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_multiple_params/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_multiple_params/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_multiple_params/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_multiple_params/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_multiple_params/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_multiple_params/tutorial004_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_multiple_params/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_multiple_params/tutorial005_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_multiple_params/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_nested_models/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_nested_models/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_nested_models/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_nested_models/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_nested_models/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_nested_models/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_nested_models/tutorial007_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_nested_models/tutorial008_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_nested_models/tutorial009_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_updates/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/body_updates/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/conditional_openapi/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/configure_swagger_ui/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/configure_swagger_ui/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/configure_swagger_ui/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/cookie_param_models/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/cookie_param_models/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/cookie_param_models/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/cookie_param_models/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/cookie_params/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/cookie_params/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/cors/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_docs_ui/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_docs_ui/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_request_and_route/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_request_and_route/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_request_and_route/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_request_and_route/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_request_and_route/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial001b_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial006b_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial006c_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial007_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial008_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial009_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial009b_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial009c_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/custom_response/tutorial010_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dataclasses_/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dataclasses_/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dataclasses_/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/debugging/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial001_02_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial004_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial005_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial006_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial007_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008b_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008b_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008c_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008c_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008d_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008d_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008e_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial008e_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial010_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial011_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial011_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial012_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial012_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial013_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependencies/tutorial014_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependency_testing/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/dependency_testing/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/encoder/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/events/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/events/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/events/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/extending_openapi/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/extra_data_types/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/extra_data_types/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/extra_models/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/extra_models/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/extra_models/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/extra_models/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/extra_models/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/first_steps/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/first_steps/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/frontend/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/frontend/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/frontend/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/frontend/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/frontend/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/frontend/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/generate_clients/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/generate_clients/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/generate_clients/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/generate_clients/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/graphql_/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/handling_errors/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/handling_errors/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/handling_errors/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/handling_errors/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/handling_errors/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/handling_errors/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_param_models/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_param_models/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_param_models/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_param_models/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_param_models/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_param_models/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_params/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_params/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_params/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_params/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_params/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/header_params/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/json_base64_bytes/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/metadata/tutorial001_1_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/metadata/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/metadata/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/metadata/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/metadata/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/middleware/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/openapi_callbacks/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/openapi_webhooks/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/opentelemetry/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/opentelemetry/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/opentelemetry/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_advanced_configuration/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_advanced_configuration/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_advanced_configuration/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_advanced_configuration/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_advanced_configuration/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_advanced_configuration/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_advanced_configuration/tutorial007_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_configuration/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_configuration/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_configuration/tutorial002b_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_configuration/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_configuration/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_configuration/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_operation_configuration/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params/tutorial003b_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial004_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial005_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial006_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/path_params_numeric_validations/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/pydantic_v1_in_v2/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/pydantic_v1_in_v2/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/pydantic_v1_in_v2/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/pydantic_v1_in_v2/tutorial004_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial007_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial008_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial008b_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial009_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial010_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial011_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/python_types/tutorial013_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_param_models/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_param_models/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_param_models/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_param_models/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial004_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial005_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial006_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial006c_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial006c_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial007_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial007_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial008_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial008_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial009_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial009_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial010_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial010_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial011_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial011_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial012_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial012_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial013_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial013_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial014_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial014_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/query_params_str_validations/tutorial015_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial001_02_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial001_02_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial001_03_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial001_03_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_files/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_form_models/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_form_models/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_form_models/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_form_models/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_forms/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_forms/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_forms_and_files/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/request_forms_and_files/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_change_status_code/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_cookies/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_cookies/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_directly/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_directly/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_headers/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_headers/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial001_01_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial003_01_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial003_02_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial003_03_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial003_04_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial003_05_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_model/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_status_code/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/response_status_code/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/schema_extra_example/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/schema_extra_example/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/schema_extra_example/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/schema_extra_example/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/schema_extra_example/tutorial004_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/schema_extra_example/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/schema_extra_example/tutorial005_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/schema_extra_example/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial003_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial004_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial005_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial006_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial006_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial007_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/security/tutorial007_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/separate_openapi_schemas/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/separate_openapi_schemas/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/server_sent_events/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/server_sent_events/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/server_sent_events/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/server_sent_events/tutorial004_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/server_sent_events/tutorial005_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app01_py310/config.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app01_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app02_an_py310/config.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app02_an_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app02_an_py310/test_main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app02_py310/config.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app02_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app02_py310/test_main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app03_an_py310/config.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app03_an_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app03_py310/config.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/app03_py310/main.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/settings/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/sql_databases/tutorial001_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/sql_databases/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/sql_databases/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/sql_databases/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/static_files/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/stream_data/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/stream_data/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/stream_json_lines/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/strict_content_type/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/sub_applications/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/templates/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/templates/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/using_request_directly/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/websockets_/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/websockets_/tutorial002_an_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/websockets_/tutorial002_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/websockets_/tutorial003_py310.py",
+      "kind": "examples",
+      "format": "py"
+    },
+    {
+      "path": "docs_src/wsgi/tutorial001_py310.py",
+      "kind": "examples",
+      "format": "py"
+    }
+  ]
+}

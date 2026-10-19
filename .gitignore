@@ -67,3 +67,11 @@ mlruns/
 .idea/
 *.swp
 *~
+
+# ===== Archivos de trabajo de agentes (no se pushean) =====
+docs/agents/
+
+# ===== Dataset crudo =====
+# Se versionan index.json y los manifest.json (reproducibles por commit); el resto se descarga.
+data/raw/*/*
+!data/raw/*/manifest.json

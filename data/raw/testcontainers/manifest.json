@@ -1,0 +1,345 @@
+{
+  "package": "testcontainers",
+  "category": "testing",
+  "repo": "github.com/testcontainers/testcontainers-python",
+  "commit": "6146aa1170f415fcc825ed9bddc4eacbeb937a12",
+  "pypi_version": "4.15.0",
+  "fetched_at": "2026-10-18T23:59:28Z",
+  "docs_tool": "mkdocs",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/compose.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/core/README.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/features/advanced_features.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/authentication.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/building_images.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/configuration.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/container_logs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/copying_data.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/creating_container.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/docker_compose.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/executing_commands.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/garbage_collector.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/networking.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/features/wait_strategies.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/getting_help.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/modules/arangodb.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/aws.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/azurite.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/cassandra.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/chroma.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/clickhouse.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/cockroachdb.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/cosmosdb.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/cratedb.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/db2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/elasticsearch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/generic.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/google.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/influxdb.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/k3s.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/kafka.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/keycloak.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/localstack.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/mailpit.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/memcached.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/milvus.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/minio.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/mongodb.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/mqtt.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/mssql.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/mysql.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/nats.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/neo4j.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/nginx.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/ollama.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/opensearch.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/oracle-free.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/postgres.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/qdrant.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/rabbitmq.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/redis.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/registry.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/scylla.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/selenium.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/sftp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/toxiproxy.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/trino.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/valkey.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/vault.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/modules/weaviate.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/quickstart.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/system_requirements/docker.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/system_requirements/index.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

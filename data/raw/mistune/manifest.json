@@ -1,0 +1,70 @@
+{
+  "package": "mistune",
+  "category": "texto",
+  "repo": "github.com/lepture/mistune",
+  "commit": "d449488ce6baf5bcc386186cc01c40bf2afdc82c",
+  "pypi_version": "3.3.4",
+  "fetched_at": "2026-10-18T23:59:38Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/advanced.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/cli.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/community.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/directives.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/guide.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/plugins.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/renderers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/upgrade.rst",
+      "kind": "migration",
+      "format": "rst"
+    }
+  ]
+}

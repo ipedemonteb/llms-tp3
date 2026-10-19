@@ -1,0 +1,455 @@
+{
+  "package": "gradio",
+  "category": "visualizacion",
+  "repo": "github.com/gradio-app/gradio",
+  "commit": "de986c72372e233ffaaa7abe1b93608d4d115065",
+  "pypi_version": "6.30.0",
+  "fetched_at": "2026-10-18T23:58:20Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "guides"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "guides/01_getting-started/01_quickstart.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/01_queuing.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/02_streaming-outputs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/03_streaming-inputs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/04_alerts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/05_progress-bars.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/06_batch-functions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/07_sharing-your-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/08_file-access.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/09_multipage-apps.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/10_environment-variables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/11_resource-cleanup.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/12_themes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/13_client-side-functions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/14_view-api-page.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/15_internationalization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/16_custom-buttons.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/17_caching.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/04_additional-features/18_workflows.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/05_chatbots/01_creating-a-chatbot-fast.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/05_chatbots/02_chatinterface-examples.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "guides/05_chatbots/03_agents-and-tool-usage.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/05_chatbots/04_creating-a-custom-chatbot-with-blocks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/05_chatbots/05_chatbot-specific-events.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/05_chatbots/06_creating-a-discord-bot-from-a-gradio-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/05_chatbots/07_creating-a-slack-bot-from-a-gradio-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/05_chatbots/08_creating-a-website-widget-from-a-gradio-chatbot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/06_data-science-and-plots/01_creating-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/06_data-science-and-plots/02_time-plots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/06_data-science-and-plots/03_filters-tables-and-stats.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/06_data-science-and-plots/04_connecting-to-a-database.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/07_streaming/01_streaming-ai-generated-audio.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/07_streaming/02_object-detection-from-webcam-with-webrtc.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/07_streaming/03_object-detection-from-video.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/07_streaming/04_conversational-chatbot.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/07_streaming/05_real-time-speech-recognition.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/07_streaming/06_automatic-voice-detection.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/08_custom-components/01_custom-components-in-five-minutes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/08_custom-components/02_key-component-concepts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/08_custom-components/03_configuration.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/08_custom-components/04_backend.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/08_custom-components/05_frontend.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/08_custom-components/06_frequently-asked-questions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/08_custom-components/07_pdf-component-example.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "guides/08_custom-components/08_multimodal-chatbot-part1.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/08_custom-components/09_documenting-custom-components.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/09_gradio-clients-and-lite/01_getting-started-with-the-python-client.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "guides/09_gradio-clients-and-lite/02_getting-started-with-the-js-client.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "guides/09_gradio-clients-and-lite/03_querying-gradio-apps-with-curl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/09_gradio-clients-and-lite/04_gradio-and-llm-agents.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/09_gradio-clients-and-lite/07_fastapi-app-with-the-gradio-client.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/09_gradio-clients-and-lite/08_server-mode.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/10_mcp/02_file-upload-mcp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/10_mcp/04_using-docs-mcp.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/01_using-hugging-face-integrations.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/Gradio-and-Comet.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/Gradio-and-ONNX-on-Hugging-Face.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/Gradio-and-Wandb-Integration.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/Gradio-skills-for-ai-coding-assistants.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/create-immersive-demo.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/create-your-own-friends-with-a-gan.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/creating-a-dashboard-from-bigquery-data.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/creating-a-dashboard-from-supabase-data.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/creating-a-realtime-dashboard-from-google-sheets.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/css-variables-reference.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/deploying-gradio-with-disco.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/deploying-gradio-with-docker.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/deploying-gradio-with-modal.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/developing-faster-with-reload-mode.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/from-openapi-spec.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/gradio-6-migration-guide.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/gradio-workflows-vs-n8n-vs-comfyui.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/how-to-use-3D-model-component.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/image-classification-in-pytorch.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/image-classification-with-vision-transformers.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/named-entity-recognition.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/plot-component-for-maps.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/running-background-tasks.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/running-gradio-on-your-web-server-with-nginx.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/setting-up-a-demo-for-maximum-performance.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/styling-the-gradio-dataframe.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/theming-guide.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/understanding-gradio-share-links.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/using-flagging.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/using-gradio-for-tabular-workflows.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/using-gradio-in-other-programming-languages.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "guides/11_other-tutorials/wrapping-layouts.md",
+      "kind": "tutorial",
+      "format": "md"
+    }
+  ]
+}

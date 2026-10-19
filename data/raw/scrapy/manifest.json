@@ -1,0 +1,270 @@
+{
+  "package": "scrapy",
+  "category": "html_xml_scraping",
+  "repo": "github.com/scrapy/scrapy",
+  "commit": "c7ec9ea9136927ae9c37647a677e1fa074d47dc9",
+  "pypi_version": "2.19.0",
+  "fetched_at": "2026-10-18T23:58:22Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/overview.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/addons.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/agents.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/architecture.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/asyncio.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/autothrottle.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/benchmarking.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/commands.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/components.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/concepts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/contracts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/cookies.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/coroutines.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/debug.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/deploy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/developer-tools.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/djangoitem.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/download-handlers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/downloader-middleware.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/dynamic-content.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/exporters.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/extensions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/extraction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/feed-exports.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/item-pipeline.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/items.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/jobs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/leaks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/link-extractors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/loaders.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/logging.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/media-pipeline.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/optimize.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/practices.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/request-response.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/scrapyd.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/selectors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/settings.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/shell.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/signals.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/spider-middleware.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/spiders.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/stats.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/telnetconsole.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/versioning.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

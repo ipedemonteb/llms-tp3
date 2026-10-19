@@ -9,6 +9,6 @@ resolution-markers = [
 ]
 
 [[package]]
-name = "deprag"
+name = "llms-tp3"
 version = "0.1.0"
 source = { virtual = "." }

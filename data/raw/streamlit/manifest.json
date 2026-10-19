@@ -1,0 +1,1010 @@
+{
+  "package": "streamlit",
+  "category": "visualizacion",
+  "repo": "github.com/streamlit/docs",
+  "commit": "7a0a34742a9fe4a879fe3641f83b8136bc5448d7",
+  "pypi_version": "1.66.0",
+  "fetched_at": "2026-10-18T23:58:17Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "content"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/deploy-your-app/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/deploy-your-app/app-dependencies.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/deploy-your-app/deploy.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/deploy-your-app/file-organization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/deploy-your-app/secrets-management.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/get-started/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/get-started/connect-github.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/get-started/create-your-account.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/get-started/deploy-from-a-template.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/get-started/explore-your-workspace.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/get-started/fork-and-edit.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/get-started/quickstart.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/get-started/security-model.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-account/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-account/delete-your-account.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-account/manage-your-github-connection.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-account/sign-in-sign-out.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-account/update-your-email.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-account/workspace-settings.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/app-analytics.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/app-settings.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/delete-your-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/edit-your-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/favorite-your-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/reboot-your-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/rename-your-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/upgrade-python.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/manage-your-app/upgrade-streamlit.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/share-your-app/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/share-your-app/embed-your-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/share-your-app/indexability.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/share-your-app/share-previews.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/community-cloud/status-and-limitations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/concepts/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/concepts/dependencies.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/concepts/secrets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/snowflake/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/tutorials/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/tutorials/docker.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/deploy/tutorials/kubernetes.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-design/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-design/animate-elements.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-design/button-behavior-and-examples.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-design/custom-classes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-design/dataframes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-design/layouts-and-containers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-design/multithreading.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-design/timezone-handling.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-testing/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-testing/automate-tests.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-testing/beyond-the-basics.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-testing/cheat-sheet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-testing/examples.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/app-testing/get-started.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/architecture/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/architecture/app-chrome.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/architecture/architecture.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/architecture/caching.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/architecture/forms.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/architecture/fragments.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/architecture/run-your-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/architecture/session-state.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/architecture/widget-behavior.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/configuration/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/configuration/https.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/configuration/options.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/configuration/static-file-serving.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/configuration/theming-colors-and-borders.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/configuration/theming-fonts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/configuration/theming.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/connections/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/connections/authentication.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/connections/connecting-to-data.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/connections/secrets-management.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/connections/security-reminders.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v1/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v1/v1-component-api.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v1/v1-component-create.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v1/v1-component-limitations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/communicate.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/examples/_index.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/examples/danger-button.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/examples/hello-world.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/examples/interactive-counter.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/examples/radial-menu.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/examples/rich-data.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/examples/simple-button.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/examples/simple-checkbox.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/examples/text-input.md",
+      "kind": "examples",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/mount.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/package-based.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/register.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/state-and-triggers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/components-v2/theming.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/overview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/custom-components/publish.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/multipage-apps/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/multipage-apps/overview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/multipage-apps/page-and-navigation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/multipage-apps/page_directory.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/concepts/multipage-apps/widgets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/quick-references/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/quick-references/api-cheat-sheet.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/authentication/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/authentication/google.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/authentication/microsoft.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/custom-components/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/custom-components/template-react.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/custom-components/template-typescript.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/aws-s3.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/bigquery.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/clickhouse-managed-postgres.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/clickhouse.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/gcs.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/mongodb.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/mssql.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/mysql.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/neon.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/postgresql.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/private-gsheet.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/public-gsheet.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/snowflake.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/supabase.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/tableau.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/tidb.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/databases/tigergraph.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/elements/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/elements/charts/annotate-altair-chart.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/elements/dataframes/row-selections (old).md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/elements/dataframes/row_selections.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/execution-flow/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/execution-flow/fragments/create-a-multiple-container-fragment.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/execution-flow/fragments/start-and-stop-fragment-auto-reruns.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/execution-flow/fragments/trigger-a-full-script-rerun-from-a-fragment.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/llms/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/llms/chat-response-feedback.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/llms/chat-response-revision.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/llms/conversational-apps.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/llms/llm-quickstart.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/multipage-apps/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/multipage-apps/custom-navigation.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/multipage-apps/dynamic-navigation.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/theming/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/theming/external-fonts (old).md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/theming/external-fonts.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/theming/static-fonts.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/develop/tutorials/theming/variable-fonts.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/get-started/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/get-started/fundamentals/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/get-started/fundamentals/additional-features.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/get-started/fundamentals/advanced-concepts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/get-started/fundamentals/main-concepts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/get-started/fundamentals/summary.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/get-started/fundamentals/tutorials/_index.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/get-started/fundamentals/tutorials/create-a-multi-page-app.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/get-started/fundamentals/tutorials/create-an-app.md",
+      "kind": "tutorial",
+      "format": "md"
+    },
+    {
+      "path": "content/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/create-anchor-link.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/enable-camera.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/how-download-file-streamlit.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/how-download-pandas-dataframe-csv.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/insert-elements-out-of-order.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/pydeck-chart-custom-mapbox-styles.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/remove-streamlit-app-title.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/retrieve-filename-uploaded.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/sanity-checks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/serializable-session-state.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/supported-browsers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/upgrade-version-streamlit.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/where-file-uploader-store-when-deleted.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/why-streamlit-restrict-nested-columns.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/FAQ/widget-updating-session-state.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/dependencies/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/dependencies/libgl.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/dependencies/module-not-found-error.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/dependencies/no-matching-distribution.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/_index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/deploy-multiple-streamlit-apps-different-subdomains.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/deploy-streamlit-domain-port-80.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/does-streamlit-support-wsgi-protocol.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/how-to-submit-a-support-case-for-streamlit-community-cloud.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/huh-this-is-isnt-supposed-to-happen-message-after-trying-to-log-in.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/increase-upload-limit-cloud.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/invoking-python-subprocess-deployed-streamlit-app.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/login-attempt-to-streamlit-community-cloud-fails-with-error-403.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/remote-start.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "content/kb/deployments/resource-limits.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

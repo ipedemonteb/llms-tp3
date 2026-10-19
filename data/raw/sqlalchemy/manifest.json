@@ -1,0 +1,630 @@
+{
+  "package": "sqlalchemy",
+  "category": "bases_de_datos",
+  "repo": "github.com/sqlalchemy/sqlalchemy",
+  "commit": "91c835abb27b16ab4bb099ccec7e5c1dd5f577e1",
+  "pypi_version": "2.1.5",
+  "fetched_at": "2026-10-18T23:59:17Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/contents.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/copyright.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/api_basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/connections.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/constraints.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/custom_types.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/ddl.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/defaults.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/engines.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/engines_connections.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/event.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/expression_api.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/functions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/future.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/metadata.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/operators.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/pooling.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/reflection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/schema.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/type_basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/core/types.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/dialects/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/dialects/mssql.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/dialects/mysql.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/dialects/oracle.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/dialects/postgresql.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/dialects/sqlite.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/errors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/faq/connections.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/faq/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/faq/metadata_schema.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/faq/ormconfiguration.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/faq/performance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/faq/sessions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/faq/sqlexpressions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/faq/thirdparty.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/intro.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/backref.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/basic_relationships.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/cascades.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/classical.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/collection_api.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/collections.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/composites.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/constructors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/contextual.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/dataclasses.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/declarative_config.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/declarative_mapping.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/declarative_mixins.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/declarative_styles.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/declarative_tables.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extending.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extensions/associationproxy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extensions/asyncio.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extensions/baked.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extensions/declarative/basic_use.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extensions/declarative/inheritance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extensions/declarative/mixins.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extensions/declarative/relationships.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extensions/declarative/table_config.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/extensions/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/inheritance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/inheritance_loading.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/join_conditions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/large_collections.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/loading.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/loading_columns.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/loading_objects.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/loading_relationships.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/mapped_attributes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/mapped_sql_expr.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/mapper_config.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/mapping_api.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/mapping_columns.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/mapping_styles.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/nonstandard_mappings.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/persistence_techniques.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/query.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/_deferred_setup.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/_dml_setup.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/_end_doctest.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/_inheritance_setup.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/_plain_setup.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/_single_inheritance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/columns.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/dml.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/inheritance.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/query.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/queryguide_nav_include.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/relationships.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide/select.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/queryguide.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/relationship_persistence.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/relationships.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/scalar_mapping.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/self_referential.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/session.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/session_basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/session_events.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/session_state_management.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/session_transaction.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/orm/versioning.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/data.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/data_insert.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/data_select.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/data_update.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/dbapi_transactions.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/engine.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/further_reading.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/metadata.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/orm_data_manipulation.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/orm_related_objects.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/build/tutorial/tutorial_nav_include.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    }
+  ]
+}

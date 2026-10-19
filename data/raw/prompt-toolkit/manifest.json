@@ -1,0 +1,145 @@
+{
+  "package": "prompt-toolkit",
+  "category": "cli_terminal",
+  "repo": "github.com/prompt-toolkit/python-prompt-toolkit",
+  "commit": "583b3412c792a5cc9f01adde603679f3824a88f3",
+  "pypi_version": "3.0.53",
+  "fetched_at": "2026-10-18T23:58:56Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/architecture.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/asyncio.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/filters.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/input_hooks.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/key_bindings.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/rendering_flow.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/rendering_pipeline.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/styling.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/advanced_topics/unit_testing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/asking_for_a_choice.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/asking_for_input.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/dialogs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/full_screen_apps.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/gallery.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/getting_started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/printing_text.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/progress_bars.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/related_projects.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/tutorials/index.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/tutorials/repl.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/upgrading/2.0.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/upgrading/3.0.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/pages/upgrading/index.rst",
+      "kind": "migration",
+      "format": "rst"
+    }
+  ]
+}

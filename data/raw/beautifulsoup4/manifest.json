@@ -1,0 +1,25 @@
+{
+  "package": "beautifulsoup4",
+  "category": "html_xml_scraping",
+  "repo": "git.launchpad.net/beautifulsoup",
+  "commit": "c772c5e6b335c1dbd8ee59a01ea6b75b272cd737",
+  "pypi_version": "4.15.0",
+  "fetched_at": "2026-10-18T23:58:20Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

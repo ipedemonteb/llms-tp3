@@ -1,0 +1,150 @@
+{
+  "package": "huggingface-hub",
+  "category": "ml_ia",
+  "repo": "github.com/huggingface/huggingface_hub",
+  "commit": "bb2ef7579c3d2dc2eb49b16ccf15a070fe5b7023",
+  "pypi_version": "2.2.0",
+  "fetched_at": "2026-10-18T23:58:06Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs/source/en"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/concepts/git_vs_http.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/concepts/migration.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/concepts/migration_v2.md",
+      "kind": "migration",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/concepts/sandbox.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/buckets.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/cli-extensions.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/cli.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/collections.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/community.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/download.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/hf_file_system.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/inference.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/inference_endpoints.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/integrations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/jobs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/manage-cache.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/manage-spaces.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/model-cards.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/overview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/repository.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/sandbox.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/search.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/upload.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/guides/webhooks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/source/en/quick-start.md",
+      "kind": "quickstart",
+      "format": "md"
+    }
+  ]
+}

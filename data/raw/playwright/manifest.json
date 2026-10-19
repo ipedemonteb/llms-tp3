@@ -1,0 +1,340 @@
+{
+  "package": "playwright",
+  "category": "html_xml_scraping",
+  "repo": "github.com/microsoft/playwright",
+  "commit": "b335271cdc2b57cac2be8ad37c5dd283ac6b8938",
+  "pypi_version": "1.64.0",
+  "fetched_at": "2026-10-18T23:58:28Z",
+  "docs_tool": "none",
+  "docs_dirs": [
+    "docs/src"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/actionability.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/api-testing-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/aria-snapshots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/auth.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/browser-contexts.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/browsers.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/chrome-extensions-js-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/ci.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/clock.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/codegen-intro.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/codegen.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/debug.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/dialogs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/docker.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/downloads.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/electron-api/class-electron.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/electron-api/class-electronapplication.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/emulation.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/evaluating.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/events.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/extensibility.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/frames.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/getting-started-cli.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/getting-started-mcp.md",
+      "kind": "quickstart",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/handles.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/input.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/intro-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/languages.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/library-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/locators.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/mobile-api/class-androiddevice.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/mobile-api/class-androidinput.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/mobile-api/class-androidsocket.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/mobile-api/class-androidwebview.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/mock.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/navigations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/network.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/other-locators.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/pages.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/pom.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/running-tests-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/screenshots.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/service-workers-js-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-api/class-fixtures.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-api/class-fullconfig.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-api/class-fullproject.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-api/class-location.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-api/class-testinfoerror.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-api/class-workerinfo.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-assertions-csharp-java-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-reporter-api/class-reporter.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-reporter-api/class-suite.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-reporter-api/class-testcase.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-reporter-api/class-testerror.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-reporter-api/class-testresult.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-reporter-api/class-testrun.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-reporter-api/class-teststep.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/test-runners-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/touch-events.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/trace-viewer-intro-java-python.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/trace-viewer.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/videos.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/webview2.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/src/writing-tests-python.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

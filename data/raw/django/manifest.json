@@ -1,0 +1,1245 @@
+{
+  "package": "django",
+  "category": "web_apis",
+  "repo": "github.com/django/django",
+  "commit": "d430084791a61b31cecec132bce3dca19194f7f2",
+  "pypi_version": "6.1.2",
+  "fetched_at": "2026-10-18T23:57:49Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/README.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/contents.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/admin.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/general.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/help.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/models.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/troubleshooting.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq/usage.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/auth-remote-user.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/csp.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/csrf.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/custom-file-storage.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/custom-lookups.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/custom-management-commands.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/custom-model-fields.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/custom-shell.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/custom-template-backend.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/custom-template-tags.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/delete-app.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/asgi/daphne.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/asgi/granian.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/asgi/hypercorn.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/asgi/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/asgi/uvicorn.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/checklist.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/wsgi/apache-auth.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/wsgi/granian.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/wsgi/gunicorn.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/wsgi/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/wsgi/modwsgi.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/deployment/wsgi/uwsgi.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/error-reporting.txt",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/initial-data.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/legacy-databases.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/logging.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/mailers-migration.txt",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/outputting-csv.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/outputting-pdf.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/overriding-templates.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/static-files/deployment.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/static-files/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/upgrade-version.txt",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/windows.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/howto/writing-migrations.txt",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/overview.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/reusable-apps.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial01.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial02.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial03.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial04.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial05.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial06.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial07.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/tutorial08.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/intro/whatsnext.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/misc/api-stability.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/misc/design-philosophies.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/misc/distributions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/misc/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/applications.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/checks.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/base.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/flattened-index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/generic-date-based.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/generic-display.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/generic-editing.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/mixins-date-based.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/mixins-editing.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/mixins-multiple-object.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/mixins-simple.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/mixins-single-object.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/class-based-views/mixins.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/clickjacking.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/admin/actions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/admin/admindocs.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/admin/filters.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/admin/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/admin/javascript.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/auth.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/contenttypes.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/flatpages.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/admin.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/commands.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/db-api.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/deployment.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/feeds.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/forms-api.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/functions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/gdal.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/geoip2.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/geoquerysets.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/geos.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/layermapping.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/measure.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/model-api.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/ogrinspect.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/serializers.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/sitemaps.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/testing.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/tutorial.txt",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/gis/utils.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/humanize.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/messages.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/aggregates.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/constraints.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/expressions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/fields.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/forms.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/functions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/indexes.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/lookups.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/operations.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/search.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/postgres/validators.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/redirects.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/sitemaps.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/sites.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/staticfiles.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/contrib/syndication.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/csp.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/csrf.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/databases.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/django-admin.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/exceptions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/files/file.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/files/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/files/storage.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/files/uploads.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/forms/fields.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/forms/formsets.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/forms/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/forms/models.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/forms/renderers.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/forms/validation.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/forms/widgets.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/logging.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/middleware.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/migration-operations.txt",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/class.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/conditional-expressions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/constraints.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/database-functions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/expressions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/fields.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/indexes.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/instances.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/lookups.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/meta.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/options.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/querysets.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/models/relations.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/paginator.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/request-response.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/schema-editor.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/settings.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/signals.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/tasks.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/template-response.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/templates/builtins.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/templates/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/templates/language.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/unicode.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/urlresolvers.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/urls.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/utils.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/validators.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/ref/views.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/async.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/auth/customizing.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/auth/default.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/auth/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/auth/passwords.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/cache.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/checks.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/class-based-views/generic-display.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/class-based-views/generic-editing.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/class-based-views/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/class-based-views/intro.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/class-based-views/mixins.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/composite-primary-key.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/conditional-view-processing.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/aggregation.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/examples/index.txt",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/examples/many_to_many.txt",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/examples/many_to_one.txt",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/examples/one_to_one.txt",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/fetch-modes.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/fixtures.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/instrumentation.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/managers.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/models.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/multi-db.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/optimization.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/queries.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/search.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/sql.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/tablespaces.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/db/transactions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/email.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/files.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/forms/formsets.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/forms/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/forms/media.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/forms/modelforms.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/http/decorators.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/http/file-uploads.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/http/generic-views.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/http/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/http/middleware.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/http/sessions.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/http/shortcuts.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/http/urls.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/http/views.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/i18n/formatting.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/i18n/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/i18n/timezones.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/i18n/translation.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/logging.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/migrations.txt",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/pagination.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/performance.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/security.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/serialization.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/settings.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/signals.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/signing.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/tasks.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/templates.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/testing/advanced.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/testing/index.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/testing/overview.txt",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/topics/testing/tools.txt",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "package": "python-pptx",
+  "category": "documentos",
+  "repo": "github.com/scanny/python-pptx",
+  "commit": "278b47b1dedd5b46ee84c286e77cdfb0bf4594be",
+  "pypi_version": "1.0.2",
+  "fetched_at": "2026-10-18T23:58:34Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/autoshapes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/charts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/concepts.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/intro.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/notes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/placeholders-understanding.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/placeholders-using.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/presentations.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/slides.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/table.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/text.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/understanding-shapes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/user/use-cases.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

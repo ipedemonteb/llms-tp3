@@ -1,0 +1,145 @@
+{
+  "package": "markdown",
+  "category": "texto",
+  "repo": "github.com/Python-Markdown/markdown",
+  "commit": "90cdcf5f5388ceb1d58c5e22dd81cab93983d938",
+  "pypi_version": "3.11.1",
+  "fetched_at": "2026-10-18T23:59:36Z",
+  "docs_tool": "mkdocs",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/cli.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/abbreviations.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/admonition.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/attr_list.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/code_hilite.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/definition_lists.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/extra.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/fenced_code_blocks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/footnotes.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/legacy_attrs.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/legacy_em.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/md_in_html.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/meta_data.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/nl2br.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/sane_lists.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/smarty.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/tables.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/toc.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/extensions/wikilinks.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/library.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/playground.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/sanitization.md",
+      "kind": "guide",
+      "format": "md"
+    },
+    {
+      "path": "docs/test_tools.md",
+      "kind": "guide",
+      "format": "md"
+    }
+  ]
+}

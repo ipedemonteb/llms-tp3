@@ -1,0 +1,85 @@
+{
+  "package": "psycopg2",
+  "category": "bases_de_datos",
+  "repo": "github.com/psycopg/psycopg2",
+  "commit": "7d0375492ec3707b82b89f632c9654b400466d86",
+  "pypi_version": "2.9.13",
+  "fetched_at": "2026-10-18T23:59:17Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "doc/README.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/advanced.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/connection.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/cursor.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/errorcodes.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/errors.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/extensions.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/extras.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/module.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/sql.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/src/usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

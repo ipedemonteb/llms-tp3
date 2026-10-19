@@ -1,0 +1,55 @@
+{
+  "package": "loguru",
+  "category": "logging",
+  "repo": "github.com/Delgan/loguru",
+  "commit": "bce5dfd3b435b1d1658507d7e095ad7a9919bf1c",
+  "pypi_version": "0.7.3",
+  "fetched_at": "2026-10-18T23:59:39Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/overview.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/project.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/resources/migration.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/resources/recipes.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "docs/resources/troubleshooting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/resources.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

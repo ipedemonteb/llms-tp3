@@ -1,0 +1,405 @@
+{
+  "package": "numpy",
+  "category": "datos_numerico",
+  "repo": "github.com/numpy/numpy",
+  "commit": "3e225b263fd62b68f657b2ad4522932618247aa8",
+  "pypi_version": "2.5.4",
+  "fetched_at": "2026-10-18T23:57:57Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "format": "md"
+    },
+    {
+      "path": "doc/BRANCH_WALKTHROUGH.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/C_STYLE_GUIDE.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/EXAMPLE_DOCSTRING.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/HOWTO_DOCUMENT.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/TESTS.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/records.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/benchmarking.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/blas_lapack.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/compilers_and_options.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/cpu_simd.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/cross_compilation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/distutils_equivalents.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/redistributable_binaries.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/building/understanding_meson.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/advanced/boilerplating.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/advanced/use_cases.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/buildtools/cmake.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/buildtools/distutils-to-meson.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/buildtools/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/buildtools/meson-python.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/buildtools/meson.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/buildtools/skbuild.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/f2py-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/f2py-reference.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/f2py-testing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/f2py-user.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/f2py.getting-started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/python-usage.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/signature-file.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/windows/conda.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/windows/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/windows/intel.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/windows/msys2.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/windows/pgi.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/getting_started.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/numpy_2_0_migration_guide.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/absolute_beginners.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.broadcasting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.copies.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.creation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.dispatch.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.indexing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.interoperability.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.io.genfromtxt.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.io.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.performant_code.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.rec.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.strings.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.subclassing.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.types.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/basics.ufuncs.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/byteswapping.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/c-info.beyond-basics.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/c-info.how-to-extend.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/c-info.python-as-glue.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/c-info.reduction-loop-tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/c-info.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/c-info.ufunc-tutorial.rst",
+      "kind": "tutorial",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/how-to-how-to.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/how-to-index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/how-to-io.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/how-to-partition.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/how-to-print.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/how-to-verify-bug.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/howtos_index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/misc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/numpy-for-matlab-users.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/quickstart.rst",
+      "kind": "quickstart",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/theory.broadcasting.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/troubleshooting-importerror.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/user/whatisnumpy.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "doc/ufuncs.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "package": "oauthlib",
+  "category": "seguridad_cripto",
+  "repo": "github.com/oauthlib/oauthlib",
+  "commit": "fa4570206dfeecb903dd0948d91bcdeaf07dfa0d",
+  "pypi_version": "4.0.0",
+  "fetched_at": "2026-10-18T23:59:31Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "docs"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "README.rst",
+      "kind": "readme",
+      "format": "rst"
+    },
+    {
+      "path": "docs/error_reporting.rst",
+      "kind": "migration",
+      "format": "rst"
+    },
+    {
+      "path": "docs/faq.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/feature_matrix.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/index.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/client.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/endpoints/endpoints.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/oauth1.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/preconfigured_servers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth1/server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/clients/client.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/endpoints/authorization.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/endpoints/device.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/endpoints/endpoints.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/endpoints/introspect.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/endpoints/metadata.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/endpoints/resource.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/endpoints/revocation.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/endpoints/token.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/grants/custom_grant.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/grants/grants.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/grants/jwt.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/oauth2.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/oidc/endpoints.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/oidc/grants.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/oidc/id_tokens.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/oidc/validator.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/oidc.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/preconfigured_servers.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/security.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/server.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/tokens/bearer.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/tokens/mac.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/tokens/saml.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth2/tokens/tokens.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "docs/oauth_1_versus_oauth_2.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}
