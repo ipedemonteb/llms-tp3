@@ -7295,6 +7295,36 @@
     "selected": false,
     "selection_reason": "sin_docs: ningún archivo de docs pasó las reglas de selección"
   },
+  "python-stdlib": {
+    "package": "python-stdlib",
+    "category": "stdlib",
+    "status": "ok",
+    "reason": null,
+    "repo": "github.com/python/cpython",
+    "docs_tool": "sphinx",
+    "n_files": 4,
+    "doc_kb": 171,
+    "kinds": {
+      "guide": 3,
+      "examples": 1
+    },
+    "formats": {
+      "rst": 4
+    },
+    "py_blocks": {
+      "readme": 0,
+      "docs": 180
+    },
+    "use_cases": {
+      "readme": 0,
+      "docs": 55
+    },
+    "lib_blocks": 159,
+    "lib_ratio": 0.88,
+    "pypi_rank": null,
+    "selected": true,
+    "selection_reason": "extra fuera de las 100: subconjunto de la stdlib (zoneinfo, unittest.mock, tomllib): reemplazo de pytz, mock y toml"
+  },
   "python-telegram-bot": {
     "package": "python-telegram-bot",
     "category": "sdks",

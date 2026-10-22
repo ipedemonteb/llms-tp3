@@ -1,0 +1,36 @@
+{
+  "package": "python-stdlib",
+  "category": "stdlib",
+  "repo": "github.com/python/cpython",
+  "ref": "v3.11.17",
+  "commit": "e6392eb68a39cef49c9fe6431253050caa17a426",
+  "pypi_version": null,
+  "fetched_at": "2026-10-22T00:59:21Z",
+  "docs_tool": "sphinx",
+  "docs_dirs": [
+    "Doc"
+  ],
+  "examples_dirs": [],
+  "files": [
+    {
+      "path": "Doc/library/zoneinfo.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "Doc/library/unittest.mock.rst",
+      "kind": "guide",
+      "format": "rst"
+    },
+    {
+      "path": "Doc/library/unittest.mock-examples.rst",
+      "kind": "examples",
+      "format": "rst"
+    },
+    {
+      "path": "Doc/library/tomllib.rst",
+      "kind": "guide",
+      "format": "rst"
+    }
+  ]
+}

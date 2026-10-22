@@ -9,6 +9,9 @@ Uso (después de fetch_raw_docs.py):
 3. Elección por rondas entre categorías: en cada ronda entra la más popular (descargas de PyPI) de cada
    categoría, hasta llegar a 100.
 4. Borra de data/raw/ las descartadas y verifica manifests, archivos y cobertura (sale con 1 si algo falla).
+
+Además de las 100 se conservan los EXTRAS (subconjunto de la stdlib): no compiten por un lugar ni pasan por
+el umbral, pero se verifican igual.
 """
 
 import json
@@ -18,9 +21,12 @@ import sys
 from pathlib import Path
 
 from fetch_raw_docs import INDEX_PATH, RAW_DIR, ROOT, import_names, metrics
-from libraries import CANDIDATES
+from libraries import CANDIDATES, STDLIB
 
 TARGET = 100
+# Fuera de las 100 y del umbral: único reemplazo posible de deprecadas sin alternativa en PyPI.
+EXTRAS = {STDLIB["package"]: "subconjunto de la stdlib (zoneinfo, unittest.mock, tomllib): reemplazo de pytz, "
+                             "mock y toml"}
 TOP_PYPI = ROOT / "data" / "top_pypi.json"  # https://hugovk.github.io/top-pypi-packages/
 
 # Umbral de calidad (solo docs, el README no cuenta).
@@ -58,6 +64,10 @@ PAIRS = {
     "python-jose": {"authlib", "pyjwt"},
     "passlib": {"cryptography"},  # hashing de contraseñas con Argon2id/Scrypt (bcrypt no tiene docs)
     "sklearn": {"scikit-learn"},
+    "oauth2client": {"google-api-python-client"},  # su doc de auth usa google.oauth2 (google-auth no tiene docs)
+    "pytz": {"python-stdlib"},  # zoneinfo
+    "mock": {"python-stdlib"},  # unittest.mock
+    "toml": {"python-stdlib"},  # tomllib
 }
 # Deprecados: nunca se indexan.
 DEPRECATED = {"pypdf2", "pypdf4", "fuzzywuzzy", "pycrypto", "nose", "retrying", "xlrd", "python-jose",
@@ -90,7 +100,9 @@ def select(index: dict) -> list[str]:
     for e in index.values():
         e["pypi_rank"] = ranks.get(norm(e["package"]))
         e["selected"], e["selection_reason"] = False, None
-        if e["package"] in MANUAL_EXCLUDE:
+        if e["package"] in EXTRAS:
+            e["selected"], e["selection_reason"] = True, f"extra fuera de las {TARGET}: {EXTRAS[e['package']]}"
+        elif e["package"] in MANUAL_EXCLUDE:
             e["selection_reason"] = f"excluida a mano: {MANUAL_EXCLUDE[e['package']]}"
         elif e["package"] in EXCEPTIONS:
             e["selection_reason"] = f"excepción §5.3: {EXCEPTIONS[e['package']]}"
@@ -126,14 +138,16 @@ def verify(index: dict, chosen: list[str]) -> list[str]:
         errors.append(f"se eligieron {len(sel)} librerías, no {TARGET}")
     cats = {index[p]["category"] for p in sel}
     errors += [f"categoría sin librerías: {c}" for c in CANDIDATES if c not in cats]
-    errors += [f"par {dep} sin reemplazo indexado" for dep, repl in PAIRS.items() if not repl & sel]
+    keep = sel | set(EXTRAS)
+    errors += [f"par {dep} sin reemplazo indexado" for dep, repl in PAIRS.items() if not repl & keep]
     errors += [f"librería deprecada en el dataset: {p}" for p in sel if norm(p) in DEPRECATED]
+    errors += [f"extra sin entrada en el índice: {p}" for p in EXTRAS if p not in index]
 
     on_disk = {d.name for d in RAW_DIR.iterdir() if d.is_dir()}
-    errors += [f"falta la carpeta de {p}" for p in sel - on_disk]
-    errors += [f"carpeta de una librería no elegida: {p}" for p in on_disk - sel]
+    errors += [f"falta la carpeta de {p}" for p in keep - on_disk]
+    errors += [f"carpeta de una librería no elegida: {p}" for p in on_disk - keep]
 
-    for p in sorted(sel & on_disk):
+    for p in sorted(keep & on_disk & index.keys()):
         out, e = RAW_DIR / p, index[p]
         try:
             m = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
@@ -142,7 +156,10 @@ def verify(index: dict, chosen: list[str]) -> list[str]:
             continue
         if m["package"] != p or m["category"] != e["category"]:
             errors.append(f"{p}: el manifest no coincide con el índice")
-        if not m.get("pypi_version"):
+        if p in EXTRAS:
+            if not m.get("ref"):
+                errors.append(f"{p}: falta el tag (ref) de la doc")
+        elif not m.get("pypi_version"):
             errors.append(f"{p}: falta pypi_version")
         if not SHA_RE.match(m.get("commit") or ""):
             errors.append(f"{p}: commit inválido ({m.get('commit')})")
@@ -173,7 +190,9 @@ def verify(index: dict, chosen: list[str]) -> list[str]:
         fresh = metrics(p, out, m["files"])
         if any(fresh[k] != e.get(k) for k in ("py_blocks", "use_cases", "lib_blocks", "doc_kb")):
             errors.append(f"{p}: las métricas no coinciden con el índice")
-        if p not in EXCEPTIONS and not passes(e):
+        if e.get("status") != "ok":
+            errors.append(f"{p}: estado {e.get('status')} ({e.get('reason')})")
+        if p not in EXCEPTIONS and p not in EXTRAS and not passes(e):
             errors.append(f"{p}: elegida sin pasar el umbral")
         if fresh["lib_ratio"] < 0.1:
             errors.append(f"{p}: casi ningún bloque usa la librería ({import_names(p)}, {fresh['lib_ratio']})")
@@ -185,7 +204,7 @@ def main() -> int:
     chosen = select(index)
 
     for d in RAW_DIR.iterdir():
-        if d.is_dir() and d.name not in chosen:
+        if d.is_dir() and d.name not in chosen and d.name not in EXTRAS:
             shutil.rmtree(d)
     INDEX_PATH.write_text(json.dumps(index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
@@ -193,6 +212,7 @@ def main() -> int:
     for cat in CANDIDATES:
         ps = [p for p in chosen if index[p]["category"] == cat]
         print(f"  {cat:24} {len(ps):2}  {', '.join(ps)}")
+    print(f"Extras: {', '.join(EXTRAS)}")
 
     errors = verify(index, chosen)
     print(f"\nVerificación: {'OK' if not errors else f'{len(errors)} errores'}")

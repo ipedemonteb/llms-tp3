@@ -3,6 +3,7 @@
 Uso:
     uv run python src/scripts/fetch_raw_docs.py                         # todo el pool de candidatas
     uv run python src/scripts/fetch_raw_docs.py --packages requests pypdf
+    uv run python src/scripts/fetch_raw_docs.py --packages python-stdlib   # subconjunto de la stdlib
 
 Salida: data/raw/<paquete>/{manifest.json, README.*, <ruta original de la doc>}
         data/raw/index.json (estado y métricas por librería)
@@ -24,7 +25,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
-from libraries import CANDIDATES, IMPORT_NAMES, REPO_OVERRIDES, SOURCES
+from libraries import CANDIDATES, IMPORT_NAMES, REPO_OVERRIDES, SOURCES, STDLIB
 
 ROOT = Path(__file__).resolve().parents[2]
 RAW_DIR = ROOT / "data" / "raw"
@@ -465,6 +466,62 @@ def fetch(package: str, category: str) -> dict:
                     **metrics(package, out, files)}
 
 
+def fetch_stdlib() -> dict:
+    """Subconjunto de la stdlib (libraries.STDLIB): no está en PyPI, así que no hay README ni pypi_version;
+    se bajan solo los archivos listados, en un tag fijo de CPython (queda en manifest["ref"])."""
+    package, repo, ref = STDLIB["package"], STDLIB["repo"], STDLIB["ref"]
+    entry = {"package": package, "category": STDLIB["category"]}
+    out = RAW_DIR / package
+    if out.exists():
+        shutil.rmtree(out)
+    out.mkdir(parents=True)
+
+    files = []
+    manifest = {
+        "package": package,
+        "category": STDLIB["category"],
+        "repo": repo,
+        "ref": ref,
+        "commit": None,
+        "pypi_version": None,
+        "fetched_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "docs_tool": "sphinx",
+        "docs_dirs": [STDLIB["docs_dir"]],
+        "examples_dirs": [],
+        "files": files,
+    }
+    status, reason = "ok", None
+    with tempfile.TemporaryDirectory() as tmp:
+        clone = Path(tmp) / "repo"
+        try:
+            run(["git", "clone", "--depth", "1", "--branch", ref, "--filter=blob:none", "--sparse", "--quiet",
+                 f"https://{repo}", str(clone)])
+            run(["git", "sparse-checkout", "set", "--no-cone", *[f"/{f}" for f in STDLIB["files"]]], cwd=clone)
+            manifest["commit"] = run(["git", "rev-parse", "HEAD"], cwd=clone)
+        except OSError as e:
+            status, reason = "error", f"descarga: {e}"
+        except subprocess.CalledProcessError as e:
+            status, reason = "error", f"git: {e.stderr.strip()[-300:]}"
+        except subprocess.TimeoutExpired:
+            status, reason = "error", "git: timeout"
+
+        if status == "ok":
+            for rel in STDLIB["files"]:
+                src = clone / rel
+                if not src.is_file():
+                    status, reason = "error", f"falta {rel} en {ref}"
+                    break
+                dst = out / rel
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(src, dst)
+                kind = classify(Path(rel).relative_to(STDLIB["docs_dir"]).as_posix())
+                files.append({"path": rel, "kind": kind or "guide", "format": "rst"})
+
+    (out / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return entry | {"status": status, "reason": reason, "repo": repo, "docs_tool": manifest["docs_tool"],
+                    **metrics(package, out, files)}
+
+
 def metrics(package: str, out: Path, files: list[dict]) -> dict:
     names = import_names(package)
     m = {"n_files": len(files), "doc_kb": 0, "kinds": {}, "formats": {},
@@ -494,14 +551,15 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=8)
     args = parser.parse_args()
 
-    by_pkg = {p: cat for cat, ps in CANDIDATES.items() for p in ps}
+    by_pkg = {p: cat for cat, ps in CANDIDATES.items() for p in ps} | {STDLIB["package"]: STDLIB["category"]}
     targets = {p: by_pkg.get(p, "sin_categoria") for p in (args.packages or by_pkg)}
 
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     index = json.loads(INDEX_PATH.read_text()) if INDEX_PATH.exists() else {}
 
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = {pool.submit(fetch, p, c): p for p, c in targets.items()}
+        futures = {(pool.submit(fetch_stdlib) if p == STDLIB["package"] else pool.submit(fetch, p, c)): p
+                   for p, c in targets.items()}
         for fut in as_completed(futures):
             e = fut.result()
             index[e["package"]] = e

@@ -94,6 +94,23 @@ CANDIDATES = {
     ],
 }
 
+# Subconjunto de la stdlib: único reemplazo de deprecadas sin alternativa en PyPI (pytz, mock, toml).
+# No está en PyPI ni compite por los 100 lugares: se baja de CPython en el tag de la versión mínima que
+# soporta el proyecto (requires-python >= 3.11), para no proponer APIs que esa versión no tiene.
+STDLIB = {
+    "package": "python-stdlib",
+    "category": "stdlib",
+    "repo": "github.com/python/cpython",
+    "ref": "v3.11.17",
+    "docs_dir": "Doc",
+    "files": [
+        "Doc/library/zoneinfo.rst",               # pytz
+        "Doc/library/unittest.mock.rst",          # mock
+        "Doc/library/unittest.mock-examples.rst",
+        "Doc/library/tomllib.rst",                # toml
+    ],
+}
+
 # Repos que no se pueden deducir bien de PyPI, o donde la doc vive en otro repo ("host/owner/repo").
 REPO_OVERRIDES = {
     "beautifulsoup4": "git.launchpad.net/beautifulsoup",
@@ -212,4 +229,5 @@ IMPORT_NAMES = {
     "scapy": ["scapy", "IP", "TCP", "UDP", "sniff", "send", "sr1"], "playwright": ["playwright", "page"],
     "pyinstaller": ["PyInstaller"], "lxml": ["lxml", "etree", "html"], "parsel": ["parsel", "Selector"],
     "dask": ["dask", "dd", "da"], "geopandas": ["geopandas", "gpd"], "xarray": ["xarray", "xr"],
+    "python-stdlib": ["zoneinfo", "ZoneInfo", "mock", "Mock", "MagicMock", "patch", "tomllib"],
 }
