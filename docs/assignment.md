@@ -68,14 +68,6 @@ Como componentes adicionales opcionales, se valorará la incorporación de algun
 
 **Aclaración:** Se deberá tener todo el pipeline de RAG finalizado antes de agregar Advanced RAG o los extras para asegurar un desarrollo ordenado y eficiente. El foco está en la correcta implementación de RAG y la compresión de todos sus módulos.
 
-La presentación será de aproximadamente 30 minutos que deberá contener:
-
-- Explicación del problema a resolver.
-- Desafíos encontrados.
-- Decisiones de implementación correspondientes bien justificadas.
-- Resultados obtenidos.
-- Conclusiones.
-
 ### 1.3. Ejercicio 3
 
 Asimismo, se deberán definir (no implementar) los siguientes aspectos:
@@ -83,18 +75,27 @@ Asimismo, se deberán definir (no implementar) los siguientes aspectos:
 1. Consideraciones para asegurar que el modelo cumpla con los principios de Responsible AI y Safety.
 2. Estrategias para poner el modelo en producción.
 
-La entrega de este ejercicio será un informe de máximo 2 hojas y luego será debatido durante la presentación final.
+La entrega de este ejercicio será un informe de máximo 2 hojas entregado un día antes de la presentación al oral.
 
 ### 1.4. Ejercicio 4
 
 Una vez desarrollado todo el sistema se deberá iterar sobre el mismo para mejorar su desempeño y/o incorporar nuevas funcionalidades. Se deberá documentar el proceso de iteración y los resultados obtenidos.
 
-Para ello, se deberá identificar el problema o limitación encontrado en la versión anterior, describir la modificación propuesta junto con la justificación de dicha decisión y detallar la configuración utilizada antes y después del cambio, de manera que sea posible analizar claramente el impacto de la modificación sobre el sistema.
+Para ello, se deberá identificar el problema o limitación encontrado en la versión anterior, describir la modificación propuesta junto con la justificación de dicha decisión y detallar la configuración utilizada antes y después del cambio, de manera que sea posible analizar claramente el impacto de la modificación sobre el sistema, evaluando los resultados obtenidos y comparándolos con la versión anterior.
 
 ## 2. Entregas
 
 - **Entrega Idea (Ejercicio 1): 7/10, 18:59 hs.** Instancia oral donde se presentará el proyecto a desarrollar. Deberán cargar previamente en Campus un informe breve (máximo 2 hojas) con la descripción del proyecto y el diagrama de arquitectura preliminar.
-- **Entrega parte 1 (Ejercicio 2): 4/11, 18:59 hs.** Instancia oral donde se presentará el proyecto a desarrollar. Deberán cargar previamente en Campus la presentación, repositorio y hash del commit.
-- **Entrega parte 2 (Ejercicios 3 y 4): 18/11, 18:59 hs.** Instancia oral donde se presentará la versión 2 del proyecto. Deberán cargar previamente en Campus la nueva presentación, repositorio y hash del commit.
+- **Entrega Ejercicio 3:** El informe del ejercicio 3 se deberá cargar en Campus un día antes de la presentación para optimizar el tiempo de exposición (**17/11 18:59 hs**). Este ejercicio no se expone de forma oral, pero se evaluará su contenido.
+- **Entrega final: 18/11, 18:59 hs.** Instancia oral donde se presentará el proyecto. Deberán cargar previamente en Campus la presentación, repositorio y hash del commit.
 
-**Aclaración:** Se penalizará un medio punto por cada entrega tardía.
+La presentación oral será de aproximadamente 30 minutos y deberá contener:
+
+- Explicación del problema a resolver.
+- Desafíos encontrados.
+- Decisiones de implementación correspondientes bien justificadas.
+- Resultados obtenidos en ambas versiones.
+- Limitaciones y trabajo futuro.
+- Conclusiones.
+
+**Aclaración:** Se penalizará medio punto por cada entrega tardía. Dado la cantidad de tiempo disponible para el desarrollo del trabajo, se recomienda aprovechar el espacio de consultas del día 4/11 teniendo el trabajo lo más avanzado posible.
