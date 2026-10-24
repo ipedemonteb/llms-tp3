@@ -81,6 +81,14 @@ def test_config_rules(code, expected):
     assert detect_lang(code) == expected
 
 
+def test_traceback_log_is_not_python():
+    # torch (revisión manual, ítems 23 y 42): un log de error con traceback lo salvaba la heurística
+    log = ("torch._dynamo.convert_frame: [ERROR] WON'T CONVERT test_assertion_error\ndue to:\n"
+           "Traceback (most recent call last):\n  File \"symbolic_convert.py\", line 837, in BUILD_MAP\n"
+           "    assert isinstance(k, ConstantVariable)\nAssertionError")
+    assert detect_lang(log) == "pytb"
+
+
 def test_python_with_list_line_is_not_ini():
     # Una línea entre corchetes con espacios no es una sección de configuración.
     assert detect_lang("[x for x in items]\ntotal = 1") == "python"

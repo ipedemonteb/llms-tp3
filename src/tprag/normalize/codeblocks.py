@@ -44,6 +44,7 @@ IPY_OUT = re.compile(r"^Out\[\d*\]:\s?")
 CONFIG_SECTION = re.compile(r'^\s*\[{1,2}[\w.\-]+(?:\s+"[^"]*")?\]{1,2}\s*$')  # [run], [tool.x], [[tabla]]
 CONFIG_LINE = re.compile(r"^\s*(?:[#;].*|[\w.\-]+\s*[=:].*|\s+\S.*|[\]\}],?)\s*$")
 ENV_LINE = re.compile(r"^\s*(?:export\s+)?[A-Z][A-Z0-9_]*=\S*")
+TRACEBACK = re.compile(r"^\s*Traceback \(most recent call last\):")
 
 # "Forma de código": sin esto, salidas como `{'page': 0}` o una palabra suelta contarían como Python.
 CODE_SHAPE = (ast.Import, ast.ImportFrom, ast.Assign, ast.AugAssign, ast.AnnAssign, ast.FunctionDef,
@@ -90,6 +91,8 @@ def detect_lang(code: str) -> str:
         return "pycon"
     if lines[0].lstrip().startswith(("$ ", "% ")):
         return "console"
+    if any(TRACEBACK.match(l) for l in lines):
+        return "pytb"  # log de un error: salida, no código (revisión manual de §3.4: 2 de los 3 falsos positivos)
     stripped = code.strip()
     if stripped[:1] in "{[":
         try:
