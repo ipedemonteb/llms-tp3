@@ -90,6 +90,15 @@ def test_resolve_include_absolute_sphinx_path():
                            {"doc/en/example/xfail_demo.py"}, ["doc"]) == "doc/en/example/xfail_demo.py"
 
 
+def test_gradio_code_placeholder():
+    corpus = Corpus(paths={"guides/01_quickstart.md", "demo/hello_world_4/run.py"},
+                    read={"demo/hello_world_4/run.py": "import gradio as gr\n\ndemo = gr.Interface(fn=greet)\n"}.get)
+    text = "Run this:\n\n$code_hello_world_4\n$demo_hello_world_4\n\nDone.\n"
+    res = resolve_includes(text, "md", "guides/01_quickstart.md", corpus)
+    assert "```python\nimport gradio as gr" in res.text and "$code_" not in res.text and "$demo_" not in res.text
+    assert includes.include_targets(text) == ["demo/hello_world_4/run.py"]
+
+
 def test_fetch_script_uses_the_same_functions():
     sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src" / "scripts"))
     import fetch_raw_docs

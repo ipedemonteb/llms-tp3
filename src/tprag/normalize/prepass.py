@@ -45,6 +45,52 @@ API_DIRECTIVES = {
 IPYTHON_DECORATOR = re.compile(r"^\s*@(savefig|suppress|verbatim|doctest|okexcept|okwarning)\b")
 
 
+# --- Referencias (rst `:func:`x`` en el árbol; MyST `{func}`x`` en el paso previo de Markdown) ---------------
+
+API_ROLES = {"func", "meth", "class", "attr", "exc", "data", "mod", "obj", "const", "type", "member", "var",
+             "macro", "function", "method", "property", "decorator", "deco",
+             # `texto` sin rol en rst: Sphinx lo resuelve con el rol por defecto, que en estas docs es casi
+             # siempre `py:obj` o `any` y se ve como código (flask, scikit-learn, matplotlib).
+             "title-reference"}
+TEXT_ROLES = {"ref", "doc", "term", "numref", "download", "abbr", "menuselection", "guilabel"}
+# Alias de módulo que usan las referencias de la doc de sqlalchemy (`:class:`_orm.Session``), ~3.900 en 67 archivos.
+SQLALCHEMY_ALIASES = {
+    "orm": "sqlalchemy.orm", "schema": "sqlalchemy.schema", "sql": "sqlalchemy.sql", "engine": "sqlalchemy.engine",
+    "asyncio": "sqlalchemy.ext.asyncio", "sa": "sqlalchemy", "dml": "sqlalchemy.sql.dml", "types": "sqlalchemy.types",
+    "postgresql": "sqlalchemy.dialects.postgresql", "expression": "sqlalchemy.sql.expression",
+    "query": "sqlalchemy.orm.query", "functions": "sqlalchemy.sql.functions", "pool": "sqlalchemy.pool",
+    "events": "sqlalchemy.events", "result": "sqlalchemy.engine.result", "sqltypes": "sqlalchemy.types",
+    "mysql": "sqlalchemy.dialects.mysql", "reflection": "sqlalchemy.engine.reflection",
+    "sqlite": "sqlalchemy.dialects.sqlite", "baked": "sqlalchemy.ext.baked", "session": "sqlalchemy.orm.session",
+    "ormevents": "sqlalchemy.orm.events", "mssql": "sqlalchemy.dialects.mssql", "exc": "sqlalchemy.exc",
+}
+
+
+def role_text(role: str, text: str) -> tuple[str, bool]:
+    """(texto a mostrar, si va como código) de una referencia de Sphinx o MyST."""
+    m = re.match(r"^(.*?)\s*<([^<>]+)>$", text, re.S)
+    title, target = (m.group(1).strip(), m.group(2).strip()) if m else (None, text.strip())
+    role = role.split(":")[-1]  # py:class → class
+    if role in API_ROLES:
+        return expand_alias(target.lstrip("~!.")), True  # nombre completo: librería y módulo dentro del texto
+    if role == "pep":
+        return f"PEP {target}", False
+    if role == "rfc":
+        return f"RFC {target}", False
+    if role in TEXT_ROLES:
+        return (title or target).lstrip("~!"), False
+    # envvar, setting, file, command, option, kbd, paramref (sqlalchemy: `_orm.relationship.foreign_keys`)…
+    return expand_alias((title or target).lstrip("~!")), True
+
+
+def expand_alias(name: str) -> str:
+    """`_orm.Session` → `sqlalchemy.orm.Session` (alias de módulo de la doc de sqlalchemy)."""
+    alias = re.match(r"_(\w+)\.", name)
+    if alias and alias.group(1) in SQLALCHEMY_ALIASES:
+        return SQLALCHEMY_ALIASES[alias.group(1)] + name[alias.end() - 1:]
+    return name
+
+
 def _block_end(lines: list[str], i: int) -> int:
     """Índice siguiente al cuerpo indentado de la directiva de la línea i."""
     base = len(lines[i]) - len(lines[i].lstrip())
@@ -150,10 +196,30 @@ SLASH_BLOCK = re.compile(r"^(/{3,})\s*([\w-]+)(?:\s*\|\s*(.*?))?\s*$")  # /// ti
 MDX_IMPORT = re.compile(r"^(?:import\s.+\sfrom\s+['\"].+['\"]|import\s+['\"].+['\"]|export\s.+);?\s*$")
 JSX_TAB_ITEM = re.compile(r"^\s*<TabItem\b([^>]*)>\s*$")
 JSX_CLOSE = re.compile(r"^\s*</(Tabs|TabItem)>\s*$")
-# <HTMLCard …>, </Admonition>… Sin indentación: una línea indentada como `<Response [200]>` es salida de código.
+# <Note>, </Flex>… Sin indentación: una línea indentada como `<Response [200]>` es salida de código (los componentes
+# anidados quedan sin indentación al desindentar el contenido del que los contiene).
 JSX_COMPONENT = re.compile(r"^</?[A-Z][\w.]*(?=[\s>/]|$)")
 HEADER_ATTRS = re.compile(r"^(#{1,6}\s.*?)\s*\{\s*[#.:][^}]*\}\s*$")
 MYST_OPTION = re.compile(r"^:[\w-]+:")
+MYST_ROLE = re.compile(r"\{([\w:.-]+)\}`([^`]+)`")  # {func}`attrs.define`
+MYST_LABEL = re.compile(r"^\s*\([\w.:\-]+\)=\s*$")  # (extending-metadata)=
+# Links de MkDocs (autorefs) `[`Annotated`][typing.Annotated]`: el destino no está definido en la página. El `[` no
+# puede venir pegado a un nombre o a otro `]`, para no tocar índices como `x[0][1]`.
+AUTOREF = re.compile(r"(?<![\w\]`)])\[([^\[\]]+)\]\[[\w.:\-]*\]")
+# Hugging Face doc-builder (transformers)
+HF_LINK = re.compile(r"(?<![\w\]`)])\[`~?([\w.]+(?:\(\))?)`\](?![\[(])")  # [`Pipeline`], [`~GenerationMixin.generate`]
+HF_DIRECTIVE = re.compile(r"^\s*\[\[(autodoc|open-in-colab)\]\]")
+HF_OPTIONS = re.compile(r"^\s*<hfoptions\b[^>]*>\s*$")
+HF_OPTION = re.compile(r'^\s*<hfoption\s+id="([^"]*)"\s*>\s*$')
+HF_CLOSE = re.compile(r"^\s*</hfoptions?>\s*$")
+# Componentes JSX (streamlit, Hugging Face, Docusaurus)
+JSX_ADMONITIONS = {"Note": "note", "Tip": "tip", "Important": "important", "Warning": "warning", "Info": "info",
+                   "Caution": "caution", "Danger": "danger", "Admonition": "note"}
+JSX_NAVIGATION = {"InlineCallout", "InlineCalloutContainer", "RefCard", "Tile", "TileContainer", "DataSourcesCard",
+                  "CodeTile", "Cloud", "Image", "YouTube", "Youtube", "GithubLink", "ExampleGithubLink",
+                  "Autofunction"}  # tarjetas de links, capturas y referencia autogenerada
+MATERIAL_ICON = re.compile(r"<i\b[^>]*material-icons[^>]*>[^<]*</i>\s*")  # streamlit
+GRADIO_META = re.compile(r"^(Tags|Related spaces|Contributed by)\b.*$")
 
 # Directivas que el lector no ve como texto (o que resuelven otras piezas, como las inclusiones).
 MD_DROPPED = {"toctree", "contents", "image", "figure", "include", "literalinclude", "autodoc", "automodule",
@@ -197,15 +263,76 @@ def _myst_body(body: list[str]) -> list[str]:
     return body[k:]
 
 
-def _myst_directive(name: str, arg: str, body: list[str], fence: str, indent: str) -> list[str]:
+def _reindented(lines: list[str], indent: str) -> list[str]:
+    """Vuelve a poner la indentación original: una directiva dentro de un ítem de lista tiene que quedar adentro."""
+    return [indent + l if l.strip() else "" for l in lines]
+
+
+def _inline_md(line: str) -> str:
+    """Referencias de MyST (`{func}`attrs.define``) como las de rst; links de MkDocs `[texto][ref]` y de Hugging
+    Face `[`~a.b.C`]` → su texto; íconos de streamlit (`<i … material-icons…>warning</i>`) afuera."""
+    def role(m):
+        shown, as_code = role_text(m.group(1), m.group(2))
+        return f"`{shown}`" if as_code else shown
+    line = AUTOREF.sub(r"\1", MYST_ROLE.sub(role, line))
+    line = HF_LINK.sub(lambda m: f"`{m.group(1)}`", line)
+    return MATERIAL_ICON.sub("", line)
+
+
+def _jsx_component(lines: list[str], i: int, out: list[str]) -> int:
+    """Componente de MDX/JSX (streamlit, Docusaurus, Hugging Face): avisos como avisos, navegación afuera, el resto
+    con su contenido desindentado (si no, pandoc lee el contenido indentado como un bloque de código)."""
+    if lines[i].startswith("</"):  # cierre suelto
+        return i + 1
+    name = JSX_COMPONENT.match(lines[i]).group(0)[1:]
+    end = i
+    while end < len(lines) and ">" not in lines[end]:  # la etiqueta de apertura puede ocupar varias líneas
+        end += 1
+    tag = "\n".join(lines[i:end + 1])
+    head, _, rest = tag.partition(">")
+    if head.rstrip().endswith("/"):  # <Image … />, <Autofunction … />
+        return end + 1
+    # Cierre: en la misma línea (`<Tip>texto</Tip>`) o en una línea propia, contando anidamientos del mismo nombre.
+    close = f"</{name}>"
+    if close in rest:
+        inner, k = [rest.split(close)[0]], end
+    else:
+        depth, k = 1, end + 1
+        while k < len(lines):
+            depth += len(re.findall(rf"<{name}(?=[\s>])", lines[k])) - lines[k].count(close)
+            if depth <= 0:
+                break
+            k += 1
+        if k >= len(lines):  # sin cierre (etiqueta mal escrita): solo se saca la etiqueta, no el resto de la página
+            return end + 1
+        inner = ([rest] if rest.strip() else []) + lines[end + 1:k]
+        before = lines[k].split(close)[0]
+        if before.strip():
+            inner.append(before)
+    body = _md_lines(_dedent(inner))
+    if name in JSX_NAVIGATION:
+        return k + 1
+    if name in JSX_ADMONITIONS:
+        cls = "warning" if name == "Tip" and "warning={true}" in head else JSX_ADMONITIONS[name]
+        out += _div(cls, None, body)
+    elif name == "Collapse":  # streamlit: <Collapse title="…"> se ve como un desplegable con ese título
+        title = re.search(r'title="([^"]*)"', head)
+        out += ["", f"**{title.group(1)}**" if title else "", "", *body, ""]
+    else:  # <Flex>, <div>-like y desconocidos: se quitan las etiquetas, el contenido queda
+        out += ["", *body, ""]
+    return k + 1
+
+
+def _myst_directive(name: str, arg: str, body: list[str], fence: str) -> list[str]:
+    """Directiva MyST sin indentación (quien llama la vuelve a indentar)."""
     body = _myst_body(body)
     if name in MD_CODE:
         # code-block/code/sourcecode: el argumento es el lenguaje. Las de lenguaje fijo (doctest, ipython…) usan el
         # argumento para otra cosa: ```{doctest} namedtuples (cattrs) es el nombre de un grupo de tests.
         lang = (arg.split()[0] if arg else "") if MD_CODE[name] == "" else MD_CODE[name]
-        return [f"{indent}{fence}{lang}", *body, f"{indent}{fence}"]
+        return [f"{fence}{lang}", *body, fence]
     if name == "eval-rst":
-        return [f"{indent}{fence}eval-rst", *body, f"{indent}{fence}"]
+        return [f"{fence}eval-rst", *body, fence]
     if name in MD_DROPPED:
         return []
     if name == "admonition":
@@ -232,7 +359,8 @@ def _md_lines(lines: list[str]) -> list[str]:
                 j += 1
             d = MYST_DIRECTIVE.match(info)
             if d:
-                out += _myst_directive(d.group(1), d.group(2).strip(), _dedent(lines[i + 1:j]), fence, indent)
+                out += _reindented(_myst_directive(d.group(1), d.group(2).strip(), _dedent(lines[i + 1:j]), fence),
+                                   indent)
             else:
                 out += lines[i:j + 1]
             i = j + 1
@@ -251,10 +379,15 @@ def _md_lines(lines: list[str]) -> list[str]:
                 j += 1
             body = _dedent(lines[i + 1:j])
             if docusaurus and arg and name in ("note", "tip", "info", "caution", "danger", "warning"):
-                out += _div(name, arg.strip(), _md_lines(body), title_div=True)  # el argumento es el título
+                new = _div(name, arg.strip(), _md_lines(body), title_div=True)  # el argumento es el título
             else:
-                out += _myst_directive(name, (arg or "").strip(), body, "```", indent)
+                new = _myst_directive(name, (arg or "").strip(), body, "```")
+            out += _reindented(new, indent)
             i = j + 1
+            continue
+
+        if MYST_LABEL.match(line):  # `(extending-metadata)=`: destino de links de MyST, el lector no lo ve
+            i += 1
             continue
 
         if re.match(r"^<HTMLCard\b", line):  # playwright: vista previa del HTML + el mismo HTML como código
@@ -349,15 +482,37 @@ def _md_lines(lines: list[str]) -> list[str]:
         if MDX_IMPORT.match(line):
             i += 1
             continue
-        if JSX_COMPONENT.match(line):  # otros componentes: se quitan las etiquetas, el contenido queda
-            if "/>" not in line and not line.rstrip().endswith(">"):
-                while i + 1 < len(lines) and not re.search(r"/?>\s*$", lines[i]):
-                    i += 1
+        # Hugging Face (transformers): pestañas <hfoptions>/<hfoption id="…"> como las demás. Las líneas en blanco
+        # alrededor de las marcas arreglan los bloques de código pegados a la etiqueta.
+        if HF_OPTIONS.match(line):
+            out += ["", "::: {.tabs}", ""]
+            i += 1
+            continue
+        m = HF_OPTION.match(line)
+        if m:
+            out += ["", "::: {.tab}", m.group(1), ""]
+            i += 1
+            continue
+        if HF_CLOSE.match(line):
+            out += ["", ":::", ""]
+            i += 1
+            continue
+        m = HF_DIRECTIVE.match(line)
+        if m:  # [[autodoc]] Clase (y sus métodos indentados debajo) y [[open-in-colab]]: el lector no los ve así
+            i += 1
+            while m.group(1) == "autodoc" and i < len(lines) and re.match(r"^\s+-\s+\S", lines[i]):
+                i += 1
+            continue
+        if GRADIO_META.match(line):  # gradio: "Tags: …", "Related spaces: …", "Contributed by …"
             i += 1
             continue
 
+        if JSX_COMPONENT.match(line):
+            i = _jsx_component(lines, i, out)
+            continue
+
         m = HEADER_ATTRS.match(line)
-        out.append(m.group(1) if m else line)
+        out.append(_inline_md(m.group(1) if m else line))
         i += 1
     return out
 
@@ -397,8 +552,6 @@ README_NOISE = re.compile(r"^(change\s*log|changes|release\s*notes|release\s*his
                           r"contribut\w*|license|licence|authors?|credits|acknowledg\w*|sponsors?|backers|"
                           r"code\s*of\s*conduct|security|reporting\s+(a\s+)?security)\b", re.I)
 CHANGELOG = re.compile(r"^(change\s*log|changes|release\s*notes|release\s*history|history|what'?s\s*new)\b", re.I)
-# Entradas de un changelog: suelen ser títulos del mismo nivel que "Changelog" (pydantic: `## v2.14.1 (2026-10-11)`).
-VERSION_TITLE = re.compile(r"^v?\d+(\.\d+)+|\d{4}-\d{2}-\d{2}", re.I)
 MD_HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
 
 
@@ -406,7 +559,7 @@ def clean_readme(text: str, fmt: str) -> str:
     """Saca las secciones de ruido (changelog, licencia, contribuciones…) hasta el próximo título de su nivel."""
     lines = text.split("\n")
     rst_levels: dict[str, int] = {}  # en rst el nivel lo da el orden de aparición de cada subrayado
-    out, skip_level, fence, in_changelog = [], None, None, False
+    out, skip_level, fence = [], None, None
     for i, line in enumerate(lines):
         if fmt == "md" and (f := FENCE.match(line)):  # un `# License` dentro de un bloque de código no es título
             fence = None if fence and f.group(2).startswith(fence) else (fence or f.group(2))
@@ -414,10 +567,13 @@ def clean_readme(text: str, fmt: str) -> str:
         if level is not None:
             title = title.strip("*_`: ")
             if skip_level is not None and level <= skip_level:
-                if not (in_changelog and level == skip_level and VERSION_TITLE.search(title)):
-                    skip_level, in_changelog = None, False
+                skip_level = None
+            if skip_level is None and CHANGELOG.match(title):
+                # El changelog va al final del README y sus entradas son títulos de cualquier nivel (pydantic:
+                # `## v2.14.1`, `## New Contributors`…): se corta hasta el final.
+                break
             if skip_level is None and README_NOISE.match(title):
-                skip_level, in_changelog = level, bool(CHANGELOG.match(title))
+                skip_level = level
         if skip_level is None:
             out.append(line)
     return "\n".join(out)

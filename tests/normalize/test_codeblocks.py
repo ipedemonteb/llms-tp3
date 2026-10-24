@@ -128,6 +128,43 @@ def test_long_outputs_are_cut():
     assert lines == ["print_table()", "# fila 0", "# fila 1", "# fila 2", "# fila 3", "# fila 4", "# ..."]
 
 
+def test_ellipsis_inside_output_is_output():
+    # requests: un JSON impreso y recortado con `...` no es continuación de código
+    code = ">>> r.json()\n{\n  ...\n  'key': 'value'\n}\n>>> r.status_code\n200"
+    assert convert_console(code, "outputs_as_comments") == (
+        "r.json()\n# {\n#   ...\n#   'key': 'value'\n# }\nr.status_code\n# 200")
+
+
+def test_comment_lines_in_output_are_not_doubled():
+    # rapidfuzz: comentarios del autor entre el código y su salida
+    code = '>>> fuzz.token_set_ratio("a b", "b a")\n# Returns 100.0 if one string is a subset\n100.0'
+    out = convert_console(code, "outputs_as_comments")
+    assert "# Returns 100.0" in out and "# # Returns" not in out
+
+
+def test_sqlalchemy_markers_in_console():
+    # sqlalchemy: el SQL entre {execsql} y {stop} es salida; las marcas se quitan
+    code = (">>> session.flush()\n{execsql}BEGIN (implicit)\nINSERT INTO user_account (name) VALUES (?)\n"
+            "[...] ('squidward',){stop}\n>>> result.all()\n{stop}[('hello',)]")
+    lang, out = process_block("pycon+sql", code)
+    assert lang == "python" and "{" not in out.replace("{'", "")
+    assert out == ("session.flush()\n# BEGIN (implicit)\n# INSERT INTO user_account (name) VALUES (?)\n"
+                   "# [...] ('squidward',)\nresult.all()\n# [('hello',)]")
+
+
+def test_sqlalchemy_markers_in_python_block():
+    # bloque python+sql sin prompts: el SQL generado queda como comentario, no como código suelto
+    code = "stmt = select(User)\nprint(stmt)\n{printsql}SELECT user_account.id\nFROM user_account{stop}\nx = 1"
+    lang, out = process_block("python+sql", code)
+    assert lang == "python"
+    assert out == "stmt = select(User)\nprint(stmt)\n# SELECT user_account.id\n# FROM user_account\nx = 1"
+
+
+@pytest.mark.parametrize("declared, expected", [("commandline", "bash"), ("cli", "bash"), ("xmp", "text")])
+def test_more_aliases(declared, expected):
+    assert normalize_lang(declared) == expected
+
+
 def test_ipython_session():
     code = "In [1]: import pandas as pd\n\nIn [2]: pd.Timedelta('1 days')\nOut[2]: Timedelta('1 days 00:00:00')"
     assert convert_console(code, "outputs_as_comments") == (

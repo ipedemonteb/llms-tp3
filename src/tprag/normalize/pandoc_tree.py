@@ -19,16 +19,14 @@ from dataclasses import dataclass, field
 import pypandoc
 
 from .codeblocks import ConsoleMode, normalize_lang, process_block
-from .prepass import prepass_md, prepass_rst
+from .prepass import expand_alias, prepass_md, prepass_rst, role_text as _role_text
 
-# Markdown sin las extensiones que cambian el texto: comillas tipográficas, emojis (`:tada:`) y fórmulas con `$`
-# (en la doc, `$` suele ser el prompt de una terminal o un precio).
-MD_FORMAT = "commonmark_x-smart-emoji-tex_math_dollars"
+# Markdown sin las extensiones que cambian el texto: comillas tipográficas, emojis (`:tada:`), y superíndices y
+# subíndices (`z^*…^*` en una fórmula se volvía <sup>). Las fórmulas `$…$` sí se leen como fórmulas: así no se
+# rompen (transformers, torch); un `$` de terminal o de precio no cumple las reglas de apertura y cierre.
+MD_FORMAT = "commonmark_x-smart-emoji-superscript-subscript"
 MD_ESCAPE = re.compile(r"\\([\[\]<>$_*~])")
 
-API_ROLES = {"func", "meth", "class", "attr", "exc", "data", "mod", "obj", "const", "type", "member", "var",
-             "macro", "function", "method", "property", "decorator", "deco"}
-TEXT_ROLES = {"ref", "doc", "term", "numref", "download", "abbr", "menuselection", "guilabel", "title-reference"}
 ADMONITIONS = {"note": "Note", "warning": "Warning", "tip": "Tip", "hint": "Hint", "important": "Important",
                "caution": "Caution", "attention": "Attention", "danger": "Danger", "error": "Error",
                "seealso": "See also", "admonition": "Note",
@@ -41,6 +39,7 @@ HTML_TAG = re.compile(r"<[^>]+>")
 SCREENSHOT_BLOCKS = {"textual"}
 # Etiquetas de formato dentro de ejemplos de terminal (los `<font color=…>` de fastapi), no de código Python.
 HTML_STYLE_TAG = re.compile(r"</?(font|span|b|strong|i|em|u)\b[^>]*>", re.I)
+TERMINAL_LANGS = {"console", "bash", "text", "powershell", "batch", "doscon", "cmd", "commandline"}
 VERSIONS = {"versionadded": "New in version", "versionchanged": "Changed in version",
             "deprecated": "Deprecated since version", "versionremoved": "Removed in version"}
 DROPPED_DIVS = {"module", "currentmodule", "highlight", "toctree", "index", "autosummary", "contents",
@@ -77,10 +76,12 @@ def to_markdown(tree: dict) -> str:
         if m and (fence is None or m.group(1).startswith(fence)):
             fence = None if fence else m.group(1)
         elif fence is None:
+            if line.strip() == "<!-- -->":  # pandoc lo pone para separar listas (quedan al sacar imágenes)
+                continue
             # pandoc escapa caracteres para que el Markdown se vea bien al renderizarlo (`\[`, `\<`, `\$`…); este
             # texto lo leen un modelo de embeddings y un LLM, así que el `\` es ruido. `\|` (tablas) y `` \` ``
-            # (código en línea) se dejan.
-            line = MD_ESCAPE.sub(r"\1", line)
+            # (código en línea) se dejan. Un `\` al final de la línea es un salto de línea forzado: también se saca.
+            line = re.sub(r"(?<!\\)\\$", "", MD_ESCAPE.sub(r"\1", line))
         out.append(line.rstrip())
     return "\n".join(out).strip() + "\n"
 
@@ -108,8 +109,8 @@ def stringify(node) -> str:
         return c
     if t in ("Space", "SoftBreak", "LineBreak"):
         return " "
-    if t in ("Code", "CodeBlock"):
-        return c[1]
+    if t in ("Code", "CodeBlock", "Math", "RawInline"):  # Math: [tipo, fórmula]; sin esto, un párrafo con solo
+        return c[1] if t != "RawInline" else ""          # una fórmula parecía vacío y se eliminaba
     return stringify(c)
 
 
@@ -117,20 +118,27 @@ def _classes(attr) -> list[str]:
     return attr[1]
 
 
-def _role_text(role: str, text: str) -> tuple[str, bool]:
-    """(texto a mostrar, si va como código) de una referencia de Sphinx."""
-    m = re.match(r"^(.*?)\s*<([^<>]+)>$", text, re.S)
-    title, target = (m.group(1).strip(), m.group(2).strip()) if m else (None, text.strip())
-    role = role.split(":")[-1]  # py:class → class
-    if role in API_ROLES:
-        return target.lstrip("~!."), True  # nombre completo: librería y módulo dentro del texto
-    if role == "pep":
-        return f"PEP {target}", False
-    if role == "rfc":
-        return f"RFC {target}", False
-    if role in TEXT_ROLES:
-        return (title or target).lstrip("~!"), False
-    return (title or target).lstrip("~!"), True  # envvar, setting, file, command, option, kbd…
+def _flatten(blocks: list[dict]) -> list[dict]:
+    """Bloques de una celda de tabla como una sola línea de inlines (sin procesar todavía)."""
+    out: list[dict] = []
+    for b in blocks:
+        t, c = b["t"], b.get("c")
+        if t in ("Para", "Plain"):
+            part = [{"t": "Space"} if x["t"] in ("SoftBreak", "LineBreak") else x for x in c]
+        elif t == "CodeBlock":
+            part = [{"t": "Code", "c": [["", [], []], " ".join(c[1].split())]}]
+        elif t in ("BulletList", "OrderedList"):
+            items = c if t == "BulletList" else c[1]
+            part = []
+            for item in items:
+                part += ([{"t": "Str", "c": ";"}, {"t": "Space"}] if part else []) + _flatten(item)
+        elif t in ("Div", "BlockQuote"):
+            part = _flatten(c[1] if t == "Div" else c)
+        else:
+            part = _str(stringify(b))
+        if part:
+            out += ([{"t": "Space"}] if out else []) + part
+    return out
 
 
 # --- transformaciones -------------------------------------------------------------------------------
@@ -162,7 +170,12 @@ class _Transformer:
         if t in ("Image", "RawInline"):
             return []
         if t == "Span":
+            if "title-ref" in _classes(c[0]):
+                # `texto` sin rol en rst: Sphinx usa el rol por defecto (py:obj o any) y lo muestra como código
+                return [{"t": "Code", "c": [["", [], []], expand_alias(stringify(c[1]).lstrip("~!"))]}]
             return self.inlines(c[1])
+        if t in ("Superscript", "Subscript"):  # `2<sup>31</sup>` en HTML → `2^31`, más legible como texto
+            return [{"t": "Str", "c": ("^" if t == "Superscript" else "_") + stringify(c)}]
         if t in ("Emph", "Strong", "Strikeout", "Superscript", "Subscript", "SmallCaps", "Underline"):
             return [{"t": t, "c": self.inlines(c)}]
         if t == "Quoted":
@@ -199,8 +212,11 @@ class _Transformer:
             if normalize_lang(declared) in SCREENSHOT_BLOCKS:  # el sitio muestra una captura, no el texto del bloque
                 self.dropped[f"captura ({normalize_lang(declared)})"] += 1
                 return []
+            if not text.strip():  # p. ej. un snippet de textual (.tcss) que no se pudo resolver
+                self.dropped["bloque vacío"] += 1
+                return []
             lang, code = process_block(declared, text, self.console_mode)
-            if lang != "python" and HTML_STYLE_TAG.search(code):
+            if lang in TERMINAL_LANGS and HTML_STYLE_TAG.search(code):  # en un bloque html, <span> es el ejemplo
                 code = html.unescape(HTML_STYLE_TAG.sub("", code))
             self.block_langs.append(lang)
             return [{"t": "CodeBlock", "c": [["", [lang] if lang else [], []], code]}]
@@ -231,31 +247,39 @@ class _Transformer:
                 return []
             return [{"t": "Para", "c": _str(text)}]
         if t == "Table":
-            return [self.table(node)]
+            return self.table(node)
         if t == "LineBlock":
             return [{"t": t, "c": [self.inlines(line) for line in c]}]
         return [node]
 
-    def table(self, node: dict) -> dict:
-        """Aplica las mismas transformaciones a los bloques e inlines de las celdas, en orden."""
-        block_types = {"Para", "Plain", "CodeBlock", "Div", "BlockQuote", "BulletList", "OrderedList"}
-        inline_types = {"Code", "Link", "Image", "Span", "RawInline"}
+    def table(self, node: dict) -> list[dict]:
+        """Tabla simple, que Markdown de GitHub puede escribir como tabla (`| a | b |`).
 
-        def walk(x):
-            if isinstance(x, list):
-                out = []
-                for y in x:
-                    if isinstance(y, dict) and y.get("t") in block_types:
-                        out.extend(self.block(y))
-                    elif isinstance(y, dict) and y.get("t") in inline_types:
-                        out.extend(self.inline(y))
-                    else:
-                        out.append(walk(y))
-                return out
-            if isinstance(x, dict):
-                return {k: walk(v) for k, v in x.items()}
-            return x
-        return walk(node)
+        Si una celda tiene varios párrafos, un bloque de código, una lista o celdas combinadas, pandoc escribe la tabla
+        entera en HTML (`<table><td><span class="math inline">…`): 47 tablas en 33 archivos. Se aplana cada celda a una
+        línea (conservando código, fórmulas y notas en línea), las celdas combinadas pasan a simples y el título de la
+        tabla va como párrafo antes. Los bloques de código de las celdas pasan a código en línea y no se numeran.
+        """
+        _, caption, colspecs, thead, tbodies, tfoot = node["c"]
+        ncols = len(colspecs)
+        empty_attr = ["", [], []]
+
+        def cell(c):
+            return [empty_attr, c[1], 1, 1, [{"t": "Plain", "c": self.inlines(_flatten(c[4]))}]]
+
+        def row(r):
+            cells = [cell(c) for c in r[1]][:ncols]
+            cells += [[empty_attr, {"t": "AlignDefault"}, 1, 1, []] for _ in range(ncols - len(cells))]
+            return [empty_attr, cells]
+
+        head = [row(r) for r in thead[1]]
+        body = [row(r) for b in tbodies for r in b[2] + b[3]] + [row(r) for r in tfoot[1]]
+        if not head and body:  # sin encabezado no hay tabla de Markdown: la primera fila pasa a serlo
+            head, body = body[:1], body[1:]
+        specs = [[spec[0], {"t": "ColWidthDefault"}] for spec in colspecs]
+        simple = {"t": "Table", "c": [empty_attr, [None, []], specs, [empty_attr, head],
+                                      [[empty_attr, 0, [], body]], [empty_attr, []]]}
+        return self.blocks(caption[1]) + [simple]
 
     def div(self, attr, content: list[dict]) -> list[dict]:
         classes = _classes(attr)
@@ -268,6 +292,9 @@ class _Transformer:
             if content and content[0]["t"] == "Div" and "title" in _classes(content[0]["c"][0]):
                 label = stringify(content[0]["c"][1]).strip() or label
                 content = content[1:]
+            elif cls == "admonition" and content and content[0]["t"] in ("Para", "Plain"):
+                # `.. admonition:: Django's Time Zone` (rst): el título llega como primer párrafo
+                label, content = stringify(content[0]["c"]).strip() or label, content[1:]
             return self._labeled(label, self.blocks(content))
         if cls in VERSIONS:
             body = self.blocks(content)

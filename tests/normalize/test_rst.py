@@ -116,6 +116,54 @@ def test_template_placeholder_paragraph_is_dropped_but_not_in_code():
     assert norm.dropped["variable de plantilla"] == 1
 
 
+def test_default_role_is_code():
+    # flask, scikit-learn: `texto` sin rol se ve como código en el sitio
+    out = md("Use `TimeSeriesSplit` with `extrapolation=\"periodic\"`.\n")
+    assert '`TimeSeriesSplit`' in out and '`extrapolation="periodic"`' in out
+
+
+def test_sqlalchemy_reference_aliases():
+    out = md("Use :class:`_orm.Session` and :meth:`_sql.Select.where`, or :class:`~sqlalchemy.Integer`.\n")
+    assert "`sqlalchemy.orm.Session`" in out and "`sqlalchemy.sql.Select.where`" in out
+    assert "`sqlalchemy.Integer`" in out and "_orm" not in out
+    # :paramref: (parámetros) y `texto` sin rol también llevan alias
+    out = md("See :paramref:`_orm.relationship.foreign_keys` and `_orm.Session`.\n")
+    assert "`sqlalchemy.orm.relationship.foreign_keys`" in out and "`sqlalchemy.orm.Session`" in out
+
+
+def test_superscript_as_text():
+    # pandas: `2\ :sup:`31`` bytes → 2^31 (pandoc lo escribía como <sup>31</sup>)
+    out = md("Chunks up to 2\\ :sup:`31` bytes and H\\ :sub:`2`\\ O.\n")
+    assert "2^31 bytes" in out and "H_2O" in out and "<sup>" not in out
+
+
+def test_admonition_with_custom_title():
+    # django: `.. admonition:: Django's Time Zone` → el título es la etiqueta
+    out = md(".. admonition:: Django's Time Zone\n\n   Django includes a TIME_ZONE setting.\n")
+    assert "**Django's Time Zone:** Django includes a TIME_ZONE setting." in out
+
+
+def test_complex_table_is_written_as_markdown_not_html():
+    # scikit-learn svm.rst, pandas io.rst, torch: celdas con varios párrafos, fórmulas o código → pandoc escribía HTML
+    text = ("+------+--------------------+\n"
+            "| Name | Description        |\n"
+            "+======+====================+\n"
+            "| x    | para one           |\n"
+            "|      |                    |\n"
+            "|      | para two           |\n"
+            "+------+--------------------+\n"
+            "| y    | uses :math:`a^2`   |\n"
+            "+------+--------------------+\n"
+            "| z    | ::                 |\n"
+            "|      |                    |\n"
+            "|      |     f(1)           |\n"
+            "+------+--------------------+\n")
+    norm = normalize_rst(text)
+    assert "<table" not in norm.markdown and "<td" not in norm.markdown
+    assert "| x" in norm.markdown and "para one para two" in norm.markdown and "a^2" in norm.markdown
+    assert "`f(1)`" in norm.markdown and norm.block_langs == []  # el código de la celda no se numera
+
+
 def test_definition_list_becomes_bold_term():
     out = md("term\n   Its definition.\n")
     assert "**term**" in out and "Its definition." in out

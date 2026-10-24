@@ -15,6 +15,8 @@ NOTEBOOK = json.dumps({
         {"cell_type": "markdown", "source": ["# Reading data\n", "\n", "Load a CSV with `read_csv`."]},
         {"cell_type": "code", "source": ["import pandas as pd\n", "df = pd.read_csv('data.csv')"], "outputs": []},
         {"cell_type": "raw", "source": [".. toctree::"]},
+        {"cell_type": "code", "source": ["# Hidden cell to avoid CSS clashes"], "metadata": {"nbsphinx": "hidden"}},
+        {"cell_type": "code", "source": ["setup_plots()"], "metadata": {"tags": ["remove-cell"]}},
         {"cell_type": "code", "source": [], "outputs": []},
     ],
 })

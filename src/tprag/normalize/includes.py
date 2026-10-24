@@ -7,7 +7,8 @@ Lo usan dos lados, por eso vive acá:
   calcula qué archivos son destino de una inclusión, que entonces no se procesan como documento propio (§3.3, 3b).
 
 Sintaxis: `.. literalinclude::` / `.. include::` (rst), ```` ```{literalinclude} ```` / ```` ```{include} ````
-(MyST), `{* archivo.py hl[…] ln[a:b] *}` (fastapi, typer) y `--8<-- "archivo"` (snippets de MkDocs, textual).
+(MyST), `{* archivo.py hl[…] ln[a:b] *}` (fastapi, typer), `--8<-- "archivo"` (snippets de MkDocs, textual) y
+`$code_nombre` (gradio: demo/nombre/run.py).
 """
 
 import ast
@@ -29,9 +30,16 @@ EXT_LANG = {".py": "python", ".toml": "toml", ".cfg": "ini", ".ini": "ini", ".js
 MAX_DEPTH = 5  # inclusiones anidadas (también corta ciclos: A incluye B, B incluye A)
 
 
+# gradio: `$code_hello_world_4` en una guía se publica como el código de demo/hello_world_4/run.py;
+# `$demo_hello_world_4` es la app embebida (no es texto).
+GRADIO_CODE = re.compile(r"^\s*\$code_(\w+)\s*$", re.M)
+GRADIO_DEMO = re.compile(r"^\s*\$demo_\w+\s*$")
+
+
 def include_targets(text: str) -> list[str]:
     """Rutas que el archivo incluye, tal como están escritas (sin rango de líneas de los snippets)."""
-    return [_strip_range(m.strip("'\"")) for p in INCLUDE_PATTERNS for m in p.findall(text)]
+    found = [_strip_range(m.strip("'\"")) for p in INCLUDE_PATTERNS for m in p.findall(text)]
+    return found + [f"demo/{name}/run.py" for name in GRADIO_CODE.findall(text)]
 
 
 def _strip_range(target: str) -> str:
@@ -285,6 +293,19 @@ def _md(lines: list[str], page: str, corpus: Corpus, res: Resolved, depth: int) 
                 content = content.strip("\n")
                 ticks = _fence(content)
                 out += [f"{indent}{ticks}{_lang({}, rel)}", *content.split("\n"), f"{indent}{ticks}"]
+            i += 1
+            continue
+
+        m = GRADIO_CODE.match(line) if fence is None else None
+        if m:  # gradio: $code_nombre → el código de demo/nombre/run.py
+            content, rel = _load(f"demo/{m.group(1)}/run.py", page, corpus, res)
+            if content is not None:
+                content = content.strip("\n")
+                ticks = _fence(content)
+                out += [f"{ticks}python", *content.split("\n"), ticks]
+            i += 1
+            continue
+        if fence is None and GRADIO_DEMO.match(line):  # app embebida: el lector ve la app, no texto
             i += 1
             continue
 

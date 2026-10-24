@@ -83,19 +83,19 @@ def test_output_inside_raw_is_refused():
         mode_dir("outputs_as_comments", RAW_DIR / "requests")
 
 
-def test_clean_readme_changelog_with_version_titles():
-    # pydantic: "## Changelog" seguido de "## v2.14.1 (2026-10-11)", "## v2.14.0 …", todos del mismo nivel
-    md = ("# pydantic\n\nValidation.\n\n## Reporting a Security Vulnerability\n\nSee policy.\n\n"
-          "## Changelog\n\n## v2.14.1 (2026-10-11)\n\n- Fix.\n\n## v2.14.0 (2026-10-08)\n\n- Feature.\n\n"
-          "## Usage\n\nMore text.\n")
+def test_clean_readme_changelog_is_cut_to_the_end():
+    # pydantic: "## Changelog" seguido de "## v2.14.1 (2026-10-11)", "## New Contributors"… todo del mismo nivel
+    md = ("# pydantic\n\nValidation.\n\n## Reporting a Security Vulnerability\n\nSee policy.\n\n## Usage\n\n"
+          "More text.\n\n## Changelog\n\n## v2.14.1 (2026-10-11)\n\n- Fix.\n\n## New Contributors\n\n- someone\n\n"
+          "## v2.11.0a2 (2025-02-10)\n\n- Feature.\n")
     out = clean_readme(md, "md")
     assert "Validation." in out and "More text." in out
-    assert "policy" not in out and "v2.14" not in out and "Fix." not in out and "Feature." not in out
+    assert "policy" not in out and "Fix." not in out and "someone" not in out and "Feature." not in out
 
 
 def test_clean_readme_rst_and_code():
-    rst = "lib\n===\n\nUsage.\n\nChangelog\n---------\n\n1.0 first.\n\nExamples\n--------\n\nMore usage.\n"
+    rst = "lib\n===\n\nUsage.\n\nContributing\n------------\n\nOpen a PR.\n\nExamples\n--------\n\nMore usage.\n"
     out = clean_readme(rst, "rst")
-    assert "Usage." in out and "More usage." in out and "1.0 first." not in out
+    assert "Usage." in out and "More usage." in out and "Open a PR." not in out
     md = "# lib\n\n```python\n# License: this comment is code\nx = 1\n```\n"
     assert clean_readme(md, "md") == md  # un `# License` dentro de un bloque de código no es un título

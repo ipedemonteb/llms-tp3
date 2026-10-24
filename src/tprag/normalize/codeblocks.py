@@ -24,6 +24,7 @@ LANG_ALIASES = {
     "pycon": "pycon", "python-console": "pycon", "pycon+sql": "pycon", "doctest": "pycon",
     "sh": "bash", "shell": "bash", "zsh": "bash",
     "console": "console", "shell-session": "console", "sh-session": "console", "pytest": "console",
+    "commandline": "bash", "cli": "bash", "xmp": "text",  # hydra, transformers
     "none": "text", "plain": "text", "plaintext": "text", "txt": "text", "default": "text",
     "yml": "yaml", "jsonc": "json", "json5": "json",
     "html+django": "html", "html+jinja": "html", "django": "html", "jinja": "html",
@@ -45,6 +46,8 @@ CONFIG_SECTION = re.compile(r'^\s*\[{1,2}[\w.\-]+(?:\s+"[^"]*")?\]{1,2}\s*$')  #
 CONFIG_LINE = re.compile(r"^\s*(?:[#;].*|[\w.\-]+\s*[=:].*|\s+\S.*|[\]\}],?)\s*$")
 ENV_LINE = re.compile(r"^\s*(?:export\s+)?[A-Z][A-Z0-9_]*=\S*")
 TRACEBACK = re.compile(r"^\s*Traceback \(most recent call last\):")
+SQL_START = re.compile(r"\{(execsql|printsql|opensql|sql)\}")  # sqlalchemy
+SQL_MARKER = re.compile(r"\{(execsql|printsql|opensql|sql|stop)\}")
 
 # "Forma de código": sin esto, salidas como `{'page': 0}` o una palabra suelta contarían como Python.
 CODE_SHAPE = (ast.Import, ast.ImportFrom, ast.Assign, ast.AugAssign, ast.AnnAssign, ast.FunctionDef,
@@ -135,28 +138,61 @@ def convert_console(code: str, mode: ConsoleMode, max_output_lines: int = MAX_OU
     if mode == "as_is":
         return code
     out, run = [], 0  # run: líneas de salida seguidas ya emitidas
+    in_code = False  # la última línea con contenido fue código (para distinguir `...` de continuación y de salida)
     for line in textwrap.dedent(code).splitlines():
         bare = line.lstrip()
-        if PROMPT.match(bare) or IPY_IN.match(bare) or IPY_CONT.match(line):
+        continuation = bare.startswith("...") and (PROMPT.match(bare) or IPY_CONT.match(line))
+        if (PROMPT.match(bare) and not continuation) or IPY_IN.match(bare) or (continuation and in_code):
+            # Un `...` solo continúa código si viene después de código; después de una salida es parte de ella
+            # (requests: un JSON impreso y recortado con `...`).
             out.append(re.sub(r"^\s*(?:>>>|\.\.\.+:?|In \[\d*\]:) ?", "", line, count=1))
-            run = 0
+            run, in_code = 0, True
         elif not bare:
             out.append("")
             run = 0
-        elif mode == "outputs_as_comments":
+        else:
+            in_code = False
+            if mode != "outputs_as_comments":
+                continue
             value = IPY_OUT.sub("", bare) if IPY_OUT.match(bare) else line.rstrip()
             if run < max_output_lines:
-                out.append(f"# {value}")
+                out.append(value if value.lstrip().startswith("#") else f"# {value}")  # ya es comentario: sin `# #`
             elif run == max_output_lines:
                 out.append("# ...")
             run += 1
     return "\n".join(out).strip("\n")
 
 
+def strip_sql_markers(code: str, comment_sql: bool) -> str:
+    """sqlalchemy: `{execsql}SELECT …` / `{printsql}` / `{opensql}` / `{sql}` marcan el SQL que genera el código,
+    hasta `{stop}`. En el sitio se ve como salida. En la consola el SQL ya queda como salida (no tiene prompt): solo
+    se quitan las marcas. En un bloque Python sin prompts, el SQL se pasa a comentario."""
+    out, in_sql = [], False
+    for line in code.split("\n"):
+        start = SQL_START.search(line)
+        if start:
+            before, line, in_sql = line[:start.start()], line[start.end():], True
+            if before.strip():
+                out.append(before.rstrip())
+        stop = line.find("{stop}")
+        sql_part, after = (line[:stop], line[stop + 6:]) if stop >= 0 else (line, None)
+        if in_sql and sql_part.strip():
+            out.append(f"# {sql_part.strip()}" if comment_sql else sql_part)
+        elif not in_sql and (sql_part.strip() or stop < 0):  # `{stop}…` al principio no deja una línea vacía
+            out.append(sql_part)
+        if stop >= 0:
+            in_sql = False
+            if after and after.strip():
+                out.append(after)
+    return "\n".join(out)
+
+
 def process_block(declared: str | None, code: str, console_mode: ConsoleMode = "outputs_as_comments"
                   ) -> tuple[str, str]:
     """(lenguaje final, código final) de un bloque."""
     lang = resolve_lang(declared, code)
+    if SQL_MARKER.search(code):
+        code = strip_sql_markers(code, comment_sql=lang == "python")
     if lang == "pycon" and console_mode != "as_is":
         return "python", convert_console(code, console_mode)
     return lang, code

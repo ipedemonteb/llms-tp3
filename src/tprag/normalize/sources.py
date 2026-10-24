@@ -19,6 +19,8 @@ from .pandoc_tree import Normalized, normalize_md, normalize_rst
 
 # --- Notebooks ----------------------------------------------------------------------------------------
 
+HIDDEN_TAGS = {"remove-cell", "remove_cell", "remove-input", "remove_input"}  # jupyter-book (hide-*: se ve con un clic)
+
 
 def notebook_to_md(raw: str) -> str:
     nb = json.loads(raw)
@@ -26,8 +28,9 @@ def notebook_to_md(raw: str) -> str:
     parts = []
     for cell in nb.get("cells", []):
         src = "".join(cell.get("source", [])) if isinstance(cell.get("source"), list) else cell.get("source", "")
-        if not src.strip():
-            continue
+        meta = cell.get("metadata", {})
+        if not src.strip() or meta.get("nbsphinx") == "hidden" or HIDDEN_TAGS & set(meta.get("tags", [])):
+            continue  # celdas que el sitio no muestra (pandas: "Hidden cell to avoid CSS clashes…")
         if cell.get("cell_type") == "markdown":
             parts.append(src.strip("\n"))
         elif cell.get("cell_type") == "code":

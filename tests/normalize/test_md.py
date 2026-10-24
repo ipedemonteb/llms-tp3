@@ -91,6 +91,42 @@ def test_myst_doctest_argument_is_not_the_language():
     assert norm.block_langs == ["python"] and "namedtuples" not in norm.markdown
 
 
+def test_myst_directive_inside_list_item_keeps_indentation():
+    # attrs: un ```{doctest} dentro de un ítem de lista se rompía y se tragaba el título siguiente
+    text = ("- Expose `field` wrappers:\n\n   ```{doctest}\n   >>> def typed(cls):\n   ...     return cls\n"
+            "   ```\n\n## Automatic Field Transformation\n\nText.\n")
+    norm = normalize_md(text)
+    assert norm.block_langs == ["python"]
+    # el bloque queda dentro del ítem de la lista (indentado) y el título siguiente, fuera del bloque
+    assert "  def typed(cls):\n      return cls\n  ```\n\n## Automatic Field Transformation" in norm.markdown
+
+
+def test_myst_roles_and_labels():
+    out = md("(extending-metadata)=\n\n## Metadata\n\nUse {func}`attrs.define`, {class}`~attrs.Attribute` "
+             "and see {pep}`681` or {ref}`the docs <metadata>`.\n")
+    assert "`attrs.define`" in out and "`attrs.Attribute`" in out and "PEP 681" in out and "the docs" in out
+    assert "{func}" not in out and "(extending-metadata)=" not in out
+
+
+def test_mkdocs_autorefs_keep_text_but_not_indexing():
+    out = md("Use [`Annotated`][typing.Annotated] and [model_validate()][pydantic.BaseModel.model_validate].\n\n"
+             "Index with `x[0][1]` or d[a][b].\n")
+    assert "`Annotated` and model_validate()." in out and "typing.Annotated" not in out
+    assert "`x[0][1]`" in out and "d[a][b]" in out
+
+
+def test_empty_code_block_is_dropped():
+    # textual: snippet .tcss que no se pudo resolver → bloque vacío
+    norm = normalize_md("Text.\n\n```css\n```\n\n```python\nApp().run()\n```\n")
+    assert norm.block_langs == ["python"] and "``` css" not in norm.markdown
+
+
+def test_html_code_block_keeps_its_tags():
+    # playwright: en un bloque html, <span> es el ejemplo; en la terminal de fastapi, <font> es ruido
+    out = md('```html\n<span title="Issues count">25 issues</span>\n```\n\n```console\n$ <font color="red">run</font>\n```\n')
+    assert '<span title="Issues count">25 issues</span>' in out and "$ run" in out
+
+
 def test_myst_dropped_directives():
     out = md("```{toctree}\n:maxdepth: 2\n\nintro\nguide\n```\n\nText.\n")
     assert "maxdepth" not in out and "guide" not in out and "Text." in out
@@ -176,6 +212,54 @@ def test_textual_screenshot_blocks_are_dropped():
     norm = normalize_md('Text.\n\n```{.textual path="docs/examples/guide/dom1.py"}\n```\n\n```python\nApp().run()\n```\n')
     assert "dom1.py" not in norm.markdown
     assert norm.block_langs == ["python"]  # la captura no entra en la numeración
+
+
+# --- Hugging Face (transformers) ------------------------------------------------------------------
+
+def test_hf_tabs_tips_links_and_autodoc():
+    text = ("[[open-in-colab]]\n\nUse the [`Pipeline`] or [`~GenerationMixin.generate`] API.\n\n"
+            '<hfoptions id="install">\n<hfoption id="pip">\n```bash\npip install transformers\n```\n</hfoption>\n'
+            '<hfoption id="uv">\n```bash\nuv pip install transformers\n```\n</hfoption>\n</hfoptions>\n\n'
+            "<Tip warning={true}>\n\nLarge models need a GPU.\n\n</Tip>\n\n## AutoModel\n\n[[autodoc]] AutoModel\n"
+            "    - from_pretrained\n    - save_pretrained\n\nEnd.\n")
+    norm = normalize_md(text)
+    out = norm.markdown
+    assert "open-in-colab" not in out and "[[autodoc]]" not in out and "from_pretrained" not in out
+    assert "`Pipeline`" in out and "`GenerationMixin.generate`" in out and "[`" not in out
+    assert "**Tab: pip**" in out and "**Tab: uv**" in out and "<hfoption" not in out
+    assert norm.block_langs == ["bash", "bash"]
+    assert "**Warning:** Large models need a GPU." in out and "End." in out
+
+
+# --- streamlit, gradio ----------------------------------------------------------------------------
+
+def test_streamlit_components():
+    text = ('<InlineCalloutContainer>\n    <InlineCallout color="red" href="/x">Go somewhere</InlineCallout>\n'
+            "</InlineCalloutContainer>\n\n"
+            "<Important>\n\n    Forms rerun the app <i style={{ verticalAlign: \"-.25em\" }} "
+            'className={{ class: "material-icons-sharp" }}>warning</i> on submit.\n\n</Important>\n\n'
+            '<Collapse title="Example">\n\n```python\nst.form("f")\n```\n\n</Collapse>\n\n'
+            '<Image src="/img.png" clean />\n\nEnd.\n')
+    norm = normalize_md(text)
+    out = norm.markdown
+    assert "Go somewhere" not in out and "<" not in out.replace("<!--", "")
+    assert "**Important:** Forms rerun the app on submit." in out  # sin bloque de código falso
+    assert "**Example**" in out and norm.block_langs == ["python"] and "End." in out
+
+
+def test_gradio_metadata_lines_are_dropped():
+    out = md("# Quickstart\n\nTags: GETTING STARTED, INTRO\nRelated spaces: https://x\n\nGradio is a library.\n")
+    assert "Tags" not in out and "Related spaces" not in out and "Gradio is a library." in out
+
+
+# --- Fórmulas y artefactos de pandoc --------------------------------------------------------------
+
+def test_math_is_not_mangled():
+    # transformers, torch: `z^*` se volvía <sup>; y un párrafo con solo una fórmula ($$…$$) desaparecía
+    out = md("The loss is $z^*_i = x^*$ and\n\n$$\\left\\{ a \\right\\}$$\n\nwith a\\\nhard break.\n")
+    assert "<sup>" not in out and "z^*_i = x^*" in out  # en Markdown de GitHub: $`z^*_i = x^*`$
+    assert "\\left\\{ a \\right\\}" in out
+    assert "a\\\n" not in out and "with a\nhard break." in out
 
 
 # --- HTML -----------------------------------------------------------------------------------------
