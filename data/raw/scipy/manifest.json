@@ -975,6 +975,11 @@
       "path": "doc/source/tutorial/thread_safety.rst",
       "kind": "tutorial",
       "format": "rst"
+    },
+    {
+      "path": "doc/source/tutorial/examples/newton_krylov_preconditioning.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

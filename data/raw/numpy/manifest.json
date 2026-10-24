@@ -400,6 +400,31 @@
       "path": "doc/ufuncs.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "numpy/f2py/tests/util.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/source/f2py/code/CMakeLists_skbuild.txt",
+      "kind": "included",
+      "format": "rst"
+    },
+    {
+      "path": "doc/source/f2py/code/setup_skbuild.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/source/f2py/code/CMakeLists.txt",
+      "kind": "included",
+      "format": "rst"
+    },
+    {
+      "path": "benchmarks/README.rst",
+      "kind": "included",
+      "format": "rst"
     }
   ]
 }

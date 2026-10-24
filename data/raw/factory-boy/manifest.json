@@ -55,6 +55,16 @@
       "path": "docs/reference.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "examples/django_demo/generic_foreignkey/models.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/django_demo/generic_foreignkey/factories.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

@@ -45,6 +45,11 @@
       "path": "docs/rrule.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "docs/exercises/solutions/mlk_day_rrule_solution.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

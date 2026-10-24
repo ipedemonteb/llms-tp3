@@ -4,9 +4,14 @@ Uso:
     uv run python src/scripts/fetch_raw_docs.py                         # todo el pool de candidatas
     uv run python src/scripts/fetch_raw_docs.py --packages requests pypdf
     uv run python src/scripts/fetch_raw_docs.py --packages python-stdlib   # subconjunto de la stdlib
+    uv run python src/scripts/fetch_raw_docs.py --add-included --packages websockets [--dry-run]
 
 Salida: data/raw/<paquete>/{manifest.json, README.*, <ruta original de la doc>}
         data/raw/index.json (estado y métricas por librería)
+
+--add-included no vuelve a descargar nada: sobre lo ya descargado, baja del commit del manifest los
+archivos que las páginas incluyen (literalinclude, include, {* *}, --8<--) y no están, y los agrega al
+manifest con kind "included". No toca el resto de los archivos, el README, fetched_at ni index.json.
 """
 
 import argparse
@@ -522,7 +527,143 @@ def fetch_stdlib() -> dict:
                     **metrics(package, out, files)}
 
 
+# ---------------------------------------------------------------------------------------------
+# Archivos incluidos por las páginas (--add-included).
+
+# Solo se bajan los que pueden aportar código o texto; imágenes, CSS, Fortran, etc. se ignoran.
+INCLUDE_EXTS = {".py": "py", ".rst": "rst", ".txt": "rst", ".md": "md"}
+INCLUDE_PATTERNS = [
+    re.compile(r"^\s*\.\.\s+(?:literalinclude|include)::\s*(\S+)", re.M),  # reST (también {eval-rst} en MyST)
+    re.compile(r"^\s*(?:`{3,}|:{3,})\{(?:literalinclude|include)\}\s*(\S+)", re.M),  # MyST
+    re.compile(r"^\{\*\s*(\S+?\.py)\b", re.M),  # fastapi y typer
+    re.compile(r"^\s*-{2}8<-{2}\s*\"([^\"]+)\"", re.M),  # MkDocs snippets (textual)
+]
+
+
+def include_targets(text: str) -> list[str]:
+    """Rutas que el archivo incluye, tal como están escritas (sin rango de líneas de los snippets)."""
+    return [re.sub(r"(:\d+){1,2}$", "", m.strip("'\"")) for p in INCLUDE_PATTERNS for m in p.findall(text)]
+
+
+def resolve_include(target: str, including: str, tree: set[str], doc_dirs: list[str]) -> str | None:
+    """Ruta en el repo del archivo incluido. Cada herramienta resuelve desde un lugar distinto (la página,
+    la carpeta de mkdocs.yml, la raíz), así que se prueba desde la carpeta de la página hacia arriba."""
+    base = Path(including).parent
+    if target.startswith("/"):
+        # Sphinx: relativo a la carpeta de conf.py, que puede estar debajo de la de la doc (pytest: doc/en).
+        candidates = [f"{d}/{target.lstrip('/')}" for d in doc_dirs] + [target.lstrip("/")]
+        candidates += [(b / target.lstrip("/")).as_posix() for b in [base, *base.parents]]
+    else:
+        candidates = [(b / target).as_posix() for b in [base, *base.parents]]
+    for c in candidates:
+        c = _normpath(c)
+        if c in tree:
+            return c
+    return None
+
+
+def _normpath(path: str) -> str:
+    """Normaliza una ruta del repo ("a/./b/../c" -> "a/c"); "" si se va fuera del repo."""
+    parts = []
+    for p in path.split("/"):
+        if p == "..":
+            if not parts:
+                return ""  # se va fuera del repo
+            parts.pop()
+        elif p not in ("", "."):
+            parts.append(p)
+    return "/".join(parts)
+
+
+def _git_source(repo: str, commit: str, tmp: str):
+    """(lista de archivos, lector) del repo en ese commit, sin bajar contenidos hasta leerlos."""
+    clone = Path(tmp) / "repo"
+    run(["git", "clone", "--depth", "1", "--filter=blob:none", "--no-checkout", "--quiet", f"https://{repo}",
+         str(clone)])
+    run(["git", "fetch", "--depth", "1", "--quiet", "origin", commit], cwd=clone)
+    tree = set(run(["git", "ls-tree", "-r", "--name-only", commit], cwd=clone).splitlines())
+
+    def read(path: str) -> str:
+        out = subprocess.run(["git", "cat-file", "blob", f"{commit}:{path}"], cwd=clone, check=True,
+                             capture_output=True, timeout=300).stdout
+        return out.decode("utf-8", errors="replace")
+    return tree, read
+
+
+def _heptapod_source(repo: str, commit: str):
+    project = repo.removeprefix(HEPTAPOD)
+    api = f"https://{HEPTAPOD}api/v4/projects/{urllib.parse.quote(project, safe='')}"
+    tree, page = set(), 1
+    while True:
+        with _urlopen_retry(f"{api}/repository/tree?ref={commit}&recursive=true&per_page=100&page={page}",
+                            timeout=60) as resp:
+            items = json.load(resp)
+        if not items:
+            break
+        tree |= {i["path"] for i in items if i["type"] == "blob"}
+        page += 1
+
+    def read(path: str) -> str:
+        url = f"{api}/repository/files/{urllib.parse.quote(path, safe='')}/raw?ref={commit}"
+        with _urlopen_retry(url, timeout=60) as resp:
+            return resp.read().decode("utf-8", errors="replace")
+    return tree, read
+
+
+def add_included(package: str, dry_run: bool) -> dict:
+    out = RAW_DIR / package
+    manifest_path = out / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    entry = {"package": package, "added": [], "unresolved": []}
+    if not manifest.get("commit"):
+        return entry | {"error": "el manifest no tiene commit"}
+    listed = {f["path"] for f in manifest["files"]}
+    queue = [(f["path"], (out / f["path"]).read_text(encoding="utf-8", errors="replace"))
+             for f in manifest["files"] if f["format"] in ("md", "rst")]
+
+    with tempfile.TemporaryDirectory() as tmp:
+        try:
+            if manifest["repo"].startswith(HEPTAPOD):
+                tree, read = _heptapod_source(manifest["repo"], manifest["commit"])
+            else:
+                tree, read = _git_source(manifest["repo"], manifest["commit"], tmp)
+        except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+            return entry | {"error": f"descarga: {getattr(e, 'stderr', '') or e}"}
+
+        # Una página incluida puede incluir otras: se recorre hasta que no aparezcan nuevas.
+        while queue:
+            including, text = queue.pop()
+            for target in include_targets(text):
+                fmt = INCLUDE_EXTS.get(Path(target).suffix.lower())
+                if fmt is None:
+                    continue
+                rel = resolve_include(target, including, tree, manifest.get("docs_dirs", []))
+                if rel is None:
+                    entry["unresolved"].append(f"{including} -> {target}")
+                    continue
+                if rel in listed:
+                    continue
+                listed.add(rel)
+                content = read(rel)
+                if not content.strip() or len(content.encode()) > MAX_FILE_BYTES:
+                    continue
+                entry["added"].append({"path": rel, "kind": "included", "format": fmt})
+                if not dry_run:
+                    dst = out / rel
+                    dst.parent.mkdir(parents=True, exist_ok=True)
+                    dst.write_text(content, encoding="utf-8")
+                if fmt in ("md", "rst"):
+                    queue.append((rel, content))
+
+    if entry["added"] and not dry_run:
+        manifest["files"] += entry["added"]
+        manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return entry
+
+
 def metrics(package: str, out: Path, files: list[dict]) -> dict:
+    # Los incluidos no se miden: las métricas son las que se usaron para elegir las librerías.
+    files = [f for f in files if f["kind"] != "included"]
     names = import_names(package)
     m = {"n_files": len(files), "doc_kb": 0, "kinds": {}, "formats": {},
          "py_blocks": {"readme": 0, "docs": 0}, "use_cases": {"readme": 0, "docs": 0}, "lib_blocks": 0}
@@ -549,7 +690,20 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--packages", nargs="*", help="solo estos paquetes")
     parser.add_argument("--workers", type=int, default=8)
+    parser.add_argument("--add-included", action="store_true",
+                        help="solo bajar los archivos incluidos que faltan (ver docstring)")
+    parser.add_argument("--dry-run", action="store_true", help="con --add-included: mostrar sin escribir")
     args = parser.parse_args()
+
+    if args.add_included:
+        packages = args.packages or sorted(d.name for d in RAW_DIR.iterdir() if (d / "manifest.json").exists())
+        with ThreadPoolExecutor(max_workers=args.workers) as pool:
+            for fut in as_completed([pool.submit(add_included, p, args.dry_run) for p in packages]):
+                e = fut.result()
+                py = [f["path"] for f in e["added"] if f["format"] == "py"]
+                print(f"{e['package']:24} agregados={len(e['added']):4} (py={len(py)}) "
+                      f"sin_resolver={len(e['unresolved']):4} {e.get('error') or ''}", flush=True)
+        return
 
     by_pkg = {p: cat for cat, ps in CANDIDATES.items() for p in ps} | {STDLIB["package"]: STDLIB["category"]}
     targets = {p: by_pkg.get(p, "sin_categoria") for p in (args.packages or by_pkg)}

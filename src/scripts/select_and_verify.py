@@ -73,7 +73,7 @@ PAIRS = {
 DEPRECATED = {"pypdf2", "pypdf4", "fuzzywuzzy", "pycrypto", "nose", "retrying", "xlrd", "python-jose",
               "passlib", "sklearn", "oauth2client", "toml", "mock", "pytz"}
 
-KINDS = {"readme", "quickstart", "tutorial", "guide", "examples", "migration", "docstrings"}
+KINDS = {"readme", "quickstart", "tutorial", "guide", "examples", "migration", "docstrings", "included"}
 FORMATS = {"md", "rst", "ipynb", "py"}
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 

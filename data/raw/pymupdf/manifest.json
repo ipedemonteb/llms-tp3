@@ -420,6 +420,101 @@
       "path": "docs/znames.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "docs/samples/text-lister.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/filmfestival-sql.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/showpdf-page.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/quickfox.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/quickfox-image-no-go.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/table01.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/national-capitals.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/simple-grid.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/code-printer.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/json-example.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/story-write.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/story-write-stabilized.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/story-write-stabilized-links.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/multiprocess-render.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/multiprocess-gui.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/new-annots.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/annotations-freetext1.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/annotations-freetext2.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/samples/annotations-ink.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

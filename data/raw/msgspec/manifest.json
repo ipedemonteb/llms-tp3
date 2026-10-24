@@ -115,6 +115,26 @@
       "path": "docs/why.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "examples/pyproject-toml/pyproject.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/geojson/msgspec_geojson.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/conda-repodata/query_repodata.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/asyncio-kv/kv.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

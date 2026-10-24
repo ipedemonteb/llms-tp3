@@ -320,6 +320,41 @@
       "path": "doc/en/yieldfixture.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "doc/en/example/xfail_demo.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/en/example/multipython.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/en/example/nonpython/conftest.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/en/example/customdirectory/conftest.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/en/example/customdirectory/tests/test_first.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/en/example/customdirectory/tests/test_second.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/en/example/customdirectory/tests/test_third.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

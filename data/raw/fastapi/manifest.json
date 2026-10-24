@@ -2522,6 +2522,16 @@
       "path": "docs_src/wsgi/tutorial001_py310.py",
       "kind": "examples",
       "format": "py"
+    },
+    {
+      "path": "docs_src/bigger_applications/app_an_py310/internal/admin.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "fastapi/openapi/docs.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

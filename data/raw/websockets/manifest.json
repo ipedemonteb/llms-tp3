@@ -240,6 +240,196 @@
       "path": "docs/topics/security.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "experiments/routing.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "experiments/json_log_formatter.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/tutorial/step3/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/tutorial/step3/requirements.txt",
+      "kind": "included",
+      "format": "rst"
+    },
+    {
+      "path": "example/tutorial/step2/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/tutorial/step1/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/quick/server.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/quick/client.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/quick/show_time.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/quick/sync_time.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/quick/counter.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/asyncio/echo.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/sync/echo.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/trio/echo.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/asyncio/hello.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/sync/hello.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/trio/hello.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/tls/server.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/tls/client.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/django/authentication.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/django/signals.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/django/notifications.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/faq/shutdown_server.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/faq/health_check_server.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/faq/shutdown_client.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/supervisor/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/render/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/render/requirements.txt",
+      "kind": "included",
+      "format": "rst"
+    },
+    {
+      "path": "example/deployment/nginx/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/kubernetes/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/kubernetes/benchmark.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/koyeb/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/koyeb/requirements.txt",
+      "kind": "included",
+      "format": "rst"
+    },
+    {
+      "path": "example/deployment/heroku/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/heroku/requirements.txt",
+      "kind": "included",
+      "format": "rst"
+    },
+    {
+      "path": "example/deployment/haproxy/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/fly/app.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "example/deployment/fly/requirements.txt",
+      "kind": "included",
+      "format": "rst"
     }
   ]
 }

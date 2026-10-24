@@ -230,6 +230,141 @@
       "path": "doc/worksheet_tables.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "doc/table.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/write_performance.txt",
+      "kind": "included",
+      "format": "rst"
+    },
+    {
+      "path": "doc/read_performance.txt",
+      "kind": "included",
+      "format": "rst"
+    },
+    {
+      "path": "doc/filters.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/surface.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/stock.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/secondary.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/scatter.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/radar.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/pie.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/pie3D.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/pie-gradient.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/pattern.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/line.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/line3D.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/limits_and_scaling_minmax.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/limits_and_scaling_log.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/limits_and_scaling_orientation.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/gauge.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/doughnut.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/chartsheet.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/chart_layout.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/bubble.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/bar.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/bar3d.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/area.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "doc/charts/area3d.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

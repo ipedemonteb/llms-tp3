@@ -115,6 +115,11 @@
       "path": "docs/webframework.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "demos/webspider/webspider.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

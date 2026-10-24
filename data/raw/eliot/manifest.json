@@ -130,6 +130,61 @@
       "path": "docs/source/scientific-computing.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "examples/dask_eliot.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/linkcheck.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/journald.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/rometrip_actions.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/logfile.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/cross_thread.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/cross_process_client.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/cross_process_server.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/stdlib.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/asyncio_linkcheck.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/trio_say.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

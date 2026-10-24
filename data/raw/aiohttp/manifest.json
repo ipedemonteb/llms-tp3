@@ -185,6 +185,16 @@
       "path": "docs/websocket_utilities.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "THREAT_MODEL.md",
+      "kind": "included",
+      "format": "md"
+    },
+    {
+      "path": "docs/code/client_middleware_cookbook.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

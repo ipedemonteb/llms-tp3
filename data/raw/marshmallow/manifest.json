@@ -120,6 +120,21 @@
       "path": "docs/why.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "examples/package_json_example.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/flask_example.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/inflection_example.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

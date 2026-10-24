@@ -2402,6 +2402,16 @@
       "path": "docs/examples/widgets/vertical_rules.py",
       "kind": "examples",
       "format": "py"
+    },
+    {
+      "path": "examples/pride.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/calculator.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

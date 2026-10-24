@@ -240,6 +240,36 @@
       "path": "docs/userguide/workers.rst",
       "kind": "guide",
       "format": "rst"
+    },
+    {
+      "path": "examples/next-steps/proj/celery.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/next-steps/proj/tasks.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/includes/installation.txt",
+      "kind": "included",
+      "format": "rst"
+    },
+    {
+      "path": "examples/django/proj/celery.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/django/proj/__init__.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "examples/django/demoapp/tasks.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

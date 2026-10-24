@@ -1567,6 +1567,11 @@
       "path": "docs_src/typer_app/tutorial001_py310.py",
       "kind": "examples",
       "format": "py"
+    },
+    {
+      "path": "docs_src/one_file_per_command/app_py310/users/__init__.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }

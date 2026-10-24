@@ -55,6 +55,66 @@
       "path": "docs/source/tutorial.rst",
       "kind": "tutorial",
       "format": "rst"
+    },
+    {
+      "path": "docs/source/tutorial/tasks-intro.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/tutorial/tasks-with-trace.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/tutorial/echo-client.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/tutorial/echo-server.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/reference-core/contextvar-example.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/reference-core/channels-simple.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/reference-core/channels-shutdown.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/reference-core/channels-mpmc-broken.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/reference-core/channels-mpmc-fixed.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/reference-core/channels-backpressure.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/reference-core/from-thread-example.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "docs/source/reference-core/thread-contextvars-example.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }
