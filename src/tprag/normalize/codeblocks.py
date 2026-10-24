@@ -20,6 +20,7 @@ MAX_OUTPUT_LINES = 5  # líneas de salida que se conservan como comentario antes
 LANG_ALIASES = {
     "py": "python", "py3": "python", "python3": "python", "python2": "python", "ipython": "python",
     "ipython3": "python",
+    "python+sql": "python",  # sqlalchemy: Python con el SQL generado como salida
     "pycon": "pycon", "python-console": "pycon", "pycon+sql": "pycon", "doctest": "pycon",
     "sh": "bash", "shell": "bash", "zsh": "bash",
     "console": "console", "shell-session": "console", "sh-session": "console", "pytest": "console",
@@ -66,7 +67,9 @@ def normalize_lang(declared: str | None) -> str:
         name, arg = myst.groups()
         if name not in MYST_CODE:
             return name
-        text = arg or MYST_CODE[name]
+        text = (arg or "") if MYST_CODE[name] == "" else MYST_CODE[name]  # lenguaje fijo: el argumento es otra cosa
+    # Atributos de pandoc que no se reconocieron como tales: ```{.textual path="x.py"} → textual
+    text = re.sub(r"^\{\s*\.", "", text)
     words = text.split()
     if not words or "=" in words[0]:  # ```hl_lines="4" (fastapi): solo una opción de resaltado, sin lenguaje
         return ""

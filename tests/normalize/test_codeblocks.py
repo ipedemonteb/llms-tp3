@@ -21,6 +21,9 @@ https://httpbin.org/get?key2=value2&key1=value1"""
     ("{code-block} python", "python"), ("{ipython}", "python"), ("{doctest}", "pycon"),  # MyST
     ("{code-block}", ""),  # MyST sin lenguaje: lo decide la regla C
     ("{note}", "note"),  # directiva de MyST que no es código
+    ("{doctest} namedtuples", "pycon"),  # cattrs: el argumento es un grupo de tests, no el lenguaje
+    ("python+sql", "python"),  # sqlalchemy
+    ('{.textual path="docs/examples/app.py"', "textual"),  # atributos de pandoc sin reconocer
     ("python title='ejemplo.py'", "python"),  # info string con atributos
     ("", ""), (None, ""),
 ])

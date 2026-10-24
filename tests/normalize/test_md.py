@@ -85,6 +85,12 @@ def test_myst_colon_fence_and_version():
     assert "**New in version 22.2.0:** New API." in out
 
 
+def test_myst_doctest_argument_is_not_the_language():
+    # cattrs: ```{doctest} namedtuples → el bloque es consola de Python, "namedtuples" es un grupo de tests
+    norm = normalize_md("```{doctest} namedtuples\n>>> from cattrs import structure\n>>> structure(1, int)\n1\n```\n")
+    assert norm.block_langs == ["python"] and "namedtuples" not in norm.markdown
+
+
 def test_myst_dropped_directives():
     out = md("```{toctree}\n:maxdepth: 2\n\nintro\nguide\n```\n\nText.\n")
     assert "maxdepth" not in out and "guide" not in out and "Text." in out

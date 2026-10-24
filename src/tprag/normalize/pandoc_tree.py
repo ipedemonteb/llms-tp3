@@ -18,7 +18,7 @@ from dataclasses import dataclass, field
 
 import pypandoc
 
-from .codeblocks import ConsoleMode, process_block
+from .codeblocks import ConsoleMode, normalize_lang, process_block
 from .prepass import prepass_md, prepass_rst
 
 # Markdown sin las extensiones que cambian el texto: comillas tipográficas, emojis (`:tada:`) y fórmulas con `$`
@@ -196,8 +196,8 @@ class _Transformer:
             declared = next((k for k in _classes(attr) if k not in ("sourceCode", "numberLines")), None)
             if declared == "eval-rst":  # MyST: el contenido es rst y se procesa como tal
                 return self.blocks(to_tree(prepass_rst(text), "rst")["blocks"])
-            if declared in SCREENSHOT_BLOCKS:  # el sitio muestra una captura, no el texto del bloque
-                self.dropped[f"captura ({declared})"] += 1
+            if normalize_lang(declared) in SCREENSHOT_BLOCKS:  # el sitio muestra una captura, no el texto del bloque
+                self.dropped[f"captura ({normalize_lang(declared)})"] += 1
                 return []
             lang, code = process_block(declared, text, self.console_mode)
             if lang != "python" and HTML_STYLE_TAG.search(code):

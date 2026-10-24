@@ -200,7 +200,9 @@ def _myst_body(body: list[str]) -> list[str]:
 def _myst_directive(name: str, arg: str, body: list[str], fence: str, indent: str) -> list[str]:
     body = _myst_body(body)
     if name in MD_CODE:
-        lang = arg.split()[0] if arg else MD_CODE[name]
+        # code-block/code/sourcecode: el argumento es el lenguaje. Las de lenguaje fijo (doctest, ipython…) usan el
+        # argumento para otra cosa: ```{doctest} namedtuples (cattrs) es el nombre de un grupo de tests.
+        lang = (arg.split()[0] if arg else "") if MD_CODE[name] == "" else MD_CODE[name]
         return [f"{indent}{fence}{lang}", *body, f"{indent}{fence}"]
     if name == "eval-rst":
         return [f"{indent}{fence}eval-rst", *body, f"{indent}{fence}"]
