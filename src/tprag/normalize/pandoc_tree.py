@@ -65,7 +65,8 @@ class Normalized:
 # --- pandoc -----------------------------------------------------------------------------------------
 
 def to_tree(text: str, fmt: str) -> dict:
-    return json.loads(pypandoc.convert_text(text, "json", format=fmt))
+    # --quiet: sin advertencias como "Reference not found for 'version'" (sustituciones que completa Sphinx).
+    return json.loads(pypandoc.convert_text(text, "json", format=fmt, extra_args=["--quiet"]))
 
 
 def to_markdown(tree: dict) -> str:

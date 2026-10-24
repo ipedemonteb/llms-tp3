@@ -386,3 +386,47 @@ def _has_h1(lines: list[str]) -> bool:
         elif fence is None and re.match(r"^#\s", l):
             return True
     return False
+
+
+# --- README ---------------------------------------------------------------------------------------
+
+# Secciones de un README que no explican cómo usar la librería (loaders.md §3.5, cuarta excepción).
+README_NOISE = re.compile(r"^(change\s*log|changes|release\s*notes|release\s*history|history|what'?s\s*new|"
+                          r"contribut\w*|license|licence|authors?|credits|acknowledg\w*|sponsors?|backers|"
+                          r"code\s*of\s*conduct|security)\b", re.I)
+MD_HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
+
+
+def clean_readme(text: str, fmt: str) -> str:
+    """Saca las secciones de ruido (changelog, licencia, contribuciones…) hasta el próximo título de su nivel."""
+    lines = text.split("\n")
+    rst_levels: dict[str, int] = {}  # en rst el nivel lo da el orden de aparición de cada subrayado
+    out, skip_level, fence = [], None, None
+    for i, line in enumerate(lines):
+        if fmt == "md" and (f := FENCE.match(line)):  # un `# License` dentro de un bloque de código no es título
+            fence = None if fence and f.group(2).startswith(fence) else (fence or f.group(2))
+        level, title = (None, "") if fence else _heading(lines, i, fmt, rst_levels)
+        if level is not None:
+            if skip_level is not None and level <= skip_level:
+                skip_level = None
+            if skip_level is None and README_NOISE.match(title.strip("*_`: ")):
+                skip_level = level
+        if skip_level is None:
+            out.append(line)
+    return "\n".join(out)
+
+
+def _heading(lines: list[str], i: int, fmt: str, rst_levels: dict[str, int]) -> tuple[int | None, str]:
+    """(nivel, texto) si la línea i es un título."""
+    if fmt == "md":
+        m = MD_HEADING.match(lines[i])
+        if m:
+            return len(m.group(1)), m.group(2)
+        if i + 1 < len(lines) and lines[i].strip() and re.match(r"^(=+|-+)\s*$", lines[i + 1]):
+            return (1 if lines[i + 1].startswith("=") else 2), lines[i]  # título subrayado (Title\n=====)
+        return None, ""
+    if (i + 1 < len(lines) and lines[i].strip() and RST_UNDERLINE.match(lines[i + 1])
+            and not RST_UNDERLINE.match(lines[i]) and len(lines[i + 1].strip()) >= len(lines[i].strip()) - 2):
+        char = lines[i + 1].strip()[0]
+        return rst_levels.setdefault(char, len(rst_levels) + 1), lines[i]
+    return None, ""

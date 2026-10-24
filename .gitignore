@@ -75,3 +75,7 @@ docs/agents/
 # Se versionan index.json y los manifest.json (reproducibles por commit); el resto se descarga.
 data/raw/*/*
 !data/raw/*/manifest.json
+
+# ===== Dataset normalizado =====
+# Se regenera desde data/raw con src/scripts/normalize_docs.py.
+data/normalized/
