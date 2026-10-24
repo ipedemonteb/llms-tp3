@@ -83,6 +83,16 @@ def test_output_inside_raw_is_refused():
         mode_dir("outputs_as_comments", RAW_DIR / "requests")
 
 
+def test_clean_readme_changelog_with_version_titles():
+    # pydantic: "## Changelog" seguido de "## v2.14.1 (2026-10-11)", "## v2.14.0 …", todos del mismo nivel
+    md = ("# pydantic\n\nValidation.\n\n## Reporting a Security Vulnerability\n\nSee policy.\n\n"
+          "## Changelog\n\n## v2.14.1 (2026-10-11)\n\n- Fix.\n\n## v2.14.0 (2026-10-08)\n\n- Feature.\n\n"
+          "## Usage\n\nMore text.\n")
+    out = clean_readme(md, "md")
+    assert "Validation." in out and "More text." in out
+    assert "policy" not in out and "v2.14" not in out and "Fix." not in out and "Feature." not in out
+
+
 def test_clean_readme_rst_and_code():
     rst = "lib\n===\n\nUsage.\n\nChangelog\n---------\n\n1.0 first.\n\nExamples\n--------\n\nMore usage.\n"
     out = clean_readme(rst, "rst")

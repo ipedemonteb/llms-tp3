@@ -395,7 +395,10 @@ def _has_h1(lines: list[str]) -> bool:
 # Secciones de un README que no explican cómo usar la librería (loaders.md §3.5, cuarta excepción).
 README_NOISE = re.compile(r"^(change\s*log|changes|release\s*notes|release\s*history|history|what'?s\s*new|"
                           r"contribut\w*|license|licence|authors?|credits|acknowledg\w*|sponsors?|backers|"
-                          r"code\s*of\s*conduct|security)\b", re.I)
+                          r"code\s*of\s*conduct|security|reporting\s+(a\s+)?security)\b", re.I)
+CHANGELOG = re.compile(r"^(change\s*log|changes|release\s*notes|release\s*history|history|what'?s\s*new)\b", re.I)
+# Entradas de un changelog: suelen ser títulos del mismo nivel que "Changelog" (pydantic: `## v2.14.1 (2026-10-11)`).
+VERSION_TITLE = re.compile(r"^v?\d+(\.\d+)+|\d{4}-\d{2}-\d{2}", re.I)
 MD_HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
 
 
@@ -403,16 +406,18 @@ def clean_readme(text: str, fmt: str) -> str:
     """Saca las secciones de ruido (changelog, licencia, contribuciones…) hasta el próximo título de su nivel."""
     lines = text.split("\n")
     rst_levels: dict[str, int] = {}  # en rst el nivel lo da el orden de aparición de cada subrayado
-    out, skip_level, fence = [], None, None
+    out, skip_level, fence, in_changelog = [], None, None, False
     for i, line in enumerate(lines):
         if fmt == "md" and (f := FENCE.match(line)):  # un `# License` dentro de un bloque de código no es título
             fence = None if fence and f.group(2).startswith(fence) else (fence or f.group(2))
         level, title = (None, "") if fence else _heading(lines, i, fmt, rst_levels)
         if level is not None:
+            title = title.strip("*_`: ")
             if skip_level is not None and level <= skip_level:
-                skip_level = None
-            if skip_level is None and README_NOISE.match(title.strip("*_`: ")):
-                skip_level = level
+                if not (in_changelog and level == skip_level and VERSION_TITLE.search(title)):
+                    skip_level, in_changelog = None, False
+            if skip_level is None and README_NOISE.match(title):
+                skip_level, in_changelog = level, bool(CHANGELOG.match(title))
         if skip_level is None:
             out.append(line)
     return "\n".join(out)
