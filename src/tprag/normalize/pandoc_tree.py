@@ -6,9 +6,11 @@ El árbol de pandoc es una lista de bloques {"t": tipo, "c": contenido}. Transfo
 - Avisos (`note`, `warning`, `seealso`…) y versiones (`versionadded`…) → párrafo con prefijo.
 - Pestañas → todas con su título, salvo variantes de versión de Python y otros lenguajes (§3.5).
 - Directivas sin contenido para el lector (`module`, `toctree`, `index`…), imágenes y figuras → se eliminan.
-- Links → su texto; HTML crudo → se elimina; citas y contenedores restantes → su contenido.
+- Links → su texto; HTML crudo → su texto visible (sin etiquetas); citas y contenedores restantes → su contenido.
+- MyST `eval-rst` → se procesa como rst.
 """
 
+import html
 import json
 import re
 from collections import Counter
@@ -17,13 +19,27 @@ from dataclasses import dataclass, field
 import pypandoc
 
 from .codeblocks import ConsoleMode, process_block
+from .prepass import prepass_md, prepass_rst
+
+# Markdown sin las extensiones que cambian el texto: comillas tipográficas, emojis (`:tada:`) y fórmulas con `$`
+# (en la doc, `$` suele ser el prompt de una terminal o un precio).
+MD_FORMAT = "commonmark_x-smart-emoji-tex_math_dollars"
 
 API_ROLES = {"func", "meth", "class", "attr", "exc", "data", "mod", "obj", "const", "type", "member", "var",
              "macro", "function", "method", "property", "decorator", "deco"}
 TEXT_ROLES = {"ref", "doc", "term", "numref", "download", "abbr", "menuselection", "guilabel", "title-reference"}
 ADMONITIONS = {"note": "Note", "warning": "Warning", "tip": "Tip", "hint": "Hint", "important": "Important",
                "caution": "Caution", "attention": "Attention", "danger": "Danger", "error": "Error",
-               "seealso": "See also", "admonition": "Note"}
+               "seealso": "See also", "admonition": "Note",
+               # MkDocs, fastapi y Docusaurus
+               "info": "Info", "check": "Check", "details": "Details", "abstract": "Abstract", "summary": "Summary",
+               "success": "Success", "question": "Question", "failure": "Failure", "bug": "Bug",
+               "example": "Example", "quote": "Quote", "danger-zone": "Danger"}
+HTML_TAG = re.compile(r"<[^>]+>")
+# textual: ```{.textual path="docs/examples/x.py"} se publica como captura SVG de la app corriendo.
+SCREENSHOT_BLOCKS = {"textual"}
+# Etiquetas de formato dentro de ejemplos de terminal (los `<font color=…>` de fastapi), no de código Python.
+HTML_STYLE_TAG = re.compile(r"</?(font|span|b|strong|i|em|u)\b[^>]*>", re.I)
 VERSIONS = {"versionadded": "New in version", "versionchanged": "Changed in version",
             "deprecated": "Deprecated since version", "versionremoved": "Removed in version"}
 DROPPED_DIVS = {"module", "currentmodule", "highlight", "toctree", "index", "autosummary", "contents",
@@ -53,7 +69,15 @@ def to_tree(text: str, fmt: str) -> dict:
 
 def to_markdown(tree: dict) -> str:
     md = pypandoc.convert_text(json.dumps(tree), "gfm", format="json", extra_args=["--wrap=none"])
-    return "\n".join(l.rstrip() for l in md.splitlines()).strip() + "\n"
+    out, fence = [], None
+    for line in md.splitlines():
+        m = re.match(r"^\s*(`{3,}|~{3,})", line)
+        if m and (fence is None or m.group(1).startswith(fence)):
+            fence = None if fence else m.group(1)
+        elif fence is None:
+            line = line.replace("\\$", "$")  # pandoc escapa `$` para que no se lea como fórmula; acá es texto
+        out.append(line.rstrip())
+    return "\n".join(out).strip() + "\n"
 
 
 # --- ayudas sobre el árbol --------------------------------------------------------------------------
@@ -165,7 +189,14 @@ class _Transformer:
         if t == "CodeBlock":
             attr, text = c
             declared = next((k for k in _classes(attr) if k not in ("sourceCode", "numberLines")), None)
+            if declared == "eval-rst":  # MyST: el contenido es rst y se procesa como tal
+                return self.blocks(to_tree(prepass_rst(text), "rst")["blocks"])
+            if declared in SCREENSHOT_BLOCKS:  # el sitio muestra una captura, no el texto del bloque
+                self.dropped[f"captura ({declared})"] += 1
+                return []
             lang, code = process_block(declared, text, self.console_mode)
+            if lang != "python" and HTML_STYLE_TAG.search(code):
+                code = html.unescape(HTML_STYLE_TAG.sub("", code))
             self.block_langs.append(lang)
             return [{"t": "CodeBlock", "c": [["", [lang] if lang else [], []], code]}]
         if t == "Div":
@@ -183,9 +214,17 @@ class _Transformer:
                 for d in definitions:
                     out.extend(self.blocks(d))
             return out
-        if t in ("Figure", "RawBlock"):
+        if t == "Figure":
             self.dropped[t] += 1
             return []
+        if t == "RawBlock":  # HTML crudo: se quitan las etiquetas y queda el texto visible
+            fmt, raw = c
+            raw = re.sub(r"<(script|style)\b.*?</\1>|<!--.*?-->", "", raw, flags=re.S | re.I)
+            text = " ".join(html.unescape(HTML_TAG.sub(" ", raw)).split()) if fmt == "html" else ""
+            if not text:
+                self.dropped["html"] += 1
+                return []
+            return [{"t": "Para", "c": _str(text)}]
         if t == "Table":
             return [self.table(node)]
         if t == "LineBlock":
@@ -284,5 +323,8 @@ def normalize_tree(tree: dict, console_mode: ConsoleMode = "outputs_as_comments"
 
 
 def normalize_rst(text: str, console_mode: ConsoleMode = "outputs_as_comments") -> Normalized:
-    from .prepass import prepass_rst
     return normalize_tree(to_tree(prepass_rst(text), "rst"), console_mode)
+
+
+def normalize_md(text: str, console_mode: ConsoleMode = "outputs_as_comments") -> Normalized:
+    return normalize_tree(to_tree(prepass_md(text), MD_FORMAT), console_mode)

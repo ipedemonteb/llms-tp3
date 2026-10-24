@@ -68,7 +68,7 @@ def normalize_lang(declared: str | None) -> str:
             return name
         text = arg or MYST_CODE[name]
     words = text.split()
-    if not words:
+    if not words or "=" in words[0]:  # ```hl_lines="4" (fastapi): solo una opción de resaltado, sin lenguaje
         return ""
     return LANG_ALIASES.get(words[0], words[0])
 
