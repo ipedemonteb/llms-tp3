@@ -31,6 +31,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from libraries import CANDIDATES, IMPORT_NAMES, REPO_OVERRIDES, SOURCES, STDLIB
+from tprag.normalize.includes import include_targets, resolve_include
 
 ROOT = Path(__file__).resolve().parents[2]
 RAW_DIR = ROOT / "data" / "raw"
@@ -531,48 +532,8 @@ def fetch_stdlib() -> dict:
 # Archivos incluidos por las páginas (--add-included).
 
 # Solo se bajan los que pueden aportar código o texto; imágenes, CSS, Fortran, etc. se ignoran.
+# Cómo se detectan y resuelven las inclusiones lo comparte con el normalizador (tprag.normalize.includes).
 INCLUDE_EXTS = {".py": "py", ".rst": "rst", ".txt": "rst", ".md": "md"}
-INCLUDE_PATTERNS = [
-    re.compile(r"^\s*\.\.\s+(?:literalinclude|include)::\s*(\S+)", re.M),  # reST (también {eval-rst} en MyST)
-    re.compile(r"^\s*(?:`{3,}|:{3,})\{(?:literalinclude|include)\}\s*(\S+)", re.M),  # MyST
-    re.compile(r"^\{\*\s*(\S+?\.py)\b", re.M),  # fastapi y typer
-    re.compile(r"^\s*-{2}8<-{2}\s*\"([^\"]+)\"", re.M),  # MkDocs snippets (textual)
-]
-
-
-def include_targets(text: str) -> list[str]:
-    """Rutas que el archivo incluye, tal como están escritas (sin rango de líneas de los snippets)."""
-    return [re.sub(r"(:\d+){1,2}$", "", m.strip("'\"")) for p in INCLUDE_PATTERNS for m in p.findall(text)]
-
-
-def resolve_include(target: str, including: str, tree: set[str], doc_dirs: list[str]) -> str | None:
-    """Ruta en el repo del archivo incluido. Cada herramienta resuelve desde un lugar distinto (la página,
-    la carpeta de mkdocs.yml, la raíz), así que se prueba desde la carpeta de la página hacia arriba."""
-    base = Path(including).parent
-    if target.startswith("/"):
-        # Sphinx: relativo a la carpeta de conf.py, que puede estar debajo de la de la doc (pytest: doc/en).
-        candidates = [f"{d}/{target.lstrip('/')}" for d in doc_dirs] + [target.lstrip("/")]
-        candidates += [(b / target.lstrip("/")).as_posix() for b in [base, *base.parents]]
-    else:
-        candidates = [(b / target).as_posix() for b in [base, *base.parents]]
-    for c in candidates:
-        c = _normpath(c)
-        if c in tree:
-            return c
-    return None
-
-
-def _normpath(path: str) -> str:
-    """Normaliza una ruta del repo ("a/./b/../c" -> "a/c"); "" si se va fuera del repo."""
-    parts = []
-    for p in path.split("/"):
-        if p == "..":
-            if not parts:
-                return ""  # se va fuera del repo
-            parts.pop()
-        elif p not in ("", "."):
-            parts.append(p)
-    return "/".join(parts)
 
 
 def _git_source(repo: str, commit: str, tmp: str):
