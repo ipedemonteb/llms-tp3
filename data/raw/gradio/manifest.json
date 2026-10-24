@@ -450,6 +450,306 @@
       "path": "guides/11_other-tutorials/wrapping-layouts.md",
       "kind": "tutorial",
       "format": "md"
+    },
+    {
+      "path": "demo/blocks_flag/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/theme_new_step_1/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/theme_new_step_2/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/theme_new_step_3/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/dataframe_custom_styling/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/map_airbnb/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/ner_pipeline/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/text_analysis/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/server_app/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/asr/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/stream_asr/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_filters_events/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_filters/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_tables_stats/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_temporal/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_aggregate_temporal/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_datetime/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_datetimerange/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_line/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_scatter/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_scatter_nominal/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_series_nominal/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_series_quantitative/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_aggregate_quantitative/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_aggregate_nominal/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_selection/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_zoom/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_zoom_sync/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/plot_guide_interactive/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatbot_simple/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatbot_streaming/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatbot_multimodal/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/llm_llamaindex/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/llm_langchain/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/llm_hf_transformers/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/llm_sambanova/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/llm_hyperbolic/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/llm_claude/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/llm_minimax/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatinterface_system_prompt/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatinterface_artifacts/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatinterface_echo_multimodal/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatinterface_thoughts/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatinterface_options/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatinterface_prefill/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/chatinterface_streaming_echo/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/textbox_custom_buttons/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/todo_list_js/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/state_cleanup/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/multipage/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/navbar_customization/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/deep_link/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/custom_path/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/login_with_huggingface/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/progress_simple/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/streaming_simple/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/streaming_filter/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/streaming_filter_unified/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/fake_diffusion/run.py",
+      "kind": "included",
+      "format": "py"
+    },
+    {
+      "path": "demo/hello_world_4/run.py",
+      "kind": "included",
+      "format": "py"
     }
   ]
 }
