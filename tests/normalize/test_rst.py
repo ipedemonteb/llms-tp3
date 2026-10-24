@@ -36,6 +36,14 @@ def test_directives_shown_as_examples_are_not_touched():
     assert prepass_rst(text) == text
 
 
+def test_native_doctest_block_becomes_code():
+    # Párrafo que empieza con >>> sin "::" (numpydoc, dateutil…): pandoc lo leería como texto
+    text = "Example:\n\n>>> ratio('a', 'b')\n0.0\n\nAfter.\n"
+    assert pre(text) == "Example:\n\n.. code-block:: pycon\n\n   >>> ratio('a', 'b')\n   0.0\n\nAfter."
+    norm = normalize_rst(text)
+    assert norm.block_langs == ["python"] and "ratio('a', 'b')\n# 0.0" in norm.markdown
+
+
 def test_hidden_directives_are_removed():
     assert pre("Text.\n\n.. testsetup::\n\n   import os\n\nMore.") == "Text.\n\n\nMore."
 

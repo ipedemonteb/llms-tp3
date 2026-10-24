@@ -24,6 +24,7 @@ from .prepass import prepass_md, prepass_rst
 # Markdown sin las extensiones que cambian el texto: comillas tipográficas, emojis (`:tada:`) y fórmulas con `$`
 # (en la doc, `$` suele ser el prompt de una terminal o un precio).
 MD_FORMAT = "commonmark_x-smart-emoji-tex_math_dollars"
+MD_ESCAPE = re.compile(r"\\([\[\]<>$_*~])")
 
 API_ROLES = {"func", "meth", "class", "attr", "exc", "data", "mod", "obj", "const", "type", "member", "var",
              "macro", "function", "method", "property", "decorator", "deco"}
@@ -75,7 +76,10 @@ def to_markdown(tree: dict) -> str:
         if m and (fence is None or m.group(1).startswith(fence)):
             fence = None if fence else m.group(1)
         elif fence is None:
-            line = line.replace("\\$", "$")  # pandoc escapa `$` para que no se lea como fórmula; acá es texto
+            # pandoc escapa caracteres para que el Markdown se vea bien al renderizarlo (`\[`, `\<`, `\$`…); este
+            # texto lo leen un modelo de embeddings y un LLM, así que el `\` es ruido. `\|` (tablas) y `` \` ``
+            # (código en línea) se dejan.
+            line = MD_ESCAPE.sub(r"\1", line)
         out.append(line.rstrip())
     return "\n".join(out).strip() + "\n"
 

@@ -29,6 +29,7 @@ from .codeblocks import MYST_CODE
 DIRECTIVE = re.compile(r"^(\s*)\.\.\s+(?:([\w-]+):)?([\w-]+)::(?:\s+(.*?))?\s*$")
 OPTION = re.compile(r"^\s+:[\w-]+:")
 RST_LITERAL = re.compile(r"^(?!\s*\.\.\s).*::\s*$")
+RST_UNDERLINE = re.compile(r"^\s*([=\-~^\"'`#*+])\1{3,}\s*$")  # subrayado de título (numpydoc: "--------")
 
 # Directivas cuyo contenido es código, con el lenguaje que se le asigna (None: el argumento de la directiva).
 CODE_DIRECTIVES = {"code-block": None, "code": None, "sourcecode": None, "ipython": "python", "plot": "python",
@@ -80,6 +81,19 @@ def prepass_rst(text: str) -> str:
     while i < len(lines):
         m = DIRECTIVE.match(lines[i])
         if not m:
+            if lines[i].lstrip().startswith(">>>") and (i == 0 or not lines[i - 1].strip()
+                                                        or RST_UNDERLINE.match(lines[i - 1])):
+                # Bloque doctest nativo (párrafo que empieza con >>>, sin "::"): pandoc lo lee como texto.
+                indent = lines[i][:len(lines[i]) - len(lines[i].lstrip())]
+                end = i
+                while end < len(lines) and lines[end].strip():
+                    end += 1
+                new = [f"{indent}.. code-block:: pycon", "", *_reindent(lines[i:end], indent + "   ")]
+                if i and lines[i - 1].strip():
+                    new = ["", *new]  # pegado al subrayado del título: se separa con una línea en blanco
+                lines[i:end] = new
+                i += len(new)
+                continue
             # Párrafo que termina en "::": lo que sigue es un bloque literal (código) y no se recorre.
             i = _block_end(lines, i) if RST_LITERAL.match(lines[i]) else i + 1
             continue

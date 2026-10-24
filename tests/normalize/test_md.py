@@ -183,3 +183,10 @@ def test_raw_html_keeps_visible_text():
 def test_straight_quotes_and_dollar_signs_are_kept():
     out = md('Say "hello" and it costs $5 or $10.\n')
     assert '"hello"' in out and "$5 or $10" in out
+
+
+def test_markdown_escapes_are_removed_outside_code():
+    # rapidfuzz: pandoc escribía `Sequence\[Hashable\]` y `ratio \< score_cutoff`
+    out = md("s1 : Sequence[Hashable] and ratio < score_cutoff, a_b.\n\n```python\nx = '\\\\['\n```\n")
+    assert "Sequence[Hashable]" in out and "ratio < score_cutoff" in out and "a_b" in out
+    assert "x = '\\\\['" in out  # dentro del código no se toca
