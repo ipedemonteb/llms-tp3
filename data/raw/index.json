@@ -5786,28 +5786,28 @@
     "category": "html_xml_scraping",
     "status": "ok",
     "reason": null,
-    "repo": "github.com/microsoft/playwright",
+    "repo": "github.com/microsoft/playwright.dev",
     "docs_tool": "none",
-    "n_files": 65,
-    "doc_kb": 666,
+    "n_files": 90,
+    "doc_kb": 2141,
     "kinds": {
       "readme": 1,
-      "guide": 62,
+      "guide": 87,
       "quickstart": 2
     },
     "formats": {
-      "md": 65
+      "md": 90
     },
     "py_blocks": {
       "readme": 2,
-      "docs": 419
+      "docs": 1434
     },
     "use_cases": {
       "readme": 0,
-      "docs": 167
+      "docs": 848
     },
-    "lib_blocks": 376,
-    "lib_ratio": 0.89,
+    "lib_blocks": 978,
+    "lib_ratio": 0.68,
     "pypi_rank": 275,
     "selected": true,
     "selection_reason": "pasa el umbral; puesto 275 en descargas de PyPI"

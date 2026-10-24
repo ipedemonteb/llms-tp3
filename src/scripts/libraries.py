@@ -116,7 +116,8 @@ REPO_OVERRIDES = {
     "beautifulsoup4": "git.launchpad.net/beautifulsoup",
     "opencv-python": "github.com/opencv/opencv",  # opencv-python es solo el empaquetado
     "openpyxl": "foss.heptapod.net/openpyxl/openpyxl",  # Mercurial: se baja por la API de Heptapod
-    "playwright": "github.com/microsoft/playwright",  # la doc de todos los lenguajes vive acá
+    # Doc ya generada por lenguaje (la fuente común de microsoft/playwright mezcla Python, JS, Java y C#).
+    "playwright": "github.com/microsoft/playwright.dev",
     "streamlit": "github.com/streamlit/docs",
     "keras": "github.com/keras-team/keras-io",
     "tensorflow": "github.com/tensorflow/docs",
@@ -158,7 +159,8 @@ SOURCES = {
     "textual": {"docs": ["docs"], "examples": ["docs/examples"]},
     "rich": {"docs": ["docs"], "examples": ["examples"]},
     "plotly": {"docs": ["doc/python"]},
-    "playwright": {"docs": ["docs/src"], "exclude": ["-csharp.", "-java.", "-js."]},  # solo Python
+    # Guías + referencia de la API (~1.000 ejemplos): como carpeta propia, la regla general de api/ no la excluye.
+    "playwright": {"docs": ["python/docs", "python/docs/api"]},
     "streamlit": {"docs": ["content"]},
     "keras": {"docs": ["templates"], "examples": ["guides"]},
     "tensorflow": {"docs": ["site/en/guide", "site/en/tutorials"]},
