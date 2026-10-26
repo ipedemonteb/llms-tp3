@@ -79,3 +79,16 @@ data/raw/*/*
 # ===== Dataset normalizado =====
 # Se regenera desde data/raw con src/scripts/normalize_docs.py.
 data/normalized/
+
+# ===== Chunks =====
+# Se regeneran desde data/normalized con src/scripts/split_docs.py.
+data/processed/
+
+# ===== Resultados de experimentos =====
+# Por ahora se ignoran: los de la fase 0 (results/phase0/) se regeneran gratis en segundos con
+# src/scripts/phase0_metrics.py.
+# IMPORTANTE: antes de correr experimentos que gastan API (embeddings, evaluación, ablación), decidir si esos
+# resultados se versionan. Regenerarlos cuesta plata (presupuesto total: 10 USD) y la entrega final es "repo + hash
+# del commit": los números de la presentación tienen que poder rastrearse hasta ese commit. Opción: sacar esta regla
+# (o agregar excepciones con !results/<carpeta>/) y versionar results/ salvo las muestras de revisión manual.
+results/
