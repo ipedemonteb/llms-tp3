@@ -24,3 +24,6 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 module-name = "tprag"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]  # data/raw tiene test_*.py de la documentación (p. ej. fastapi/docs_src) que no son nuestros
