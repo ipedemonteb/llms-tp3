@@ -1,0 +1,28 @@
+{
+  "collection": "s3-1024__e1__r1__cap150",
+  "date": "2026-10-27T13:56:17",
+  "config": {
+    "chunks": "s3-1024",
+    "console_mode": "outputs_as_comments",
+    "model": "e1",
+    "representation": "r1",
+    "cap": 150,
+    "strategy": "round_robin",
+    "packages": null
+  },
+  "model": "text-embedding-3-small",
+  "api_model": "openai/text-embedding-3-small",
+  "usd_per_m_tokens": 0.02,
+  "packages": 101,
+  "package_list": null,
+  "use_cases": 8633,
+  "tokens_total": 3242739,
+  "paid": {
+    "texts": 8438,
+    "tokens": 3193030,
+    "usd": 0.063861,
+    "api_calls_texts": 8438
+  },
+  "cache_hits": 195,
+  "seconds": 138.4
+}

@@ -1,0 +1,36 @@
+{
+  "collection": "s3-1024__e1__r1__cap150__sub-e56072ed",
+  "date": "2026-10-27T13:51:08",
+  "config": {
+    "chunks": "s3-1024",
+    "console_mode": "outputs_as_comments",
+    "model": "e1",
+    "representation": "r1",
+    "cap": 150,
+    "strategy": "round_robin",
+    "packages": [
+      "requests",
+      "httpx",
+      "pypdf"
+    ]
+  },
+  "model": "text-embedding-3-small",
+  "api_model": "openai/text-embedding-3-small",
+  "usd_per_m_tokens": 0.02,
+  "packages": 3,
+  "package_list": [
+    "httpx",
+    "pypdf",
+    "requests"
+  ],
+  "use_cases": 187,
+  "tokens_total": 46840,
+  "paid": {
+    "texts": 187,
+    "tokens": 46840,
+    "usd": 0.000937,
+    "api_calls_texts": 187
+  },
+  "cache_hits": 0,
+  "seconds": 3.8
+}
