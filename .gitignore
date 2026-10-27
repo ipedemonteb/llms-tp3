@@ -88,6 +88,10 @@ data/processed/
 # Se regeneran desde data/processed con src/scripts/build_index.py (el caché evita volver a pagar la API).
 data/index/
 
+# ===== Caché de PyPI del validador =====
+# Respuestas de la API JSON de PyPI (vencen solas); src/scripts/validate_deps.py las vuelve a pedir.
+data/validate/
+
 # ===== Resultados de experimentos =====
 # Se ignoran salvo los reportes de indexado (results/index/: tokens, USD, tiempo), que se versionan porque
 # regenerarlos cuesta plata (presupuesto total: 10 USD) y los números de la presentación tienen que poder rastrearse
