@@ -1,0 +1,32 @@
+{
+ "info": {
+  "name": "six",
+  "classifiers": [
+   "Development Status :: 5 - Production/Stable",
+   "Intended Audience :: Developers",
+   "License :: OSI Approved :: MIT License",
+   "Programming Language :: Python :: 2",
+   "Programming Language :: Python :: 3",
+   "Topic :: Software Development :: Libraries",
+   "Topic :: Utilities"
+  ]
+ },
+ "releases": {
+  "1.15.0": [
+   {
+    "upload_time_iso_8601": "2020-05-21T15:25:55.142019Z"
+   }
+  ],
+  "1.16.0": [
+   {
+    "upload_time_iso_8601": "2021-05-05T14:18:18.379524Z"
+   }
+  ],
+  "1.17.0": [
+   {
+    "upload_time_iso_8601": "2024-12-04T17:35:28.174320Z"
+   }
+  ]
+ },
+ "vulnerabilities": []
+}

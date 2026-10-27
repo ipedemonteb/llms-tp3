@@ -1,0 +1,47 @@
+{
+ "info": {
+  "name": "pycrypto",
+  "classifiers": [
+   "Development Status :: 5 - Production/Stable",
+   "Intended Audience :: Developers",
+   "License :: Public Domain",
+   "Operating System :: MacOS :: MacOS X",
+   "Operating System :: Microsoft :: Windows",
+   "Operating System :: Unix",
+   "Programming Language :: Python :: 2",
+   "Programming Language :: Python :: 3",
+   "Topic :: Security :: Cryptography"
+  ]
+ },
+ "releases": {
+  "2.1.0": [
+   {
+    "upload_time_iso_8601": "2013-08-11T11:20:08.658397Z"
+   }
+  ],
+  "2.2": [
+   {
+    "upload_time_iso_8601": "2013-08-11T11:20:32.313484Z"
+   }
+  ],
+  "2.6.1": [
+   {
+    "upload_time_iso_8601": "2014-06-20T08:10:20.813938Z"
+   }
+  ]
+ },
+ "vulnerabilities": [
+  {
+   "id": "PYSEC-2017-94"
+  },
+  {
+   "id": "PYSEC-2018-97"
+  },
+  {
+   "id": "GHSA-6528-wvf6-f6qg"
+  },
+  {
+   "id": "GHSA-cq27-v7xp-c356"
+  }
+ ]
+}
