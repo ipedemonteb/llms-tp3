@@ -35,8 +35,9 @@ def load_items(eval_dir: Path = EVAL_DIR) -> list[dict]:
     return items
 
 
-def code_blocks(text: str) -> list[str]:
-    """Contenido de cada bloque de código, numerados como los splitters (también los indentados dentro de listas)."""
+def code_block_spans(text: str) -> list[tuple[int, int, str]]:
+    """(inicio, fin, contenido) de cada bloque de código, numerados como los splitters (también los indentados dentro
+    de listas). Inicio y fin incluyen las líneas de las vallas, como los `start`/`end` de los chunks (Span Hit, paso 7)."""
     out = []
     for b in parse(text).blocks:
         if b.kind != "code":
@@ -44,8 +45,13 @@ def code_blocks(text: str) -> list[str]:
         lines = text[b.start:b.end].split("\n")[1:]  # sin la línea que abre
         if lines and _FENCE_LINE.match(lines[-1]):
             lines = lines[:-1]  # sin la que cierra (un bloque sin cerrar llega hasta el final)
-        out.append("\n".join(lines))
+        out.append((b.start, b.end, "\n".join(lines)))
     return out
+
+
+def code_blocks(text: str) -> list[str]:
+    """Contenido de cada bloque de código (ver `code_block_spans`)."""
+    return [code for _, _, code in code_block_spans(text)]
 
 
 def check_gold(gold: dict, docs: dict[str, str]) -> tuple[str | None, str | None]:
