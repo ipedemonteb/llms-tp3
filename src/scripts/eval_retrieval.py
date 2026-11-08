@@ -102,6 +102,9 @@ def main() -> int:
     print(f"mejor chunk: Package Hit@1 {best['package']['best_chunk']['hit@1']}, "
           f"MRR {best['package']['best_chunk']['mrr']}, Span Hit@5 {best['span']['hit@5']}, "
           f"AUROC {report['metrics']['auroc']['value']}")
+    if (th := report["metrics"]["threshold"]) is not None:
+        print(f"umbral ({th['min_positive_pass']:.0%} de positivos): {th['value']} -> pasan {th['positives_pass']}/"
+              f"{th['positives']} positivos y {th['negatives_pass']}/{th['negatives']} negativos")
     print(f"-> {RESULTS_DIR / stem}.json")
     return 0
 

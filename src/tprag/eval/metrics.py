@@ -10,7 +10,7 @@ similitud coseno). Un *span* gold es `(doc_id, inicio, fin)` de un bloque de có
 """
 
 from collections import defaultdict
-from math import log2
+from math import ceil, log2
 from statistics import mean
 
 PACKAGE_KS = (1, 3, 5, 10)
@@ -19,6 +19,7 @@ NDCG_K = 10
 CONTEXT_BUDGET = 2000  # tokens: Span Hit con presupuesto fijo, para comparar splitters
 MIN_GOLD_COVERAGE = 0.5
 VOTE_NS = (5, 10, 20)  # N de las variantes de votación (10 = base; 5 y 20 se prueban en dev)
+MIN_POSITIVE_PASS = 0.95  # criterio del umbral de "sin reemplazo confiable" (generador.md §2.3)
 
 Span = tuple[str, int, int]
 
@@ -85,16 +86,21 @@ def ndcg(hits: list[dict], spans: list[Span], k: int = NDCG_K) -> float:
     return dcg / ideal if ideal else 0.0
 
 
-def budget_hit(hits: list[dict], spans: list[Span], budget: int = CONTEXT_BUDGET) -> bool:
-    """¿Algún chunk de los que entran en `budget` tokens (en orden; el primero entra siempre) cubre un bloque gold?"""
+def budget_cut(n_tokens: list[int], budget: int = CONTEXT_BUDGET) -> int:
+    """Cuántos chunks, en orden, entran en `budget` tokens (el primero entra siempre). Es también el contexto que
+    recibe el generador (generador.md §2.4)."""
     used = 0
-    for i, h in enumerate(hits):
-        used += h["n_tokens"]
+    for i, n in enumerate(n_tokens):
+        used += n
         if i and used > budget:
-            return False
-        if covered_spans(h, spans):
-            return True
-    return False
+            return i
+    return len(n_tokens)
+
+
+def budget_hit(hits: list[dict], spans: list[Span], budget: int = CONTEXT_BUDGET) -> bool:
+    """¿Algún chunk de los que entran en `budget` tokens cubre un bloque gold?"""
+    n = budget_cut([h["n_tokens"] for h in hits], budget)
+    return any(covered_spans(h, spans) for h in hits[:n])
 
 
 def auroc(positives: list[float], negatives: list[float]) -> float | None:
@@ -103,6 +109,18 @@ def auroc(positives: list[float], negatives: list[float]) -> float | None:
         return None
     wins = sum(1.0 if p > n else 0.5 if p == n else 0.0 for p in positives for n in negatives)
     return wins / (len(positives) * len(negatives))
+
+
+def calibrate_threshold(positives: list[float], negatives: list[float],
+                        min_pass: float = MIN_POSITIVE_PASS) -> dict | None:
+    """El umbral más alto que deja pasar (score ≥ umbral) al menos `min_pass` de los positivos (generador.md §2.3)."""
+    if not positives:
+        return None
+    ranked = sorted(positives, reverse=True)
+    value = ranked[ceil(min_pass * len(ranked) - 1e-9) - 1]  # -1e-9: 0.95 * 20 da 19.000000000000004
+    return {"min_positive_pass": min_pass, "value": value, "positives_pass": sum(p >= value for p in positives),
+            "positives": len(positives), "negatives_pass": sum(n >= value for n in negatives),
+            "negatives": len(negatives)}
 
 
 def target_metrics(hits: list[dict], acceptable: list[str], spans: list[Span]) -> dict:
@@ -143,7 +161,8 @@ def aggregate(records: list[dict]) -> dict:
 
 
 def summarize(records: list[dict]) -> dict:
-    """Métricas del total, por subconjunto y por idioma, más el AUROC del score del mejor chunk."""
+    """Métricas del total, por subconjunto y por idioma, más el AUROC del score del mejor chunk y el umbral
+    calibrado con estos mismos registros (el que usa el generador se calibra con dev)."""
     def group(key: str) -> dict:
         keys = sorted({r[key] for r in records})
         return {k: aggregate([r for r in records if r[key] == k]) for k in keys}
@@ -157,4 +176,5 @@ def summarize(records: list[dict]) -> dict:
         "all": aggregate(records), "by_subset": group("subset"), "by_lang": group("lang"),
         "auroc": {"value": round(value, 4) if value is not None else None, "positives": len(pos),
                   "negatives": len(neg)},
+        "threshold": calibrate_threshold(pos, neg),
     }

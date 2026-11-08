@@ -11,6 +11,7 @@ import subprocess
 import tokenize
 
 from langchain_chroma import Chroma
+from langchain_core.documents import Document
 
 from tprag.split.store import ROOT
 
@@ -80,14 +81,20 @@ def gold_spans(items: list[dict], docs: dict[str, str]) -> dict[tuple[str, str],
     return out
 
 
+def search_docs(store: Chroma, query: str, k: int = N_RESULTS) -> list[tuple[Document, float]]:
+    """Chunks más parecidos con su similitud. Chroma devuelve distancia coseno; se guarda 1 - distancia, redondeada
+    (es el score que compara el umbral del generador)."""
+    return [(doc, round(1 - distance, 6)) for doc, distance in store.similarity_search_with_score(query, k=k)]
+
+
+def hit(doc: Document, score: float) -> dict:
+    """Lo que se guarda de cada chunk en el detalle (sin el texto, que está en chunks.jsonl)."""
+    return {"id": doc.id, "package": doc.metadata["package"], "score": score, "doc_id": doc.metadata["doc_id"],
+            "start": doc.metadata["start"], "end": doc.metadata["end"], "n_tokens": doc.metadata["n_tokens"]}
+
+
 def search(store: Chroma, query: str, k: int = N_RESULTS) -> list[dict]:
-    """Chunks más parecidos; Chroma devuelve distancia coseno, se guarda la similitud (1 - distancia)."""
-    return [
-        {"id": doc.id, "package": doc.metadata["package"], "score": round(1 - distance, 6),
-         "doc_id": doc.metadata["doc_id"], "start": doc.metadata["start"], "end": doc.metadata["end"],
-         "n_tokens": doc.metadata["n_tokens"]}
-        for doc, distance in store.similarity_search_with_score(query, k=k)
-    ]
+    return [hit(doc, score) for doc, score in search_docs(store, query, k)]
 
 
 def run(store: Chroma, records: list[dict], spans: dict[tuple[str, str], list[Span]]) -> list[dict]:
