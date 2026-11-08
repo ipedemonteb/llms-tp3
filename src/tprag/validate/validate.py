@@ -29,6 +29,7 @@ class ImportResult:
     replacement: list[str] | None = None  # solo de la lista manual
     reason: str | None = None
     warnings: list[dict] = field(default_factory=list)
+    context_lines: list[int] = field(default_factory=list)  # A2 (imports.py): consulta base del paso 7
 
     @property
     def to_rag(self) -> bool:
@@ -70,7 +71,8 @@ def validate(source: str, fetch: Fetch, years: int = DEFAULT_YEARS, today: date 
     checked = {}
     results = []
     for ref in extract_imports(source):
-        base = {"module": ref.module, "line": ref.line, "names": ref.names, "usages": ref.usages}
+        base = {"module": ref.module, "line": ref.line, "names": ref.names, "usages": ref.usages,
+                "context_lines": ref.context_lines}
         if is_stdlib(ref.module):
             results.append(ImportResult(**base, status="stdlib"))
             continue

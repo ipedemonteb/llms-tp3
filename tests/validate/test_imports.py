@@ -48,6 +48,103 @@ def test_usages():
     assert refs["fastjsonparser"].usages == []
 
 
+def context(source, module):
+    """Texto de las líneas A2 de un import (más fácil de leer que los números)."""
+    lines = source.splitlines()
+    ref = next(r for r in extract_imports(source) if r.module == module)
+    return [lines[i - 1].strip() for i in ref.context_lines]
+
+
+PYPDF2 = """\
+import pandas as pd
+from PyPDF2 import PdfReader
+
+def extract_rows(pdf_path):
+    reader = PdfReader(pdf_path)
+    rows = []
+    for i, page in enumerate(reader.pages):
+        text = page.extract_text()
+        rows.append({"page": i, "chars": len(text)})
+    df = pd.DataFrame(rows)
+    return df
+"""
+
+
+def test_a2_ejemplo_pypdf2():  # dataset_eval.md §2.2
+    assert context(PYPDF2, "PyPDF2") == [
+        "from PyPDF2 import PdfReader",
+        "reader = PdfReader(pdf_path)",
+        "for i, page in enumerate(reader.pages):",
+        "text = page.extract_text()",
+        'rows.append({"page": i, "chars": len(text)})',  # `i` sale del mismo `for` (nivel 2)
+    ]
+
+
+def test_a2_no_incluye_el_cuerpo_ni_otras_librerias():
+    ctx = context(PYPDF2, "PyPDF2")
+    assert "df = pd.DataFrame(rows)" not in ctx and "rows = []" not in ctx
+
+
+def test_a2_corta_en_el_nivel_3():
+    source = """\
+import lib
+a = lib.make()
+b = a.child()
+c = b.value
+print(c)
+"""
+    assert context(source, "lib") == ["import lib", "a = lib.make()", "b = a.child()", "c = b.value"]
+
+
+def test_a2_with_alias_y_desempaquetado():
+    source = """\
+import numpy
+from fuzzywuzzy import process as p
+with p.session() as s:
+    pass
+best, score = p.extractOne("x", s.choices)
+if score > 80:
+    log(best)
+numpy.zeros(3)
+"""
+    assert context(source, "fuzzywuzzy") == [
+        "from fuzzywuzzy import process as p",
+        "with p.session() as s:",
+        'best, score = p.extractOne("x", s.choices)',
+        "if score > 80:",
+        "log(best)",
+    ]
+
+
+def test_a2_sentencia_de_varias_lineas_y_except():
+    source = """\
+from fuzzywuzzy import fuzz, process
+try:
+    res = process.extractOne(q, names, scorer=fuzz.token_set_ratio,
+                             score_cutoff=85)
+except process.SomeError as exc:
+    handle(exc)
+    other()
+"""
+    assert context(source, "fuzzywuzzy") == [
+        "from fuzzywuzzy import fuzz, process",
+        "res = process.extractOne(q, names, scorer=fuzz.token_set_ratio,",
+        "score_cutoff=85)",
+        "except process.SomeError as exc:",
+    ]
+
+
+def test_a2_decorador():
+    source = """\
+import mock
+
+@mock.patch("requests.get")
+def test_x(get):
+    assert get.called
+"""
+    assert context(source, "mock") == ["import mock", '@mock.patch("requests.get")']
+
+
 def test_syntax_error():
     with pytest.raises(SyntaxError):
         extract_imports("import numpy as\n")
