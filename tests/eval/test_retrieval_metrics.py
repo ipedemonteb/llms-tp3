@@ -1,0 +1,107 @@
+"""Métricas del retrieval (eval/metrics.py) y ubicación de los gold (eval/retrieval.py), con rankings armados a mano."""
+
+import pytest
+
+from tprag.eval.metrics import (auroc, budget_hit, covered_spans, library_ranking, ndcg, package_rank, span_rank,
+                                summarize, target_metrics)
+from tprag.eval.retrieval import gold_spans
+from tprag.eval.verify import code_block_spans
+
+
+def hit(package, doc_id="d", start=0, end=10, n_tokens=100, score=0.5):
+    return {"id": f"{package}-{start}", "package": package, "score": score, "doc_id": doc_id, "start": start,
+            "end": end, "n_tokens": n_tokens}
+
+
+PACKAGES = ["big", "big", "small", "big", "other", "small"]
+
+
+def test_best_chunk_es_el_orden_de_primera_aparicion():
+    assert library_ranking(PACKAGES, "best_chunk") == ["big", "small", "other"]
+
+
+def test_votacion_por_cantidad_y_suma_ponderada():
+    assert library_ranking(PACKAGES, "count", 6) == ["big", "small", "other"]
+    # top-3: big 1 + 1/2, small 1/3
+    assert library_ranking(PACKAGES, "sum_rr", 3) == ["big", "small", "other"]
+    # top-1: solo big votó; las demás siguen en orden de primera aparición
+    assert library_ranking(["small", "big", "big", "big"], "count", 4) == ["big", "small"]
+    assert library_ranking(["small", "big", "big", "big"], "count", 1) == ["small", "big"]
+
+
+def test_estrategia_desconocida():
+    with pytest.raises(ValueError):
+        library_ranking(PACKAGES, "max", 3)
+
+
+def test_package_rank():
+    assert package_rank(["big", "small", "other"], ["small", "x"]) == 2
+    assert package_rank(["big"], ["small"]) is None
+
+
+def test_cobertura_del_bloque_gold():
+    spans = [("d", 100, 200)]
+    assert covered_spans(hit("p", start=150, end=300), spans) == {0}  # 50% justo
+    assert covered_spans(hit("p", start=151, end=300), spans) == set()
+    assert covered_spans(hit("p", doc_id="otro", start=0, end=999), spans) == set()
+
+
+def test_span_rank_ndcg_y_presupuesto():
+    spans = [("d", 0, 10), ("d", 100, 110)]
+    hits = [hit("p", start=500, end=600), hit("p", start=0, end=50), hit("p", start=0, end=20),
+            hit("p", start=90, end=120)]
+    assert span_rank(hits, spans) == 2
+    # suman la 2.ª y la 4.ª (la 3.ª repite el mismo bloque); ideal: las dos primeras posiciones
+    ideal = 1 + 1 / 1.584962500721156
+    assert ndcg(hits, spans) == pytest.approx((1 / 1.584962500721156 + 1 / 2.321928094887362) / ideal)
+    assert budget_hit(hits, spans, budget=200)
+    assert not budget_hit(hits, spans, budget=150)  # el 2.º ya no entra
+    assert not budget_hit([hit("p", start=0, end=10, n_tokens=5000)], [("d", 500, 600)])
+
+
+def test_el_primer_chunk_entra_aunque_supere_el_presupuesto():
+    assert budget_hit([hit("p", start=0, end=10, n_tokens=5000)], [("d", 0, 10)], budget=2000)
+
+
+def test_auroc():
+    assert auroc([0.9, 0.8], [0.1, 0.2]) == 1.0
+    assert auroc([0.5], [0.5]) == 0.5
+    assert auroc([0.9], []) is None
+
+
+def record(subset, lang, hits, acceptable, spans):
+    return {"subset": subset, "lang": lang, "metrics": target_metrics(hits, acceptable, spans)}
+
+
+def test_summarize_separa_positivos_y_negativos():
+    pos_hit = record("manual_deprecated", "es", [hit("pypdf", score=0.8)], ["pypdf"], [("d", 0, 10)])
+    pos_miss = record("manual_deprecated", "en", [hit("other", start=50, end=60, score=0.6)], ["pypdf"],
+                      [("d", 0, 10)])
+    neg = record("negative", "en", [hit("other", score=0.4)], [], [])
+    out = summarize([pos_hit, pos_miss, neg])
+    assert out["all"]["targets"] == 2
+    assert out["all"]["package"]["best_chunk"]["hit@1"] == 0.5
+    assert out["all"]["package"]["best_chunk"]["mrr"] == 0.5
+    assert out["all"]["span"]["hit@1"] == 0.5  # el que no encontró el gold cuenta como fallo
+    assert out["by_lang"]["es"]["package"]["best_chunk"]["hit@1"] == 1.0
+    assert out["by_subset"]["negative"]["targets"] == 0
+    assert out["auroc"] == {"value": 1.0, "positives": 2, "negatives": 1}
+
+
+DOC = "# T\n\n```python\na = 1\n```\n\ntexto\n\n```python\nb = 2\n```\n"
+
+
+def test_code_block_spans_incluye_las_vallas():
+    spans = code_block_spans(DOC)
+    assert [code for _, _, code in spans] == ["a = 1", "b = 2"]
+    assert DOC[spans[1][0]:spans[1][1]].startswith("```python\nb = 2\n```")
+
+
+def test_gold_spans_ubica_el_bloque_aunque_se_haya_corrido():
+    item = {"id": "x", "targets": [{"module": "m", "gold": [
+        {"doc_id": "d", "source_path": "README.md", "block": 0, "code": "b = 2"}]}]}
+    start, end, _ = code_block_spans(DOC)[1]
+    assert gold_spans([item], {"d": DOC}) == {("x", "m"): [("d", start, end)]}
+    item["targets"][0]["gold"][0]["code"] = "c = 3"
+    with pytest.raises(ValueError):
+        gold_spans([item], {"d": DOC})
