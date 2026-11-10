@@ -1,0 +1,321 @@
+{
+  "name": "subset30",
+  "date": "2026-11-10",
+  "purpose": "corpus acotado para los experimentos rápidos de splitter y embedder (docs/agents/plan_experimentos_indice.md); los finalistas se confirman con el corpus completo",
+  "selection": {
+    "measured_on": "data/processed/outputs_as_comments/s3-1024/chunks.jsonl (casos de uso = is_use_case, antes del tope)",
+    "rule": "no es al azar: entran librerías con al menos 100 casos de uso (el tope de 150 las llena o casi), todos de Python, con documentos distintos y revisados leyendo muestras; hasta 3 por categoría; si una categoría no tiene ninguna librería que pase el umbral, se sacrifica la categoría en lugar de meter una librería pobre",
+    "exceptions": {
+      "pytest": "respuesta de los ítems nose de dev",
+      "authlib": "respuesta de los ítems jose de dev",
+      "python-stdlib": "respuesta de los ítems mock de dev (unittest.mock); bajo el umbral de 100 pero con 231 bloques de código"
+    },
+    "dropped_over_threshold": {
+      "marshmallow": "62 de 104 casos son de migración",
+      "huggingface-hub / datasets": "cuarta y quinta librería de ml_ia",
+      "sympy / pyarrow": "cuarta y quinta de datos_numerico",
+      "rich": "justo en el umbral, tercera de cli_terminal"
+    },
+    "sacrificed_categories": {
+      "config_serializacion": {
+        "best_package": "dynaconf",
+        "use_cases": 93
+      },
+      "fechas": {
+        "best_package": "pendulum",
+        "use_cases": 30
+      },
+      "logging": {
+        "best_package": "loguru",
+        "use_cases": 49
+      },
+      "sistema_archivos": {
+        "best_package": "sh",
+        "use_cases": 56
+      },
+      "texto": {
+        "best_package": "markdown",
+        "use_cases": 36
+      }
+    },
+    "not_in_subset_but_dev_gold": {
+      "rapidfuzz": 12,
+      "google-api-python-client": 24,
+      "note": "6 de los 15 ítems manuales de dev (fuzzywuzzy, oauth2client) no se pueden responder en el subconjunto; se recuperan al confirmar con el corpus completo"
+    }
+  },
+  "packages": [
+    "transformers",
+    "scikit-learn",
+    "torch",
+    "django",
+    "fastapi",
+    "flask",
+    "matplotlib",
+    "plotly",
+    "streamlit",
+    "playwright",
+    "scrapy",
+    "lxml",
+    "pandas",
+    "numpy",
+    "scipy",
+    "sqlalchemy",
+    "xlsxwriter",
+    "pymupdf",
+    "textual",
+    "typer",
+    "pydantic",
+    "scikit-image",
+    "wand",
+    "celery",
+    "pytest",
+    "authlib",
+    "cryptography",
+    "aiohttp",
+    "boto3",
+    "python-stdlib"
+  ],
+  "libraries": [
+    {
+      "package": "transformers",
+      "category": "ml_ia",
+      "use_cases": 1367,
+      "indexed_with_cap150": 150,
+      "source_docs": 561
+    },
+    {
+      "package": "scikit-learn",
+      "category": "ml_ia",
+      "use_cases": 902,
+      "indexed_with_cap150": 150,
+      "source_docs": 293
+    },
+    {
+      "package": "torch",
+      "category": "ml_ia",
+      "use_cases": 478,
+      "indexed_with_cap150": 150,
+      "source_docs": 120
+    },
+    {
+      "package": "django",
+      "category": "web_apis",
+      "use_cases": 1194,
+      "indexed_with_cap150": 150,
+      "source_docs": 180
+    },
+    {
+      "package": "fastapi",
+      "category": "web_apis",
+      "use_cases": 407,
+      "indexed_with_cap150": 150,
+      "source_docs": 101
+    },
+    {
+      "package": "flask",
+      "category": "web_apis",
+      "use_cases": 174,
+      "indexed_with_cap150": 150,
+      "source_docs": 56
+    },
+    {
+      "package": "matplotlib",
+      "category": "visualizacion",
+      "use_cases": 854,
+      "indexed_with_cap150": 150,
+      "source_docs": 513
+    },
+    {
+      "package": "plotly",
+      "category": "visualizacion",
+      "use_cases": 690,
+      "indexed_with_cap150": 150,
+      "source_docs": 150
+    },
+    {
+      "package": "streamlit",
+      "category": "visualizacion",
+      "use_cases": 319,
+      "indexed_with_cap150": 150,
+      "source_docs": 96
+    },
+    {
+      "package": "playwright",
+      "category": "html_xml_scraping",
+      "use_cases": 841,
+      "indexed_with_cap150": 150,
+      "source_docs": 81
+    },
+    {
+      "package": "scrapy",
+      "category": "html_xml_scraping",
+      "use_cases": 203,
+      "indexed_with_cap150": 150,
+      "source_docs": 38
+    },
+    {
+      "package": "lxml",
+      "category": "html_xml_scraping",
+      "use_cases": 141,
+      "indexed_with_cap150": 141,
+      "source_docs": 21
+    },
+    {
+      "package": "pandas",
+      "category": "datos_numerico",
+      "use_cases": 749,
+      "indexed_with_cap150": 150,
+      "source_docs": 47
+    },
+    {
+      "package": "numpy",
+      "category": "datos_numerico",
+      "use_cases": 204,
+      "indexed_with_cap150": 150,
+      "source_docs": 40
+    },
+    {
+      "package": "scipy",
+      "category": "datos_numerico",
+      "use_cases": 270,
+      "indexed_with_cap150": 150,
+      "source_docs": 58
+    },
+    {
+      "package": "sqlalchemy",
+      "category": "bases_de_datos",
+      "use_cases": 667,
+      "indexed_with_cap150": 150,
+      "source_docs": 77
+    },
+    {
+      "package": "xlsxwriter",
+      "category": "documentos",
+      "use_cases": 437,
+      "indexed_with_cap150": 150,
+      "source_docs": 131
+    },
+    {
+      "package": "pymupdf",
+      "category": "documentos",
+      "use_cases": 237,
+      "indexed_with_cap150": 150,
+      "source_docs": 47
+    },
+    {
+      "package": "textual",
+      "category": "cli_terminal",
+      "use_cases": 347,
+      "indexed_with_cap150": 150,
+      "source_docs": 126
+    },
+    {
+      "package": "typer",
+      "category": "cli_terminal",
+      "use_cases": 191,
+      "indexed_with_cap150": 150,
+      "source_docs": 53
+    },
+    {
+      "package": "pydantic",
+      "category": "validacion_modelos",
+      "use_cases": 341,
+      "indexed_with_cap150": 150,
+      "source_docs": 41
+    },
+    {
+      "package": "scikit-image",
+      "category": "imagenes",
+      "use_cases": 267,
+      "indexed_with_cap150": 150,
+      "source_docs": 143
+    },
+    {
+      "package": "wand",
+      "category": "imagenes",
+      "use_cases": 138,
+      "indexed_with_cap150": 138,
+      "source_docs": 20
+    },
+    {
+      "package": "celery",
+      "category": "async_reintentos_tareas",
+      "use_cases": 227,
+      "indexed_with_cap150": 150,
+      "source_docs": 30
+    },
+    {
+      "package": "pytest",
+      "category": "testing",
+      "use_cases": 195,
+      "indexed_with_cap150": 150,
+      "source_docs": 40,
+      "forced_by_eval": "respuesta de los ítems nose de dev"
+    },
+    {
+      "package": "authlib",
+      "category": "seguridad_cripto",
+      "use_cases": 186,
+      "indexed_with_cap150": 150,
+      "source_docs": 53,
+      "forced_by_eval": "respuesta de los ítems jose de dev"
+    },
+    {
+      "package": "cryptography",
+      "category": "seguridad_cripto",
+      "use_cases": 139,
+      "indexed_with_cap150": 139,
+      "source_docs": 35
+    },
+    {
+      "package": "aiohttp",
+      "category": "http_redes",
+      "use_cases": 151,
+      "indexed_with_cap150": 150,
+      "source_docs": 21
+    },
+    {
+      "package": "boto3",
+      "category": "sdks",
+      "use_cases": 112,
+      "indexed_with_cap150": 112,
+      "source_docs": 33
+    },
+    {
+      "package": "python-stdlib",
+      "category": "stdlib",
+      "use_cases": 65,
+      "indexed_with_cap150": 65,
+      "source_docs": 3,
+      "forced_by_eval": "respuesta de los ítems mock de dev (unittest.mock); bajo el umbral de 100 pero con 231 bloques de código"
+    }
+  ],
+  "dry_run_e1_cap150_1024": {
+    "collection_suffix": "sub-437d70f2",
+    "s3": {
+      "use_cases": 4345,
+      "tokens": 1747238
+    },
+    "s2": {
+      "use_cases": 4357,
+      "tokens": 1705143
+    },
+    "s0": {
+      "use_cases": 3793,
+      "tokens": 3195330
+    },
+    "s1": {
+      "use_cases": 3866,
+      "tokens": 2929999
+    },
+    "char": {
+      "use_cases": 3786,
+      "tokens": 3232960
+    },
+    "tok": {
+      "use_cases": 3792,
+      "tokens": 3332102
+    }
+  }
+}
