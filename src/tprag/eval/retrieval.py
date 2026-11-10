@@ -41,8 +41,20 @@ def item_lang(code: str) -> str:
     return "es" if es > en else "en"
 
 
-def select_items(items: list[dict], split: str) -> list[dict]:
-    return [it for it in items if it.get("split") == split]
+def select_items(items: list[dict], split: str, packages: list[str] | None = None) -> list[dict]:
+    """Ítems del split. Con `packages` (índice armado con un subconjunto de librerías) se descartan los targets cuya
+    respuesta está en una librería que el índice no tiene: no se podrían encontrar y bajarían la métrica por nada. Los
+    negativos (sin gold) se quedan. Un ítem sin targets se descarta."""
+    items = [it for it in items if it.get("split") == split]
+    if packages is None:
+        return items
+    keep = set(packages)
+    out = []
+    for it in items:
+        targets = [t for t in it["targets"] if {g["package"] for g in t["gold"]} <= keep]
+        if targets:
+            out.append({**it, "targets": targets})
+    return out
 
 
 def build_targets(items: list[dict], query: str) -> list[dict]:

@@ -17,6 +17,11 @@ dependencies = [
 dev = [
     "pytest>=9.1.1",
 ]
+local = [  # embedders locales (E3 a E5); transformers<5 porque el código remoto de jina-code no anda con la 5
+    "einops>=0.8.2",
+    "sentence-transformers>=5,<6",
+    "transformers<5",
+]
 
 [build-system]
 requires = ["uv_build>=0.10.10,<0.11"]

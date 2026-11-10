@@ -54,13 +54,16 @@ def main() -> int:
                       packages=args.packages)
     model = MODELS[cfg.model]
     name = cfg.collection_name()
-    items = select_items(load_items(), args.split)
+    items = select_items(load_items(), args.split, args.packages)
+    dropped = sum(len(it["targets"]) for it in select_items(load_items(), args.split)) - sum(
+        len(it["targets"]) for it in items)
     records = build_targets(items, args.query)
     queries = [r["query"] for r in records]
     embeddings = cached(cfg.model)
     total, to_pay = estimate(queries, model), estimate(embeddings.missing(queries), model)
     print(f"{name} / consulta {args.query} / {args.split}: {len(items)} ítems, {len(records)} targets, "
-          f"{total['tokens']} tokens")
+          f"{total['tokens']} tokens" + (f" ({dropped} targets descartados: su respuesta está fuera de las librerías "
+                                         "del índice)" if dropped else ""))
     print(f"a pagar (fuera del caché): {to_pay['texts']} consultas, {to_pay['tokens']} tokens, {to_pay['usd']:.6f} USD "
           f"({model.name}, {model.usd_per_m_tokens} USD/M)")
     if args.dry_run:
@@ -85,7 +88,7 @@ def main() -> int:
     report = {
         "collection": name, "query": args.query, "split": args.split,
         "date": datetime.now().isoformat(timespec="seconds"), "config": asdict(cfg), "dataset": dataset_info(),
-        "items": len(items), "n_results": N_RESULTS, "model": model.name,
+        "items": len(items), "targets_dropped_outside_packages": dropped, "n_results": N_RESULTS, "model": model.name,
         "paid": {**to_pay, "api_calls_texts": embeddings.misses}, "cache_hits": embeddings.hits, "seconds": seconds,
         "metrics": summarize(records),
     }

@@ -3,7 +3,8 @@
 from langchain_core.embeddings import DeterministicFakeEmbedding
 
 from tprag.index.cost import estimate
-from tprag.index.embeddings import MODELS, CachedEmbeddings, EmbeddingModel, openai_embeddings
+from tprag.index.embeddings import (MODELS, CachedEmbeddings, EmbeddingModel, LocalEmbeddings,
+                                    openai_embeddings)
 
 
 class Counting(DeterministicFakeEmbedding):
@@ -56,3 +57,46 @@ def test_estimate():
     out = estimate(["hello world"] * 2, MODELS["e1"])
     assert out["texts"] == 2 and out["tokens"] == 4  # "hello world" = 2 tokens en cl100k_base
     assert out["usd"] == round(4 / 1e6 * 0.02, 6)
+
+
+class Prefixed(DeterministicFakeEmbedding):
+    """Como un modelo asimétrico: consulta y documento del mismo texto dan vectores distintos."""
+
+    def embed_documents(self, texts):
+        return super().embed_documents(["doc: " + t for t in texts])
+
+    def embed_query(self, text):
+        return super().embed_documents(["query: " + text])[0]
+
+
+def test_asymmetric_cache_keeps_query_and_document_apart(tmp_path):
+    emb = CachedEmbeddings("m", lambda: Prefixed(size=8), tmp_path / "c.sqlite", asymmetric=True)
+    doc, query = emb.embed_documents(["x"])[0], emb.embed_query("x")
+    assert doc != query
+    assert emb.embed_query("x") == query and emb.embed_documents(["x"])[0] == doc  # del caché, sin mezclarse
+    assert (emb.hits, emb.misses) == (2, 2)
+
+
+def test_local_models_are_registered_without_price():
+    for model_id in ("e3", "e4", "e5"):
+        m = MODELS[model_id]
+        assert m.provider == "local" and m.usd_per_m_tokens == 0 and m.api_name == ""
+    assert MODELS["e5"].asymmetric and not MODELS["e4"].asymmetric and not MODELS["e1"].asymmetric
+
+
+def test_local_embeddings_add_prefixes(monkeypatch):
+    class FakeST:
+        seen: list[str] = []
+
+        def encode(self, texts, **kwargs):
+            import numpy as np  # noqa: PLC0415
+
+            FakeST.seen += texts
+            assert kwargs["normalize_embeddings"]
+            return np.ones((len(texts), 3))
+
+    local = LocalEmbeddings(MODELS["e5"])
+    monkeypatch.setattr(local, "_load", lambda: FakeST())
+    local.embed_documents(["a"])
+    local.embed_query("b")
+    assert FakeST.seen == ["search_document: a", "search_query: b"]
