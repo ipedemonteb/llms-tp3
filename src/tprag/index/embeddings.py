@@ -33,7 +33,10 @@ class EmbeddingModel:
     provider: str = "openai"  # "openai" (API) o "local" (sentence-transformers)
     query_prefix: str = ""  # modelos asimétricos (nomic): texto que va antes de la consulta...
     doc_prefix: str = ""  # ...y antes del documento
-    max_seq_length: int = 2048  # solo local: tokens del propio modelo que lee; lo que pasa de acá se trunca
+    # solo local: tokens del propio modelo que lee; lo que pasa de acá se trunca. 1536 cubre todos los chunks de 1024
+    # tokens de cl100k de los seis splitters (p99 ~1300 en jina; con 1024 se truncaría el 65% de s0/char/tok y el 7%
+    # de s2/s3, y la comparación de splitters quedaría sesgada)
+    max_seq_length: int = 1536
     trust_remote_code: bool = False  # solo local: jina y nomic traen código propio en el repo del modelo
 
     @property
@@ -70,7 +73,7 @@ class LocalEmbeddings(Embeddings):
     """Modelo de sentence-transformers en la Mac (MPS si hay, si no CPU). Vectores normalizados (coseno). Agrega el
     prefijo de consulta o de documento que pida el modelo. Se carga al primer uso."""
 
-    def __init__(self, model: EmbeddingModel, batch_size: int = 8):
+    def __init__(self, model: EmbeddingModel, batch_size: int = 4):
         if model.dimensions is not None:
             raise NotImplementedError("reducir dimensiones de un modelo local todavía no está soportado")
         self.model, self.batch_size = model, batch_size
@@ -90,7 +93,17 @@ class LocalEmbeddings(Embeddings):
     def _encode(self, texts: list[str], prefix: str) -> list[list[float]]:
         vectors = self._load().encode([prefix + t for t in texts], batch_size=self.batch_size,
                                       normalize_embeddings=True, show_progress_bar=len(texts) > 64)
+        self._free_memory()
         return vectors.tolist()
+
+    @staticmethod
+    def _free_memory() -> None:
+        """Con lotes de 8 y 2048 tokens la GPU llegó a reservar 7 de los 16 GB (compartidos con el sistema) y la Mac
+        se puso a swapear; con lotes de 4 y esta limpieza queda en ~1 GB."""
+        import torch  # noqa: PLC0415
+
+        if torch.backends.mps.is_available():
+            torch.mps.empty_cache()
 
     def embed_documents(self, texts: list[str]) -> list[list[float]]:
         return self._encode(texts, self.model.doc_prefix)
