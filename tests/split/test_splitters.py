@@ -1,4 +1,4 @@
-"""S0-S3 y la metadata de los chunks. Los tokens se cuentan como palabras, para no depender de tiktoken."""
+"""S0-S3, char, tok y la metadata de los chunks. Los tokens se cuentan como palabras, para no depender de tiktoken."""
 
 import pytest
 from langchain_core.documents import Document
@@ -143,7 +143,42 @@ def test_size_splitters_respect_max_and_offsets(name):
 
 
 def test_registry_and_ids():
-    assert set(SPLITTERS) == {"s0", "s1", "s2", "s3"}
+    assert set(SPLITTERS) == {"s0", "s1", "s2", "s3", "char", "tok"}
     a = split_document(doc(USAGE), "s3")
     b = split_document(doc(USAGE), "s3")
     assert [c.id for c in a] == [c.id for c in b] and len({c.id for c in a}) == len(a)  # determinístico
+
+
+def test_char_splits_on_blank_lines_and_keeps_exact_offsets():
+    # varias líneas en blanco seguidas: el texto del chunk tiene que seguir siendo el del documento
+    text = "\n\n\n".join(prose(30, f"w{i}") for i in range(12)) + "\n"
+    chunks = split_document(doc(text), "char", SplitConfig(max_tokens=70, overlap=0))
+    assert len(chunks) == 6 and all(text[c.start:c.end] == c.text for c in chunks)
+    assert all(c.n_tokens <= 70 for c in chunks)
+    assert all(a.end <= b.start for a, b in zip(chunks, chunks[1:]))  # sin overlap no se pisan
+
+
+def test_char_overlap_repeats_last_paragraph_and_covers_everything():
+    text = "\n\n".join(prose(30, f"w{i}") for i in range(10)) + "\n"
+    chunks = split_document(doc(text), "char", SplitConfig(max_tokens=70, overlap=35))
+    assert all(a.start < b.start < a.end for a, b in zip(chunks, chunks[1:]))
+    assert chunks[0].start == 0 and text[chunks[-1].end - 5:chunks[-1].end] == text.strip()[-5:]
+
+
+def test_char_oversized_paragraph_stays_alone():
+    text = prose(10, "a") + "\n\n" + prose(200, "b") + "\n\n" + prose(10, "c") + "\n"
+    chunks = split_document(doc(text), "char", SplitConfig(max_tokens=50, overlap=0))
+    assert [c.n_tokens for c in chunks] == [10, 200, 10]
+
+
+def test_tok_windows_have_fixed_size_and_overlap():
+    text = "\n\n".join(f"Paragraph {i} " + "word " * 40 for i in range(20)) + "\n"
+    chunks = split_document(doc(text), "tok", SplitConfig(max_tokens=100, overlap=20))
+    assert len(chunks) > 3 and chunks[0].start == 0 and chunks[-1].end == len(text)
+    assert all(text[c.start:c.end] == c.text for c in chunks)
+    assert all(a.start < b.start < a.end for a, b in zip(chunks, chunks[1:]))  # se solapan
+
+
+def test_tok_rejects_hf_tokenizer():
+    with pytest.raises(ValueError):
+        split_document(doc("some text\n"), "tok", SplitConfig(tokenizer="hf:foo/bar"))

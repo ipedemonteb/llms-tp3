@@ -1,10 +1,12 @@
-"""S0-S3 (splitters.md §3.8). Todos tienen la misma interfaz y se registran por nombre en `SPLITTERS`.
+"""S0-S3 (splitters.md §3.8) y los pisos `char` y `tok`. Todos tienen la misma interfaz y se registran por nombre en
+`SPLITTERS`.
 
 Un splitter recibe el documento ya parseado y devuelve dónde cortar: una lista de (start, end) sobre el texto
 normalizado. `split_document()` arma los chunks con su metadata (chunk.py), igual para todos. Para sumar uno nuevo
 (p. ej. S4, §3.9) alcanza con una función más en `SPLITTERS`.
 """
 
+import re
 from collections.abc import Callable
 from dataclasses import dataclass
 
@@ -181,9 +183,61 @@ def s3(parsed: ParsedDoc, cfg: SplitConfig) -> list[Span]:
     return spans
 
 
+# --- Pisos de comparación: los splitters más simples de la teoría (07. RAG) --------------------------------------
+
+_PARAGRAPH = re.compile(r"\S.*?(?=\n\s*\n|\s*\Z)", re.DOTALL)
+
+
+def char(parsed: ParsedDoc, cfg: SplitConfig) -> list[Span]:
+    """Character Splitter: corta solo en líneas en blanco (`\\n\\n`) y junta párrafos hasta el máximo; un párrafo que
+    solo ya lo supera queda solo (como `CharacterTextSplitter`). El overlap repite los últimos párrafos que entren.
+
+    Se escribe a mano en vez de usar `CharacterTextSplitter` porque este une los pedazos con el separador y puede
+    dejar un texto que ya no está igual en el documento (varias líneas en blanco seguidas), y Span Hit@k necesita
+    posiciones exactas. Se mide en tokens (no en caracteres) para que sea comparable con el resto (§3.6).
+    """
+    text, count = parsed.text, cfg.count
+    size = lambda a, b: count(text[a:b])  # noqa: E731
+    spans: list[Span] = []
+    window: list[Span] = []
+    for p in (m.span() for m in _PARAGRAPH.finditer(text)):
+        if window and size(window[0][0], p[1]) > cfg.max_tokens:
+            spans.append((window[0][0], window[-1][1]))
+            # arranca el chunk siguiente con el final del anterior que cabe en el overlap y deja entrar el párrafo
+            while window and (size(window[0][0], window[-1][1]) > cfg.overlap
+                              or size(window[0][0], p[1]) > cfg.max_tokens):
+                window = window[1:]
+        window.append(p)
+    if window and (not spans or window[-1][1] > spans[-1][1]):
+        spans.append((window[0][0], window[-1][1]))
+    return spans
+
+
+def tok(parsed: ParsedDoc, cfg: SplitConfig) -> list[Span]:
+    """Token Splitter: ventanas de `max_tokens` tokens seguidas, con `overlap` tokens repetidos, sin mirar la
+    estructura (corta en medio de una palabra, de una oración o de un bloque de código). El piso más bajo."""
+    if cfg.tokenizer.startswith("hf:"):
+        raise ValueError("el splitter tok necesita un tokenizer de tiktoken (p. ej. cl100k_base)")
+    import tiktoken  # noqa: PLC0415
+
+    enc = tiktoken.get_encoding(cfg.tokenizer)
+    text = parsed.text
+    tokens = enc.encode(text, disallowed_special=())
+    _, offsets = enc.decode_with_offsets(tokens)  # posición en el texto donde empieza cada token
+    step = max(cfg.max_tokens - cfg.overlap, 1)
+    spans = []
+    for i in range(0, len(tokens), step):
+        end_token = i + cfg.max_tokens
+        spans.append((offsets[i], offsets[end_token] if end_token < len(tokens) else len(text)))
+        if end_token >= len(tokens):
+            break
+    return spans
+
+
 # --- Registro --------------------------------------------------------------------------------------------------
 
-SPLITTERS: dict[str, Callable[[ParsedDoc, SplitConfig], list[Span]]] = {"s0": s0, "s1": s1, "s2": s2, "s3": s3}
+SPLITTERS: dict[str, Callable[[ParsedDoc, SplitConfig], list[Span]]] = {
+    "s0": s0, "s1": s1, "s2": s2, "s3": s3, "char": char, "tok": tok}
 
 
 def split_document(doc: Document, splitter: str, cfg: SplitConfig = SplitConfig()) -> list[Chunk]:

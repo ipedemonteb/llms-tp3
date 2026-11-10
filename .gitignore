@@ -108,3 +108,7 @@ data/eval/_edit/
 # "results/*" y no "results/": con el directorio entero ignorado, git no mira las excepciones de adentro.
 results/*
 !results/index/
+
+# ===== Clases =====
+# Clases de la materia como contexto.
+docs/classes

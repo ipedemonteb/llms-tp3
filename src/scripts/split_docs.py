@@ -1,9 +1,10 @@
-"""Corta la documentación normalizada en chunks con S0-S3 (docs/agents/splitters.md).
+"""Corta la documentación normalizada en chunks con S0-S3 (docs/agents/splitters.md) y los pisos char y tok.
 
 Uso:
     uv run python src/scripts/split_docs.py                                   # S0-S3, todas las librerías
     uv run python src/scripts/split_docs.py --splitters s3 --packages httpx requests
     uv run python src/scripts/split_docs.py --splitters s3 --max-tokens 512   # fase 2
+    uv run python src/scripts/split_docs.py --splitters char tok              # pisos de comparación
 
 Solo lee data/normalized/<modo>/ y no usa la API. Escribe data/processed/<modo>/<splitter>-<máx>/chunks.jsonl con
 todos los chunks (el filtro y el tope se aplican al armar el índice, §3.7) y config.json con la configuración y los
@@ -30,11 +31,11 @@ def _split_package(package: str, console_mode: str, splitters: list[str], cfg: S
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--splitters", nargs="*", choices=sorted(SPLITTERS), default=sorted(SPLITTERS))
+    parser.add_argument("--splitters", nargs="*", choices=sorted(SPLITTERS), default=["s0", "s1", "s2", "s3"])
     parser.add_argument("--packages", nargs="*", help="solo estas librerías")
     parser.add_argument("--max-tokens", type=int, default=SplitConfig.max_tokens)
     parser.add_argument("--min-tokens", type=int, default=SplitConfig.min_tokens, help="solo S3; 0 = sin mínimo")
-    parser.add_argument("--overlap", type=int, default=SplitConfig.overlap, help="solo S0 y S1")
+    parser.add_argument("--overlap", type=int, default=SplitConfig.overlap, help="solo S0, S1, char y tok")
     parser.add_argument("--tokenizer", default=DEFAULT_TOKENIZER, help="cl100k_base o hf:<modelo>")
     parser.add_argument("--console-examples", default="outputs_as_comments", help="carpeta de data/normalized")
     parser.add_argument("--workers", type=int, default=os.cpu_count() or 4)
