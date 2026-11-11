@@ -116,3 +116,37 @@ def test_gold_spans_ubica_el_bloque_aunque_se_haya_corrido():
     item["targets"][0]["gold"][0]["code"] = "c = 3"
     with pytest.raises(ValueError):
         gold_spans([item], {"d": DOC})
+
+
+def test_context_efficiency():
+    from tprag.eval.metrics import context_efficiency
+
+    spans = [("d", 0, 100)]
+    # un chunk de 400 caracteres que trae el bloque de 100: 25%
+    assert context_efficiency([hit("a", start=0, end=400, n_tokens=100)], spans) == pytest.approx(0.25)
+    # un chunk de 100 caracteres que es justo el bloque: 100%
+    assert context_efficiency([hit("a", start=0, end=100, n_tokens=50)], spans) == pytest.approx(1.0)
+    # fuera del presupuesto no cuenta: el segundo chunk no entra (100 + 1950 > 2000)
+    hits = [hit("a", start=0, end=100, n_tokens=100), hit("a", start=100, end=300, n_tokens=1950)]
+    assert context_efficiency(hits, spans, 2000) == pytest.approx(1.0)
+    # otro documento o sin chunks: 0
+    assert context_efficiency([hit("a", doc_id="otro", start=0, end=100)], spans) == 0.0
+    assert context_efficiency([], spans) == 0.0
+
+
+def test_context_efficiency_no_cuenta_dos_veces_el_overlap():
+    from tprag.eval.metrics import context_efficiency
+
+    hits = [hit("a", start=0, end=80, n_tokens=10), hit("a", start=40, end=120, n_tokens=10)]
+    # el bloque gold (0-100) queda cubierto una vez: 100 caracteres sobre 160 de contexto
+    assert context_efficiency(hits, [("d", 0, 100)]) == pytest.approx(100 / 160)
+
+
+def test_specificity_at_recall():
+    from tprag.eval.metrics import specificity_at_recall
+
+    pos = [0.9, 0.8, 0.7, 0.6]  # al 75% de recall el umbral es 0.7
+    assert specificity_at_recall(pos, [0.75, 0.5, 0.4, 0.3], 0.75) == pytest.approx(0.75)  # solo 0.75 pasa
+    assert specificity_at_recall(pos, [0.1, 0.2], 0.75) == 1.0
+    assert specificity_at_recall(pos, [], 0.75) is None
+    assert specificity_at_recall([], [0.1]) is None

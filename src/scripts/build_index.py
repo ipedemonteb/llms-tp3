@@ -53,7 +53,7 @@ def main() -> int:
                       packages=args.packages)
     model = MODELS[cfg.model]
     name = cfg.collection_name()
-    docs = [to_document(c) for c in select_chunks(cfg)]
+    docs = [to_document(c, cfg.representation) for c in select_chunks(cfg)]
     texts = [d.page_content for d in docs]
     embeddings = cached(cfg.model)
     total, to_pay = estimate(texts, model), estimate(embeddings.missing(texts), model)

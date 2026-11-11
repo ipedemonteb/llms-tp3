@@ -1,0 +1,130 @@
+{
+  "study": "hyperparams",
+  "split": "dev",
+  "n_packages": 30,
+  "packages": [
+    "transformers",
+    "scikit-learn",
+    "torch",
+    "django",
+    "fastapi",
+    "flask",
+    "matplotlib",
+    "plotly",
+    "streamlit",
+    "playwright",
+    "scrapy",
+    "lxml",
+    "pandas",
+    "numpy",
+    "scipy",
+    "sqlalchemy",
+    "xlsxwriter",
+    "pymupdf",
+    "textual",
+    "typer",
+    "pydantic",
+    "scikit-image",
+    "wand",
+    "celery",
+    "pytest",
+    "authlib",
+    "cryptography",
+    "aiohttp",
+    "boto3",
+    "python-stdlib"
+  ],
+  "variants": {
+    "cap75": {
+      "factor": "cap",
+      "label": "tope 75",
+      "collection": "s3-1024__e4__r1__cap75__sub-437d70f2",
+      "chunks": "s3-1024",
+      "model": "e4",
+      "cap": 75,
+      "representation": "r1"
+    }
+  },
+  "models": {
+    "e4": "jinaai/jina-embeddings-v2-base-code"
+  },
+  "dataset": {
+    "commit": "a3c546a",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
+      "synthetic.jsonl": "953244ac4e3a03ed8d8ddd422605dea535c7f7f889c09e84ed1b8be4e0c1b759"
+    }
+  },
+  "git_dirty": true,
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.13",
+    "torch": "2.15.0",
+    "sentence-transformers": "5.7.0",
+    "transformers": "4.57.6",
+    "chromadb": "1.5.9",
+    "tiktoken": "0.14.0",
+    "mps": true
+  },
+  "settings": {
+    "warm_batch": 200,
+    "pause": 3,
+    "cooldown": 0.0
+  },
+  "steps": {
+    "s3-1024__e4__r1__cap75__sub-437d70f2": {
+      "index": {
+        "status": "ok",
+        "seconds": 5.9,
+        "seconds_total": 5.9,
+        "peak_memory_mb": 282.2,
+        "finished": "2026-11-11T18:37:40",
+        "log": "results/study/logs/s3-1024__e4__r1__cap75__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 5.9,
+            "peak_memory_mb": 282.2,
+            "finished": "2026-11-11T18:37:40"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 2.1,
+        "seconds_total": 2.1,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T18:37:42",
+        "log": "results/study/logs/s3-1024__e4__r1__cap75__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 2.1,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T18:37:42"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 8.1,
+        "seconds_total": 8.1,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T18:37:50",
+        "log": "results/study/logs/s3-1024__e4__r1__cap75__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 8.1,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T18:37:50"
+          }
+        ]
+      }
+    }
+  },
+  "started": "2026-11-11T18:37:34",
+  "finished": "2026-11-11T18:37:50"
+}

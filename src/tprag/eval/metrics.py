@@ -103,6 +103,38 @@ def budget_hit(hits: list[dict], spans: list[Span], budget: int = CONTEXT_BUDGET
     return any(covered_spans(h, spans) for h in hits[:n])
 
 
+def context_efficiency(hits: list[dict], spans: list[Span], budget: int = CONTEXT_BUDGET) -> float:
+    """Qué parte del contexto que recibe el generador es respuesta: caracteres de bloques gold dentro de los chunks que
+    entran en `budget` tokens, sobre los caracteres de esos chunks. Va de 0 a 1. Es relativa: el texto que rodea al
+    código (la explicación) cuenta como ruido, así que sirve para comparar configuraciones, no como valor absoluto.
+    Se mide en caracteres porque los hits guardan posiciones de caracteres (un chunk de 2048 tokens que trae un
+    bloque de 300 vale menos que uno de 256 que trae el mismo bloque)."""
+    kept = hits[:budget_cut([h["n_tokens"] for h in hits], budget)]
+    total = sum(h["end"] - h["start"] for h in kept)
+    if not total:
+        return 0.0
+    gold = 0
+    for doc_id, start, end in spans:
+        pieces = sorted((max(h["start"], start), min(h["end"], end)) for h in kept
+                        if h["doc_id"] == doc_id and min(h["end"], end) > max(h["start"], start))
+        reach = None  # une los tramos que se pisan (con overlap, S0/S1) para no contar dos veces
+        for a, b in pieces:
+            a = a if reach is None else max(a, reach)
+            gold += max(0, b - a)
+            reach = b if reach is None else max(reach, b)
+    return min(1.0, gold / total)
+
+
+def specificity_at_recall(positives: list[float], negatives: list[float],
+                          min_pass: float = MIN_POSITIVE_PASS) -> float | None:
+    """Fracción de negativos que el umbral rechaza cuando deja pasar `min_pass` de los positivos (el criterio del
+    generador, generador.md §2.3). None si falta un lado. Con pocos negativos toma pasos de 1/N: usarla como apoyo."""
+    th = calibrate_threshold(positives, negatives, min_pass)
+    if th is None or not negatives:
+        return None
+    return 1 - th["negatives_pass"] / th["negatives"]
+
+
 def auroc(positives: list[float], negatives: list[float]) -> float | None:
     """Probabilidad de que un positivo tenga más score que un negativo (empates: 1/2). None si falta un lado."""
     if not positives or not negatives:

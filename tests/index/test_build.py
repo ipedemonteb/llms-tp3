@@ -40,3 +40,11 @@ def test_build_and_rebuild(tmp_path):
     assert reopened._collection.configuration_json["hnsw"]["space"] == "cosine"
     hit = reopened.similarity_search(docs[1].page_content, k=1)[0]
     assert hit.id == "id1" and hit.metadata["package"] == "httpx"
+
+
+def test_representacion_raw_no_lleva_prefijo():
+    doc = to_document(chunk(1), "raw")
+    assert doc.page_content == chunk(1).text
+    assert doc.metadata["prefix"] == "httpx > Clients > Usage"  # el prefijo sigue en la metadata
+    assert chunk_text(doc) == chunk(1).text
+    assert IndexConfig(representation="raw").collection_name() == "s3-1024__e1__raw__cap150"

@@ -1,0 +1,283 @@
+{
+  "split": "dev",
+  "budgets": [
+    500,
+    1000,
+    2000,
+    3000,
+    4000
+  ],
+  "main_budget": 2000,
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 2026,
+    "level": 95,
+    "unit": "ítems de dev"
+  },
+  "targets": {
+    "positives": 107,
+    "with_gold": 107,
+    "negatives": 9,
+    "items": 109
+  },
+  "variants": {
+    "base": {
+      "label": "S3 · 1024 · R1 · tope 150",
+      "factor": "base",
+      "collection": "s3-1024__e4__r1__cap150__sub-437d70f2",
+      "chunks_dir": "s3-1024",
+      "model": "e4",
+      "cap": 150,
+      "representation": "r1",
+      "metrics": {
+        "pkg_hit@1": {
+          "value": 0.7664,
+          "ci": [
+            0.6765,
+            0.8482
+          ]
+        },
+        "pkg_mrr": {
+          "value": 0.8603,
+          "ci": [
+            0.8058,
+            0.9104
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.4759,
+          "ci": [
+            0.3963,
+            0.5552
+          ]
+        },
+        "span_hit@500": {
+          "value": 0.3645,
+          "ci": [
+            0.2727,
+            0.4571
+          ]
+        },
+        "span_hit@1000": {
+          "value": 0.4486,
+          "ci": [
+            0.35,
+            0.5455
+          ]
+        },
+        "span_hit@2000": {
+          "value": 0.5607,
+          "ci": [
+            0.4623,
+            0.6577
+          ]
+        },
+        "span_hit@3000": {
+          "value": 0.6449,
+          "ci": [
+            0.549,
+            0.7358
+          ]
+        },
+        "span_hit@4000": {
+          "value": 0.6822,
+          "ci": [
+            0.5888,
+            0.7714
+          ]
+        },
+        "ctx_eff@2000": {
+          "value": 0.0402,
+          "ci": [
+            0.0303,
+            0.0511
+          ]
+        },
+        "auroc": {
+          "value": 0.8224,
+          "ci": [
+            0.6019,
+            0.9671
+          ]
+        }
+      },
+      "specificity@95": 0.4444444444444444,
+      "chunks": 4345,
+      "tokens": 1685894,
+      "median_tokens": 308,
+      "python_blocks_not_intact": 0.0,
+      "truncated_by_model": 0.0025,
+      "generation": null
+    },
+    "cap75": {
+      "label": "tope 75",
+      "factor": "cap",
+      "collection": "s3-1024__e4__r1__cap75__sub-437d70f2",
+      "chunks_dir": "s3-1024",
+      "model": "e4",
+      "cap": 75,
+      "representation": "r1",
+      "metrics": {
+        "pkg_hit@1": {
+          "value": 0.7664,
+          "ci": [
+            0.6847,
+            0.8447
+          ]
+        },
+        "pkg_mrr": {
+          "value": 0.8597,
+          "ci": [
+            0.808,
+            0.9074
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.3699,
+          "ci": [
+            0.2874,
+            0.4551
+          ]
+        },
+        "span_hit@500": {
+          "value": 0.3271,
+          "ci": [
+            0.2358,
+            0.42
+          ]
+        },
+        "span_hit@1000": {
+          "value": 0.3551,
+          "ci": [
+            0.2617,
+            0.4495
+          ]
+        },
+        "span_hit@2000": {
+          "value": 0.4206,
+          "ci": [
+            0.3238,
+            0.5185
+          ]
+        },
+        "span_hit@3000": {
+          "value": 0.486,
+          "ci": [
+            0.3868,
+            0.5841
+          ]
+        },
+        "span_hit@4000": {
+          "value": 0.5234,
+          "ci": [
+            0.4231,
+            0.6238
+          ]
+        },
+        "ctx_eff@2000": {
+          "value": 0.0288,
+          "ci": [
+            0.0202,
+            0.0388
+          ]
+        },
+        "auroc": {
+          "value": 0.838,
+          "ci": [
+            0.6729,
+            0.9673
+          ]
+        }
+      },
+      "specificity@95": 0.5555555555555556,
+      "chunks": 2240,
+      "tokens": 880014,
+      "median_tokens": 314,
+      "python_blocks_not_intact": 0.0,
+      "truncated_by_model": 0.0031,
+      "generation": null
+    }
+  },
+  "vs_base": {
+    "cap75": {
+      "pkg_hit@1": {
+        "diff": 0.0,
+        "ci": [
+          -0.0734,
+          0.0741
+        ],
+        "verdict": "empate"
+      },
+      "span_hit@2000": {
+        "diff": -0.1402,
+        "ci": [
+          -0.2212,
+          -0.0642
+        ],
+        "verdict": "peor"
+      },
+      "ctx_eff@2000": {
+        "diff": -0.0114,
+        "ci": [
+          -0.0199,
+          -0.0042
+        ],
+        "verdict": "peor"
+      },
+      "ndcg@10": {
+        "diff": -0.106,
+        "ci": [
+          -0.1746,
+          -0.0409
+        ],
+        "verdict": "peor"
+      }
+    }
+  },
+  "within_factor": {
+    "cap": {
+      "title": "Tope por librería",
+      "levels": [
+        "cap75",
+        "base"
+      ],
+      "labels": {
+        "cap75": "75",
+        "base": "150"
+      },
+      "metrics": {
+        "pkg_hit@1": {
+          "reference": "cap75",
+          "vs": {
+            "base": {
+              "diff": 0.0,
+              "ci": [
+                -0.0741,
+                0.0734
+              ],
+              "verdict": "empate"
+            }
+          }
+        },
+        "span_hit@2000": {
+          "reference": "base",
+          "vs": {
+            "cap75": {
+              "diff": -0.1402,
+              "ci": [
+                -0.2212,
+                -0.0642
+              ],
+              "verdict": "peor"
+            }
+          }
+        }
+      }
+    }
+  },
+  "finalists": [
+    "base",
+    "cap75"
+  ],
+  "base_best_span": "base"
+}

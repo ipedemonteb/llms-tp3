@@ -38,8 +38,13 @@ class Chunk:
     def prefix(self) -> str:
         return PATH_SEP.join(self.section_path)
 
-    def embed_text(self) -> str:
-        """Lo que se embebe (representación R1): prefijo + chunk. Se arma al indexar, no se guarda."""
+    def embed_text(self, representation: str = "r1") -> str:
+        """Lo que se embebe. R1: prefijo + chunk; `raw`: el chunk solo, sin prefijo (ablación del prefijo). Se arma al
+        indexar, no se guarda."""
+        if representation == "raw":
+            return self.text
+        if representation != "r1":
+            raise ValueError(f"representación desconocida: {representation}")
         return f"{self.prefix}\n\n{self.text}"
 
 

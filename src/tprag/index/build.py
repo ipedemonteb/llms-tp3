@@ -18,7 +18,7 @@ from tprag.split.select import DEFAULT_CAP, select
 from tprag.split.store import PROCESSED_DIR, ROOT, load_chunks
 
 CHROMA_DIR = ROOT / "data" / "index" / "chroma"
-REPRESENTATIONS = ("r1",)
+REPRESENTATIONS = ("r1", "raw")  # raw = chunk sin prefijo
 BATCH = 1000  # por debajo del máximo de Chroma (~5.400)
 
 
@@ -56,7 +56,7 @@ def select_chunks(cfg: IndexConfig) -> list[Chunk]:
     return select(chunks, cap=cfg.cap, strategy=cfg.strategy)
 
 
-def to_document(c: Chunk) -> Document:
+def to_document(c: Chunk, representation: str = "r1") -> Document:
     """Chroma solo acepta metadata escalar: `section_path` va como el prefijo y `code_langs` separado por comas."""
     metadata = {
         "package": c.package, "category": c.category, "kind": c.kind, "source_path": c.source_path,
@@ -64,7 +64,7 @@ def to_document(c: Chunk) -> Document:
         "n_tokens": c.n_tokens, "n_code_blocks": c.n_code_blocks, "code_langs": ",".join(c.code_langs),
         "prose_chars": c.prose_chars,
     }
-    return Document(id=c.id, page_content=c.embed_text(), metadata=metadata)
+    return Document(id=c.id, page_content=c.embed_text(representation), metadata=metadata)
 
 
 def chunk_text(doc: Document) -> str:

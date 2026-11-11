@@ -55,7 +55,7 @@ def main() -> int:
     counter = tokenizer_counter(model.name) if model.provider == "local" else None
     model_tokens = None
     if counter:
-        model_tokens = model_token_stats([to_document(c).page_content for c in indexed], counter, model.max_seq_length)
+        model_tokens = model_token_stats([to_document(c, cfg.representation).page_content for c in indexed], counter, model.max_seq_length)
 
     report = {
         "collection": name, "date": datetime.now().isoformat(timespec="seconds"), "config": asdict(cfg),

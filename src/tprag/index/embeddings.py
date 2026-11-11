@@ -20,6 +20,7 @@ from langchain_core.embeddings import Embeddings
 
 from tprag.split.store import ROOT
 
+DEFAULT_MAX_SEQ = 1536  # tokens que lee un modelo local salvo que se diga otra cosa
 CACHE_PATH = ROOT / "data" / "index" / "cache" / "embeddings.sqlite"
 
 
@@ -47,7 +48,10 @@ class EmbeddingModel:
     @property
     def cache_key(self) -> str:
         """Clave del caché: nombre real + dimensiones, no el id corto (si un id cambia de modelo, no se mezclan)."""
-        return self.name if self.dimensions is None else f"{self.name}@{self.dimensions}"
+        key = self.name if self.dimensions is None else f"{self.name}@{self.dimensions}"
+        if self.provider == "local" and self.max_seq_length != DEFAULT_MAX_SEQ:
+            key += f"@seq{self.max_seq_length}"  # el mismo texto largo da otro vector si se trunca en otro largo
+        return key
 
 
 MODELS = {
@@ -58,6 +62,10 @@ MODELS = {
     "e3": EmbeddingModel("e3", "BAAI/bge-m3", "", 0.0, provider="local"),
     "e4": EmbeddingModel("e4", "jinaai/jina-embeddings-v2-base-code", "", 0.0, provider="local",
                          trust_remote_code=True),
+    # E4 con ventana más larga, para chunks de 2048 tokens (estudio de hiperparámetros): con 1536 se truncarían y la
+    # comparación de tamaños quedaría sesgada. Jina v2 admite hasta 8192 (ALiBi). Caché aparte (ver `cache_key`).
+    "e4l": EmbeddingModel("e4l", "jinaai/jina-embeddings-v2-base-code", "", 0.0, provider="local",
+                          trust_remote_code=True, max_seq_length=3072),
     "e5": EmbeddingModel("e5", "nomic-ai/nomic-embed-text-v1.5", "", 0.0, provider="local", trust_remote_code=True,
                          query_prefix="search_query: ", doc_prefix="search_document: "),
 }

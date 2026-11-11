@@ -100,3 +100,10 @@ def test_local_embeddings_add_prefixes(monkeypatch):
     local.embed_documents(["a"])
     local.embed_query("b")
     assert FakeST.seen == ["search_document: a", "search_query: b"]
+
+
+def test_cache_key_separa_ventanas_distintas():
+    # la clave de los modelos existentes no cambia (el caché ya armado sigue valiendo)
+    assert MODELS["e4"].cache_key == "jinaai/jina-embeddings-v2-base-code"
+    assert MODELS["e4l"].name == MODELS["e4"].name
+    assert MODELS["e4l"].cache_key == "jinaai/jina-embeddings-v2-base-code@seq3072"

@@ -68,7 +68,7 @@ def main() -> int:
         return 1
     fetch = CachedPyPI(offline=args.offline)
     llm = CachedLLM(CHAT_MODELS[args.llm])
-    items = select_items(load_items(), args.split)
+    items = select_items(load_items(), args.split, args.packages)
 
     # Las consultas al índice son las del paso 7: si ya se corrió eval_retrieval.py, están en el caché (0 USD).
     queries = [QUERIES["A"](it["code"], r.module) for it in items for r in validate(it["code"], fetch) if r.to_rag]
