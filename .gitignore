@@ -105,7 +105,7 @@ data/eval/_edit/
 # - results/index/: reportes de indexado (tokens, USD, tiempo); regenerarlos cuesta plata (presupuesto total: 10 USD).
 # - results/eval/: resultado de la evaluación por ítem (`*.targets.jsonl`) y su resumen; con ellos se calculan los
 #   intervalos y se arman los gráficos (unos 1 MB por corrida). Regenerarlos lleva más de una hora.
-# - results/study/: estadísticas de chunks, manifiesto, tabla y análisis del estudio de splitters, y los gráficos.
+# - results/study/: estadísticas de chunks, manifiesto, tabla y análisis del estudio de splitters.
 # Los de la fase 0 (results/phase0/) se regeneran gratis con src/scripts/phase0_metrics.py.
 # "results/*" y no "results/": con el directorio entero ignorado, git no mira las excepciones de adentro.
 results/*
@@ -114,6 +114,8 @@ results/*
 !results/study/
 # Registros de cada paso de la tanda (stdout/stderr): solo sirven para ver por qué falló algo.
 results/study/logs/
+# Gráficos (PNG): se regeneran en segundos con src/scripts/analyze_splitters.py desde results/eval/.
+results/study/figures/
 
 # ===== Clases =====
 # Clases de la materia como contexto.
