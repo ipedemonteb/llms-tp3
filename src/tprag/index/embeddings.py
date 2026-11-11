@@ -28,7 +28,7 @@ CACHE_PATH = ROOT / "data" / "index" / "cache" / "embeddings.sqlite"
 class EmbeddingModel:
     id: str
     name: str  # nombre real del modelo (el vector no depende de por dónde se pida)
-    api_name: str  # cómo se lo pide: el proxy de la cátedra (OPENAI_BASE_URL) usa el prefijo "openai/"
+    api_name: str  # cómo se lo pide a la API de OpenAI
     usd_per_m_tokens: float  # precio verificado en developers.openai.com/api/docs/pricing el 2026-10-27
     tokenizer: str = "cl100k_base"
     dimensions: int | None = None  # None = las del modelo; text-embedding-3 permite reducirlas
@@ -55,8 +55,8 @@ class EmbeddingModel:
 
 
 MODELS = {
-    "e1": EmbeddingModel("e1", "text-embedding-3-small", "openai/text-embedding-3-small", 0.02),
-    "e2": EmbeddingModel("e2", "text-embedding-3-large", "openai/text-embedding-3-large", 0.13),
+    "e1": EmbeddingModel("e1", "text-embedding-3-small", "text-embedding-3-small", 0.02),
+    "e2": EmbeddingModel("e2", "text-embedding-3-large", "text-embedding-3-large", 0.13),
     # Locales (plan_experimentos_indice.md §3.1). api_name vacío y precio 0: no hay API ni se paga por token. Los
     # tokens que cuenta `estimate` son los de cl100k_base, solo una referencia del tamaño (cada modelo tiene el suyo).
     "e3": EmbeddingModel("e3", "BAAI/bge-m3", "", 0.0, provider="local"),

@@ -24,7 +24,7 @@ OUTPUT_TOKENS_ESTIMATE = 700  # reemplazos ~400 + reporte ~300 (generador.md §2
 class ChatModel:
     id: str
     name: str
-    api_name: str  # el proxy de la cátedra (OPENAI_BASE_URL) usa el prefijo "openai/"
+    api_name: str  # nombre en la API de OpenAI
     usd_per_m_input: float  # precios verificados en developers.openai.com/api/docs/pricing el 2026-11-08
     usd_per_m_output: float
     tokenizer: str = "o200k_base"
@@ -34,7 +34,7 @@ class ChatModel:
 
 
 CHAT_MODELS = {
-    "gpt-4o-mini": ChatModel("gpt-4o-mini", "gpt-4o-mini", "openai/gpt-4o-mini", 0.15, 0.60),
+    "gpt-4o-mini": ChatModel("gpt-4o-mini", "gpt-4o-mini", "gpt-4o-mini", 0.15, 0.60),
 }
 
 

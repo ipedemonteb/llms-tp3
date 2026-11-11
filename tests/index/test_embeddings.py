@@ -42,14 +42,14 @@ def test_cache_separates_models(tmp_path):
 
 def test_cache_key_uses_real_name_and_dimensions():
     assert MODELS["e1"].cache_key == "text-embedding-3-small"
-    m = EmbeddingModel("e1", "text-embedding-3-small", "openai/text-embedding-3-small", 0.02, dimensions=512)
+    m = EmbeddingModel("e1", "text-embedding-3-small", "text-embedding-3-small", 0.02, dimensions=512)
     assert m.cache_key == "text-embedding-3-small@512"
 
 
 def test_openai_client_uses_api_name(monkeypatch):
     monkeypatch.setenv("OPENAI_API_KEY", "sk-falsa")  # solo se construye el cliente, no se llama a la API
     emb = openai_embeddings(MODELS["e1"])
-    assert emb.model == "openai/text-embedding-3-small"
+    assert emb.model == "text-embedding-3-small"
     assert emb.tiktoken_model_name == "text-embedding-3-small"
 
 
