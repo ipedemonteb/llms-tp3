@@ -35,6 +35,15 @@
     "python-stdlib"
   ],
   "variants": {
+    "base": {
+      "factor": "base",
+      "label": "S3 · 1024 · R1 · tope 150",
+      "collection": "s3-1024__e4__r1__cap150__sub-437d70f2",
+      "chunks": "s3-1024",
+      "model": "e4",
+      "cap": 150,
+      "representation": "r1"
+    },
     "cap75": {
       "factor": "cap",
       "label": "tope 75",
@@ -43,20 +52,93 @@
       "model": "e4",
       "cap": 75,
       "representation": "r1"
+    },
+    "cap300": {
+      "factor": "cap",
+      "label": "tope 300",
+      "collection": "s3-1024__e4__r1__cap300__sub-437d70f2",
+      "chunks": "s3-1024",
+      "model": "e4",
+      "cap": 300,
+      "representation": "r1"
+    },
+    "nocap": {
+      "factor": "cap",
+      "label": "sin tope",
+      "collection": "s3-1024__e4__r1__nocap__sub-437d70f2",
+      "chunks": "s3-1024",
+      "model": "e4",
+      "cap": null,
+      "representation": "r1"
+    },
+    "raw": {
+      "factor": "representation",
+      "label": "sin prefijo (raw)",
+      "collection": "s3-1024__e4__raw__cap150__sub-437d70f2",
+      "chunks": "s3-1024",
+      "model": "e4",
+      "cap": 150,
+      "representation": "raw"
+    },
+    "min64": {
+      "factor": "min_tokens",
+      "label": "mínimo 64",
+      "collection": "s3-1024-min64__e4__r1__cap150__sub-437d70f2",
+      "chunks": "s3-1024-min64",
+      "model": "e4",
+      "cap": 150,
+      "representation": "r1"
+    },
+    "min128": {
+      "factor": "min_tokens",
+      "label": "mínimo 128",
+      "collection": "s3-1024-min128__e4__r1__cap150__sub-437d70f2",
+      "chunks": "s3-1024-min128",
+      "model": "e4",
+      "cap": 150,
+      "representation": "r1"
+    },
+    "size512": {
+      "factor": "size",
+      "label": "tamaño 512",
+      "collection": "s3-512__e4__r1__cap150__sub-437d70f2",
+      "chunks": "s3-512",
+      "model": "e4",
+      "cap": 150,
+      "representation": "r1"
+    },
+    "size256": {
+      "factor": "size",
+      "label": "tamaño 256",
+      "collection": "s3-256__e4__r1__cap150__sub-437d70f2",
+      "chunks": "s3-256",
+      "model": "e4",
+      "cap": 150,
+      "representation": "r1"
+    },
+    "size2048": {
+      "factor": "size",
+      "label": "tamaño 2048",
+      "collection": "s3-2048__e4l__r1__cap150__sub-437d70f2",
+      "chunks": "s3-2048",
+      "model": "e4l",
+      "cap": 150,
+      "representation": "r1"
     }
   },
   "models": {
-    "e4": "jinaai/jina-embeddings-v2-base-code"
+    "e4": "jinaai/jina-embeddings-v2-base-code",
+    "e4l": "jinaai/jina-embeddings-v2-base-code"
   },
   "dataset": {
-    "commit": "a3c546a",
+    "commit": "0b84425",
     "sha256": {
       "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
       "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
       "synthetic.jsonl": "953244ac4e3a03ed8d8ddd422605dea535c7f7f889c09e84ed1b8be4e0c1b759"
     }
   },
-  "git_dirty": true,
+  "git_dirty": false,
   "environment": {
     "platform": "macOS-26.6.2-arm64-arm-64bit",
     "machine": "arm64",
@@ -71,7 +153,7 @@
   "settings": {
     "warm_batch": 200,
     "pause": 3,
-    "cooldown": 0.0
+    "cooldown": 30.0
   },
   "steps": {
     "s3-1024__e4__r1__cap75__sub-437d70f2": {
@@ -123,8 +205,488 @@
           }
         ]
       }
+    },
+    "s3-1024__e4__r1__cap300__sub-437d70f2": {
+      "index": {
+        "status": "ok",
+        "seconds": 390.5,
+        "seconds_total": 390.5,
+        "peak_memory_mb": 1310.0,
+        "finished": "2026-11-11T19:36:24",
+        "log": "results/study/logs/s3-1024__e4__r1__cap300__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 390.5,
+            "peak_memory_mb": 1310.0,
+            "finished": "2026-11-11T19:36:24"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 2.8,
+        "seconds_total": 2.8,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T19:36:27",
+        "log": "results/study/logs/s3-1024__e4__r1__cap300__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 2.8,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T19:36:27"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 9.2,
+        "seconds_total": 9.2,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T19:36:36",
+        "log": "results/study/logs/s3-1024__e4__r1__cap300__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 9.2,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T19:36:36"
+          }
+        ]
+      }
+    },
+    "s3-1024__e4__r1__nocap__sub-437d70f2": {
+      "index": {
+        "status": "ok",
+        "seconds": 975.6,
+        "seconds_total": 975.6,
+        "peak_memory_mb": 1530.1,
+        "finished": "2026-11-11T19:53:22",
+        "log": "results/study/logs/s3-1024__e4__r1__nocap__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 975.6,
+            "peak_memory_mb": 1530.1,
+            "finished": "2026-11-11T19:53:22"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 2.1,
+        "seconds_total": 2.1,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T19:53:24",
+        "log": "results/study/logs/s3-1024__e4__r1__nocap__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 2.1,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T19:53:24"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 11.3,
+        "seconds_total": 11.3,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T19:53:35",
+        "log": "results/study/logs/s3-1024__e4__r1__nocap__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 11.3,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T19:53:35"
+          }
+        ]
+      }
+    },
+    "s3-1024__e4__raw__cap150__sub-437d70f2": {
+      "index": {
+        "status": "ok",
+        "seconds": 753.3,
+        "seconds_total": 753.3,
+        "peak_memory_mb": 1460.4,
+        "finished": "2026-11-11T20:06:38",
+        "log": "results/study/logs/s3-1024__e4__raw__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 753.3,
+            "peak_memory_mb": 1460.4,
+            "finished": "2026-11-11T20:06:38"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 2.0,
+        "seconds_total": 2.0,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:06:40",
+        "log": "results/study/logs/s3-1024__e4__raw__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 2.0,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:06:40"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 7.8,
+        "seconds_total": 7.8,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:06:48",
+        "log": "results/study/logs/s3-1024__e4__raw__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 7.8,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:06:48"
+          }
+        ]
+      }
+    },
+    "s3-1024-min64__e4__r1__cap150__sub-437d70f2": {
+      "split": {
+        "status": "ok",
+        "seconds": 4.5,
+        "seconds_total": 4.5,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:07:23",
+        "log": "results/study/logs/s3-1024-min64__e4__r1__cap150__sub-437d70f2__split.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 4.5,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:07:23"
+          }
+        ]
+      },
+      "index": {
+        "status": "ok",
+        "seconds": 22.0,
+        "seconds_total": 22.0,
+        "peak_memory_mb": 1522.2,
+        "finished": "2026-11-11T20:07:45",
+        "log": "results/study/logs/s3-1024-min64__e4__r1__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 22.0,
+            "peak_memory_mb": 1522.2,
+            "finished": "2026-11-11T20:07:45"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 1.9,
+        "seconds_total": 1.9,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:07:47",
+        "log": "results/study/logs/s3-1024-min64__e4__r1__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 1.9,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:07:47"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 6.9,
+        "seconds_total": 6.9,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:07:54",
+        "log": "results/study/logs/s3-1024-min64__e4__r1__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 6.9,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:07:54"
+          }
+        ]
+      }
+    },
+    "s3-1024-min128__e4__r1__cap150__sub-437d70f2": {
+      "split": {
+        "status": "ok",
+        "seconds": 4.4,
+        "seconds_total": 4.4,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:08:28",
+        "log": "results/study/logs/s3-1024-min128__e4__r1__cap150__sub-437d70f2__split.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 4.4,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:08:28"
+          }
+        ]
+      },
+      "index": {
+        "status": "ok",
+        "seconds": 25.3,
+        "seconds_total": 25.3,
+        "peak_memory_mb": 1486.8,
+        "finished": "2026-11-11T20:08:53",
+        "log": "results/study/logs/s3-1024-min128__e4__r1__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 25.3,
+            "peak_memory_mb": 1486.8,
+            "finished": "2026-11-11T20:08:53"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 1.9,
+        "seconds_total": 1.9,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:08:55",
+        "log": "results/study/logs/s3-1024-min128__e4__r1__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 1.9,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:08:55"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 7.2,
+        "seconds_total": 7.2,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:09:02",
+        "log": "results/study/logs/s3-1024-min128__e4__r1__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 7.2,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:09:02"
+          }
+        ]
+      }
+    },
+    "s3-512__e4__r1__cap150__sub-437d70f2": {
+      "split": {
+        "status": "ok",
+        "seconds": 4.1,
+        "seconds_total": 4.1,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:09:36",
+        "log": "results/study/logs/s3-512__e4__r1__cap150__sub-437d70f2__split.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 4.1,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:09:36"
+          }
+        ]
+      },
+      "index": {
+        "status": "ok",
+        "seconds": 215.7,
+        "seconds_total": 215.7,
+        "peak_memory_mb": 1518.2,
+        "finished": "2026-11-11T20:13:12",
+        "log": "results/study/logs/s3-512__e4__r1__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 215.7,
+            "peak_memory_mb": 1518.2,
+            "finished": "2026-11-11T20:13:12"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 1.6,
+        "seconds_total": 1.6,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:13:14",
+        "log": "results/study/logs/s3-512__e4__r1__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 1.6,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:13:14"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 6.9,
+        "seconds_total": 6.9,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:13:21",
+        "log": "results/study/logs/s3-512__e4__r1__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 6.9,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:13:21"
+          }
+        ]
+      }
+    },
+    "s3-256__e4__r1__cap150__sub-437d70f2": {
+      "split": {
+        "status": "ok",
+        "seconds": 4.4,
+        "seconds_total": 4.4,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:13:55",
+        "log": "results/study/logs/s3-256__e4__r1__cap150__sub-437d70f2__split.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 4.4,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:13:55"
+          }
+        ]
+      },
+      "index": {
+        "status": "ok",
+        "seconds": 230.1,
+        "seconds_total": 230.1,
+        "peak_memory_mb": 1488.8,
+        "finished": "2026-11-11T20:17:45",
+        "log": "results/study/logs/s3-256__e4__r1__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 230.1,
+            "peak_memory_mb": 1488.8,
+            "finished": "2026-11-11T20:17:45"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 4.5,
+        "seconds_total": 4.5,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:17:50",
+        "log": "results/study/logs/s3-256__e4__r1__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 4.5,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:17:50"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 6.8,
+        "seconds_total": 6.8,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:17:57",
+        "log": "results/study/logs/s3-256__e4__r1__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 6.8,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:17:57"
+          }
+        ]
+      }
+    },
+    "s3-2048__e4l__r1__cap150__sub-437d70f2": {
+      "split": {
+        "status": "ok",
+        "seconds": 3.9,
+        "seconds_total": 3.9,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:18:30",
+        "log": "results/study/logs/s3-2048__e4l__r1__cap150__sub-437d70f2__split.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 3.9,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:18:30"
+          }
+        ]
+      },
+      "index": {
+        "status": "ok",
+        "seconds": 1035.2,
+        "seconds_total": 1035.2,
+        "peak_memory_mb": 1502.5,
+        "finished": "2026-11-11T20:35:46",
+        "log": "results/study/logs/s3-2048__e4l__r1__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 1035.2,
+            "peak_memory_mb": 1502.5,
+            "finished": "2026-11-11T20:35:46"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 15.9,
+        "seconds_total": 15.9,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:36:02",
+        "log": "results/study/logs/s3-2048__e4l__r1__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 15.9,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:36:02"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 6.9,
+        "seconds_total": 6.9,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T20:36:08",
+        "log": "results/study/logs/s3-2048__e4l__r1__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 6.9,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T20:36:08"
+          }
+        ]
+      }
     }
   },
   "started": "2026-11-11T18:37:34",
-  "finished": "2026-11-11T18:37:50"
+  "finished": "2026-11-11T20:36:08"
 }

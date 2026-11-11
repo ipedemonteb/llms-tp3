@@ -1,0 +1,458 @@
+{
+  "collection": "s3-2048__e4l__r1__cap150__sub-437d70f2",
+  "query": "A",
+  "split": "dev",
+  "date": "2026-11-11T20:36:01",
+  "config": {
+    "chunks": "s3-2048",
+    "console_mode": "outputs_as_comments",
+    "model": "e4l",
+    "representation": "r1",
+    "cap": 150,
+    "strategy": "round_robin",
+    "packages": [
+      "transformers",
+      "scikit-learn",
+      "torch",
+      "django",
+      "fastapi",
+      "flask",
+      "matplotlib",
+      "plotly",
+      "streamlit",
+      "playwright",
+      "scrapy",
+      "lxml",
+      "pandas",
+      "numpy",
+      "scipy",
+      "sqlalchemy",
+      "xlsxwriter",
+      "pymupdf",
+      "textual",
+      "typer",
+      "pydantic",
+      "scikit-image",
+      "wand",
+      "celery",
+      "pytest",
+      "authlib",
+      "cryptography",
+      "aiohttp",
+      "boto3",
+      "python-stdlib"
+    ]
+  },
+  "dataset": {
+    "commit": "0b84425",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
+      "synthetic.jsonl": "953244ac4e3a03ed8d8ddd422605dea535c7f7f889c09e84ed1b8be4e0c1b759"
+    }
+  },
+  "budget": 2000,
+  "items": 109,
+  "targets_dropped_outside_packages": 6,
+  "n_results": 50,
+  "model": "jinaai/jina-embeddings-v2-base-code",
+  "paid": {
+    "texts": 116,
+    "tokens": 8931,
+    "usd": 0.0,
+    "api_calls_texts": 116
+  },
+  "cache_hits": 0,
+  "seconds": 13.6,
+  "metrics": {
+    "all": {
+      "targets": 107,
+      "package": {
+        "best_chunk": {
+          "hit@1": 0.7664,
+          "hit@3": 0.9439,
+          "hit@5": 0.9813,
+          "hit@10": 0.9907,
+          "mrr": 0.8602
+        },
+        "sum_rr@5": {
+          "hit@1": 0.8037,
+          "hit@3": 0.9439,
+          "hit@5": 0.9813,
+          "hit@10": 0.9907,
+          "mrr": 0.8789
+        },
+        "sum_rr@10": {
+          "hit@1": 0.8131,
+          "hit@3": 0.9439,
+          "hit@5": 0.9813,
+          "hit@10": 0.9907,
+          "mrr": 0.8836
+        },
+        "sum_rr@20": {
+          "hit@1": 0.8131,
+          "hit@3": 0.9439,
+          "hit@5": 0.9813,
+          "hit@10": 0.9907,
+          "mrr": 0.8851
+        },
+        "count@5": {
+          "hit@1": 0.8037,
+          "hit@3": 0.9439,
+          "hit@5": 0.9813,
+          "hit@10": 0.9907,
+          "mrr": 0.8758
+        },
+        "count@10": {
+          "hit@1": 0.7944,
+          "hit@3": 0.9533,
+          "hit@5": 0.9813,
+          "hit@10": 0.9907,
+          "mrr": 0.8734
+        },
+        "count@20": {
+          "hit@1": 0.757,
+          "hit@3": 0.9346,
+          "hit@5": 0.9813,
+          "hit@10": 0.9907,
+          "mrr": 0.8563
+        }
+      },
+      "span": {
+        "hit@1": 0.3271,
+        "hit@3": 0.4766,
+        "hit@5": 0.5514,
+        "hit@10": 0.6729,
+        "ndcg@10": 0.4765,
+        "hit@2000tok": 0.5327
+      }
+    },
+    "by_subset": {
+      "manual_deprecated": {
+        "targets": 9,
+        "package": {
+          "best_chunk": {
+            "hit@1": 0.7778,
+            "hit@3": 1,
+            "hit@5": 1,
+            "hit@10": 1,
+            "mrr": 0.8889
+          },
+          "sum_rr@5": {
+            "hit@1": 0.8889,
+            "hit@3": 1,
+            "hit@5": 1,
+            "hit@10": 1,
+            "mrr": 0.9444
+          },
+          "sum_rr@10": {
+            "hit@1": 1,
+            "hit@3": 1,
+            "hit@5": 1,
+            "hit@10": 1,
+            "mrr": 1.0
+          },
+          "sum_rr@20": {
+            "hit@1": 1,
+            "hit@3": 1,
+            "hit@5": 1,
+            "hit@10": 1,
+            "mrr": 1.0
+          },
+          "count@5": {
+            "hit@1": 1,
+            "hit@3": 1,
+            "hit@5": 1,
+            "hit@10": 1,
+            "mrr": 1.0
+          },
+          "count@10": {
+            "hit@1": 1,
+            "hit@3": 1,
+            "hit@5": 1,
+            "hit@10": 1,
+            "mrr": 1.0
+          },
+          "count@20": {
+            "hit@1": 1,
+            "hit@3": 1,
+            "hit@5": 1,
+            "hit@10": 1,
+            "mrr": 1.0
+          }
+        },
+        "span": {
+          "hit@1": 0.4444,
+          "hit@3": 0.5556,
+          "hit@5": 0.6667,
+          "hit@10": 0.8889,
+          "ndcg@10": 0.5031,
+          "hit@2000tok": 0.6667
+        }
+      },
+      "negative": {
+        "targets": 0,
+        "package": {
+          "best_chunk": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "sum_rr@5": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "sum_rr@10": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "sum_rr@20": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "count@5": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "count@10": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "count@20": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          }
+        },
+        "span": {
+          "hit@1": null,
+          "hit@3": null,
+          "hit@5": null,
+          "hit@10": null,
+          "ndcg@10": null,
+          "hit@2000tok": null
+        }
+      },
+      "synthetic": {
+        "targets": 98,
+        "package": {
+          "best_chunk": {
+            "hit@1": 0.7653,
+            "hit@3": 0.9388,
+            "hit@5": 0.9796,
+            "hit@10": 0.9898,
+            "mrr": 0.8576
+          },
+          "sum_rr@5": {
+            "hit@1": 0.7959,
+            "hit@3": 0.9388,
+            "hit@5": 0.9796,
+            "hit@10": 0.9898,
+            "mrr": 0.8729
+          },
+          "sum_rr@10": {
+            "hit@1": 0.7959,
+            "hit@3": 0.9388,
+            "hit@5": 0.9796,
+            "hit@10": 0.9898,
+            "mrr": 0.8729
+          },
+          "sum_rr@20": {
+            "hit@1": 0.7959,
+            "hit@3": 0.9388,
+            "hit@5": 0.9796,
+            "hit@10": 0.9898,
+            "mrr": 0.8746
+          },
+          "count@5": {
+            "hit@1": 0.7857,
+            "hit@3": 0.9388,
+            "hit@5": 0.9796,
+            "hit@10": 0.9898,
+            "mrr": 0.8644
+          },
+          "count@10": {
+            "hit@1": 0.7755,
+            "hit@3": 0.949,
+            "hit@5": 0.9796,
+            "hit@10": 0.9898,
+            "mrr": 0.8618
+          },
+          "count@20": {
+            "hit@1": 0.7347,
+            "hit@3": 0.9286,
+            "hit@5": 0.9796,
+            "hit@10": 0.9898,
+            "mrr": 0.8431
+          }
+        },
+        "span": {
+          "hit@1": 0.3163,
+          "hit@3": 0.4694,
+          "hit@5": 0.5408,
+          "hit@10": 0.6531,
+          "ndcg@10": 0.474,
+          "hit@2000tok": 0.5204
+        }
+      }
+    },
+    "by_lang": {
+      "en": {
+        "targets": 64,
+        "package": {
+          "best_chunk": {
+            "hit@1": 0.6875,
+            "hit@3": 0.9531,
+            "hit@5": 0.9844,
+            "hit@10": 1,
+            "mrr": 0.8229
+          },
+          "sum_rr@5": {
+            "hit@1": 0.75,
+            "hit@3": 0.9531,
+            "hit@5": 0.9844,
+            "hit@10": 1,
+            "mrr": 0.8542
+          },
+          "sum_rr@10": {
+            "hit@1": 0.7656,
+            "hit@3": 0.9531,
+            "hit@5": 0.9844,
+            "hit@10": 1,
+            "mrr": 0.862
+          },
+          "sum_rr@20": {
+            "hit@1": 0.7969,
+            "hit@3": 0.9531,
+            "hit@5": 0.9844,
+            "hit@10": 1,
+            "mrr": 0.8802
+          },
+          "count@5": {
+            "hit@1": 0.7656,
+            "hit@3": 0.9531,
+            "hit@5": 0.9844,
+            "hit@10": 1,
+            "mrr": 0.8568
+          },
+          "count@10": {
+            "hit@1": 0.75,
+            "hit@3": 0.9688,
+            "hit@5": 0.9844,
+            "hit@10": 1,
+            "mrr": 0.8555
+          },
+          "count@20": {
+            "hit@1": 0.7188,
+            "hit@3": 0.9375,
+            "hit@5": 0.9844,
+            "hit@10": 1,
+            "mrr": 0.8424
+          }
+        },
+        "span": {
+          "hit@1": 0.2969,
+          "hit@3": 0.4375,
+          "hit@5": 0.5156,
+          "hit@10": 0.6562,
+          "ndcg@10": 0.4447,
+          "hit@2000tok": 0.5156
+        }
+      },
+      "es": {
+        "targets": 43,
+        "package": {
+          "best_chunk": {
+            "hit@1": 0.8837,
+            "hit@3": 0.9302,
+            "hit@5": 0.9767,
+            "hit@10": 0.9767,
+            "mrr": 0.9157
+          },
+          "sum_rr@5": {
+            "hit@1": 0.8837,
+            "hit@3": 0.9302,
+            "hit@5": 0.9767,
+            "hit@10": 0.9767,
+            "mrr": 0.9157
+          },
+          "sum_rr@10": {
+            "hit@1": 0.8837,
+            "hit@3": 0.9302,
+            "hit@5": 0.9767,
+            "hit@10": 0.9767,
+            "mrr": 0.9157
+          },
+          "sum_rr@20": {
+            "hit@1": 0.8372,
+            "hit@3": 0.9302,
+            "hit@5": 0.9767,
+            "hit@10": 0.9767,
+            "mrr": 0.8924
+          },
+          "count@5": {
+            "hit@1": 0.8605,
+            "hit@3": 0.9302,
+            "hit@5": 0.9767,
+            "hit@10": 0.9767,
+            "mrr": 0.9041
+          },
+          "count@10": {
+            "hit@1": 0.8605,
+            "hit@3": 0.9302,
+            "hit@5": 0.9767,
+            "hit@10": 0.9767,
+            "mrr": 0.9002
+          },
+          "count@20": {
+            "hit@1": 0.814,
+            "hit@3": 0.9302,
+            "hit@5": 0.9767,
+            "hit@10": 0.9767,
+            "mrr": 0.8769
+          }
+        },
+        "span": {
+          "hit@1": 0.3721,
+          "hit@3": 0.5349,
+          "hit@5": 0.6047,
+          "hit@10": 0.6977,
+          "ndcg@10": 0.5238,
+          "hit@2000tok": 0.5581
+        }
+      }
+    },
+    "auroc": {
+      "value": 0.8276,
+      "positives": 107,
+      "negatives": 9
+    },
+    "threshold": {
+      "min_positive_pass": 0.95,
+      "value": 0.425754,
+      "positives_pass": 102,
+      "positives": 107,
+      "negatives_pass": 5,
+      "negatives": 9
+    }
+  }
+}

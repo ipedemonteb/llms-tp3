@@ -58,22 +58,28 @@ def fig_factors(result: dict, out_dir: Path) -> Path:
 
 def fig_budget(result: dict, out_dir: Path) -> Path:
     budgets = result["budgets"]
-    fig, axes = _canvas(9.5, 4.2, cols=2, left=0.75, right=1.0, top=0.45, bottom=0.7, wspace=0.55)
+    fig, axes = _canvas(9.5, 4.2, cols=2, left=0.75, right=0.3, top=0.45, bottom=0.7, wspace=0.25)
     panels = [("Tamaño de chunk (tokens)", "size"), ("Representación", "representation")]
+    # la base va siempre en azul y gruesa; el resto, con color y trazo propios para poder distinguirlos sin etiquetas
+    styles = [(ORANGE, "-"), (INK2, "--"), (MUTED, ":"), (GRAY, "-.")]
     for ax, (title, factor) in zip(axes[0], panels):
         w = result["within_factor"].get(factor)
         ax.set_title(title, fontsize=10.5, loc="left", color=INK, pad=8)
+        handles, labels = [], []
         if w:
-            for k, i in enumerate(w["levels"]):
+            others = iter(styles)
+            for i in w["levels"]:
                 ys = [result["variants"][i]["metrics"][f"span_hit@{b}"]["value"] for b in budgets]
                 base = i == "base"
-                color = ACCENT if base else (ORANGE if factor == "representation" else [GRAY, MUTED, INK2][k % 3])
-                ax.plot(budgets, ys, color=color, linewidth=2.4 if base else 1.6, marker="o",
-                        markersize=4.5 if base else 3.5, zorder=3 if base else 2)
-                ax.text(budgets[-1] + 80, ys[-1], w["labels"][i], va="center", fontsize=9.5, color=color)
+                color, dash = (ACCENT, "-") if base else next(others)
+                (line,) = ax.plot(budgets, ys, color=color, linestyle=dash, linewidth=2.6 if base else 1.8,
+                                  marker="o", markersize=5 if base else 3.5, zorder=3 if base else 2)
+                handles.append(line)
+                labels.append(w["labels"][i] + (" (base)" if base else ""))
+            ax.legend(handles, labels, loc="lower right", frameon=False, fontsize=9.5, labelcolor=INK2)
         ax.set_xticks(budgets)
         ax.set_xlim(budgets[0] - 100, budgets[-1] + 100)
-        ax.set_ylim(0, 1.0)
+        ax.set_ylim(0.3, 0.8)  # las curvas viven entre 0,33 y 0,70: con 0-1 no se ve la diferencia
         ax.set_xlabel("tokens de contexto", fontsize=10, color=INK2)
         _frame(ax, grid="y")
     axes[0][0].set_ylabel("Span Hit", fontsize=10, color=INK2)
@@ -81,20 +87,33 @@ def fig_budget(result: dict, out_dir: Path) -> Path:
 
 
 def fig_cost(result: dict, out_dir: Path) -> Path:
-    fig, axes = _canvas(8.5, 5.0, left=0.8, right=0.5, top=0.45, bottom=0.8)
+    fig, axes = _canvas(8.5, 5.0, left=0.8, right=0.9, top=0.45, bottom=0.8)
     ax = axes[0][0]
-    for i, v in result["variants"].items():
-        if not v["tokens"]:
-            continue
-        x, m = v["tokens"] / 1e6, v["metrics"][SPAN]
-        color = ACCENT if i == "base" else (ORANGE if i in result["finalists"] else GRAY)
-        ax.plot([x, x], m["ci"], color=color, linewidth=1.1, alpha=0.6, zorder=2)
-        ax.plot([x], [m["value"]], marker="o", markersize=8, markerfacecolor=color, markeredgecolor="white",
-                markeredgewidth=1.2, linestyle="none", zorder=4)
-        ax.annotate(i, (x, m["value"]), xytext=(8, -3), textcoords="offset points", fontsize=9.5, color=INK2)
+    points = [(v["tokens"] / 1e6, v["metrics"][SPAN]["value"], i) for i, v in result["variants"].items() if v["tokens"]]
+    # variantes que dan el mismo punto (p. ej. los mínimos 64 y 128, que no cambian nada) comparten marcador y etiqueta
+    groups: list[list] = []
+    for x, y, i in sorted(points):
+        for g in groups:
+            if abs(g[0] - x) < 0.04 and abs(g[1] - y) < 0.002:
+                g[2].append(i)
+                break
+        else:
+            groups.append([x, y, [i]])
+    side = {id(g): k % 2 for k, g in enumerate(sorted(groups))}  # etiquetas vecinas, una arriba y otra abajo
+    for x, y, ids in sorted(groups, key=lambda g: "base" in g[2]):  # la base se dibuja al final, arriba de todo
+        main = "base" if "base" in ids else ids[0]
+        color = ACCENT if "base" in ids else (ORANGE if any(i in result["finalists"] for i in ids) else GRAY)
+        ci = result["variants"][main]["metrics"][SPAN]["ci"]
+        ax.plot([x, x], ci, color=color, linewidth=1.1, alpha=0.5, zorder=2)
+        ax.plot([x], [y], marker="o", markersize=8, markerfacecolor=color, markeredgecolor="white", markeredgewidth=1.2,
+                linestyle="none", zorder=4)
+        group = next(g for g in groups if g[2] is ids)
+        ax.annotate(" = ".join(ids), (x, y), xytext=(9, 8 if side[id(group)] == 0 else -16), textcoords="offset points",
+                    fontsize=9.5, color=INK2)
     ax.set_xlabel("tokens a embeber (millones, cl100k)", fontsize=10, color=INK2)
     ax.set_ylabel("Span Hit@2000", fontsize=10, color=INK2)
-    ax.set_ylim(0, 1.0)
+    ax.set_ylim(0.3, 0.7)
+    ax.set_xlim(0.7, 5.5)
     _frame(ax, grid="y")
     handles = [ax.plot([], [], "o", color=c, markersize=7)[0] for c in (ACCENT, ORANGE, GRAY)]
     ax.legend(handles, ["base", "finalistas", "resto"], loc="lower right", frameon=False, fontsize=9.5, labelcolor=INK2)
@@ -114,7 +133,7 @@ def fig_efficiency(result: dict, out_dir: Path) -> Path:
         m = result["variants"][i]["metrics"][EFF]
         ax.barh(k, m["value"], 0.55, color=ACCENT if i == "base" else GRAY, zorder=2)
         ax.plot(m["ci"], [k, k], color=INK2, linewidth=1.1, zorder=3)
-        ax.text(m["ci"][1] + top * 0.02, k, _fmt(m["value"]), va="center", fontsize=10, color=INK, fontweight="semibold")
+        ax.text(m["ci"][1] + top * 0.02, k, f"{m['value']:.3f}", va="center", fontsize=10, color=INK, fontweight="semibold")
     ax.set_xlabel("parte del contexto (2000 tokens) que es bloque gold", fontsize=10, color=INK2)
     _frame(ax, grid="x")
     ax.spines["bottom"].set_color(BASELINE)
