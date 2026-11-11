@@ -266,10 +266,16 @@ def main() -> int:
                 fh.flush()
                 code = subprocess.run(cmd, cwd=ROOT, env=env, stdout=fh, stderr=subprocess.STDOUT).returncode
             seconds = round(time.time() - start, 1)
+            peak = peak_memory_mb(log) if step == "index" else None
+            attempts = manifest["steps"].get(name, {}).get(step, {}).get("attempts", [])
+            attempts.append({"status": "ok" if code == 0 else f"error {code}", "seconds": seconds,
+                             "peak_memory_mb": peak, "finished": datetime.now().isoformat(timespec="seconds")})
+            # cada intento queda registrado: si se corta y se retoma, `seconds_total` suma todos los tramos
             manifest["steps"].setdefault(name, {})[step] = {
-                "status": "ok" if code == 0 else f"error {code}", "seconds": seconds,
-                "peak_memory_mb": peak_memory_mb(log) if step == "index" else None,
-                "finished": datetime.now().isoformat(timespec="seconds"), "log": str(log.relative_to(ROOT))}
+                "status": attempts[-1]["status"], "seconds": seconds, "seconds_total": round(
+                    sum(a["seconds"] for a in attempts), 1), "peak_memory_mb": max(
+                    (a["peak_memory_mb"] or 0 for a in attempts), default=None) or None,
+                "finished": attempts[-1]["finished"], "log": str(log.relative_to(ROOT)), "attempts": attempts}
             save_manifest(manifest, manifest_path)
             if code != 0:
                 print(f"  falló ({code}) tras {seconds} s; ver {log}. Al relanzar se retoma desde este paso.")

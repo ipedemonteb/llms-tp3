@@ -1,0 +1,302 @@
+{
+  "study": "embedders",
+  "models": {
+    "e3": {
+      "name": "BAAI/bge-m3",
+      "config": {
+        "id": "e3",
+        "name": "BAAI/bge-m3",
+        "api_name": "",
+        "usd_per_m_tokens": 0.0,
+        "tokenizer": "cl100k_base",
+        "dimensions": null,
+        "provider": "local",
+        "query_prefix": "",
+        "doc_prefix": "",
+        "max_seq_length": 1536,
+        "trust_remote_code": false
+      }
+    },
+    "e5": {
+      "name": "nomic-ai/nomic-embed-text-v1.5",
+      "config": {
+        "id": "e5",
+        "name": "nomic-ai/nomic-embed-text-v1.5",
+        "api_name": "",
+        "usd_per_m_tokens": 0.0,
+        "tokenizer": "cl100k_base",
+        "dimensions": null,
+        "provider": "local",
+        "query_prefix": "search_query: ",
+        "doc_prefix": "search_document: ",
+        "max_seq_length": 1536,
+        "trust_remote_code": true
+      }
+    }
+  },
+  "split": "dev",
+  "size": 1024,
+  "n_packages": 30,
+  "packages_file": "data/eval/corpus_subset.json",
+  "packages": [
+    "transformers",
+    "scikit-learn",
+    "torch",
+    "django",
+    "fastapi",
+    "flask",
+    "matplotlib",
+    "plotly",
+    "streamlit",
+    "playwright",
+    "scrapy",
+    "lxml",
+    "pandas",
+    "numpy",
+    "scipy",
+    "sqlalchemy",
+    "xlsxwriter",
+    "pymupdf",
+    "textual",
+    "typer",
+    "pydantic",
+    "scikit-image",
+    "wand",
+    "celery",
+    "pytest",
+    "authlib",
+    "cryptography",
+    "aiohttp",
+    "boto3",
+    "python-stdlib"
+  ],
+  "dataset": {
+    "commit": "34d8060",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
+      "synthetic.jsonl": "953244ac4e3a03ed8d8ddd422605dea535c7f7f889c09e84ed1b8be4e0c1b759"
+    }
+  },
+  "git_dirty": true,
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.13",
+    "torch": "2.15.0",
+    "sentence-transformers": "5.7.0",
+    "transformers": "4.57.6",
+    "chromadb": "1.5.9",
+    "tiktoken": "0.14.0",
+    "mps": true
+  },
+  "settings": {
+    "warm_batch": 200,
+    "pause": 3,
+    "cooldown": 60
+  },
+  "steps": {
+    "s3-1024__e3__r1__cap150__sub-437d70f2": {
+      "index": {
+        "status": "ok",
+        "seconds": 1473.3,
+        "seconds_total": 1473.3,
+        "peak_memory_mb": 969.6,
+        "finished": "2026-11-11T16:48:20",
+        "log": "results/study/logs/s3-1024__e3__r1__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 1473.3,
+            "peak_memory_mb": 969.6,
+            "finished": "2026-11-11T16:48:20"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 20.4,
+        "seconds_total": 20.4,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T16:48:40",
+        "log": "results/study/logs/s3-1024__e3__r1__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 20.4,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T16:48:40"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 8.4,
+        "seconds_total": 8.4,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T16:48:49",
+        "log": "results/study/logs/s3-1024__e3__r1__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 8.4,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T16:48:49"
+          }
+        ]
+      }
+    },
+    "s2-1024__e3__r1__cap150__sub-437d70f2": {
+      "index": {
+        "status": "ok",
+        "seconds": 367.2,
+        "seconds_total": 367.2,
+        "peak_memory_mb": 999.5,
+        "finished": "2026-11-11T16:55:56",
+        "log": "results/study/logs/s2-1024__e3__r1__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 367.2,
+            "peak_memory_mb": 999.5,
+            "finished": "2026-11-11T16:55:56"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 2.1,
+        "seconds_total": 2.1,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T16:55:58",
+        "log": "results/study/logs/s2-1024__e3__r1__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 2.1,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T16:55:58"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 8.3,
+        "seconds_total": 8.3,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T16:56:06",
+        "log": "results/study/logs/s2-1024__e3__r1__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 8.3,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T16:56:06"
+          }
+        ]
+      }
+    },
+    "s3-1024__e5__r1__cap150__sub-437d70f2": {
+      "index": {
+        "status": "ok",
+        "seconds": 735.5,
+        "seconds_total": 735.5,
+        "peak_memory_mb": 1677.4,
+        "finished": "2026-11-11T17:09:22",
+        "log": "results/study/logs/s3-1024__e5__r1__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 735.5,
+            "peak_memory_mb": 1677.4,
+            "finished": "2026-11-11T17:09:22"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 17.0,
+        "seconds_total": 17.0,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T17:09:39",
+        "log": "results/study/logs/s3-1024__e5__r1__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 17.0,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T17:09:39"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 7.3,
+        "seconds_total": 7.3,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T17:09:46",
+        "log": "results/study/logs/s3-1024__e5__r1__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 7.3,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T17:09:46"
+          }
+        ]
+      }
+    },
+    "s2-1024__e5__r1__cap150__sub-437d70f2": {
+      "index": {
+        "status": "ok",
+        "seconds": 164.6,
+        "seconds_total": 164.6,
+        "peak_memory_mb": 1706.6,
+        "finished": "2026-11-11T17:13:30",
+        "log": "results/study/logs/s2-1024__e5__r1__cap150__sub-437d70f2__index.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 164.6,
+            "peak_memory_mb": 1706.6,
+            "finished": "2026-11-11T17:13:30"
+          }
+        ]
+      },
+      "eval": {
+        "status": "ok",
+        "seconds": 2.0,
+        "seconds_total": 2.0,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T17:13:32",
+        "log": "results/study/logs/s2-1024__e5__r1__cap150__sub-437d70f2__eval.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 2.0,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T17:13:32"
+          }
+        ]
+      },
+      "stats": {
+        "status": "ok",
+        "seconds": 7.4,
+        "seconds_total": 7.4,
+        "peak_memory_mb": null,
+        "finished": "2026-11-11T17:13:40",
+        "log": "results/study/logs/s2-1024__e5__r1__cap150__sub-437d70f2__stats.log",
+        "attempts": [
+          {
+            "status": "ok",
+            "seconds": 7.4,
+            "peak_memory_mb": null,
+            "finished": "2026-11-11T17:13:40"
+          }
+        ]
+      }
+    }
+  },
+  "started": "2026-11-11T16:23:46",
+  "finished": "2026-11-11T17:13:40"
+}
