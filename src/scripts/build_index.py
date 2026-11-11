@@ -5,6 +5,10 @@ Uso:
     uv run python src/scripts/build_index.py --packages requests httpx pypdf             # piloto
     uv run python src/scripts/build_index.py --chunks s3-1024 --model e1 --cap 150       # corpus completo
 
+Con un modelo local, `--warm-batch N` calcula los vectores de a N textos y los guarda en el caché después de cada lote
+(`--pause` segundos entre lotes): si algo se corta, al relanzar solo se rehace el último lote. Es lo que usa
+run_splitter_study.py.
+
 Lee data/processed/<modo>/<chunks>/chunks.jsonl, aplica filtro + tope y embebe prefijo + chunk (R1). Antes de llamar
 a la API cuenta los tokens de lo que no está en el caché y aborta si el costo supera --max-usd. Escribe la colección
 en data/index/chroma/, los vectores en data/index/cache/ y el reporte (tokens, USD, tiempo) en
@@ -38,6 +42,9 @@ def main() -> int:
     parser.add_argument("--strategy", choices=STRATEGIES, default="round_robin")
     parser.add_argument("--packages", nargs="*", help="solo estas librerías")
     parser.add_argument("--max-usd", type=float, default=0.50, help="aborta si lo que hay que pagar lo supera")
+    parser.add_argument("--warm-batch", type=int, default=0,
+                        help="solo modelos locales: calcula y guarda los vectores de a N textos (0 = todo junto)")
+    parser.add_argument("--pause", type=float, default=0, help="segundos de pausa entre lotes de --warm-batch")
     parser.add_argument("--dry-run", action="store_true", help="solo cuenta tokens y estima el costo")
     args = parser.parse_args()
 
@@ -61,22 +68,34 @@ def main() -> int:
 
     load_dotenv(ROOT / ".env")
     start = time.time()
-    build(name, docs, embeddings)
+    warmed = bool(args.warm_batch) and model.provider == "local"
+    if warmed:
+        todo = embeddings.missing(texts)
+        for i in range(0, len(todo), args.warm_batch):
+            embeddings.embed_documents(todo[i:i + args.warm_batch])
+            done = min(i + args.warm_batch, len(todo))
+            print(f"  vectores {done}/{len(todo)} ({round(time.time() - start)} s)", flush=True)
+            if args.pause and done < len(todo):
+                time.sleep(args.pause)
+    build(name, docs, embeddings)  # con el caché ya lleno, solo arma la colección
     seconds = round(time.time() - start, 1)
+    computed = embeddings.misses
+    cache_hits = len(texts) - computed if warmed else embeddings.hits
 
     packages = sorted({d.metadata["package"] for d in docs})
     report = {
         "collection": name, "date": datetime.now().isoformat(timespec="seconds"), "config": asdict(cfg),
         "model": model.name, "api_model": model.api_name, "usd_per_m_tokens": model.usd_per_m_tokens,
+        "model_config": asdict(model),
         "packages": len(packages),
         "package_list": packages if cfg.packages else None, "use_cases": len(docs), "tokens_total": total["tokens"],
-        "paid": {**to_pay, "api_calls_texts": embeddings.misses}, "cache_hits": embeddings.hits,
+        "paid": {**to_pay, "api_calls_texts": computed}, "cache_hits": cache_hits,
         "seconds": seconds,
     }
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     out = RESULTS_DIR / f"{name}.json"
     out.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"listo en {seconds} s: {embeddings.misses} textos pedidos a la API, {embeddings.hits} del caché -> {out}")
+    print(f"listo en {seconds} s: {computed} textos calculados (API o modelo local), {cache_hits} del caché -> {out}")
     return 0
 
 

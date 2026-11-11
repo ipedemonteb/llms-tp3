@@ -10,6 +10,7 @@ API, qué textos faltan (`missing`), que es lo que usa la estimación de costo.
 
 import hashlib
 import sqlite3
+import sys
 from array import array
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -92,7 +93,7 @@ class LocalEmbeddings(Embeddings):
 
     def _encode(self, texts: list[str], prefix: str) -> list[list[float]]:
         vectors = self._load().encode([prefix + t for t in texts], batch_size=self.batch_size,
-                                      normalize_embeddings=True, show_progress_bar=len(texts) > 64)
+                                      normalize_embeddings=True, show_progress_bar=len(texts) > 64 and sys.stderr.isatty())
         self._free_memory()
         return vectors.tolist()
 
