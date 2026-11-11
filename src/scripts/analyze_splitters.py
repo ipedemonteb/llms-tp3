@@ -5,6 +5,11 @@ target), results/index/ y results/study/.
 Uso:
     uv run python src/scripts/analyze_splitters.py                 # tabla + JSON (+ gráficos si hay matplotlib)
     uv run python src/scripts/analyze_splitters.py --no-plots
+    uv run python src/scripts/analyze_splitters.py --vary model --splitter s3 --models e4 e3 e5   # etapa 2
+
+Con `--vary model` compara embedders sobre un mismo splitter (una corrida por splitter: s3 y después s2). Es el mismo
+análisis, con los modelos en el lugar de los splitters; escribe embedders_<splitter>_analysis.json y _table.md y no
+arma gráficos (los actuales son de splitters; se hacen cuando haya datos).
 
 Métricas (evaluacion.md): Package Hit@1, Span Hit con presupuesto de tokens (2000 es el default del proyecto; se
 recalculan 1000 y 4000 como sensibilidad), AUROC. Los intervalos son bootstrap sobre los ítems de dev y las
@@ -42,7 +47,10 @@ def read_jsonl(path) -> list[dict]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", default="e4")
+    parser.add_argument("--vary", choices=("splitter", "model"), default="splitter")
+    parser.add_argument("--model", default="e4", help="con --vary splitter")
+    parser.add_argument("--splitter", default="s3", choices=SPLITTERS, help="con --vary model")
+    parser.add_argument("--models", nargs="*", default=["e4", "e3", "e5"], help="con --vary model")
     parser.add_argument("--split", choices=("dev", "test"), default="dev")
     parser.add_argument("--packages", nargs="*", help="default: las de data/eval/corpus_subset.json")
     parser.add_argument("--only", nargs="*", choices=SPLITTERS, help="default: los que tengan resultados")
@@ -51,14 +59,20 @@ def main() -> int:
     args = parser.parse_args()
 
     packages = args.packages or json.loads((EVAL_DIR / "corpus_subset.json").read_text(encoding="utf-8"))["packages"]
-    names = {s: IndexConfig(chunks=f"{s}-{SIZE}", model=args.model, packages=packages).collection_name()
-             for s in (args.only or SPLITTERS)}
+    if args.vary == "model":
+        names = {m: IndexConfig(chunks=f"{args.splitter}-{SIZE}", model=m, packages=packages).collection_name()
+                 for m in args.models}
+        prefix, label = f"embedders_{args.splitter}", f"{args.splitter}, embedders"
+    else:
+        names = {s: IndexConfig(chunks=f"{s}-{SIZE}", model=args.model, packages=packages).collection_name()
+                 for s in (args.only or SPLITTERS)}
+        prefix, label = "splitters", args.model
     detail = {s: EVAL_RESULTS / f"{n}__qA__{args.split}.targets.jsonl" for s, n in names.items()}
     names = {s: n for s, n in names.items() if detail[s].exists()}
     if not names:
         print("no hay resultados todavía en results/eval/")
         return 1
-    print("splitters con resultados:", ", ".join(names))
+    print("con resultados:", ", ".join(names))
 
     # Posiciones de los bloques gold (para recalcular el presupuesto con otros valores)
     items = select_items(load_items(), args.split, packages)
@@ -115,14 +129,14 @@ def main() -> int:
         index = json.loads((INDEX_DIR / f"{n}.json").read_text()) if (INDEX_DIR / f"{n}.json").exists() else {}
         stats = json.loads((STUDY_DIR / f"{n}__chunks.json").read_text()) if (STUDY_DIR / f"{n}__chunks.json").exists() else {}
         extra[s] = {
-            "index_seconds": index.get("seconds"), "use_cases": index.get("use_cases"),
+            "index_seconds": index.get("seconds"), "cache_hits": index.get("cache_hits"), "use_cases": index.get("use_cases"),
             "indexed_tokens": (stats.get("indexed") or {}).get("tokens_total"),
             "median_tokens": ((stats.get("indexed") or {}).get("n_tokens") or {}).get("median"),
             "python_blocks_not_intact": (stats.get("code_blocks", {}).get("python") or {}).get("not_intact_rate"),
             "truncated_by_model": (stats.get("model_tokens") or {}).get("over_max")}
 
     result = {
-        "model": args.model, "split": args.split, "budgets": list(BUDGETS),
+        "vary": args.vary, "label": label, "model": args.model, "split": args.split, "budgets": list(BUDGETS),
         "bootstrap": {"resamples": args.bootstrap, "seed": SEED, "level": 95, "unit": "ítems de dev"},
         "targets": {"positives": len(positive), "with_gold": len(gold), "negatives": len(negative), "items": len(items)},
         "splitters": {s: {**{m: {"value": round(v, 4), "ci": interval(b)} for m, (v, b) in est[s].items()},
@@ -130,12 +144,12 @@ def main() -> int:
         "paired": paired, "collections": names,
     }
     STUDY_DIR.mkdir(parents=True, exist_ok=True)
-    (STUDY_DIR / "splitters_analysis.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n",
+    (STUDY_DIR / f"{prefix}_analysis.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n",
                                                        encoding="utf-8")
     table = markdown_table(result)
-    (STUDY_DIR / "splitters_table.md").write_text(table, encoding="utf-8")
+    (STUDY_DIR / f"{prefix}_table.md").write_text(table, encoding="utf-8")
     print(table)
-    if not args.no_plots:
+    if not args.no_plots and args.vary == "splitter":
         try:
             from tprag.eval.plots import splitter_figures  # noqa: PLC0415
         except ImportError as e:
@@ -148,22 +162,25 @@ def main() -> int:
 
 def markdown_table(result: dict) -> str:
     fmt = lambda m: f"{m['value']:.3f} [{m['ci'][0]:.3f}, {m['ci'][1]:.3f}]"  # noqa: E731
-    head = (f"Etapa 1, {result['model']}, {result['split']}: {result['targets']['with_gold']} positivos, "
+    head = (f"Etapa {2 if result['vary'] == 'model' else 1}, {result['label']}, {result['split']}: {result['targets']['with_gold']} positivos, "
             f"{result['targets']['negatives']} negativos, {result['targets']['items']} ítems; "
             f"IC 95% bootstrap sobre ítems ({result['bootstrap']['resamples']} remuestreos)\n\n")
-    rows = ["| Splitter | Pkg Hit@1 | Span@1000 | **Span@2000** | Span@4000 | AUROC | Chunks | Mediana tok | "
-            "Bloques Py no enteros | Min indexado |", "|---|---|---|---|---|---|---|---|---|---|"]
+    rows = [f"| {'Modelo' if result['vary'] == 'model' else 'Splitter'} | Pkg Hit@1 | Span@1000 | **Span@2000** | Span@4000 | AUROC | Chunks | Mediana tok | "
+            "Bloques Py no enteros | Min indexado (ver nota) | Truncados |", "|---|---|---|---|---|---|---|---|---|---|---|"]
     for s, v in result["splitters"].items():
         pct = f"{v['python_blocks_not_intact']:.1%}" if v["python_blocks_not_intact"] is not None else "-"
         minutes = f"{v['index_seconds'] / 60:.1f}" if v["index_seconds"] else "-"
         rows.append(f"| {s} | {fmt(v['pkg_hit@1'])} | {fmt(v['span_hit@1000'])} | **{fmt(v['span_hit@2000'])}** | "
                     f"{fmt(v['span_hit@4000'])} | {fmt(v['auroc']) if 'auroc' in v else '-'} | {v['use_cases']} | "
-                    f"{v['median_tokens']} | {pct} | {minutes} |")
+                    f"{v['median_tokens']} | {pct} | {minutes} | "
+                    f"{v['truncated_by_model'] if v['truncated_by_model'] is not None else '-'} |")
     pairs = ["", "Diferencia por pares contra el mejor de cada métrica (empate = el IC de la diferencia incluye 0):", ""]
     for metric, p in result["paired"].items():
         pairs.append(f"- **{metric}** (mejor: {p['reference']}): " + "; ".join(
             f"{s} {d['diff']:+.3f} [{d['ci'][0]:+.3f}, {d['ci'][1]:+.3f}] {d['verdict']}" for s, d in p["vs"].items()))
-    return head + "\n".join(rows) + "\n" + "\n".join(pairs) + "\n"
+    note = ["", "Min indexado depende del caché (un splitter que comparte textos con otro sale casi gratis): para el "
+            "costo de cada modelo usar embedders_manifest.json (segundos y memoria del paso) y embedders_smoke.json."]
+    return head + "\n".join(rows) + "\n" + "\n".join(pairs) + "\n" + "\n".join(note) + "\n"
 
 
 if __name__ == "__main__":
