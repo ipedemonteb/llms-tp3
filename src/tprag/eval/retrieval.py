@@ -15,7 +15,7 @@ from langchain_core.documents import Document
 
 from tprag.split.store import ROOT
 
-from .metrics import Span, target_metrics
+from .metrics import CONTEXT_BUDGET, Span, target_metrics
 from .query import QUERIES
 from .verify import EVAL_DIR, EVAL_FILES, code_block_spans
 
@@ -109,10 +109,11 @@ def search(store: Chroma, query: str, k: int = N_RESULTS) -> list[dict]:
     return [hit(doc, score) for doc, score in search_docs(store, query, k)]
 
 
-def run(store: Chroma, records: list[dict], spans: dict[tuple[str, str], list[Span]]) -> list[dict]:
+def run(store: Chroma, records: list[dict], spans: dict[tuple[str, str], list[Span]],
+        budget: int = CONTEXT_BUDGET) -> list[dict]:
     for r in records:
         r["hits"] = search(store, r["query"])
-        r["metrics"] = target_metrics(r["hits"], r["acceptable_packages"], spans.get((r["id"], r["module"]), []))
+        r["metrics"] = target_metrics(r["hits"], r["acceptable_packages"], spans.get((r["id"], r["module"]), []), budget)
     return records
 
 

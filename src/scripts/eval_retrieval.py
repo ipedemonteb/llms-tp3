@@ -6,10 +6,11 @@ Uso:
     uv run python src/scripts/eval_retrieval.py                               # s3-1024, consulta A, dev
     uv run python src/scripts/eval_retrieval.py --chunks s0-1024              # otro índice, mismas consultas (0 USD)
     uv run python src/scripts/eval_retrieval.py --split test                  # test: solo al final
+    uv run python src/scripts/eval_retrieval.py --budget 4000                 # Span Hit con otro presupuesto (default 2000)
 
 La colección se elige con los mismos flags que build_index.py y tiene que estar armada. Necesita la doc normalizada
 (data/normalized/) para ubicar los bloques gold. Escribe en results/eval/ (no versionado) el resumen
-<colección>__q<consulta>__<split>.json y el detalle por target <...>.targets.jsonl.
+<colección>__q<consulta>__<split>.json (con otro --budget, sufijo __b<N>) y el detalle por target <...>.targets.jsonl.
 """
 
 import argparse
@@ -20,7 +21,7 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 
-from tprag.eval.metrics import summarize
+from tprag.eval.metrics import CONTEXT_BUDGET, summarize
 from tprag.eval.query import QUERIES
 from tprag.eval.retrieval import N_RESULTS, build_targets, dataset_info, gold_spans, run, select_items
 from tprag.eval.verify import load_items
@@ -45,6 +46,8 @@ def main() -> int:
     parser.add_argument("--packages", nargs="*", help="colección armada solo con estas librerías")
     parser.add_argument("--split", choices=("dev", "test"), default="dev", help="test solo para el reporte final")
     parser.add_argument("--query", choices=sorted(QUERIES), default="A", help="forma de armar la consulta")
+    parser.add_argument("--budget", type=int, default=CONTEXT_BUDGET,
+                        help="tokens de contexto para el Span Hit con presupuesto (el generador usa el default)")
     parser.add_argument("--max-usd", type=float, default=0.05, help="aborta si lo que hay que pagar lo supera")
     parser.add_argument("--dry-run", action="store_true", help="solo cuenta tokens y estima el costo")
     args = parser.parse_args()
@@ -82,18 +85,18 @@ def main() -> int:
 
     load_dotenv(ROOT / ".env")
     start = time.time()
-    run(store, records, spans)
+    run(store, records, spans, args.budget)
     seconds = round(time.time() - start, 1)
 
     report = {
         "collection": name, "query": args.query, "split": args.split,
         "date": datetime.now().isoformat(timespec="seconds"), "config": asdict(cfg), "dataset": dataset_info(),
-        "items": len(items), "targets_dropped_outside_packages": dropped, "n_results": N_RESULTS, "model": model.name,
+        "budget": args.budget, "items": len(items), "targets_dropped_outside_packages": dropped, "n_results": N_RESULTS, "model": model.name,
         "paid": {**to_pay, "api_calls_texts": embeddings.misses}, "cache_hits": embeddings.hits, "seconds": seconds,
-        "metrics": summarize(records),
+        "metrics": summarize(records, args.budget),
     }
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    stem = f"{name}__q{args.query}__{args.split}"
+    stem = f"{name}__q{args.query}__{args.split}" + ("" if args.budget == CONTEXT_BUDGET else f"__b{args.budget}")
     summary = json.dumps(report, indent=2, ensure_ascii=False) + "\n"
     (RESULTS_DIR / f"{stem}.json").write_text(summary, encoding="utf-8")
     with (RESULTS_DIR / f"{stem}.targets.jsonl").open("w", encoding="utf-8") as fh:

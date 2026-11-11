@@ -88,6 +88,17 @@ def test_summarize_separa_positivos_y_negativos():
     assert out["auroc"] == {"value": 1.0, "positives": 2, "negatives": 1}
 
 
+def test_el_presupuesto_es_configurable_y_2000_es_el_default():
+    hits = [hit("p", start=0, end=10, n_tokens=900), hit("p", start=20, end=30, n_tokens=900),
+            hit("p", start=40, end=50, n_tokens=900)]
+    gold = [("d", 40, 50)]  # lo cubre el 3.º chunk: 900 + 900 + 900 = 2.700 tokens
+    by_default = target_metrics(hits, ["p"], gold)["span_hit@budget"]
+    assert by_default is False and target_metrics(hits, ["p"], gold, budget=3000)["span_hit@budget"] is True
+    records = [{"subset": "x", "lang": "en", "metrics": target_metrics(hits, ["p"], gold, budget=3000)}]
+    assert summarize(records, budget=3000)["all"]["span"]["hit@3000tok"] == 1.0
+    assert "hit@2000tok" in summarize(records)["all"]["span"]
+
+
 DOC = "# T\n\n```python\na = 1\n```\n\ntexto\n\n```python\nb = 2\n```\n"
 
 

@@ -123,8 +123,10 @@ def calibrate_threshold(positives: list[float], negatives: list[float],
             "negatives": len(negatives)}
 
 
-def target_metrics(hits: list[dict], acceptable: list[str], spans: list[Span]) -> dict:
-    """Lo que se guarda por target en el detalle (`.targets.jsonl`). En los negativos solo cuenta `top1_score`."""
+def target_metrics(hits: list[dict], acceptable: list[str], spans: list[Span],
+                   budget: int = CONTEXT_BUDGET) -> dict:
+    """Lo que se guarda por target en el detalle (`.targets.jsonl`). En los negativos solo cuenta `top1_score`.
+    `span_hit@budget` usa el presupuesto `budget` (por defecto 2.000 tokens)."""
     packages = [h["package"] for h in hits]
     return {
         "top1_score": hits[0]["score"] if hits else None,
@@ -132,7 +134,7 @@ def target_metrics(hits: list[dict], acceptable: list[str], spans: list[Span]) -
                          for name, (s, n) in strategies().items()} if acceptable else None,
         "span_rank": span_rank(hits, spans) if spans else None,
         "ndcg@10": ndcg(hits, spans) if spans else None,
-        "span_hit@budget": budget_hit(hits, spans) if spans else None,
+        "span_hit@budget": budget_hit(hits, spans, budget) if spans else None,
     }
 
 
@@ -140,8 +142,9 @@ def _rate(values: list[bool]) -> float | None:
     return round(mean(values), 4) if values else None
 
 
-def aggregate(records: list[dict]) -> dict:
-    """Promedios sobre los targets positivos de `records` (los que tienen `metrics.package_rank`)."""
+def aggregate(records: list[dict], budget: int = CONTEXT_BUDGET) -> dict:
+    """Promedios sobre los targets positivos de `records` (los que tienen `metrics.package_rank`). `budget` solo
+    nombra la clave del Span Hit con presupuesto (`hit@2000tok`): el valor ya viene calculado en cada target."""
     pos = [r["metrics"] for r in records if r["metrics"]["package_rank"] is not None]
     with_gold = [m for m in pos if m["ndcg@10"] is not None]  # span_rank None también es "no lo encontró"
     out = {"targets": len(pos), "package": {}}
@@ -155,17 +158,17 @@ def aggregate(records: list[dict]) -> dict:
         **{f"hit@{k}": _rate([m["span_rank"] is not None and m["span_rank"] <= k for m in with_gold])
            for k in SPAN_KS},
         f"ndcg@{NDCG_K}": _rate([m["ndcg@10"] for m in with_gold]),
-        f"hit@{CONTEXT_BUDGET}tok": _rate([m["span_hit@budget"] for m in with_gold]),
+        f"hit@{budget}tok": _rate([m["span_hit@budget"] for m in with_gold]),
     }
     return out
 
 
-def summarize(records: list[dict]) -> dict:
+def summarize(records: list[dict], budget: int = CONTEXT_BUDGET) -> dict:
     """Métricas del total, por subconjunto y por idioma, más el AUROC del score del mejor chunk y el umbral
     calibrado con estos mismos registros (el que usa el generador se calibra con dev)."""
     def group(key: str) -> dict:
         keys = sorted({r[key] for r in records})
-        return {k: aggregate([r for r in records if r[key] == k]) for k in keys}
+        return {k: aggregate([r for r in records if r[key] == k], budget) for k in keys}
 
     scores = [(r["metrics"]["package_rank"] is not None, r["metrics"]["top1_score"]) for r in records
               if r["metrics"]["top1_score"] is not None]
@@ -173,7 +176,7 @@ def summarize(records: list[dict]) -> dict:
     neg = [s for is_pos, s in scores if not is_pos]
     value = auroc(pos, neg)
     return {
-        "all": aggregate(records), "by_subset": group("subset"), "by_lang": group("lang"),
+        "all": aggregate(records, budget), "by_subset": group("subset"), "by_lang": group("lang"),
         "auroc": {"value": round(value, 4) if value is not None else None, "positives": len(pos),
                   "negatives": len(neg)},
         "threshold": calibrate_threshold(pos, neg),
