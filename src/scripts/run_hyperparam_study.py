@@ -86,7 +86,9 @@ def generation(packages: list[str], args, env: dict) -> int:
     except (OSError, KeyError, ValueError):
         print(f"no hay finalistas: correr antes analyze_hyperparams.py (lee {ANALYSIS.relative_to(ROOT)})")
         return 1
-    print(f"generación sobre los finalistas: {', '.join(finalists)}" + (" (dry-run)" if args.dry_run else ""))
+    if "base" not in finalists:  # la base va siempre como referencia: la regla puede dejarla afuera si nada la supera
+        finalists = ["base", *finalists]
+    print(f"generación sobre los finalistas (+ base): {', '.join(finalists)}" + (" (dry-run)" if args.dry_run else ""))
     for vid in finalists:
         v = BY_ID[vid]
         cmd = [sys.executable, str(SCRIPTS / "eval_generation.py"), "--chunks", v.chunks, "--model", v.model,

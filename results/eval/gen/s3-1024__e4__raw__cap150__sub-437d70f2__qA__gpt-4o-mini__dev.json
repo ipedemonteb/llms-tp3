@@ -1,0 +1,86 @@
+{
+  "collection": "s3-1024__e4__raw__cap150__sub-437d70f2",
+  "llm": "gpt-4o-mini",
+  "split": "dev",
+  "threshold": 0.42465,
+  "budget": 2000,
+  "date": "2026-11-11T21:18:01",
+  "config": {
+    "chunks": "s3-1024",
+    "console_mode": "outputs_as_comments",
+    "model": "e4",
+    "representation": "raw",
+    "cap": 150,
+    "strategy": "round_robin",
+    "packages": [
+      "transformers",
+      "scikit-learn",
+      "torch",
+      "django",
+      "fastapi",
+      "flask",
+      "matplotlib",
+      "plotly",
+      "streamlit",
+      "playwright",
+      "scrapy",
+      "lxml",
+      "pandas",
+      "numpy",
+      "scipy",
+      "sqlalchemy",
+      "xlsxwriter",
+      "pymupdf",
+      "textual",
+      "typer",
+      "pydantic",
+      "scikit-image",
+      "wand",
+      "celery",
+      "pytest",
+      "authlib",
+      "cryptography",
+      "aiohttp",
+      "boto3",
+      "python-stdlib"
+    ]
+  },
+  "dataset": {
+    "commit": "c9087e8",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
+      "synthetic.jsonl": "953244ac4e3a03ed8d8ddd422605dea535c7f7f889c09e84ed1b8be4e0c1b759"
+    }
+  },
+  "paid": {
+    "calls": 97,
+    "input_tokens": 322761,
+    "output_tokens": 25838,
+    "usd": 0.063917
+  },
+  "cache_hits": 5,
+  "seconds": 479.1,
+  "metrics": {
+    "items": 109,
+    "llm_calls": 102,
+    "positives": {
+      "targets": 107,
+      "success": 0.4766,
+      "passed_threshold": 0.9533,
+      "decision_ok": 0.8879,
+      "applicable": 0.757,
+      "parses": 0.9533,
+      "target_gone": 0.5794,
+      "package_ok": 0.486
+    },
+    "negatives": {
+      "targets": 9,
+      "success": 0.5556,
+      "passed_threshold": 7,
+      "rejected_by_llm": 3
+    },
+    "hallucinated_imports": 0,
+    "sources_ok": 0.9412
+  }
+}

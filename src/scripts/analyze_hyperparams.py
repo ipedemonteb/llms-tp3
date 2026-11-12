@@ -48,6 +48,12 @@ def generation_summary(collection: str, split: str) -> dict | None:
     return {"positives": m["positives"]["success"], "negatives": m["negatives"]["success"]}
 
 
+def generation_items(collection: str, split: str) -> dict[str, bool]:
+    """id del ítem → éxito de generación (results/eval/gen/<colección>__qA__*.items.jsonl); vacío si no se corrió."""
+    found = sorted(GEN_DIR.glob(f"{collection}__qA__*__{split}.items.jsonl")) if GEN_DIR.exists() else []
+    return {r["id"]: bool(r["success"]) for r in read_jsonl(found[-1])} if found else {}
+
+
 def cost(collection: str) -> dict:
     def load(path):
         return json.loads(path.read_text()) if path.exists() else {}
@@ -126,6 +132,15 @@ def main() -> int:
             within[factor]["metrics"][m] = {"reference": best, "vs": {
                 i: compare(*est[i][m], *est[best][m]) for i in ids if i != best}}
 
+    # Generación (solo las configs que se corrieron): éxito en los ítems positivos con IC, y diferencia pareada contra la base
+    gen_ok = {i: generation_items(n, args.split) for i, n in names.items()}
+    pos_ids = [it["id"] for it in items if any(t["acceptable_packages"] for t in it["targets"])]
+    gen_est = {i: rate(np.array([g[x] for x in pos_ids], dtype=float), np.array([item_index[x] for x in pos_ids]),
+                       weights) for i, g in gen_ok.items() if g and all(x in g for x in pos_ids)}
+    gen_extra = {i: {"items_success": round(gen_est[i][0], 4), "positives_ci": interval(gen_est[i][1]), "n_positives": len(pos_ids),
+                     **({"vs_base": compare(*gen_est[i], *gen_est["base"])} if i != "base" and "base" in gen_est else {})}
+                 for i in gen_est}
+
     costs = {i: cost(n) for i, n in names.items()}
     span_key = f"span_hit@{MAIN_BUDGET}"
     best_span = max(names, key=lambda i: est[i][span_key][0] if costs[i]["tokens"] else -1)
@@ -143,7 +158,8 @@ def main() -> int:
                          "chunks_dir": variants[i].chunks, "model": variants[i].model, "cap": variants[i].cap,
                          "representation": variants[i].representation,
                          "metrics": {m: {"value": round(v, 4), "ci": interval(b)} for m, (v, b) in est[i].items()},
-                         **point[i], **costs[i], "generation": generation_summary(names[i], args.split)}
+                         **point[i], **costs[i], "generation": (generation_summary(names[i], args.split) or None) and {
+                             **generation_summary(names[i], args.split), **gen_extra.get(i, {})}}
                      for i in names},
         "vs_base": vs_base, "within_factor": within, "finalists": chosen, "base_best_span": best_span,
     }

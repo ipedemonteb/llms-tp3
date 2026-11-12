@@ -99,6 +99,9 @@ def fig_cost(result: dict, out_dir: Path) -> Path:
                 break
         else:
             groups.append([x, y, [i]])
+    # etiquetas de los puntos que quedan pegados (mismo costo, misma calidad): a mano, para que no se pisen
+    place = {"size256": (9, 12, "left"), "size512": (9, 12, "left"), "raw": (9, 28, "left"),
+             "base": (45, -115, "left"), "size2048": (11, -4, "left")}
     side = {id(g): k % 2 for k, g in enumerate(sorted(groups))}  # etiquetas vecinas, una arriba y otra abajo
     for x, y, ids in sorted(groups, key=lambda g: "base" in g[2]):  # la base se dibuja al final, arriba de todo
         main = "base" if "base" in ids else ids[0]
@@ -108,8 +111,11 @@ def fig_cost(result: dict, out_dir: Path) -> Path:
         ax.plot([x], [y], marker="o", markersize=8, markerfacecolor=color, markeredgecolor="white", markeredgewidth=1.2,
                 linestyle="none", zorder=4)
         group = next(g for g in groups if g[2] is ids)
-        ax.annotate(" = ".join(ids), (x, y), xytext=(9, 8 if side[id(group)] == 0 else -16), textcoords="offset points",
-                    fontsize=9.5, color=INK2)
+        dx, dy, ha = place.get(main, (9, 8 if side[id(group)] == 0 else -16, "left"))
+        text = ids[0] + ("\n(= " + " = ".join(ids[1:]) + ")" if len(ids) > 1 else "")
+        arrow = {"arrowstyle": "-", "color": MUTED, "linewidth": 0.8, "shrinkA": 2, "shrinkB": 5} if main == "base" else None
+        ax.annotate(text, (x, y), xytext=(dx, dy), textcoords="offset points", ha=ha, fontsize=9.5, color=INK2,
+                    arrowprops=arrow)
     ax.set_xlabel("tokens a embeber (millones, cl100k)", fontsize=10, color=INK2)
     ax.set_ylabel("Span Hit@2000", fontsize=10, color=INK2)
     ax.set_ylim(0.3, 0.7)
