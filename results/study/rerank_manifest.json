@@ -1,0 +1,60 @@
+{
+  "study": "rerank",
+  "split": "dev",
+  "collection": "s3-1024__e4__r1__cap150__sub-437d70f2",
+  "pool": 50,
+  "dataset": {
+    "commit": "dad8920",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
+      "synthetic.jsonl": "953244ac4e3a03ed8d8ddd422605dea535c7f7f889c09e84ed1b8be4e0c1b759"
+    }
+  },
+  "git_dirty": true,
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.13",
+    "torch": "2.15.0",
+    "sentence-transformers": "5.7.0",
+    "transformers": "4.57.6",
+    "chromadb": "1.5.9",
+    "tiktoken": "0.14.0",
+    "mps": true
+  },
+  "rerankers": {
+    "k2": {
+      "smoke": {
+        "targets": 2,
+        "pairs": 100,
+        "computed": 100,
+        "seconds": 13.4,
+        "load_seconds": 7.2,
+        "seconds_per_pair": 0.134,
+        "finished": "2026-11-12T00:17:40"
+      },
+      "name": "Alibaba-NLP/gte-reranker-modernbert-base",
+      "label": "gte-reranker-modernbert-base",
+      "cache_key": "Alibaba-NLP/gte-reranker-modernbert-base@len2048@float16",
+      "instruction": null,
+      "max_length": 2048
+    },
+    "k1": {
+      "smoke": {
+        "targets": 2,
+        "pairs": 100,
+        "computed": 100,
+        "seconds": 58.4,
+        "load_seconds": 5.2,
+        "seconds_per_pair": 0.584,
+        "finished": "2026-11-12T00:18:43"
+      },
+      "name": "Qwen/Qwen3-Reranker-0.6B",
+      "label": "Qwen3-Reranker-0.6B",
+      "cache_key": "Qwen/Qwen3-Reranker-0.6B@len2048@float16@inst-7c2218431717",
+      "instruction": "Given Python code that uses a library that may not exist or is deprecated, retrieve the documentation passage of a real Python library that shows how to do the same thing.",
+      "max_length": 2048
+    }
+  }
+}
