@@ -1,0 +1,188 @@
+{
+  "split": "dev",
+  "collection": "s3-1024__e4__r1__cap150__sub-437d70f2",
+  "bootstrap": 10000,
+  "seed": 2026,
+  "rule_choice": "k2-rrf10",
+  "chosen": "k1-rr30",
+  "deviation": "La regla fijada antes de correr elige la variante más barata entre las que mejoran (k2-rrf10). Se elige k1-rr30 porque es significativamente mejor que k2-rrf10 en Pkg Hit@1, Span@1000, Span@2000 y nDCG@10, y empata con k1-rr50 a 60% del costo. k1-rr20 no supera a k2-rrf10 en Span@2000.",
+  "seconds_per_query_m3": {
+    "k1-rr20": 10.36,
+    "k1-rr30": 15.53,
+    "k1-rr50": 25.89,
+    "k2-rrf10": 1.04
+  },
+  "paired": {
+    "k1-rr30 vs k1-rr20": {
+      "pkg_hit@1": {
+        "diff": 0.0093,
+        "ci": [
+          0.0,
+          0.0297
+        ],
+        "verdict": "empate"
+      },
+      "span_hit@2000": {
+        "diff": 0.0374,
+        "ci": [
+          -0.0089,
+          0.0849
+        ],
+        "verdict": "empate"
+      },
+      "span_hit@1000": {
+        "diff": 0.0187,
+        "ci": [
+          -0.0179,
+          0.0571
+        ],
+        "verdict": "empate"
+      },
+      "ndcg@10": {
+        "diff": 0.022,
+        "ci": [
+          -0.0039,
+          0.0535
+        ],
+        "verdict": "empate"
+      }
+    },
+    "k1-rr50 vs k1-rr30": {
+      "pkg_hit@1": {
+        "diff": -0.0093,
+        "ci": [
+          -0.045,
+          0.0194
+        ],
+        "verdict": "empate"
+      },
+      "span_hit@2000": {
+        "diff": 0.0187,
+        "ci": [
+          -0.0182,
+          0.0566
+        ],
+        "verdict": "empate"
+      },
+      "span_hit@1000": {
+        "diff": 0.0093,
+        "ci": [
+          0.0,
+          0.0286
+        ],
+        "verdict": "empate"
+      },
+      "ndcg@10": {
+        "diff": 0.0093,
+        "ci": [
+          -0.0099,
+          0.0341
+        ],
+        "verdict": "empate"
+      }
+    },
+    "k1-rr30 vs k1-rrf50": {
+      "pkg_hit@1": {
+        "diff": 0.0561,
+        "ci": [
+          0.0,
+          0.1176
+        ],
+        "verdict": "empate"
+      },
+      "span_hit@2000": {
+        "diff": 0.0187,
+        "ci": [
+          -0.0443,
+          0.0849
+        ],
+        "verdict": "empate"
+      },
+      "span_hit@1000": {
+        "diff": -0.0187,
+        "ci": [
+          -0.0974,
+          0.0583
+        ],
+        "verdict": "empate"
+      },
+      "ndcg@10": {
+        "diff": 0.0278,
+        "ci": [
+          -0.024,
+          0.0782
+        ],
+        "verdict": "empate"
+      }
+    },
+    "k1-rr30 vs k2-rrf10": {
+      "pkg_hit@1": {
+        "diff": 0.0841,
+        "ci": [
+          0.0278,
+          0.1456
+        ],
+        "verdict": "mejor"
+      },
+      "span_hit@2000": {
+        "diff": 0.0935,
+        "ci": [
+          0.0095,
+          0.1786
+        ],
+        "verdict": "mejor"
+      },
+      "span_hit@1000": {
+        "diff": 0.1308,
+        "ci": [
+          0.0381,
+          0.2243
+        ],
+        "verdict": "mejor"
+      },
+      "ndcg@10": {
+        "diff": 0.1043,
+        "ci": [
+          0.0342,
+          0.1755
+        ],
+        "verdict": "mejor"
+      }
+    },
+    "k1-rr20 vs k2-rrf10": {
+      "pkg_hit@1": {
+        "diff": 0.0748,
+        "ci": [
+          0.0177,
+          0.14
+        ],
+        "verdict": "mejor"
+      },
+      "span_hit@2000": {
+        "diff": 0.0561,
+        "ci": [
+          -0.01,
+          0.1308
+        ],
+        "verdict": "empate"
+      },
+      "span_hit@1000": {
+        "diff": 0.1121,
+        "ci": [
+          0.0263,
+          0.202
+        ],
+        "verdict": "mejor"
+      },
+      "ndcg@10": {
+        "diff": 0.0823,
+        "ci": [
+          0.0177,
+          0.1476
+        ],
+        "verdict": "mejor"
+      }
+    }
+  },
+  "script": "comparación pareada con analyze_rerank.estimates sobre los .targets.jsonl de results/eval/rerank/"
+}

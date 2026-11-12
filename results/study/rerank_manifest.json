@@ -4,14 +4,14 @@
   "collection": "s3-1024__e4__r1__cap150__sub-437d70f2",
   "pool": 50,
   "dataset": {
-    "commit": "dad8920",
+    "commit": "2b9dbc1",
     "sha256": {
       "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
       "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
       "synthetic.jsonl": "953244ac4e3a03ed8d8ddd422605dea535c7f7f889c09e84ed1b8be4e0c1b759"
     }
   },
-  "git_dirty": true,
+  "git_dirty": false,
   "environment": {
     "platform": "macOS-26.6.2-arm64-arm-64bit",
     "machine": "arm64",
@@ -38,7 +38,20 @@
       "label": "gte-reranker-modernbert-base",
       "cache_key": "Alibaba-NLP/gte-reranker-modernbert-base@len2048@float16",
       "instruction": null,
-      "max_length": 2048
+      "max_length": 2048,
+      "timing": {
+        "computed": 5697,
+        "seconds": 592.5,
+        "load_seconds": 9.6,
+        "seconds_per_pair": 0.10400210637177462,
+        "batch_size": 1,
+        "dtype": "float16",
+        "peak_mps_mb": 1050
+      },
+      "pairs": 5800,
+      "truncated_pairs": 12,
+      "truncated_rate": 0.0021,
+      "finished": "2026-11-12T09:27:03"
     },
     "k1": {
       "smoke": {
@@ -54,7 +67,20 @@
       "label": "Qwen3-Reranker-0.6B",
       "cache_key": "Qwen/Qwen3-Reranker-0.6B@len2048@float16@inst-7c2218431717",
       "instruction": "Given Python code that uses a library that may not exist or is deprecated, retrieve the documentation passage of a real Python library that shows how to do the same thing.",
-      "max_length": 2048
+      "max_length": 2048,
+      "timing": {
+        "computed": 5697,
+        "seconds": 2950.0,
+        "load_seconds": 7.2,
+        "seconds_per_pair": 0.5178163945936458,
+        "batch_size": 1,
+        "dtype": "float16",
+        "peak_mps_mb": 2418
+      },
+      "pairs": 5800,
+      "truncated_pairs": 11,
+      "truncated_rate": 0.0019,
+      "finished": "2026-11-12T10:16:21"
     }
   }
 }
