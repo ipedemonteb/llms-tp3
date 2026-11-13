@@ -1,0 +1,41 @@
+{
+  "collection": "s3-1024__e4__r1__cap150",
+  "date": "2026-11-13T12:19:29",
+  "config": {
+    "chunks": "s3-1024",
+    "console_mode": "outputs_as_comments",
+    "model": "e4",
+    "representation": "r1",
+    "cap": 150,
+    "strategy": "round_robin",
+    "packages": null
+  },
+  "model": "jinaai/jina-embeddings-v2-base-code",
+  "api_model": "",
+  "usd_per_m_tokens": 0.0,
+  "model_config": {
+    "id": "e4",
+    "name": "jinaai/jina-embeddings-v2-base-code",
+    "api_name": "",
+    "usd_per_m_tokens": 0.0,
+    "tokenizer": "cl100k_base",
+    "dimensions": null,
+    "provider": "local",
+    "query_prefix": "",
+    "doc_prefix": "",
+    "max_seq_length": 1536,
+    "trust_remote_code": true
+  },
+  "packages": 101,
+  "package_list": null,
+  "use_cases": 8633,
+  "tokens_total": 3242739,
+  "paid": {
+    "texts": 4281,
+    "tokens": 1492930,
+    "usd": 0.0,
+    "api_calls_texts": 4281
+  },
+  "cache_hits": 4352,
+  "seconds": 772.4
+}
