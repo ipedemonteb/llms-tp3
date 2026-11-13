@@ -8,12 +8,16 @@ Uso (hace falta el grupo de dependencias `local`):
     uv run --group local python src/scripts/run_rerank_study.py                    # K2 y K1 sobre todo dev
     uv run --group local python src/scripts/run_rerank_study.py --rerankers k2     # uno solo
     uv run --group analysis python src/scripts/analyze_rerank.py                   # variantes, tabla y gráficos
+    uv run --group local python src/scripts/run_rerank_study.py --corpus full --rerankers k1   # corpus completo
+    uv run --group local python src/scripts/run_rerank_study.py --corpus full --rerankers k2 --tag estudio
+        # estudio completo sobre las 101 (plan_cierre.md §9): manifiesto propio, K1 ya está del paso 3
 
 Los puntajes van a un caché (data/index/cache/rerank.sqlite): la prueba con --limit no se pierde y una corrida cortada
 se retoma. Con --limit solo se mide la velocidad (no escribe puntajes para el análisis).
 
 Salidas: results/eval/rerank/<colección>__qA__<reranker>__<split>.scores.jsonl (un registro por target, con los 50
-puntajes en el orden denso) y el manifiesto results/study/rerank_manifest.json (tiempos, memoria, truncado, entorno).
+puntajes en el orden denso) y el manifiesto results/study/rerank_manifest.json (tiempos, memoria, truncado, entorno). Con `--corpus full` (las 101
+librerías, plan_cierre.md §3) el manifiesto es rerank_full_<split>_manifest.json y no pisa el del estudio.
 """
 
 import argparse
@@ -28,7 +32,7 @@ from datetime import datetime
 
 from analyze_splitters import EVAL_RESULTS, read_jsonl
 from run_splitter_study import STUDY_DIR, environment, git_dirty, load_manifest, save_manifest
-from tprag.eval.rerank_study import BASE_VARIANT, POOL, RESULTS_DIR, scores_path
+from tprag.eval.rerank_study import BASE_VARIANT, POOL, scores_path, write_jsonl_once
 from tprag.eval.retrieval import dataset_info
 from tprag.eval.verify import EVAL_DIR
 from tprag.index.rerank import RERANKERS, cached_reranker
@@ -54,11 +58,39 @@ def truncated(scorer, pairs: list[tuple[str, str]], max_length: int) -> int:
     return sum(nq[q] + nd[d] + TEMPLATE_TOKENS > max_length for q, d in pairs)
 
 
+def corpus_packages(corpus: str, packages: list[str] | None) -> list[str] | None:
+    """Librerías del índice: las pedidas, las del subconjunto del estudio o None (corpus completo, sin sufijo)."""
+    if packages:
+        return packages
+    if corpus == "full":
+        return None
+    return json.loads((EVAL_DIR / "corpus_subset.json").read_text(encoding="utf-8"))["packages"]
+
+
+def manifest_path(corpus: str, split: str, tag: str | None = None):
+    if corpus == "subset" and not tag:
+        return MANIFEST
+    return STUDY_DIR / "_".join(["rerank", corpus, split] + ([tag] if tag else []) + ["manifest.json"])
+
+
+def start_manifest(corpus: str, split: str, tag: str | None) -> dict:
+    """Manifiesto de la corrida. Con `tag` es un archivo propio que, la primera vez, arranca como copia del manifiesto
+    sin tag (así los tiempos de un reranker que ya se midió no se pierden), sin tocar el original."""
+    path = manifest_path(corpus, split, tag)
+    if tag and not path.exists():
+        return load_manifest(manifest_path(corpus, split))
+    return load_manifest(path)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--rerankers", nargs="*", choices=sorted(RERANKERS), default=["k2", "k1"],
                         help="en este orden (default: primero el rápido)")
-    parser.add_argument("--packages", nargs="*", help="default: las librerías de data/eval/corpus_subset.json")
+    parser.add_argument("--corpus", choices=("subset", "full"), default="subset",
+                        help="subset: las 30 de corpus_subset.json (estudio); full: las 101 librerías")
+    parser.add_argument("--packages", nargs="*", help="pisa --corpus: solo estas librerías")
+    parser.add_argument("--tag", help="manifiesto propio (rerank_<corpus>_<split>_<tag>_manifest.json), sin pisar "
+                                      "el de corridas anteriores")
     parser.add_argument("--split", choices=("dev", "test"), default="dev", help="test solo para el reporte final")
     parser.add_argument("--limit", type=int, help="solo los primeros N targets: prueba de velocidad, sin salidas")
     # 1 es lo más rápido en el M3 (float16, 32 pares): K2 0,21 s/par con 1 y 0,29 con 8; K1 0,84 con 1 y 1,20 con 8.
@@ -67,7 +99,7 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true", help="solo cuenta los pares que faltan (no carga modelos)")
     args = parser.parse_args()
 
-    packages = args.packages or json.loads((EVAL_DIR / "corpus_subset.json").read_text(encoding="utf-8"))["packages"]
+    packages = corpus_packages(args.corpus, args.packages)
     collection = BASE_VARIANT.index_config(packages).collection_name()
     base = EVAL_RESULTS / f"{collection}__qA__{args.split}.targets.jsonl"
     if not base.exists():
@@ -90,7 +122,8 @@ def main() -> int:
         subprocess.Popen(["caffeinate", "-i", "-w", str(os.getpid())])  # sin dormir mientras corre este proceso
     os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
-    manifest = load_manifest(MANIFEST)
+    manifest_file = manifest_path(args.corpus, args.split, args.tag)
+    manifest = start_manifest(args.corpus, args.split, args.tag)
     manifest.update({"study": "rerank", "split": args.split, "collection": collection, "pool": POOL,
                      "dataset": dataset_info(), "git_dirty": git_dirty(), "environment": environment()})
     manifest.setdefault("rerankers", {})
@@ -132,24 +165,23 @@ def main() -> int:
                           "truncated_rate": round(n_trunc / len(pairs), 4),
                           "finished": datetime.now().isoformat(timespec="seconds")})
             out = scores_path(collection, r, args.split)
-            RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-            with out.open("w", encoding="utf-8") as fh:
-                i = 0
-                for rec in records:
-                    n = len(rec["hits"][:POOL])
-                    fh.write(json.dumps({"id": rec["id"], "module": rec["module"],
-                                         "chunk_ids": [h["id"] for h in rec["hits"][:POOL]],
-                                         "scores": scores[i:i + n]}, ensure_ascii=False) + "\n")
-                    i += n
-            print(f"  -> {out}")
+            rows, i = [], 0
+            for rec in records:
+                n = len(rec["hits"][:POOL])
+                rows.append({"id": rec["id"], "module": rec["module"],
+                             "chunk_ids": [h["id"] for h in rec["hits"][:POOL]], "scores": scores[i:i + n]})
+                i += n
+            # no pisa: si ya estaba (p. ej. K1 del paso 3) tiene que coincidir, si no falla y lo deja igual
+            print(f"  -> {out} ({write_jsonl_once(out, rows)})")
         entry.update({"name": model.name, "label": model.label, "cache_key": model.cache_key,
                       "instruction": model.instruction, "max_length": model.max_length})
         manifest["rerankers"][r] = entry
-        save_manifest(manifest, MANIFEST)
+        save_manifest(manifest, manifest_file)
         sc._inner = None  # libera el modelo antes del siguiente
         gc.collect()
     if not args.limit:
-        print("siguiente: uv run --group analysis python src/scripts/analyze_rerank.py")
+        print(f"siguiente: uv run --group analysis python src/scripts/analyze_rerank.py --corpus {args.corpus} "
+              f"--split {args.split}" + (f" --tag {args.tag}" if args.tag else ""))
     return 0
 
 

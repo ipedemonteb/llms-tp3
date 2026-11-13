@@ -21,27 +21,42 @@ Métricas (IC 95% por bootstrap sobre los ítems de dev, remuestreos compartidos
 Regla de decisión (fijada antes de correr, tprag.eval.rerank_study.choose): una variante reemplaza a la base solo si
 mejora Span Hit@2000 de forma significativa y no es peor en Package Hit@1; entre esas, la más barata.
 
-Escribe results/study/rerank_analysis.json, rerank_table.md y, con matplotlib, figures/rerank/*.png.
+Umbral de abstención (plan_cierre.md §3): el más alto que deja pasar al menos el 95% de los positivos, con el coseno del
+top-1 (base) y con el máximo del reranker (cada variante).
+
+Además: comparaciones pareadas entre variantes (`--pairs`, por defecto las del desvío del estudio), Pkg Hit@1 y
+Span@2000 por subconjunto (manual / sintético) y, con `--compare-with`, el cambio respecto de otro análisis.
+
+Escribe results/study/rerank_analysis.json, rerank_table.md y, con matplotlib, figures/rerank/*.png. Con
+`--corpus full` (las 101 librerías) los nombres llevan el prefijo rerank_full_<split>_ y no pisan los del estudio:
+    uv run --group analysis python src/scripts/analyze_rerank.py --corpus full
+Con `--tag` el prefijo suma el tag y nunca pisa nada (falla si ya existe); el detalle por variante solo se escribe si
+no existía o si sale idéntico (plan_cierre.md §9):
+    uv run --group analysis python src/scripts/analyze_rerank.py --corpus full --tag estudio
 """
 
 import argparse
 import json
+from pathlib import Path
 
 import numpy as np
 from analyze_splitters import EVAL_RESULTS, N_BOOT, SEED, STUDY_DIR, read_jsonl
+from run_rerank_study import corpus_packages, manifest_path
 from tprag.eval.analysis import auroc, compare, interval, rate, resample_weights
 from tprag.eval.hyperparams import BUDGETS, MAIN_BUDGET
-from tprag.eval.metrics import SPAN_KS, budget_hit, context_efficiency, specificity_at_recall, target_metrics
-from tprag.eval.rerank_study import BASE_VARIANT, KS, MODES, POOL, RESULTS_DIR, VARIANTS, choose, scores_path, targets_path
+from tprag.eval.metrics import (SPAN_KS, budget_hit, calibrate_threshold, context_efficiency, specificity_at_recall,
+                                target_metrics)
+from tprag.eval.rerank_study import (BASE_VARIANT, DEFAULT_PAIRS, KS, MODES, POOL, VARIANTS, choose, parse_pairs,
+                                     scores_path, targets_path, write_jsonl_once)
 from tprag.eval.retrieval import gold_spans, select_items
-from tprag.eval.verify import EVAL_DIR, load_items
+from tprag.eval.verify import load_items
 from tprag.index.rerank import RERANKERS
 from tprag.normalize.store import load_normalized
 from tprag.split.store import ROOT
 
-MANIFEST = STUDY_DIR / "rerank_manifest.json"
 SPAN, PKG = f"span_hit@{MAIN_BUDGET}", "pkg_hit@1"
 PAIRED = (PKG, SPAN, f"ctx_eff@{MAIN_BUDGET}", "ndcg@10")
+PAIRED_BETWEEN = (PKG, SPAN, "span_hit@1000", "ndcg@10")  # las de rerank_choice.json (plan_reranker.md §7)
 FAILURES = {"over_budget": "gold fuera del presupuesto", "wrong_package": "otra librería en el top-1",
             "not_retrieved": "gold no recuperado"}
 
@@ -99,6 +114,7 @@ def estimates(recs: dict[Key, dict], positive: list[Key], negative: list[Key], g
             pos, neg = np.array([score(k) for k in positive]), np.array([score(k) for k in negative])
             est[f"auroc_{name}"] = auroc(pos, neg, of(positive), of(negative), weights)
             point[f"specificity@95_{name}"] = specificity_at_recall(list(pos), list(neg))
+            point[f"threshold_{name}"] = calibrate_threshold([float(x) for x in pos], [float(x) for x in neg])
     return est, point
 
 
@@ -123,13 +139,30 @@ def transitions(base: dict[Key, dict], recs: dict[Key, dict], positive: list[Key
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", choices=("dev", "test"), default="dev")
-    parser.add_argument("--packages", nargs="*", help="default: las de data/eval/corpus_subset.json")
+    parser.add_argument("--corpus", choices=("subset", "full"), default="subset",
+                        help="subset: las 30 de corpus_subset.json (estudio); full: las 101 librerías")
+    parser.add_argument("--packages", nargs="*", help="pisa --corpus: solo estas librerías")
+    parser.add_argument("--tag", help="salidas con prefijo rerank_<corpus>_<split>_<tag> (y su manifiesto), sin pisar "
+                                      "las de corridas anteriores")
+    parser.add_argument("--pairs", nargs="*", default=list(DEFAULT_PAIRS),
+                        help="comparaciones pareadas entre variantes, A:B (default: las del desvío del estudio)")
+    parser.add_argument("--compare-with", type=Path,
+                        help="otro *_analysis.json (p. ej. el del subconjunto) para el gráfico 4; con --corpus full y "
+                             "--tag usa results/study/rerank_analysis.json")
     parser.add_argument("--bootstrap", type=int, default=N_BOOT)
     parser.add_argument("--no-plots", action="store_true")
     args = parser.parse_args()
 
-    packages = args.packages or json.loads((EVAL_DIR / "corpus_subset.json").read_text(encoding="utf-8"))["packages"]
+    packages = corpus_packages(args.corpus, args.packages)
     collection = BASE_VARIANT.index_config(packages).collection_name()
+    prefix = ("rerank" if args.corpus == "subset" and not args.tag
+              else "_".join(["rerank", args.corpus, args.split] + ([args.tag] if args.tag else [])))
+    if args.tag and (STUDY_DIR / f"{prefix}_analysis.json").exists():
+        print(f"{prefix}_analysis.json ya existe: usar otro --tag (no se pisa)")
+        return 1
+    pairs = parse_pairs(args.pairs)
+    compare_with = args.compare_with or (STUDY_DIR / "rerank_analysis.json"
+                                         if args.corpus == "full" and args.tag else None)
     base_path = EVAL_RESULTS / f"{collection}__qA__{args.split}.targets.jsonl"
     if not base_path.exists():
         print(f"falta {base_path.name}: correr eval_retrieval.py sobre la base")
@@ -140,7 +173,11 @@ def main() -> int:
         print("no hay puntajes: correr run_rerank_study.py")
         return 1
     print("con puntajes:", ", ".join(scores))
-    manifest = json.loads(MANIFEST.read_text(encoding="utf-8")) if MANIFEST.exists() else {"rerankers": {}}
+    manifest_file = manifest_path(args.corpus, args.split, args.tag)
+    if args.tag and not manifest_file.exists():  # el runner no se corrió con este tag: los tiempos del original
+        manifest_file = manifest_path(args.corpus, args.split)
+    manifest = (json.loads(manifest_file.read_text(encoding="utf-8")) if manifest_file.exists()
+                else {"rerankers": {}})
 
     items = select_items(load_items(), args.split, packages)
     gold_packages = sorted({g["package"] for it in items for t in it["targets"] for g in t["gold"]})
@@ -157,7 +194,7 @@ def main() -> int:
     variants = [v for v in VARIANTS if v.reranker in scores]
     records: dict[str, dict[Key, dict]] = {"base": base}
     conf: dict[str, dict[Key, float]] = {}
-    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    written = {"nuevo": 0, "igual": 0}
     for v in variants:
         recs = {}
         for k in keys:
@@ -166,14 +203,26 @@ def main() -> int:
                        "metrics": target_metrics(hits, base[k]["acceptable_packages"], spans.get(k, []), MAIN_BUDGET)}
         records[v.id] = recs
         conf[v.id] = {k: max(scores[v.reranker][k][:v.k]) for k in keys}
-        with targets_path(collection, v.id, args.split).open("w", encoding="utf-8") as fh:
-            for k in keys:
-                fh.write(json.dumps(recs[k], ensure_ascii=False) + "\n")
+        # el detalle de una variante es determinista: si ya estaba (paso 3) tiene que salir igual, y no se pisa
+        written[write_jsonl_once(targets_path(collection, v.id, args.split), [recs[k] for k in keys])] += 1
+    print(f"detalle por variante: {written['nuevo']} nuevos, {written['igual']} ya estaban iguales")
 
     est, point = {}, {}
     for i, recs in records.items():
         est[i], point[i] = estimates(recs, positive, negative, gold, spans, of, weights, conf.get(i))
     vs_base = {v.id: {m: compare(*est[v.id][m], *est["base"][m]) for m in PAIRED} for v in variants}
+    ids = {v.id for v in variants}
+    between = {f"{a} vs {b}": {m: compare(*est[a][m], *est[b][m]) for m in PAIRED_BETWEEN}
+               for a, b in pairs if a in ids and b in ids}
+    subsets = sorted({base[k]["subset"] for k in positive})
+    by_subset = {}
+    for i, recs in records.items():
+        by_subset[i] = {}
+        for s in subsets:
+            pos_s, gold_s = [k for k in positive if base[k]["subset"] == s], [k for k in gold if base[k]["subset"] == s]
+            e, _ = estimates(recs, pos_s, [], gold_s, spans, of, weights)
+            by_subset[i][s] = {"targets": len(pos_s), **{m: {"value": round(e[m][0], 4), "ci": interval(e[m][1])}
+                                                         for m in (PKG, SPAN)}}
     moves = {v.id: transitions(base, records[v.id], positive, gold, spans) for v in variants}
     base_failures = {t: sum(base_failure(base[k], budget_hit(base[k]["hits"], spans[k], MAIN_BUDGET)) == t
                             for k in gold) for t in FAILURES}
@@ -203,13 +252,20 @@ def main() -> int:
         "variants": {v.id: {"label": v.label, "reranker": v.reranker, "k": v.k, "mode": v.mode,
                             "metrics": metrics(v.id), **point[v.id], **costs[v.id], "transitions": moves[v.id]}
                      for v in variants},
-        "vs_base": vs_base, "chosen": chosen,
+        "vs_base": vs_base, "chosen": chosen, "pairs": between, "by_subset": by_subset,
     }
+    if compare_with:
+        other = json.loads(compare_with.read_text(encoding="utf-8"))
+        result["compared_with"] = {
+            "file": str(compare_with.relative_to(ROOT)) if compare_with.is_relative_to(ROOT) else str(compare_with),
+            "collection": other["collection"], "targets": other["targets"],
+            "metrics": {i: {m: v["metrics"][m] for m in (PKG, SPAN)}
+                        for i, v in [("base", other["base"])] + list(other["variants"].items())}}
     STUDY_DIR.mkdir(parents=True, exist_ok=True)
-    (STUDY_DIR / "rerank_analysis.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n",
+    (STUDY_DIR / f"{prefix}_analysis.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n",
                                                     encoding="utf-8")
     table = markdown_table(result)
-    (STUDY_DIR / "rerank_table.md").write_text(table, encoding="utf-8")
+    (STUDY_DIR / f"{prefix}_table.md").write_text(table, encoding="utf-8")
     print(table)
     if not args.no_plots:
         try:
@@ -217,7 +273,7 @@ def main() -> int:
         except ImportError as e:
             print(f"sin gráficos ({e}); correr con `uv run --group analysis`")
         else:
-            for path in rerank_figures(result, STUDY_DIR / "figures" / "rerank"):
+            for path in rerank_figures(result, STUDY_DIR / "figures" / prefix):
                 print("->", path.relative_to(ROOT))
     return 0
 
@@ -252,6 +308,33 @@ def markdown_table(result: dict) -> str:
     for i, v in result["variants"].items():
         r = v["transitions"]["span"]["rescued_by_failure"]
         out.append(f"- **{i}**: " + ", ".join(f"{FAILURES[f]} {r[f]}/{fails[f]}" for f in FAILURES))
+    out += ["", "Umbral al 95% de los positivos (coseno del top-1 en la base, máximo del reranker en las variantes):", ""]
+    for i, v in entries:
+        th = v.get("threshold_rr" if i != "base" else "threshold_cos")
+        if th:
+            out.append(f"- **{i}**: {th['value']:.4f} -> pasan {th['positives_pass']}/{th['positives']} positivos y "
+                       f"{th['negatives_pass']}/{th['negatives']} negativos")
+    if result.get("pairs"):
+        out += ["", "Comparaciones pareadas entre variantes (A − B; empate = el IC incluye 0):", ""]
+        for name, d in result["pairs"].items():
+            out.append(f"- **{name}**: " + "; ".join(
+                f"{m} {x['diff']:+.3f} [{x['ci'][0]:+.3f}, {x['ci'][1]:+.3f}] {x['verdict']}" for m, x in d.items()))
+    if result.get("by_subset"):
+        subsets = list(next(iter(result["by_subset"].values())))
+        out += ["", "Por subconjunto (Pkg Hit@1 / Span@2000):", "",
+                "| Variante | " + " | ".join(f"{s} ({result['by_subset']['base'][s]['targets']})" for s in subsets)
+                + " |", "|---|" + "---|" * len(subsets)]
+        for i, d in result["by_subset"].items():
+            out.append(f"| {i} | " + " | ".join(f"{d[s][PKG]['value']:.3f} / {d[s][SPAN]['value']:.3f}"
+                                                 for s in subsets) + " |")
+    if result.get("compared_with"):
+        c = result["compared_with"]
+        out += ["", f"Contra {c['file']} ({c['collection']}; Pkg Hit@1 / Span@2000, otro → este):", ""]
+        for i, m in c["metrics"].items():
+            here = result["base"] if i == "base" else result["variants"].get(i)
+            if here:
+                out.append(f"- **{i}**: {m[PKG]['value']:.3f} → {here['metrics'][PKG]['value']:.3f} / "
+                           f"{m[SPAN]['value']:.3f} → {here['metrics'][SPAN]['value']:.3f}")
     out += ["", "Costo por reranker:", ""]
     for r, info in result["rerankers"].items():
         timing = info.get("timing") or {}

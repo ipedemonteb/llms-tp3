@@ -146,7 +146,48 @@ def fig_efficiency(result: dict, out_dir: Path) -> Path:
     return _save(fig, out_dir, "4_eficiencia")
 
 
+def fig_factors_span(result: dict, out_dir: Path, factors: tuple[str, ...] = ("size", "cap", "representation")) -> Path:
+    """Versión para diapositiva de `1_factores`: solo Span Hit@2000 y los factores que dicen algo (el mínimo de tokens
+    da lo mismo que la base y va en una nota). Mismo color: azul = mejor nivel del factor y los que empatan con él;
+    gris = significativamente peores. Lleva una leyenda porque el color es lo que muestra que el tope es el único
+    factor con efecto."""
+    from matplotlib.patches import Patch  # noqa: PLC0415
+
+    chosen = [(k, result["within_factor"][k]) for k in factors]
+    widths = [len(w["levels"]) for _, w in chosen]
+    fig, axes = _canvas(1.05 * sum(widths) + 1.5, 4.1, cols=len(chosen), rows=1, left=0.8, right=0.2, top=0.6,
+                        bottom=1.15, wspace=0.22)
+    for c, (_, w) in enumerate(chosen):
+        ax = axes[0][c]
+        win = _winners(w, SPAN)
+        for x, i in enumerate(w["levels"]):
+            v = result["variants"][i]["metrics"][SPAN]
+            ax.bar(x, v["value"], 0.6, color=ACCENT if i in win else GRAY, zorder=2)
+            ax.plot([x, x], v["ci"], color=INK2, linewidth=1.1, zorder=3)
+            for e in v["ci"]:
+                ax.plot([x - 0.08, x + 0.08], [e, e], color=INK2, linewidth=1.1, zorder=3)
+            ax.text(x, v["ci"][1] + 0.02, _fmt(v["value"]), ha="center", fontsize=9.5, color=INK, fontweight="semibold")
+        ax.set_xticks(range(len(w["levels"])))
+        ax.set_xticklabels([w["labels"][i] + ("\n(base)" if i == "base" else "") for i in w["levels"]],
+                           color=INK2, fontsize=9.5)
+        ax.set_xlim(-0.6, len(w["levels"]) - 0.4)
+        ax.set_ylim(0, 0.8)
+        ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8])
+        if c:
+            ax.set_yticklabels([])
+        else:
+            ax.set_ylabel("Span Hit@2000", fontsize=10, color=INK2)
+        ax.set_title(w["title"], fontsize=10.5, loc="left", color=INK, pad=8)
+        _frame(ax, grid="y")
+    width = fig.get_size_inches()[0]
+    fig.legend([Patch(color=ACCENT), Patch(color=GRAY)],
+               ["mejor nivel o empate con él", "significativamente peor"], loc="lower left",
+               bbox_to_anchor=(0.8 / width, 0.04), ncol=2, frameon=False, fontsize=9.5, handlelength=1.2,
+               columnspacing=1.8, labelcolor=INK2)
+    return _save(fig, out_dir, "5_factores_span")
+
+
 def hyperparam_figures(result: dict, out_dir: Path) -> list[Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
     return [fig_factors(result, out_dir), fig_budget(result, out_dir), fig_cost(result, out_dir),
-            fig_efficiency(result, out_dir)]
+            fig_efficiency(result, out_dir), fig_factors_span(result, out_dir)]

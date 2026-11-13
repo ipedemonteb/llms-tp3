@@ -6,6 +6,7 @@ una cantidad de candidatos K y un modo (`rr`: orden del reranker; `rrf`: fusión
 calculan una vez sobre los 50 recuperados; cada variante es un corte de esos puntajes.
 """
 
+import json
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -51,6 +52,34 @@ def scores_path(collection: str, reranker: str, split: str) -> Path:
 def targets_path(collection: str, variant_id: str, split: str) -> Path:
     """Detalle por target de una variante, en el mismo formato que el `.targets.jsonl` del paso 7."""
     return RESULTS_DIR / f"{collection}__qA__{variant_id}__{split}.targets.jsonl"
+
+
+def write_jsonl_once(path: Path, rows: list[dict]) -> str:
+    """Escribe `rows` como JSONL sin pisar resultados anteriores: si el archivo no existe lo crea ("nuevo"); si existe
+    con el mismo contenido no lo toca ("igual"); si existe con otro contenido falla y lo deja como estaba."""
+    text = "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows)
+    if path.exists():
+        if path.read_text(encoding="utf-8") == text:
+            return "igual"
+        raise FileExistsError(f"{path} ya existe con otro contenido: no se pisa")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+    return "nuevo"
+
+
+def parse_pairs(specs: list[str]) -> list[tuple[str, str]]:
+    """`["k1-rr30:k2-rrf10", ...]` → [("k1-rr30", "k2-rrf10"), ...] (A − B). Valida que las variantes existan."""
+    out = []
+    for s in specs:
+        a, sep, b = s.partition(":")
+        if not sep or a not in BY_ID or b not in BY_ID or a == b:
+            raise ValueError(f"par inválido: {s!r} (formato A:B con ids de la grilla, p. ej. k1-rr30:k2-rrf10)")
+        out.append((a, b))
+    return out
+
+
+# Los mismos pares del desvío del estudio original (plan_reranker.md §7, rerank_choice.json)
+DEFAULT_PAIRS = ("k1-rr30:k2-rrf10", "k1-rr20:k2-rrf10", "k1-rr50:k1-rr30", "k1-rr30:k1-rr20")
 
 
 def choose(rows: dict[str, dict]) -> str | None:

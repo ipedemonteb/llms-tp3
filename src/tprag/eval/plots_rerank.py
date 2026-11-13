@@ -7,6 +7,9 @@ va en la diapositiva).
 2. `2_presupuesto`: curva de Span Hit contra tokens de contexto: la base y la mejor variante de cada reranker.
 3. `3_antes_despues`: por variante, aciertos de Span@2000 que rescata (derecha) y que rompe (izquierda) respecto de la
    base. Es lo que muestra si el reranker arregla casos o solo los mueve de lugar.
+4. `4_subconjunto_vs_completo` (si el análisis trae `compared_with`): Pkg Hit@1 y Span@2000 de cada variante en el
+   otro análisis (círculo vacío) y en este (lleno). Muestra cuánto cae cada una al sumar distractores.
+5. `5_por_subconjunto` (si trae `by_subset`): las mismas dos métricas separadas en manual y sintético, con IC.
 """
 
 from pathlib import Path
@@ -104,6 +107,71 @@ def fig_moves(result: dict, out_dir: Path) -> Path:
     return _save(fig, out_dir, "3_antes_despues")
 
 
+def _ids_with_base(result: dict) -> list[str]:
+    return ["base"] + list(result["variants"])
+
+
+def _label(result: dict, i: str) -> str:
+    return "base (sin reranker)" if i == "base" else i
+
+
+def fig_corpus(result: dict, out_dir: Path) -> Path:
+    """Por variante, Pkg Hit@1 y Span@2000 en el otro análisis (gris) y en este (color), unidos por una línea."""
+    other = result["compared_with"]["metrics"]
+    ids = [i for i in _ids_with_base(result) if i in other]
+    fig, axes = _canvas(10.0, 0.34 * len(ids) + 1.3, cols=2, left=1.5, right=0.3, top=0.45, bottom=0.7, wspace=0.08)
+    for n, (ax, (metric, name)) in enumerate(zip(axes[0], ((PKG, "Package Hit@1"), (SPAN, "Span Hit@2000")))):
+        for y, i in enumerate(ids):
+            here = (result["base"] if i == "base" else result["variants"][i])["metrics"][metric]["value"]
+            there = other[i][metric]["value"]
+            color = GRAY if i == "base" else COLORS.get(result["variants"][i]["reranker"], INK2)
+            ax.plot([there, here], [y, y], color=MUTED, linewidth=1.0, zorder=1)
+            ax.plot(there, y, "o", color="white", markeredgecolor=GRAY, markersize=6, zorder=2)
+            ax.plot(here, y, "o", color=color, markersize=6, zorder=3)
+        ax.set_ylim(len(ids) - 0.5, -0.5)
+        ax.set_yticks(range(len(ids)))
+        ax.set_yticklabels([_label(result, i) for i in ids] if n == 0 else [], color=INK2, fontsize=9)
+        ax.set_xlim(0.2, 1.0)
+        ax.set_title(name, fontsize=10.5, loc="left", color=INK, pad=8)
+        _frame(ax, grid="x")
+    axes[0][0].set_xlabel("○ subconjunto (30 librerías)   ● corpus completo", fontsize=9.5, color=INK2)
+    return _save(fig, out_dir, "4_subconjunto_vs_completo")
+
+
+def fig_subsets(result: dict, out_dir: Path) -> Path:
+    """Pkg Hit@1 y Span@2000 por subconjunto (manual / sintético), base y cada variante, con IC."""
+    by = result["by_subset"]
+    ids = _ids_with_base(result)
+    subsets = list(by["base"])
+    marks = {s: m for s, m in zip(subsets, ("s", "o", "^"))}
+    fig, axes = _canvas(10.0, 0.34 * len(ids) + 1.3, cols=2, left=1.5, right=0.3, top=0.45, bottom=0.7, wspace=0.08)
+    for n, (ax, (metric, name)) in enumerate(zip(axes[0], ((PKG, "Package Hit@1"), (SPAN, "Span Hit@2000")))):
+        handles = []
+        for y, i in enumerate(ids):
+            color = GRAY if i == "base" else COLORS.get(result["variants"][i]["reranker"], INK2)
+            for j, s in enumerate(subsets):
+                m = by[i][s][metric]
+                yy = y + (j - (len(subsets) - 1) / 2) * 0.28
+                ax.plot(m["ci"], [yy, yy], color=color, linewidth=1.0, alpha=0.45, zorder=1)
+                (h,) = ax.plot(m["value"], yy, marks[s], color=color, markersize=5.5, zorder=2)
+                if y == 0:
+                    handles.append((h, f"{s} ({by['base'][s]['targets']})"))
+        ax.set_ylim(len(ids) - 0.5, -0.5)
+        ax.set_yticks(range(len(ids)))
+        ax.set_yticklabels([_label(result, i) for i in ids] if n == 0 else [], color=INK2, fontsize=9)
+        ax.set_xlim(0.0, 1.0)
+        ax.set_title(name, fontsize=10.5, loc="left", color=INK, pad=8)
+        _frame(ax, grid="x")
+    axes[0][0].legend([h for h, _ in handles], [t for _, t in handles], loc="lower left", frameon=False, fontsize=9,
+                      labelcolor=INK2)  # a la izquierda de Pkg Hit@1 no hay datos (todo está por encima de 0,5)
+    return _save(fig, out_dir, "5_por_subconjunto")
+
+
 def rerank_figures(result: dict, out_dir: Path) -> list[Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
-    return [fig_candidates(result, out_dir), fig_budget(result, out_dir), fig_moves(result, out_dir)]
+    out = [fig_candidates(result, out_dir), fig_budget(result, out_dir), fig_moves(result, out_dir)]
+    if result.get("compared_with"):
+        out.append(fig_corpus(result, out_dir))
+    if result.get("by_subset"):
+        out.append(fig_subsets(result, out_dir))
+    return out

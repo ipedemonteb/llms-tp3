@@ -27,3 +27,28 @@ def test_choose_prefiere_la_mas_barata_y_desempata_por_span():
     rows = {"cara": row("mejor", seconds=5.0, span=0.8), "barata": row("mejor", seconds=1.0, span=0.65),
             "barata2": row("mejor", seconds=1.0, span=0.7)}
     assert choose(rows) == "barata2"
+
+
+def test_write_jsonl_once_no_pisa(tmp_path):
+    import pytest
+
+    from tprag.eval.rerank_study import write_jsonl_once
+
+    path = tmp_path / "x.jsonl"
+    assert write_jsonl_once(path, [{"a": 1}]) == "nuevo"
+    assert write_jsonl_once(path, [{"a": 1}]) == "igual"
+    with pytest.raises(FileExistsError):
+        write_jsonl_once(path, [{"a": 2}])
+    assert path.read_text() == '{"a": 1}\n'
+
+
+def test_parse_pairs():
+    import pytest
+
+    from tprag.eval.rerank_study import DEFAULT_PAIRS, parse_pairs
+
+    assert parse_pairs(["k1-rr30:k2-rrf10"]) == [("k1-rr30", "k2-rrf10")]
+    assert len(parse_pairs(list(DEFAULT_PAIRS))) == 4
+    for bad in ("k1-rr30", "k1-rr30:k9-rr1", "k1-rr30:k1-rr30"):
+        with pytest.raises(ValueError):
+            parse_pairs([bad])

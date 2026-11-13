@@ -1,0 +1,48 @@
+{
+  "study": "rerank",
+  "split": "dev",
+  "collection": "s3-1024__e4__r1__cap150",
+  "pool": 50,
+  "dataset": {
+    "commit": "b4c688d",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
+      "synthetic.jsonl": "af7b1e34d7d7d82331108a2f7c02cb523226bf5d7a832b8639a59fef42bc2b06"
+    }
+  },
+  "git_dirty": true,
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.13",
+    "torch": "2.15.0",
+    "sentence-transformers": "5.7.0",
+    "transformers": "4.57.6",
+    "chromadb": "1.5.9",
+    "tiktoken": "0.14.0",
+    "mps": true
+  },
+  "rerankers": {
+    "k1": {
+      "timing": {
+        "computed": 3007,
+        "seconds": 1615.3,
+        "load_seconds": 9.4,
+        "seconds_per_pair": 0.5371799135350848,
+        "batch_size": 1,
+        "dtype": "float16",
+        "peak_mps_mb": 2289
+      },
+      "pairs": 6100,
+      "truncated_pairs": 10,
+      "truncated_rate": 0.0016,
+      "finished": "2026-11-13T13:34:10",
+      "name": "Qwen/Qwen3-Reranker-0.6B",
+      "label": "Qwen3-Reranker-0.6B",
+      "cache_key": "Qwen/Qwen3-Reranker-0.6B@len2048@float16@inst-7c2218431717",
+      "instruction": "Given Python code that uses a library that may not exist or is deprecated, retrieve the documentation passage of a real Python library that shows how to do the same thing.",
+      "max_length": 2048
+    }
+  }
+}
