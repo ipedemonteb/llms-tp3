@@ -30,7 +30,7 @@ def _series(result: dict) -> dict[tuple[str, str], list[str]]:
 
 
 def fig_candidates(result: dict, out_dir: Path) -> Path:
-    fig, axes = _canvas(10.0, 4.4, cols=2, left=0.75, right=0.3, top=0.45, bottom=0.75, wspace=0.25)
+    fig, axes = _canvas(10.0, 4.9, cols=2, left=0.75, right=0.3, top=0.45, bottom=1.25, wspace=0.25)
     series = _series(result)
     ks = result["ks"]
     for ax, (metric, name) in zip(axes[0], ((PKG, "Package Hit@1"), (SPAN, "Span Hit@2000"))):
@@ -56,7 +56,9 @@ def fig_candidates(result: dict, out_dir: Path) -> Path:
         ax.set_ylim(min(0.3, int(low * 10) / 10), 1.0)  # baja si alguna variante cae por debajo de 0,3
         ax.set_xlabel("candidatos que reordena el reranker (K)", fontsize=10, color=INK2)
         _frame(ax, grid="y")
-    axes[0][1].legend(handles, labels, loc="lower right", frameon=False, fontsize=9, labelcolor=INK2)
+    # leyenda compartida debajo de los ejes: adentro se pisaba con las curvas
+    fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(0.5, 0.0), ncol=2, frameon=False, fontsize=9.5,
+               labelcolor=INK2, columnspacing=3.0, handlelength=2.6)
     return _save(fig, out_dir, "1_candidatos")
 
 
