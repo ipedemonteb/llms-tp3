@@ -109,7 +109,7 @@ def main() -> int:
         record = check_item(it, prep, fix, fetch)
         record |= {"code": fix.code, "report": fix.report, "edits": fix.edits,
                    "contexts": [{"module": c.module, "score": c.score, "passed": c.passed,
-                                 "chunks": [{k: ch[k] for k in ("header", "package", "id", "n_tokens")}
+                                 "chunks": [{k: ch[k] for k in ("header", "package", "id", "n_tokens", "text")}
                                             for ch in c.chunks]} for c in prep.contexts]}
         records.append(record)
         print(f"{'ok' if record['success'] else 'FALLA':<6} {it['id']}")
