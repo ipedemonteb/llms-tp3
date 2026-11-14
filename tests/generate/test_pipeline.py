@@ -3,6 +3,7 @@
 from langchain_core.documents import Document
 
 from tprag.generate.context import build_context
+from tprag.generate.llm import TruncatedOutput
 from tprag.generate.pipeline import apply_edits, finish, fix, prepare, resolve_package
 from tprag.generate.prompt import user_message
 from tprag.generate.schema import Edit, GeneratorOutput, ImportDecision
@@ -90,6 +91,18 @@ def test_sobre_el_umbral_aplica_los_reemplazos():
     assert entry["validator_reason"] == "abandonado; el proyecto siguió como pypdf"  # al reporte sí, al LLM no
     assert entry["replacement_package_llm"] == "pypdf"
     assert entry["new_imports"] == [{"module": "pypdf", "package": "pypdf", "status": "ok"}]
+
+
+def test_respuesta_cortada_por_el_tope_deja_el_script_igual():
+    def llm(system, user):
+        raise TruncatedOutput('{"imports": [{"module": "PyPDF2", "reason": "\\\\\\\\\\\\')
+
+    result = fix(CODE, FakeStore([doc(0)], best_score=0.6), fetch, llm, threshold=0.4)
+    assert result.llm_called and result.code == CODE and not result.edits
+    assert result.llm_error == "length" and result.llm_raw.startswith('{"imports"')
+    entry = next(e for e in result.report if e["module"] == "PyPDF2")
+    assert entry["decision"] == "sin_reemplazo_confiable"
+    assert entry["reason"] == "la respuesta del LLM se cortó por superar el tope de tokens de salida"
 
 
 def test_el_paquete_del_reporte_sale_del_codigo_y_no_del_llm():

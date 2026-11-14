@@ -68,7 +68,8 @@ def check_item(item: dict, prep: Prepared, fix: FixResult, fetch: Fetch) -> dict
 
     return {
         "id": item["id"], "subset": item["subset"], "split": item.get("split"), "targets": targets,
-        "llm_called": fix.llm_called, "applicable": not fix.edit_errors, "edit_errors": fix.edit_errors,
+        "llm_called": fix.llm_called, "llm_error": fix.llm_error,
+        "applicable": not fix.edit_errors, "edit_errors": fix.edit_errors,
         "parses": new_results is not None, "hallucinated_imports": hallucinated,
         "sources_ok": all(_source_ok(s, headers) for s in sources),
         "success": all(t["success"] for t in targets),
@@ -84,7 +85,7 @@ def summarize(records: list[dict]) -> dict:
     pos = [(r, t) for r in records for t in r["targets"] if t["expected"] == REPLACED]
     neg = [(r, t) for r in records for t in r["targets"] if t["expected"] == NO_REPLACEMENT]
     called = [r for r in records if r["llm_called"]]
-    passed_neg = [t for _, t in neg if t["passed_threshold"]]
+    passed_neg = [(r, t) for r, t in neg if t["passed_threshold"]]
     return {
         "items": len(records), "llm_calls": len(called),
         "positives": {
@@ -101,8 +102,10 @@ def summarize(records: list[dict]) -> dict:
             "targets": len(neg),
             "success": _rate([t["success"] for _, t in neg]),
             "passed_threshold": len(passed_neg),
-            "rejected_by_llm": sum(t["decision"] == NO_REPLACEMENT for t in passed_neg),
+            # una respuesta cortada por el tope deja el script igual, pero no es que el LLM se haya abstenido
+            "rejected_by_llm": sum(t["decision"] == NO_REPLACEMENT and not r.get("llm_error") for r, t in passed_neg),
         },
+        "llm_errors": sum(bool(r.get("llm_error")) for r in records),
         "hallucinated_imports": sum(len(r["hallucinated_imports"]) for r in records),
         "sources_ok": _rate([r["sources_ok"] for r in called]),
     }

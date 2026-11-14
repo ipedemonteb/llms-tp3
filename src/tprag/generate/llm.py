@@ -18,6 +18,18 @@ from .schema import GeneratorOutput
 
 CACHE_PATH = ROOT / "data" / "generate" / "cache" / "llm.sqlite"
 OUTPUT_TOKENS_ESTIMATE = 700  # reemplazos ~400 + reporte ~300 (generador.md §2.5)
+# Tope de salida (2026-11-14): sin él, una respuesta en bucle llegó a 16.384 tokens (neg-useragent-01). No entra en la
+# clave del caché: las 458 respuestas guardadas hasta entonces (sin tope) tienen como máximo 921 tokens, así que con
+# el tope habrían salido idénticas. Las respuestas nuevas guardan `max_tokens`; las viejas no lo tienen (= sin tope).
+MAX_OUTPUT_TOKENS = 2000
+
+
+class TruncatedOutput(Exception):
+    """La respuesta del LLM llegó a `MAX_OUTPUT_TOKENS` y no se puede leer (queda en el caché: no se vuelve a pagar)."""
+
+    def __init__(self, raw: str):
+        super().__init__("la respuesta del LLM se cortó por el tope de tokens de salida")
+        self.raw = raw
 
 
 @dataclass(frozen=True)
@@ -81,17 +93,27 @@ class CachedLLM:
         if self._client is None:
             from langchain_openai import ChatOpenAI  # noqa: PLC0415  (pide la API key al construirse)
 
-            chat = ChatOpenAI(model=self.model.api_name, temperature=0)
+            chat = ChatOpenAI(model=self.model.api_name, temperature=0, max_tokens=MAX_OUTPUT_TOKENS)
             self._client = chat.with_structured_output(GeneratorOutput, method="json_schema", strict=True,
                                                        include_raw=True)
-        out = self._client.invoke([("system", system), ("human", user)])
+        from openai import LengthFinishReasonError  # noqa: PLC0415
+
+        try:
+            out = self._client.invoke([("system", system), ("human", user)])
+        except LengthFinishReasonError as e:  # llegó al tope: se guarda igual (se pagó) con el texto cortado
+            usage = e.completion.usage
+            return {"output": None, "error": "length", "raw": e.completion.choices[0].message.content or "",
+                    "max_tokens": MAX_OUTPUT_TOKENS,
+                    "usage": {"input_tokens": usage.prompt_tokens if usage else 0,
+                              "output_tokens": usage.completion_tokens if usage else 0}}
         if out["parsed"] is None:
             raise ValueError(f"respuesta del LLM que no respeta el esquema: {out['parsing_error']}")
         usage = out["raw"].usage_metadata or {}
-        return {"output": out["parsed"].model_dump(),
+        return {"output": out["parsed"].model_dump(), "max_tokens": MAX_OUTPUT_TOKENS,
                 "usage": {"input_tokens": usage.get("input_tokens", 0), "output_tokens": usage.get("output_tokens", 0)}}
 
     def __call__(self, system: str, user: str) -> GeneratorOutput:
+        """Levanta `TruncatedOutput` si la respuesta (nueva o del caché) se cortó por el tope de salida."""
         key = self._key(system, user)
         response = self._get(key)
         if response is None:
@@ -104,6 +126,8 @@ class CachedLLM:
             self.output_tokens += response["usage"]["output_tokens"]
         else:
             self.hits += 1
+        if response.get("error") == "length":
+            raise TruncatedOutput(response["raw"])
         return GeneratorOutput.model_validate(response["output"])
 
     @property

@@ -16,6 +16,7 @@ from tprag.validate.pypi import Fetch
 from tprag.validate.validate import ImportResult, validate
 
 from .context import Reranker, TargetContext, build_context
+from .llm import TruncatedOutput
 from .prompt import SYSTEM, user_message
 from .schema import NO_REPLACEMENT, REPLACED, GeneratorOutput
 
@@ -42,6 +43,8 @@ class FixResult:
     llm_called: bool
     edits: list[dict] = field(default_factory=list)
     edit_errors: list[str] = field(default_factory=list)
+    llm_error: str | None = None  # "length": la respuesta se cortó por el tope de salida (el script queda igual)
+    llm_raw: str | None = None  # el texto cortado, para ver qué pasó
 
 
 def prepare(code: str, store: Chroma, fetch: Fetch, threshold: float, budget: int = CONTEXT_BUDGET,
@@ -99,7 +102,7 @@ def resolve_package(claim: str | None, imports: list[dict]) -> str | None:
     return packages[0] if len(packages) == 1 else None
 
 
-def _entry(r: ImportResult, ctx: TargetContext | None, decision: dict | None) -> dict:
+def _entry(r: ImportResult, ctx: TargetContext | None, decision: dict | None, llm_error: str | None = None) -> dict:
     entry = {"module": r.module, "line": r.line, "status": r.status, "package": r.package,
              "validator_reason": r.reason, "warnings": r.warnings}
     if ctx is None:
@@ -111,6 +114,10 @@ def _entry(r: ImportResult, ctx: TargetContext | None, decision: dict | None) ->
         return entry | {"decision": NO_REPLACEMENT, "replacement_package": None,
                         "reason": "el mejor fragmento recuperado queda por debajo del umbral de confianza",
                         "sources": []}
+    if llm_error == "length":
+        return entry | {"decision": NO_REPLACEMENT, "replacement_package": None,
+                        "reason": "la respuesta del LLM se cortó por superar el tope de tokens de salida",
+                        "sources": []}
     if decision is None:
         return entry | {"decision": NO_REPLACEMENT, "replacement_package": None,
                         "reason": "el LLM no devolvió una decisión para este import", "sources": []}
@@ -118,9 +125,11 @@ def _entry(r: ImportResult, ctx: TargetContext | None, decision: dict | None) ->
                                              "reason", "sources")}
 
 
-def finish(prep: Prepared, output: GeneratorOutput | None) -> FixResult:
+def finish(prep: Prepared, output: GeneratorOutput | None, llm_error: str | None = None,
+           llm_raw: str | None = None) -> FixResult:
     """Arma el script y el reporte. Las decisiones del LLM se asocian por nombre de módulo; los reemplazos solo se
-    aplican si el LLM reemplazó al menos uno.
+    aplican si el LLM reemplazó al menos uno. Con `llm_error` (se llamó al LLM pero la respuesta no sirve), el script
+    queda igual.
 
     Post-validación: el script corregido vuelve a pasar por el validador, y `replacement_package` es el paquete que
     quedó importado en el código, no el que escribió el LLM (que se guarda en `replacement_package_llm`). Con varios
@@ -128,7 +137,7 @@ def finish(prep: Prepared, output: GeneratorOutput | None) -> FixResult:
     """
     decisions = {d.module: d.model_dump() for d in output.imports} if output else {}
     by_module = {c.module: c for c in prep.contexts}
-    report = [_entry(r, by_module.get(r.module) if r.to_rag else None, decisions.get(r.module))
+    report = [_entry(r, by_module.get(r.module) if r.to_rag else None, decisions.get(r.module), llm_error)
               for r in prep.results]
     edits = [e.model_dump() for e in output.edits] if output else []
     replaced = any(e.get("decision") == REPLACED for e in report)
@@ -143,10 +152,20 @@ def finish(prep: Prepared, output: GeneratorOutput | None) -> FixResult:
                 e["replacement_package_llm"] = e["replacement_package"]
                 e["replacement_package"] = resolve_package(e["replacement_package_llm"], added)
                 e["new_imports"] = added
-    return FixResult(code, report, output is not None, edits, errors)
+    return FixResult(code, report, output is not None or llm_error is not None, edits, errors, llm_error, llm_raw)
+
+
+def answer(prep: Prepared, llm: LLM) -> FixResult:
+    """Llama al LLM si algún import pasó el umbral y arma el resultado; una respuesta cortada por el tope de salida
+    deja el script igual (`llm_error="length"`) en vez de cortar todo."""
+    if prep.prompt is None:
+        return finish(prep, None)
+    try:
+        return finish(prep, llm(*prep.prompt))
+    except TruncatedOutput as e:
+        return finish(prep, None, llm_error="length", llm_raw=e.raw)
 
 
 def fix(code: str, store: Chroma, fetch: Fetch, llm: LLM, threshold: float, budget: int = CONTEXT_BUDGET,
         reranker: Reranker | None = None) -> FixResult:
-    prep = prepare(code, store, fetch, threshold, budget, reranker)
-    return finish(prep, llm(*prep.prompt) if prep.prompt else None)
+    return answer(prepare(code, store, fetch, threshold, budget, reranker), llm)

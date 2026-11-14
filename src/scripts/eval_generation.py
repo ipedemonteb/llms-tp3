@@ -27,7 +27,7 @@ from tprag.eval.retrieval import dataset_info, select_items
 from tprag.eval.verify import load_items
 from tprag.generate.context import dev_threshold, load_reranker, rerank_threshold
 from tprag.generate.llm import CHAT_MODELS, CachedLLM
-from tprag.generate.pipeline import finish, prepare
+from tprag.generate.pipeline import answer, prepare
 from tprag.index.build import REPRESENTATIONS, IndexConfig, open_collection
 from tprag.index.cost import estimate
 from tprag.index.embeddings import MODELS, cached
@@ -105,14 +105,15 @@ def main() -> int:
     start = time.time()
     records = []
     for it, prep in zip(items, preps):
-        fix = finish(prep, llm(*prep.prompt) if prep.prompt else None)
+        fix = answer(prep, llm)
         record = check_item(it, prep, fix, fetch)
-        record |= {"code": fix.code, "report": fix.report, "edits": fix.edits,
+        record |= {"code": fix.code, "report": fix.report, "edits": fix.edits, "llm_raw": fix.llm_raw,
                    "contexts": [{"module": c.module, "score": c.score, "passed": c.passed,
                                  "chunks": [{k: ch[k] for k in ("header", "package", "id", "n_tokens", "text")}
                                             for ch in c.chunks]} for c in prep.contexts]}
         records.append(record)
-        print(f"{'ok' if record['success'] else 'FALLA':<6} {it['id']}")
+        print(f"{'ok' if record['success'] else 'FALLA':<6} {it['id']}"
+              f"{'  (respuesta del LLM cortada por el tope de salida)' if fix.llm_error else ''}")
     seconds = round(time.time() - start, 1)
 
     report = {
@@ -135,7 +136,7 @@ def main() -> int:
           f"{llm.usd:.4f} USD), {llm.hits} del caché")
     print(f"positivos: éxito {m['positives']['success']}; negativos: éxito {m['negatives']['success']} "
           f"({m['negatives']['rejected_by_llm']}/{m['negatives']['passed_threshold']} rechazados por el LLM); "
-          f"imports alucinados: {m['hallucinated_imports']}")
+          f"imports alucinados: {m['hallucinated_imports']}; respuestas cortadas por el tope: {m['llm_errors']}")
     print(f"-> {RESULTS_DIR / stem}.json")
     return 0
 
