@@ -2,8 +2,9 @@
 
 import pytest
 
-from tprag.eval.threshold import (BAD, CORRECT_ABSTENTION, GOOD, MISSED, WRONG_CHANGE, candidates, choose, counts,
-                                  min_threshold, outcome, sensitivity, sweep, targets, utility)
+from tprag.eval.threshold import (BAD, CORRECT_ABSTENTION, GOOD, MISSED, NR, PRECISION, RETRIEVAL, UTILITY,
+                                  WRONG_CHANGE, candidates, choose, compare, counts, min_threshold, outcome,
+                                  sensitivity, sweep, targets, utility)
 from tprag.generate.schema import NO_REPLACEMENT, REPLACED
 
 ORIGINAL = "import viejo\n"
@@ -118,3 +119,65 @@ def test_choose_tie_takes_highest_threshold():
                   record("b", [target(REPLACED, 0.5, decision=NO_REPLACEMENT, success=False)], changed=False)])
     rows = sweep(ts)  # con 0,5 y con 0,9 da 1 buena y 0 errores
     assert choose(rows)["threshold"] == 0.9
+
+
+# Barrido para los criterios (umbral → buenas, malas, indebidos):
+#   −∞ / 0,3: 3 buenas, 1 mala, 1 indebido (precisión 0,6, NR 0,5, pasan 4/4 positivos)
+#   0,5:      3 buenas, 0 malas, 1 indebido (precisión 0,75, NR 0,5, 3/4)
+#   0,6:      2 buenas, 0, 1                (precisión 0,67, NR 0,5, 2/4)
+#   0,7:      2 buenas, 0, 0                (precisión 1, NR 1, 2/4)
+#   0,9:      1 buena                       (1/4);  +∞: nada
+def criteria_rows():
+    return sweep(flatten([
+        record("a", [target(REPLACED, 0.9)]), record("b", [target(REPLACED, 0.7)]),
+        record("c", [target(REPLACED, 0.5)]), record("d", [target(REPLACED, 0.3, success=False)]),
+        record("e", [target(NO_REPLACEMENT, 0.6, success=False)]),
+        record("f", [target(NO_REPLACEMENT, 0.2, decision=NO_REPLACEMENT)], changed=False),
+    ]))
+
+
+def test_counts_precision_and_passed_pos():
+    row = next(r for r in criteria_rows() if r["threshold"] == 0.5)
+    assert row["precision"] == 0.75 and row["passed_pos"] == 0.75
+    assert next(r for r in criteria_rows() if r["threshold"] == float("inf"))["precision"] is None
+
+
+def test_choose_utility_is_the_default_and_unchanged():
+    rows = criteria_rows()
+    assert choose(rows) is choose(rows, 2.0) is choose(rows, 2.0, UTILITY)
+    assert choose(rows)["threshold"] == 0.7  # 2 − 0 = 2 > 3 − 2 × 1 = 1
+
+
+def test_choose_precision():
+    rows = criteria_rows()
+    assert choose(rows, 0.7, PRECISION)["threshold"] == 0.5  # 3 buenas con precisión 0,75
+    assert choose(rows, 0.8, PRECISION)["threshold"] == 0.7  # 0,5 ya no alcanza: 2 buenas, precisión 1
+
+
+def test_choose_negative_rejection():
+    rows = criteria_rows()
+    assert choose(rows, 0.5, NR)["threshold"] == 0.5  # NR 0,5 en todos los bajos: gana 0,5 por empate en 3 buenas
+    assert choose(rows, 0.85, NR)["threshold"] == 0.7
+
+
+def test_choose_retrieval_rule():
+    rows = criteria_rows()
+    assert choose(rows, 0.95, RETRIEVAL)["threshold"] == 0.3  # el más alto que deja pasar los 4 positivos
+    assert choose(rows, 0.5, RETRIEVAL)["threshold"] == 0.7
+
+
+def test_nobody_meets_the_condition_abstains_always():
+    rows = sweep(flatten([record("a", [target(REPLACED, 0.8, success=False)])]))  # solo una corrección mala
+    assert choose(rows, 0.8, PRECISION)["threshold"] == float("inf")
+
+
+def test_unknown_criterion():
+    with pytest.raises(ValueError):
+        choose(criteria_rows(), 0.5, "otro")
+
+
+def test_compare_uses_defaults_unless_given():
+    rows = criteria_rows()
+    assert {c: r["threshold"] for c, r in compare(rows).items()} == {
+        UTILITY: 0.7, PRECISION: 0.7, NR: 0.7, RETRIEVAL: 0.3}
+    assert compare(rows, {PRECISION: 0.7})[PRECISION]["threshold"] == 0.5

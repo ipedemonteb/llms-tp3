@@ -20,6 +20,13 @@ OUTCOMES = (GOOD, BAD, MISSED, WRONG_CHANGE, CORRECT_ABSTENTION)
 LAMBDA = 2.0
 SENSITIVITY = (1.0, 2.0, 3.0)
 
+# Criterios para elegir el umbral (metricas.md §4.2). El principal es `utility`; los otros se agregaron después de ver
+# las curvas de dev (2026-11-14) para comparar. Cada uno tiene un parámetro: λ, precisión mínima, Negative Rejection
+# mínima o fracción de positivos que pasan.
+UTILITY, PRECISION, NR, RETRIEVAL = "utility", "precision", "nr", "retrieval"
+CRITERIA = (UTILITY, PRECISION, NR, RETRIEVAL)
+DEFAULT_PARAMS = {UTILITY: LAMBDA, PRECISION: 0.8, NR: 0.85, RETRIEVAL: 0.95}
+
 
 @dataclass(frozen=True)
 class Target:
@@ -79,11 +86,15 @@ def counts(ts: list[Target], threshold: float) -> dict:
     pos, neg = sum(t.positive for t in ts), sum(not t.positive for t in ts)
     passing = {t.item for t in ts if t.score is not None and t.score >= threshold}
     items = {t.item for t in ts}
+    corrections = c[GOOD] + c[BAD] + c[WRONG_CHANGE]  # scripts entregados cambiados
     return {
         "threshold": threshold,
         **{o: c[o] for o in OUTCOMES},
         "positives": pos, "negatives": neg,
         "success_pos": c[GOOD] / pos if pos else None,  # éxito en positivos
+        "precision": c[GOOD] / corrections if corrections else None,  # de lo que se cambió, cuánto estaba bien
+        # positivos que pasan el umbral (llegan al LLM): lo que mira la regla de calibración por retrieval
+        "passed_pos": sum(t.positive and t.score is not None and t.score >= threshold for t in ts) / pos if pos else None,
         "bad_pos": c[BAD] / pos if pos else None,
         "missed_pos": c[MISSED] / pos if pos else None,  # abstención indebida (correcciones perdidas)
         "negative_rejection": c[CORRECT_ABSTENTION] / neg if neg else None,
@@ -107,9 +118,42 @@ def sweep(ts: list[Target], thresholds: list[float] | None = None) -> list[dict]
     return rows
 
 
-def choose(rows: list[dict], lam: float = LAMBDA) -> dict:
-    """La fila de mayor puntaje; empate → el umbral más alto (menos llamadas, más conservador)."""
-    return max(rows, key=lambda r: (utility(r, lam), r["threshold"]))
+def choose(rows: list[dict], param: float | None = None, criterion: str = UTILITY) -> dict:
+    """La fila elegida con el criterio; en todos, empate → el umbral más alto (menos llamadas, más conservador).
+
+    - `utility`: mayor puntaje con λ = `param`.
+    - `precision`: más correcciones buenas con precisión ≥ `param`.
+    - `nr`: más correcciones buenas con Negative Rejection ≥ `param`.
+    - `retrieval`: el umbral más alto que deja pasar ≥ `param` de los positivos, sin mirar al LLM (la regla con la
+      que se calibraron los umbrales en plan_cierre.md §8).
+
+    Con `precision` y `nr`, una fila sin cambios (o sin negativos) cumple: si ningún umbral cumple, queda abstenerse
+    siempre (+inf), que no tiene errores.
+    """
+    value = DEFAULT_PARAMS[criterion] if param is None else param
+    if criterion == UTILITY:
+        return max(rows, key=lambda r: (utility(r, value), r["threshold"]))
+    if criterion == RETRIEVAL:
+        ok = [r for r in rows if r["passed_pos"] is not None and r["passed_pos"] >= value]
+        return max(ok, key=lambda r: r["threshold"]) if ok else rows[0]
+    field = {PRECISION: "precision", NR: "negative_rejection"}.get(criterion)
+    if field is None:
+        raise ValueError(f"criterio desconocido: {criterion} (opciones: {', '.join(CRITERIA)})")
+    ok = [r for r in rows if r[field] is None or r[field] >= value]
+    return max(ok, key=lambda r: (r[GOOD], r["threshold"]))
+
+
+def describe(criterion: str, param: float | None = None) -> str:
+    value = DEFAULT_PARAMS[criterion] if param is None else param
+    return {UTILITY: f"puntaje con λ = {value:g}", PRECISION: f"máximas buenas con precisión ≥ {value:g}",
+            NR: f"máximas buenas con Negative Rejection ≥ {value:g}",
+            RETRIEVAL: f"pasa ≥ {value:.0%} de los positivos (regla de retrieval)"}[criterion]
+
+
+def compare(rows: list[dict], params: dict[str, float] | None = None) -> dict[str, dict]:
+    """La fila que elige cada criterio (con `params` o los de por defecto)."""
+    params = DEFAULT_PARAMS | (params or {})
+    return {c: choose(rows, params[c], c) for c in CRITERIA}
 
 
 def sensitivity(rows: list[dict], lams: tuple[float, ...] = SENSITIVITY) -> dict[float, float]:

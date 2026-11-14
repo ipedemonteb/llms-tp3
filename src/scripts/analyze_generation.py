@@ -8,7 +8,9 @@ Uso:
 Calcula, sin volver a llamar al LLM:
 - Barrido del umbral (tprag.eval.threshold): por cada umbral evaluable, correcciones buenas / malas / perdidas,
   cambios indebidos, abstenciones correctas, reporte engañoso, éxito en positivos, Negative Rejection, llamadas al LLM
-  y el puntaje con λ = 1, 2, 3. Elige el umbral con λ (2 por defecto; empate → el más alto) y da la sensibilidad.
+  y el puntaje con λ = 1, 2, 3. Elige el umbral con --criterion (por defecto el puntaje con λ = 2; también
+  precision, nr y retrieval; empate → el más alto), da la sensibilidad a λ y compara el umbral de los cuatro
+  criterios. Con un criterio o λ distinto del principal, los archivos llevan un sufijo (p. ej. _precision-0.8).
 - Faithfulness (tprag.eval.faithfulness) por script cambiado; en cada umbral, el promedio sobre los scripts que lo
   pasan. El texto de los chunks sale del detalle o, en corridas viejas que no lo guardan, de data/processed/.
 - Answer Relevance (a) y (b), si ya se juzgó la corrida (judge_generation.py deja <corrida>.judge.jsonl): en cada
@@ -35,8 +37,9 @@ from tprag.eval.faithfulness import faithfulness, load_chunk_texts, record_conte
 from tprag.eval.noise import summarize as noise_summary
 from tprag.eval.noise import target_groups
 from tprag.eval.retrieval import dataset_info
-from tprag.eval.threshold import (BAD, CORRECT_ABSTENTION, GOOD, LAMBDA, MISSED, SENSITIVITY, WRONG_CHANGE, by_subset,
-                                  choose, sensitivity, sweep, targets, utility)
+from tprag.eval.threshold import (BAD, CORRECT_ABSTENTION, CRITERIA, DEFAULT_PARAMS, GOOD, LAMBDA, MISSED, NR,
+                                  PRECISION, RETRIEVAL, SENSITIVITY, UTILITY, WRONG_CHANGE, by_subset, choose, compare,
+                                  describe, sensitivity, sweep, targets, utility)
 from tprag.eval.verify import EVAL_DIR, EVAL_FILES
 from tprag.split.store import ROOT
 
@@ -118,13 +121,14 @@ def table(a: dict) -> str:
         f"umbral de la corrida {fmt(run['threshold'], 4)} ({'permisiva' if run['permissive'] else 'NO permisiva'}). "
         f"Targets: {ch['positives']} positivos, {ch['negatives']} negativos.",
         "",
-        f"## Umbral elegido (λ = {a['lambda']}): {fmt(ch['threshold'], 4)}",
+        f"## Umbral elegido ({a['criterion']['label']}): {fmt(ch['threshold'], 4)}",
         "",
         "| Buenas | Malas | Perdidas | Cambios indebidos | Abst. correctas | Reporte engañoso | Éxito positivos | "
-        "Negative Rejection | Faithfulness | AR (b) | AR (a) | Llamadas LLM | Puntaje |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        f"Precisión | Negative Rejection | Faithfulness | AR (b) | AR (a) | Llamadas LLM | Puntaje (λ = {a['lambda']:g}) |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
         f"| {ch[GOOD]} | {ch[BAD]} | {ch[MISSED]} | {ch[WRONG_CHANGE]} | {ch[CORRECT_ABSTENTION]} | "
-        f"{ch['misleading_report']} | {fmt(ch['success_pos'])} | {fmt(ch['negative_rejection'])} | "
+        f"{ch['misleading_report']} | {fmt(ch['success_pos'])} | {fmt(ch['precision'])} | "
+        f"{fmt(ch['negative_rejection'])} | "
         f"{fmt(ch['faithfulness'])} (n={ch['faithfulness_n']}) | {fmt(ch['relevance_b'])} (n={ch['relevance_b_n']}) | "
         f"{fmt(ch['relevance_a'])} (n={ch['relevance_a_n']}) | {ch['llm_calls']} | {fmt(utility(ch, a['lambda']), 1)} |",
         "",
@@ -132,8 +136,23 @@ def table(a: dict) -> str:
         + ("Sin juicio todavía (judge_generation.py)." if not a["run"]["judged"] else
            f"Juzgados {a['run']['judged']} scripts."),
         "",
-        "Sensibilidad (umbral elegido con cada λ): "
+        "Sensibilidad del puntaje (umbral elegido con cada λ): "
         + ", ".join(f"λ = {lam:g} → {fmt(th, 4)}" for lam, th in a["sensitivity"].items()),
+        "",
+        "## Comparación de criterios",
+        "",
+        "Umbral que elige cada criterio sobre el mismo barrido. El principal es el puntaje con λ = 2 (metricas.md "
+        "§4.2); los otros se agregaron después de ver las curvas de dev, como comparación.",
+        "",
+        "| Criterio | Umbral | Buenas | Malas | Indebidos | Éxito positivos | Precisión | Negative Rejection | "
+        "Positivos que pasan | Llamadas LLM | Puntaje (λ = 2) |",
+        "|---|---|---|---|---|---|---|---|---|---|---|",
+    ]
+    lines += [f"| {c['label']}{' ⭐' if name == a['criterion']['name'] else ''} | {fmt(r['threshold'], 4)} | "
+              f"{r[GOOD]} | {r[BAD]} | {r[WRONG_CHANGE]} | {fmt(r['success_pos'])} | {fmt(r['precision'])} | "
+              f"{fmt(r['negative_rejection'])} | {fmt(r['passed_pos'])} | {r['llm_calls']} | "
+              f"{fmt(utility(r, LAMBDA), 1)} |" for name, c in a["comparison"].items() for r in [c["row"]]]
+    lines += [
         "",
         "## Por subconjunto (umbral elegido)",
         "",
@@ -157,9 +176,9 @@ def table(a: dict) -> str:
         "",
         "## Barrido del umbral",
         "",
-        "| Umbral | Buenas | Malas | Perdidas | Indebidos | Abst. ok | Engañoso | Éxito + | Neg. Rej. | Faithf. | "
-        "AR (b) | AR (a) | Llamadas | " + " | ".join(f"U(λ={lam:g})" for lam in SENSITIVITY) + " |",
-        "|" + "---|" * (13 + len(SENSITIVITY)),
+        "| Umbral | Buenas | Malas | Perdidas | Indebidos | Abst. ok | Engañoso | Éxito + | Precisión | Neg. Rej. | "
+        "Faithf. | AR (b) | AR (a) | Llamadas | " + " | ".join(f"U(λ={lam:g})" for lam in SENSITIVITY) + " |",
+        "|" + "---|" * (14 + len(SENSITIVITY)),
     ]
     rows = a["sweep"]
     step = max(1, len(rows) // 25)
@@ -170,6 +189,7 @@ def table(a: dict) -> str:
         mark = " ⭐" if r["threshold"] == ch["threshold"] else ""
         lines.append(f"| {fmt(r['threshold'], 4)}{mark} | {r[GOOD]} | {r[BAD]} | {r[MISSED]} | {r[WRONG_CHANGE]} | "
                      f"{r[CORRECT_ABSTENTION]} | {r['misleading_report']} | {fmt(r['success_pos'])} | "
+                     f"{fmt(r['precision'])} | "
                      f"{fmt(r['negative_rejection'])} | {fmt(r['faithfulness'])} | {fmt(r['relevance_b'])} | "
                      f"{fmt(r['relevance_a'])} | {r['llm_calls']} | "
                      + " | ".join(fmt(r["utility"][lam], 1) for lam in SENSITIVITY) + " |")
@@ -181,7 +201,14 @@ def table(a: dict) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("run", help="nombre de la corrida en results/eval/gen/ (sin extensión) o su ruta")
+    parser.add_argument("--criterion", choices=CRITERIA, default=UTILITY,
+                        help="cómo se elige el umbral: utility (puntaje con λ, el principal), precision (máximas buenas "
+                             "con precisión ≥ X), nr (máximas buenas con Negative Rejection ≥ X), retrieval (pasa ≥ X "
+                             "de los positivos)")
     parser.add_argument("--lambda", dest="lam", type=float, default=LAMBDA, help="penalización de los errores")
+    parser.add_argument("--min-precision", type=float, default=DEFAULT_PARAMS[PRECISION])
+    parser.add_argument("--min-nr", type=float, default=DEFAULT_PARAMS[NR])
+    parser.add_argument("--pass-rate", type=float, default=DEFAULT_PARAMS[RETRIEVAL])
     parser.add_argument("--allow-dataset-mismatch", action="store_true",
                         help="analizar aunque el dataset haya cambiado desde la corrida (solo para probar)")
     parser.add_argument("--print-only", action="store_true", help="no escribe archivos")
@@ -209,18 +236,25 @@ def main() -> int:
     for r in rows:
         for metric, scores in per_item.items():
             r[metric], r[metric + "_n"] = mean_passing(records, scores, r["threshold"])
-    chosen = choose(rows, args.lam)
+    params = {UTILITY: args.lam, PRECISION: args.min_precision, NR: args.min_nr, RETRIEVAL: args.pass_rate}
+    param = params[args.criterion]
+    chosen = choose(rows, param, args.criterion)
     noise = noise_summary(target_groups(records, items, chosen["threshold"], strict=not mismatch))
 
     name = items_path.name.removesuffix(".items.jsonl")
+    # el análisis principal (puntaje con λ = 2) conserva el nombre; cualquier otro lleva el criterio, para no pisarlo
+    suffix = "" if (args.criterion, param) == (UTILITY, LAMBDA) else f"_{args.criterion}-{param:g}"
     analysis = {
         "run": {"name": name, "collection": summary["collection"], "reranker": summary.get("reranker"),
                 "llm": summary["llm"], "split": summary["split"], "threshold": summary["threshold"],
                 "permissive": all(t.passed_run for t in ts if t.score is not None), "judged": len(judge),
                 "dataset_mismatch": sorted(mismatch)},
+        "criterion": {"name": args.criterion, "param": param, "label": describe(args.criterion, param)},
         "lambda": args.lam,
         "chosen": chosen,
         "sensitivity": sensitivity(rows),
+        "comparison": {c: {"param": params[c], "label": describe(c, params[c]), "row": r}
+                       for c, r in compare(rows, params).items()},
         "by_subset": by_subset(ts, chosen["threshold"]),
         "noise": noise,
         "faithfulness_by_item": faith,
@@ -231,7 +265,7 @@ def main() -> int:
     print(text)
     if not args.print_only:
         STUDY_DIR.mkdir(parents=True, exist_ok=True)
-        out = STUDY_DIR / f"generation_{name}"
+        out = STUDY_DIR / f"generation_{name}{suffix}"
         out.with_name(out.name + "_analysis.json").write_text(
             json.dumps(jsonable(analysis), ensure_ascii=False, indent=1), encoding="utf-8")
         out.with_name(out.name + "_table.md").write_text(text, encoding="utf-8")
