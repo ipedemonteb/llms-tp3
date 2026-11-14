@@ -1,0 +1,54 @@
+{
+  "collection": "s3-1024__e1__r1__cap150",
+  "llm": "gpt-4o-mini",
+  "split": "dev",
+  "threshold": 0.415012,
+  "budget": 2000,
+  "date": "2026-11-08T18:12:30",
+  "config": {
+    "chunks": "s3-1024",
+    "console_mode": "outputs_as_comments",
+    "model": "e1",
+    "representation": "r1",
+    "cap": 150,
+    "strategy": "round_robin",
+    "packages": null
+  },
+  "dataset": {
+    "commit": "2683c09",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746"
+    }
+  },
+  "paid": {
+    "calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "usd": 0.0
+  },
+  "cache_hits": 18,
+  "seconds": 0.1,
+  "metrics": {
+    "items": 24,
+    "llm_calls": 18,
+    "positives": {
+      "targets": 15,
+      "success": 0.6667,
+      "passed_threshold": 1,
+      "decision_ok": 1,
+      "applicable": 0.8667,
+      "parses": 0.9333,
+      "target_gone": 0.8,
+      "package_ok": 0.6667
+    },
+    "negatives": {
+      "targets": 9,
+      "success": 0.6667,
+      "passed_threshold": 3,
+      "rejected_by_llm": 0
+    },
+    "hallucinated_imports": 0,
+    "sources_ok": 0.8333
+  }
+}
