@@ -15,7 +15,7 @@ from tprag.validate.packages import normalize
 from tprag.validate.pypi import Fetch
 from tprag.validate.validate import ImportResult, validate
 
-from .context import TargetContext, build_context
+from .context import Reranker, TargetContext, build_context
 from .prompt import SYSTEM, user_message
 from .schema import NO_REPLACEMENT, REPLACED, GeneratorOutput
 
@@ -44,11 +44,13 @@ class FixResult:
     edit_errors: list[str] = field(default_factory=list)
 
 
-def prepare(code: str, store: Chroma, fetch: Fetch, threshold: float, budget: int = CONTEXT_BUDGET) -> Prepared:
-    """Levanta `SyntaxError` si el script no parsea."""
+def prepare(code: str, store: Chroma, fetch: Fetch, threshold: float, budget: int = CONTEXT_BUDGET,
+            reranker: Reranker | None = None) -> Prepared:
+    """Levanta `SyntaxError` si el script no parsea. Con `reranker`, `threshold` es el del puntaje del reranker."""
     results = validate(code, fetch)
     problems = dict.fromkeys((r.module, r.status) for r in results if r.to_rag)
-    contexts = [build_context(store, code, module, status, threshold, budget) for module, status in problems]
+    contexts = [build_context(store, code, module, status, threshold, budget, reranker=reranker)
+                for module, status in problems]
     passed = [c for c in contexts if c.passed]
     return Prepared(code, fetch, results, contexts, user_message(code, passed) if passed else None)
 
@@ -103,6 +105,8 @@ def _entry(r: ImportResult, ctx: TargetContext | None, decision: dict | None) ->
     if ctx is None:
         return entry
     entry["retrieval_score"] = ctx.score
+    if ctx.reranker:
+        entry["reranker"] = ctx.reranker  # retrieval_score es el puntaje del reranker, no el coseno
     if not ctx.passed:
         return entry | {"decision": NO_REPLACEMENT, "replacement_package": None,
                         "reason": "el mejor fragmento recuperado queda por debajo del umbral de confianza",
@@ -142,6 +146,7 @@ def finish(prep: Prepared, output: GeneratorOutput | None) -> FixResult:
     return FixResult(code, report, output is not None, edits, errors)
 
 
-def fix(code: str, store: Chroma, fetch: Fetch, llm: LLM, threshold: float, budget: int = CONTEXT_BUDGET) -> FixResult:
-    prep = prepare(code, store, fetch, threshold, budget)
+def fix(code: str, store: Chroma, fetch: Fetch, llm: LLM, threshold: float, budget: int = CONTEXT_BUDGET,
+        reranker: Reranker | None = None) -> FixResult:
+    prep = prepare(code, store, fetch, threshold, budget, reranker)
     return finish(prep, llm(*prep.prompt) if prep.prompt else None)

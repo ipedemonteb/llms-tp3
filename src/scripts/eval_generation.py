@@ -5,6 +5,7 @@ Uso:
     uv run python src/scripts/eval_generation.py --dry-run          # solo estima, sin API
     uv run python src/scripts/eval_generation.py                    # s3-1024, gpt-4o-mini, dev
     uv run python src/scripts/eval_generation.py --split test       # test: solo al final
+    uv run --group local python src/scripts/eval_generation.py --model e4 --rerank k1-rr30 --dry-run   # con reranker
 
 La colección se elige con los mismos flags que build_index.py. El umbral sale de la corrida de eval_retrieval.py en dev
 con esa colección (o --threshold). Las respuestas del LLM quedan en caché (data/generate/): repetir una corrida no
@@ -24,7 +25,7 @@ from tprag.eval.generation import check_item, summarize
 from tprag.eval.query import QUERIES
 from tprag.eval.retrieval import dataset_info, select_items
 from tprag.eval.verify import load_items
-from tprag.generate.context import dev_threshold
+from tprag.generate.context import dev_threshold, load_reranker, rerank_threshold
 from tprag.generate.llm import CHAT_MODELS, CachedLLM
 from tprag.generate.pipeline import finish, prepare
 from tprag.index.build import REPRESENTATIONS, IndexConfig, open_collection
@@ -50,6 +51,8 @@ def main() -> int:
     parser.add_argument("--llm", choices=sorted(CHAT_MODELS), default="gpt-4o-mini")
     parser.add_argument("--threshold", type=float, help="umbral de confianza (default: el calibrado en dev)")
     parser.add_argument("--budget", type=int, default=2000, help="tokens de contexto por import")
+    parser.add_argument("--rerank", help="variante del reranker (p. ej. k1-rr30; necesita el grupo `local`); el umbral "
+                                         "pasa a ser el de su puntaje, calibrado en dev")
     parser.add_argument("--split", choices=("dev", "test"), default="dev", help="test solo para el reporte final")
     parser.add_argument("--max-usd", type=float, default=0.10, help="aborta si lo que hay que pagar lo supera")
     parser.add_argument("--offline", action="store_true", help="no consulta PyPI; lo que no está en caché: unknown")
@@ -60,7 +63,11 @@ def main() -> int:
                       representation=args.representation, cap=args.cap or None, strategy=args.strategy,
                       packages=args.packages)
     name = cfg.collection_name()
-    threshold = args.threshold if args.threshold is not None else dev_threshold(name)
+    reranker = load_reranker(args.rerank) if args.rerank else None
+    if args.threshold is not None:
+        threshold = args.threshold
+    else:
+        threshold = rerank_threshold(name, args.rerank) if args.rerank else dev_threshold(name)
     embeddings = cached(cfg.model)
     store = open_collection(name, embeddings)
     if store._collection.count() == 0:  # open_collection crea la colección vacía si no existe
@@ -80,10 +87,12 @@ def main() -> int:
             return 0
     load_dotenv(ROOT / ".env")
 
-    preps = [prepare(it["code"], store, fetch, threshold, args.budget) for it in items]
+    if reranker:  # el dry-run también reordena: los pares que no estén en el caché se calculan con el modelo local
+        print(f"reranker {reranker.variant}: puntúa {reranker.k} chunks por import (los del caché no se recalculan)")
+    preps = [prepare(it["code"], store, fetch, threshold, args.budget, reranker) for it in items]
     prompts = [p.prompt for p in preps if p.prompt]
     to_pay = llm.estimate(llm.missing(prompts))
-    print(f"{name} / {args.llm} / {args.split}: {len(items)} ítems, umbral {threshold}, "
+    print(f"{name} / {args.rerank or 'sin reranker'} / {args.llm} / {args.split}: {len(items)} ítems, umbral {threshold}, "
           f"{len(prompts)} llamadas al LLM ({len(items) - len(prompts)} sin LLM: ningún import pasó el umbral)")
     print(f"a pagar (fuera del caché): {to_pay['calls']} llamadas, {to_pay['input_tokens']} tokens de entrada + "
           f"~{to_pay['output_tokens_estimate']} de salida (estimada) = ~{to_pay['usd']:.4f} USD")
@@ -107,14 +116,14 @@ def main() -> int:
     seconds = round(time.time() - start, 1)
 
     report = {
-        "collection": name, "llm": llm.model.name, "split": args.split, "threshold": threshold,
+        "collection": name, "reranker": args.rerank, "llm": llm.model.name, "split": args.split, "threshold": threshold,
         "budget": args.budget, "date": datetime.now().isoformat(timespec="seconds"), "config": asdict(cfg),
         "dataset": dataset_info(), "paid": {"calls": llm.misses, "input_tokens": llm.input_tokens,
                                             "output_tokens": llm.output_tokens, "usd": llm.usd},
         "cache_hits": llm.hits, "seconds": seconds, "metrics": summarize(records),
     }
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    stem = f"{name}__qA__{llm.model.name}__{args.split}"
+    stem = f"{name}__qA__{args.rerank + '__' if args.rerank else ''}{llm.model.name}__{args.split}"
     summary = json.dumps(report, indent=2, ensure_ascii=False) + "\n"
     (RESULTS_DIR / f"{stem}.json").write_text(summary, encoding="utf-8")
     with (RESULTS_DIR / f"{stem}.items.jsonl").open("w", encoding="utf-8") as fh:

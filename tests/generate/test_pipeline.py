@@ -127,3 +127,65 @@ def test_el_mensaje_no_incluye_el_reemplazo_del_validador():
     assert "pypdf > Extract text > Ejemplo 0" in prep.user  # el fragmento sí
     assert "siguió como pypdf" not in prep.user  # el motivo de la lista manual, no
     assert prep.user == user_message(CODE, prep.contexts)
+
+
+class FakeScorer:
+    """Puntaje por texto del chunk; registra los pares que recibe."""
+
+    def __init__(self, by_text):
+        self.by_text, self.pairs = by_text, []
+
+    def score(self, pairs):
+        self.pairs += pairs
+        return [self.by_text[d] for _, d in pairs]
+
+
+def test_reranker_reordena_los_k_primeros_y_usa_su_maximo_como_confianza():
+    from tprag.generate.context import Reranker
+
+    docs = [doc(0, "pdfplumber"), doc(1), doc(2, "pymupdf"), doc(3)]
+    scorer = FakeScorer({d.page_content: s for d, s in zip(docs, [-6.0, -1.0, -6.0, 9.0])})
+    store = FakeStore(docs, best_score=0.2)  # el coseno no pasaría un umbral de 0,4: ahora decide el reranker
+    ctx = build_context(store, CODE, "PyPDF2", "deprecated", threshold=-4.5, budget=2000,
+                        reranker=Reranker("k1-rr3", scorer, 3))
+    assert len(scorer.pairs) == 3 and all(q == ctx.query for q, _ in scorer.pairs)  # solo los k primeros
+    assert scorer.pairs[0][1] == docs[0].page_content  # el chunk con prefijo, como en el estudio
+    assert ctx.passed and ctx.score == -1.0 and ctx.reranker == "k1-rr3"
+    assert [h["id"] for h in ctx.hits] == ["c1", "c0", "c2", "c3"]  # empate (c0, c2): orden denso; c3 queda detrás
+    assert [h.get("rerank_score") for h in ctx.hits] == [-1.0, -6.0, -6.0, None]
+    assert [c["id"] for c in ctx.chunks] == ["c1", "c0"]  # presupuesto sobre el orden nuevo
+
+
+def test_reranker_bajo_su_umbral_no_llama_al_llm():
+    from tprag.generate.context import Reranker
+
+    def llm(system, user):
+        raise AssertionError("no tendría que llamarse")
+
+    docs = [doc(0), doc(1)]
+    scorer = FakeScorer({d.page_content: -8.0 for d in docs})
+    result = fix(CODE, FakeStore(docs, best_score=0.9), fetch, llm, threshold=-4.5,
+                 reranker=Reranker("k1-rr30", scorer, 30))
+    entry = next(e for e in result.report if e["module"] == "PyPDF2")
+    assert not result.llm_called and entry["retrieval_score"] == -8.0 and entry["reranker"] == "k1-rr30"
+
+
+def test_load_reranker_y_umbral(tmp_path, monkeypatch):
+    import json
+
+    import pytest
+
+    from tprag.generate import context
+
+    assert context.load_reranker("k1-rr30").k == 30
+    with pytest.raises(ValueError):
+        context.load_reranker("k1-rrf30")  # la fusión no se integra
+    monkeypatch.setattr(context, "STUDY_DIR", tmp_path)
+    row = {"collection": "col", "split": "dev", "variants": {"k1-rr30": {"threshold_rr": {"value": -4.5}}}}
+    (tmp_path / "rerank_a_analysis.json").write_text(json.dumps(row))
+    (tmp_path / "rerank_b_analysis.json").write_text(json.dumps(row))
+    assert context.rerank_threshold("col", "k1-rr30") == -4.5
+    row["variants"]["k1-rr30"]["threshold_rr"]["value"] = -3.0
+    (tmp_path / "rerank_b_analysis.json").write_text(json.dumps(row))
+    with pytest.raises(ValueError):
+        context.rerank_threshold("col", "k1-rr30")  # dos análisis que no coinciden
