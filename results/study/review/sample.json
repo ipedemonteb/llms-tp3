@@ -1,0 +1,897 @@
+{
+ "seed": 2026,
+ "runs": {
+  "base": "s3-1024__e4__r1__cap150__qA__gpt-4o-mini__dev",
+  "rerank": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev"
+ },
+ "quotas": {
+  "base": {
+   "True|si": 2,
+   "True|parcial": 3,
+   "True|no": 1,
+   "False|parcial": 3,
+   "False|no": 1
+  },
+  "rerank": {
+   "True|si": 2,
+   "True|parcial": 3,
+   "True|no": 1,
+   "False|parcial": 2,
+   "False|no": 1,
+   "False|si": 1
+  }
+ },
+ "items": [
+  {
+   "run": "base",
+   "id": "syn-scipy-01",
+   "group": {
+    "success": true,
+    "judge_b": "parcial"
+   },
+   "review_id": "R01",
+   "claims": [
+    {
+     "name": "scipy.stats",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "Several QMC samplers/engines are implemented. Here we look at two of the most used QMC methods: `scipy.stats.qmc.Sobol` and `scipy.stats.qmc"
+    },
+    {
+     "name": "qmc",
+     "line": 5,
+     "kind": "import",
+     "in_context": true,
+     "where": "Several QMC samplers/engines are implemented. Here we look at two of the most used QMC methods: `scipy.stats.qmc.Sobol` and `scipy.stats.qmc"
+    },
+    {
+     "name": "d",
+     "line": 12,
+     "kind": "kwarg",
+     "in_context": true,
+     "where": "engine = qmc.Halton(d=2)"
+    },
+    {
+     "name": "Halton",
+     "line": 12,
+     "kind": "attr",
+     "in_context": true,
+     "where": "Several QMC samplers/engines are implemented. Here we look at two of the most used QMC methods: `scipy.stats.qmc.Sobol` and `scipy.stats.qmc"
+    }
+   ]
+  },
+  {
+   "run": "base",
+   "id": "dep-jose-validate-01",
+   "group": {
+    "success": true,
+    "judge_b": "si"
+   },
+   "review_id": "R02",
+   "claims": [
+    {
+     "name": "authlib.jose",
+     "line": 10,
+     "kind": "module",
+     "in_context": true,
+     "where": "from authlib.jose import jwt"
+    },
+    {
+     "name": "jwt",
+     "line": 10,
+     "kind": "import",
+     "in_context": true,
+     "where": "from authlib.jose import jwt"
+    },
+    {
+     "name": "ExpiredSignatureError",
+     "line": 11,
+     "kind": "import",
+     "in_context": false,
+     "where": null
+    },
+    {
+     "name": "JWTError",
+     "line": 11,
+     "kind": "import",
+     "in_context": false,
+     "where": null
+    },
+    {
+     "name": "algorithms",
+     "line": 52,
+     "kind": "kwarg",
+     "in_context": true,
+     "where": "JSON Web Token (JWT) is structured by specs/rfc7515 or specs/rfc7516 with certain payload claims. The JWT implementation in Authlib has all "
+    },
+    {
+     "name": "audience",
+     "line": 52,
+     "kind": "kwarg",
+     "in_context": false,
+     "where": null
+    },
+    {
+     "name": "issuer",
+     "line": 52,
+     "kind": "kwarg",
+     "in_context": false,
+     "where": null
+    },
+    {
+     "name": "options",
+     "line": 52,
+     "kind": "kwarg",
+     "in_context": false,
+     "where": null
+    }
+   ]
+  },
+  {
+   "run": "base",
+   "id": "syn-scrapy-01",
+   "group": {
+    "success": false,
+    "judge_b": "parcial"
+   },
+   "review_id": "R03",
+   "claims": [
+    {
+     "name": "trafilatura",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "from trafilatura.spider import focused_crawler"
+    },
+    {
+     "name": "focused_crawler",
+     "line": 16,
+     "kind": "attr",
+     "in_context": true,
+     "where": "The `focused_crawler()` function integrates all necessary components and can be customized using various arguments. To use it, you will need"
+    },
+    {
+     "name": "Crawler",
+     "line": 16,
+     "kind": "attr",
+     "in_context": false,
+     "where": null
+    },
+    {
+     "name": "spider",
+     "line": 16,
+     "kind": "attr",
+     "in_context": true,
+     "where": "from trafilatura.spider import focused_crawler"
+    },
+    {
+     "name": "args",
+     "line": 45,
+     "kind": "kwarg",
+     "in_context": false,
+     "where": null
+    },
+    {
+     "name": "CrawlerRunner",
+     "line": 44,
+     "kind": "attr",
+     "in_context": false,
+     "where": null
+    },
+    {
+     "name": "crawl",
+     "line": 45,
+     "kind": "attr",
+     "in_context": true,
+     "where": "- `todo`: provide a previously generated list of pages to visit (i.e. a crawl frontier)"
+    },
+    {
+     "name": "Request",
+     "line": 24,
+     "kind": "attr",
+     "in_context": true,
+     "where": "Instead of implementing a `scrapy.Spider.start` method that yields `scrapy.Request` objects from URLs, you can define a `scrapy.Spider.start"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "syn-pydantic-02",
+   "group": {
+    "success": false,
+    "judge_b": "no"
+   },
+   "review_id": "R04",
+   "claims": [
+    {
+     "name": "marshmallow",
+     "line": 6,
+     "kind": "module",
+     "in_context": true,
+     "where": "from marshmallow import Schema, fields"
+    },
+    {
+     "name": "Schema",
+     "line": 6,
+     "kind": "import",
+     "in_context": true,
+     "where": "from marshmallow import Schema, fields"
+    },
+    {
+     "name": "fields",
+     "line": 6,
+     "kind": "import",
+     "in_context": true,
+     "where": "Create a schema by defining a class with variables mapping attribute names to `fields.Field` objects."
+    },
+    {
+     "name": "Str",
+     "line": 9,
+     "kind": "attr",
+     "in_context": true,
+     "where": "name = fields.Str()"
+    },
+    {
+     "name": "Int",
+     "line": 10,
+     "kind": "attr",
+     "in_context": true,
+     "where": "age = fields.Int(validate=validate.Range(min=18, max=40))"
+    }
+   ]
+  },
+  {
+   "run": "base",
+   "id": "syn-pymupdf-02",
+   "group": {
+    "success": true,
+    "judge_b": "parcial"
+   },
+   "review_id": "R05",
+   "claims": [
+    {
+     "name": "pymupdf",
+     "line": 6,
+     "kind": "module",
+     "in_context": true,
+     "where": "doc = pymupdf.open(\"input.pdf\")"
+    },
+    {
+     "name": "Pixmap",
+     "line": 20,
+     "kind": "attr",
+     "in_context": true,
+     "where": "pix = pymupdf.Pixmap(doc, xref) # create a Pixmap"
+    },
+    {
+     "name": "save",
+     "line": 24,
+     "kind": "attr",
+     "in_context": true,
+     "where": "In order to convert a document to images, you should iterate the document pages, convert to pixmap and save, e.g.:"
+    },
+    {
+     "name": "n",
+     "line": 21,
+     "kind": "attr",
+     "in_context": true,
+     "where": "if pix.n - pix.alpha > 3: # CMYK: convert to RGB first"
+    },
+    {
+     "name": "alpha",
+     "line": 21,
+     "kind": "attr",
+     "in_context": true,
+     "where": "if pix.n - pix.alpha > 3: # CMYK: convert to RGB first"
+    },
+    {
+     "name": "csRGB",
+     "line": 22,
+     "kind": "attr",
+     "in_context": true,
+     "where": "pix = pymupdf.Pixmap(pymupdf.csRGB, pix)"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "syn-lxml-02",
+   "group": {
+    "success": true,
+    "judge_b": "si"
+   },
+   "review_id": "R06",
+   "claims": [
+    {
+     "name": "lxml",
+     "line": 8,
+     "kind": "module",
+     "in_context": true,
+     "where": "prettyprint(tree)  # lxml 1.3.4 and later"
+    },
+    {
+     "name": "etree",
+     "line": 8,
+     "kind": "import",
+     "in_context": true,
+     "where": "tree = etree.parse(some_file_or_file_like_object)"
+    }
+   ]
+  },
+  {
+   "run": "base",
+   "id": "syn-typer-02",
+   "group": {
+    "success": true,
+    "judge_b": "parcial"
+   },
+   "review_id": "R07",
+   "claims": [
+    {
+     "name": "typer",
+     "line": 6,
+     "kind": "module",
+     "in_context": true,
+     "where": "import typer"
+    },
+    {
+     "name": "Typer",
+     "line": 9,
+     "kind": "attr",
+     "in_context": true,
+     "where": "You can tell Typer to not show the default value in the help text with `show_default=False`:"
+    },
+    {
+     "name": "Abort",
+     "line": 17,
+     "kind": "attr",
+     "in_context": true,
+     "where": "raise typer.Abort()"
+    }
+   ]
+  },
+  {
+   "run": "base",
+   "id": "syn-transformers-03",
+   "group": {
+    "success": false,
+    "judge_b": "no"
+   },
+   "review_id": "R08",
+   "claims": [
+    {
+     "name": "huggingface_hub",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "from huggingface_hub import list_inference_endpoints_hardware"
+    },
+    {
+     "name": "list_inference_endpoints_hardware",
+     "line": 5,
+     "kind": "import",
+     "in_context": true,
+     "where": "The `accelerator`, `vendor`, `region`, `instance_type` and `instance_size` values accepted by `create_inference_endpoint` depend on each oth"
+    },
+    {
+     "name": "accelerator",
+     "line": 10,
+     "kind": "attr",
+     "in_context": true,
+     "where": "The `accelerator`, `vendor`, `region`, `instance_type` and `instance_size` values accepted by `create_inference_endpoint` depend on each oth"
+    },
+    {
+     "name": "status",
+     "line": 10,
+     "kind": "attr",
+     "in_context": true,
+     "where": "if hw.accelerator == \"gpu\" and hw.status == \"available\":"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "syn-textual-02",
+   "group": {
+    "success": true,
+    "judge_b": "parcial"
+   },
+   "review_id": "R09",
+   "claims": [
+    {
+     "name": "textual.app",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "from textual.app import App, ComposeResult"
+    },
+    {
+     "name": "App",
+     "line": 5,
+     "kind": "import",
+     "in_context": true,
+     "where": "from textual.app import App, ComposeResult"
+    },
+    {
+     "name": "ComposeResult",
+     "line": 5,
+     "kind": "import",
+     "in_context": true,
+     "where": "from textual.app import App, ComposeResult"
+    },
+    {
+     "name": "textual.widgets",
+     "line": 6,
+     "kind": "module",
+     "in_context": true,
+     "where": "from textual.widgets import Static"
+    },
+    {
+     "name": "Static",
+     "line": 6,
+     "kind": "import",
+     "in_context": true,
+     "where": "from textual.widgets import Static"
+    },
+    {
+     "name": "markup",
+     "line": 39,
+     "kind": "kwarg",
+     "in_context": true,
+     "where": "When building a custom widget you can embed color and style information in the string returned from the Widget's `render()` method. Markup i"
+    }
+   ]
+  },
+  {
+   "run": "base",
+   "id": "dep-oauth2client-sa-01",
+   "group": {
+    "success": true,
+    "judge_b": "si"
+   },
+   "review_id": "R10",
+   "claims": [
+    {
+     "name": "google.oauth2",
+     "line": 16,
+     "kind": "module",
+     "in_context": true,
+     "where": "The google.oauth2.service_account.Credentials class is only used with OAuth 2.0 Service Accounts. No end-user is involved for these server-t"
+    },
+    {
+     "name": "service_account",
+     "line": 16,
+     "kind": "import",
+     "in_context": true,
+     "where": "The google.oauth2.service_account.Credentials class is only used with OAuth 2.0 Service Accounts. No end-user is involved for these server-t"
+    },
+    {
+     "name": "scopes",
+     "line": 26,
+     "kind": "kwarg",
+     "in_context": true,
+     "where": "scopes=['openid', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile'])"
+    },
+    {
+     "name": "from_service_account_file",
+     "line": 26,
+     "kind": "attr",
+     "in_context": true,
+     "where": "credentials = service_account.Credentials.from_service_account_file("
+    },
+    {
+     "name": "Credentials",
+     "line": 26,
+     "kind": "attr",
+     "in_context": true,
+     "where": "The google.oauth2.service_account.Credentials class is only used with OAuth 2.0 Service Accounts. No end-user is involved for these server-t"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "dep-nose-generators-01",
+   "group": {
+    "success": false,
+    "judge_b": "si"
+   },
+   "review_id": "R11",
+   "claims": [
+    {
+     "name": "pendulum",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "import pendulum"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "neg-oauth2client-storage-01",
+   "group": {
+    "success": false,
+    "judge_b": "parcial"
+   },
+   "review_id": "R12",
+   "claims": [
+    {
+     "name": "google_auth_oauthlib.flow",
+     "line": 12,
+     "kind": "module",
+     "in_context": true,
+     "where": "from google_auth_oauthlib.flow import InstalledAppFlow"
+    },
+    {
+     "name": "InstalledAppFlow",
+     "line": 12,
+     "kind": "import",
+     "in_context": true,
+     "where": "from google_auth_oauthlib.flow import InstalledAppFlow"
+    },
+    {
+     "name": "google.oauth2.credentials",
+     "line": 13,
+     "kind": "module",
+     "in_context": false,
+     "where": null
+    },
+    {
+     "name": "Credentials",
+     "line": 13,
+     "kind": "import",
+     "in_context": true,
+     "where": "The google.oauth2.service_account.Credentials class is only used with OAuth 2.0 Service Accounts. No end-user is involved for these server-t"
+    },
+    {
+     "name": "scopes",
+     "line": 20,
+     "kind": "kwarg",
+     "in_context": true,
+     "where": "scopes=['openid', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile'])"
+    },
+    {
+     "name": "from_client_secrets_file",
+     "line": 20,
+     "kind": "attr",
+     "in_context": true,
+     "where": "flow = InstalledAppFlow.from_client_secrets_file("
+    },
+    {
+     "name": "run_local_server",
+     "line": 23,
+     "kind": "attr",
+     "in_context": true,
+     "where": "flow.run_local_server()"
+    },
+    {
+     "name": "refresh",
+     "line": 31,
+     "kind": "attr",
+     "in_context": true,
+     "where": "Already obtained access token? We can use `OAuth2Auth` directly in requests. But this OAuth2Auth can not refresh token automatically for you"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "syn-matplotlib-03",
+   "group": {
+    "success": false,
+    "judge_b": "parcial"
+   },
+   "review_id": "R13",
+   "claims": [
+    {
+     "name": "xlsxwriter",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "import xlsxwriter"
+    },
+    {
+     "name": "Workbook",
+     "line": 5,
+     "kind": "import",
+     "in_context": true,
+     "where": "A chart object is created via the Workbook `add_chart()` method where the chart type is specified:"
+    },
+    {
+     "name": "add_worksheet",
+     "line": 8,
+     "kind": "attr",
+     "in_context": true,
+     "where": "worksheet = workbook.add_worksheet()"
+    },
+    {
+     "name": "add_chart",
+     "line": 10,
+     "kind": "attr",
+     "in_context": true,
+     "where": "A chart object is created via the Workbook `add_chart()` method where the chart type is specified:"
+    },
+    {
+     "name": "insert_chart",
+     "line": 39,
+     "kind": "attr",
+     "in_context": true,
+     "where": "It is then inserted into a worksheet as an embedded chart using the `insert_chart` Worksheet method:"
+    },
+    {
+     "name": "add_series",
+     "line": 38,
+     "kind": "attr",
+     "in_context": true,
+     "where": "chart.add_series({'values': '=Sheet1!$A$1:$A$5'})"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "dep-nose-asserts-01",
+   "group": {
+    "success": true,
+    "judge_b": "parcial"
+   },
+   "review_id": "R14",
+   "claims": [
+    {
+     "name": "pytest",
+     "line": 9,
+     "kind": "module",
+     "in_context": true,
+     "where": "import pytest"
+    },
+    {
+     "name": "raises",
+     "line": 9,
+     "kind": "import",
+     "in_context": true,
+     "where": "with pytest.raises(ValueError, match=r\".* 123 .*\"):"
+    },
+    {
+     "name": "mark",
+     "line": 9,
+     "kind": "import",
+     "in_context": false,
+     "where": null
+    }
+   ]
+  },
+  {
+   "run": "base",
+   "id": "syn-scikit-learn-02",
+   "group": {
+    "success": true,
+    "judge_b": "no"
+   },
+   "review_id": "R15",
+   "claims": [
+    {
+     "name": "sklearn",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "This class is hence suitable for use in the early steps of a `sklearn.pipeline.Pipeline`:"
+    },
+    {
+     "name": "preprocessing",
+     "line": 5,
+     "kind": "import",
+     "in_context": true,
+     "where": "X_normalized = preprocessing.normalize(X, norm='l2')"
+    },
+    {
+     "name": "Normalizer",
+     "line": 19,
+     "kind": "attr",
+     "in_context": true,
+     "where": "The `preprocessing` module further provides a utility class `Normalizer` that implements the same operation using the `Transformer` API (eve"
+    }
+   ]
+  },
+  {
+   "run": "base",
+   "id": "syn-pydantic-01",
+   "group": {
+    "success": false,
+    "judge_b": "parcial"
+   },
+   "review_id": "R16",
+   "claims": [
+    {
+     "name": "typer",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "import typer"
+    },
+    {
+     "name": "callback",
+     "line": 15,
+     "kind": "kwarg",
+     "in_context": true,
+     "where": "def main(name: Annotated[str | None, typer.Option(callback=name_callback)] = None):"
+    },
+    {
+     "name": "Option",
+     "line": 15,
+     "kind": "attr",
+     "in_context": true,
+     "where": "def main(name: Annotated[str | None, typer.Option(callback=name_callback)] = None):"
+    },
+    {
+     "name": "BadParameter",
+     "line": 12,
+     "kind": "attr",
+     "in_context": true,
+     "where": "raise typer.BadParameter(\"Only Camila is allowed\")"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "dep-fuzzywuzzy-suggest-01",
+   "group": {
+    "success": true,
+    "judge_b": "parcial"
+   },
+   "review_id": "R17",
+   "claims": [
+    {
+     "name": "rapidfuzz.process",
+     "line": 6,
+     "kind": "module",
+     "in_context": true,
+     "where": "from rapidfuzz.process import extractOne"
+    },
+    {
+     "name": "extractOne",
+     "line": 6,
+     "kind": "import",
+     "in_context": true,
+     "where": "from rapidfuzz.process import extractOne"
+    },
+    {
+     "name": "limit",
+     "line": 23,
+     "kind": "kwarg",
+     "in_context": false,
+     "where": null
+    }
+   ]
+  },
+  {
+   "run": "base",
+   "id": "syn-matplotlib-01",
+   "group": {
+    "success": false,
+    "judge_b": "parcial"
+   },
+   "review_id": "R18",
+   "claims": [
+    {
+     "name": "plotly.graph_objects",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "import plotly.graph_objects as go"
+    },
+    {
+     "name": "PIL",
+     "line": 6,
+     "kind": "module",
+     "in_context": true,
+     "where": "A background image can be added to the layout of a figure with `fig.add_layout_image` or by setting the `images` parameter of `go.Layout`. T"
+    },
+    {
+     "name": "Image",
+     "line": 6,
+     "kind": "import",
+     "in_context": true,
+     "where": "#### Add a Background Image"
+    },
+    {
+     "name": "Figure",
+     "line": 20,
+     "kind": "attr",
+     "in_context": true,
+     "where": "- `matplotlib.figure.Figure.add_axes`"
+    },
+    {
+     "name": "add_layout_image",
+     "line": 25,
+     "kind": "attr",
+     "in_context": true,
+     "where": "A background image can be added to the layout of a figure with `fig.add_layout_image` or by setting the `images` parameter of `go.Layout`. T"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "syn-wand-01",
+   "group": {
+    "success": true,
+    "judge_b": "si"
+   },
+   "review_id": "R19",
+   "claims": [
+    {
+     "name": "wand.image",
+     "line": 6,
+     "kind": "module",
+     "in_context": true,
+     "where": "The `wand.image.Image.level()` method can also adjust `gamma` value."
+    },
+    {
+     "name": "Image",
+     "line": 6,
+     "kind": "import",
+     "in_context": true,
+     "where": "The `wand.image.Image.level()` method can also adjust `gamma` value."
+    },
+    {
+     "name": "filename",
+     "line": 15,
+     "kind": "kwarg",
+     "in_context": true,
+     "where": "with Image(filename='enhancement.jpg') as img_src:"
+    },
+    {
+     "name": "clone",
+     "line": 17,
+     "kind": "attr",
+     "in_context": true,
+     "where": "If you have an image already and have to copy it for safe manipulation, use `wand.image.Image.clone()` method:"
+    },
+    {
+     "name": "gamma",
+     "line": 18,
+     "kind": "attr",
+     "in_context": true,
+     "where": "Gamma correction allows you to adjust the luminance of an image. Resulting pixels are defined as `pixel^(1/gamma)`. The value of `gamma` is "
+    },
+    {
+     "name": "save",
+     "line": 20,
+     "kind": "attr",
+     "in_context": true,
+     "where": "img.save(filename='enhancement-level.jpg')"
+    }
+   ]
+  },
+  {
+   "run": "rerank",
+   "id": "syn-celery-02",
+   "group": {
+    "success": true,
+    "judge_b": "no"
+   },
+   "review_id": "R20",
+   "claims": [
+    {
+     "name": "celery",
+     "line": 5,
+     "kind": "module",
+     "in_context": true,
+     "where": "from celery import bootsteps"
+    },
+    {
+     "name": "bootsteps",
+     "line": 5,
+     "kind": "import",
+     "in_context": true,
+     "where": "from celery import bootsteps"
+    },
+    {
+     "name": "StartStopStep",
+     "line": 10,
+     "kind": "attr",
+     "in_context": true,
+     "where": "class ExampleWorkerStep(bootsteps.StartStopStep):"
+    }
+   ]
+  }
+ ]
+}
