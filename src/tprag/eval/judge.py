@@ -23,6 +23,9 @@ from tprag.generate.llm import CACHE_PATH, ChatModel, CachedLLM
 from tprag.split.tokens import token_counter
 
 JUDGE_CACHE = CACHE_PATH.with_name("judge.sqlite")
+# Tope de salida (2026-11-14), como en el generador (generate/llm.py): el juez responde ~100 (a) y ~180 (b) tokens; si
+# entra en bucle, la respuesta cortada queda en el caché y el script queda sin puntaje en esa métrica.
+JUDGE_MAX_OUTPUT_TOKENS = 1000
 
 
 class Descriptions(BaseModel):
@@ -84,6 +87,8 @@ class JudgeLLM(CachedLLM):
     def __init__(self, model: ChatModel, judge: Judge, path: Path = JUDGE_CACHE):
         super().__init__(model, path)
         self.judge = judge
+        self.output_schema = judge.schema  # llamada, caché y manejo del corte: los de `CachedLLM`
+        self.max_tokens = JUDGE_MAX_OUTPUT_TOKENS
 
     def _key(self, system: str, user: str) -> str:
         schema = json.dumps(self.judge.schema.model_json_schema(), sort_keys=True)
@@ -95,35 +100,6 @@ class JudgeLLM(CachedLLM):
         output_tokens = self.judge.output_tokens_estimate * len(prompts)
         return {"calls": len(prompts), "input_tokens": input_tokens, "output_tokens_estimate": output_tokens,
                 "usd": self.model.usd(input_tokens, output_tokens)}
-
-    def _call(self, system: str, user: str) -> dict:
-        if self._client is None:
-            from langchain_openai import ChatOpenAI  # noqa: PLC0415  (pide la API key al construirse)
-
-            chat = ChatOpenAI(model=self.model.api_name, temperature=0)
-            self._client = chat.with_structured_output(self.judge.schema, method="json_schema", strict=True,
-                                                       include_raw=True)
-        out = self._client.invoke([("system", system), ("human", user)])
-        if out["parsed"] is None:
-            raise ValueError(f"respuesta del juez que no respeta el esquema: {out['parsing_error']}")
-        usage = out["raw"].usage_metadata or {}
-        return {"output": out["parsed"].model_dump(),
-                "usage": {"input_tokens": usage.get("input_tokens", 0), "output_tokens": usage.get("output_tokens", 0)}}
-
-    def __call__(self, system: str, user: str) -> BaseModel:
-        key = self._key(system, user)
-        response = self._get(key)
-        if response is None:
-            response = self._call(system, user)
-            self._db.execute("INSERT OR REPLACE INTO responses VALUES (?, ?, ?)",
-                             (self.model.name, key, json.dumps(response, ensure_ascii=False)))
-            self._db.commit()
-            self.misses += 1
-            self.input_tokens += response["usage"]["input_tokens"]
-            self.output_tokens += response["usage"]["output_tokens"]
-        else:
-            self.hits += 1
-        return self.judge.schema.model_validate(response["output"])
 
 
 def cosine(u: list[float], v: list[float]) -> float:

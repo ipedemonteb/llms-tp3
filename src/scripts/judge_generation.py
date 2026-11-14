@@ -21,10 +21,13 @@ import json
 from pathlib import Path
 from statistics import mean
 
+from dotenv import load_dotenv
+
 from tprag.eval.judge import (JUDGES, PRESERVE_SCORE, JudgeLLM, describe_prompt, judged_records, preserve_prompt,
                               relevance_a)
 from tprag.eval.retrieval import dataset_info
-from tprag.generate.llm import CHAT_MODELS
+from tprag.generate.llm import CHAT_MODELS, TruncatedOutput
+from tprag.split.store import ROOT
 from tprag.index.embeddings import MODELS, cached
 from tprag.split.tokens import token_counter
 
@@ -104,29 +107,38 @@ def main() -> int:
         print("no se llamó a la API: agregar --confirm para juzgar")
         return 1
 
+    load_dotenv(ROOT / ".env")
     embed = cached("e1").embed_documents
     out = []
     for r in selected:
         row = {"id": r["id"], "subset": r["subset"], "success": r["success"]}
-        if "b" in llms:
-            v = llms["b"](*prompts[r["id"]]["b"])
-            row["b"] = {**v.model_dump(), "score": PRESERVE_SCORE[v.preserves]}
-        if "a" in llms:
-            d = llms["a"](*prompts[r["id"]]["a"])
-            row["a"] = {"descriptions": d.descriptions,
-                        "score": relevance_a(d.descriptions, items[r["id"]]["task"], embed)}
+        for j in ("b", "a"):
+            if j not in llms:
+                continue
+            try:
+                v = llms[j](*prompts[r["id"]][j])
+            except TruncatedOutput as e:  # respuesta cortada por el tope: sin puntaje en esta métrica
+                row[j] = {"error": "length", "raw": e.raw, "score": None}
+                continue
+            row[j] = ({**v.model_dump(), "score": PRESERVE_SCORE[v.preserves]} if j == "b" else
+                      {"descriptions": v.descriptions,
+                       "score": relevance_a(v.descriptions, items[r["id"]]["task"], embed)})
         out.append(row)
-        print(f"{r['id']:<40} " + " ".join(f"{j}={row[j]['score']:.2f}" for j in ("a", "b") if j in row))
+        print(f"{r['id']:<40} " + " ".join(
+            f"{j}={'cortada' if row[j]['score'] is None else format(row[j]['score'], '.2f')}"
+            for j in ("a", "b") if j in row))
 
     path = items_path.with_name(items_path.name.removesuffix(".items.jsonl") + ".judge.jsonl")
     path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in out), encoding="utf-8")
     for j in ("a", "b"):
-        scores = [row[j]["score"] for row in out if j in row]
-        if scores:
-            ok = [row[j]["score"] for row in out if j in row and row["success"]]
-            bad = [row[j]["score"] for row in out if j in row and not row["success"]]
-            print(f"({j}) media {mean(scores):.3f} | éxito del nivel 1: {mean(ok) if ok else float('nan'):.3f} "
-                  f"| sin éxito: {mean(bad) if bad else float('nan'):.3f}")
+        scored = [row for row in out if j in row and row[j]["score"] is not None]
+        cut = sum(j in row and row[j]["score"] is None for row in out)
+        if scored:
+            ok = [row[j]["score"] for row in scored if row["success"]]
+            bad = [row[j]["score"] for row in scored if not row["success"]]
+            print(f"({j}) media {mean(row[j]['score'] for row in scored):.3f} | éxito del nivel 1: "
+                  f"{mean(ok) if ok else float('nan'):.3f} | sin éxito: {mean(bad) if bad else float('nan'):.3f}"
+                  f" | respuestas cortadas por el tope: {cut}")
     paid = sum(llm.usd for llm in llms.values())
     print(f"pagado (chat): {paid:.4f} USD; escrito {path}")
     return 0

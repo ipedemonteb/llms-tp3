@@ -2,9 +2,9 @@
 
 import pytest
 
-from tprag.eval.judge import (JUDGES, PRESERVE_SCORE, JudgeLLM, cosine, describe_prompt, judged_records,
-                              preserve_prompt, relevance_a)
-from tprag.generate.llm import CHAT_MODELS
+from tprag.eval.judge import (JUDGE_MAX_OUTPUT_TOKENS, JUDGES, PRESERVE_SCORE, JudgeLLM, cosine, describe_prompt,
+                              judged_records, preserve_prompt, relevance_a)
+from tprag.generate.llm import CHAT_MODELS, TruncatedOutput
 
 ORIGINAL = "from PyPDF2 import PdfReader\nreader = PdfReader('a.pdf')\n"
 FIXED = "from pypdf import PdfReader\nreader = PdfReader('a.pdf')\n"
@@ -17,6 +17,9 @@ class FakeJudge(JudgeLLM):
 
     def _call(self, system, user):
         self.calls += 1
+        if self.output is None:  # respuesta cortada por el tope
+            return {"output": None, "error": "length", "raw": '{"lost_or_changed": ["l', "max_tokens": self.max_tokens,
+                    "usage": {"input_tokens": 1000, "output_tokens": self.max_tokens}}
         return {"output": self.output, "usage": {"input_tokens": 1000, "output_tokens": 100}}
 
 
@@ -72,3 +75,17 @@ def test_judged_records_only_changed_scripts():
     originals = {"a": ORIGINAL, "b": ORIGINAL, "c": ORIGINAL}
     assert [r["id"] for r in judged_records(records, originals)] == ["a", "c"]
     assert [r["id"] for r in judged_records(records, originals, {"c"})] == ["c"]
+
+
+def test_judge_uses_its_schema_and_cap(tmp_path):
+    llm = JudgeLLM(CHAT_MODELS["gpt-4o-mini"], JUDGES["a"], tmp_path / "judge.sqlite")
+    assert llm.output_schema is JUDGES["a"].schema and llm.max_tokens == JUDGE_MAX_OUTPUT_TOKENS
+
+
+def test_truncated_judge_answer_is_cached_and_raised_again(tmp_path):
+    llm = FakeJudge(JUDGES["b"], tmp_path / "judge.sqlite", None)
+    prompt = preserve_prompt(ORIGINAL, FIXED, ["PyPDF2"])
+    for _ in range(2):
+        with pytest.raises(TruncatedOutput):
+            llm(*prompt)
+    assert llm.calls == 1 and llm.hits == 1 and llm.output_tokens == JUDGE_MAX_OUTPUT_TOKENS

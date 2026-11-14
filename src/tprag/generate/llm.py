@@ -11,6 +11,8 @@ import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
 
+from pydantic import BaseModel
+
 from tprag.split.store import ROOT
 from tprag.split.tokens import token_counter
 
@@ -56,7 +58,11 @@ def _schema() -> str:
 
 class CachedLLM:
     """Llama al modelo con (instrucciones, mensaje) y devuelve `GeneratorOutput`. El cliente se crea recién cuando
-    hace falta (el dry-run funciona sin API key). Cuenta tokens reales de lo que se pagó."""
+    hace falta (el dry-run funciona sin API key). Cuenta tokens reales de lo que se pagó. El esquema de salida y el
+    tope son atributos: el juez (eval/judge.py) los cambia y hereda el resto."""
+
+    output_schema: type[BaseModel] = GeneratorOutput
+    max_tokens: int = MAX_OUTPUT_TOKENS
 
     def __init__(self, model: ChatModel, path: Path = CACHE_PATH):
         self.model = model
@@ -93,8 +99,8 @@ class CachedLLM:
         if self._client is None:
             from langchain_openai import ChatOpenAI  # noqa: PLC0415  (pide la API key al construirse)
 
-            chat = ChatOpenAI(model=self.model.api_name, temperature=0, max_tokens=MAX_OUTPUT_TOKENS)
-            self._client = chat.with_structured_output(GeneratorOutput, method="json_schema", strict=True,
+            chat = ChatOpenAI(model=self.model.api_name, temperature=0, max_tokens=self.max_tokens)
+            self._client = chat.with_structured_output(self.output_schema, method="json_schema", strict=True,
                                                        include_raw=True)
         from openai import LengthFinishReasonError  # noqa: PLC0415
 
@@ -103,16 +109,16 @@ class CachedLLM:
         except LengthFinishReasonError as e:  # llegó al tope: se guarda igual (se pagó) con el texto cortado
             usage = e.completion.usage
             return {"output": None, "error": "length", "raw": e.completion.choices[0].message.content or "",
-                    "max_tokens": MAX_OUTPUT_TOKENS,
+                    "max_tokens": self.max_tokens,
                     "usage": {"input_tokens": usage.prompt_tokens if usage else 0,
                               "output_tokens": usage.completion_tokens if usage else 0}}
         if out["parsed"] is None:
             raise ValueError(f"respuesta del LLM que no respeta el esquema: {out['parsing_error']}")
         usage = out["raw"].usage_metadata or {}
-        return {"output": out["parsed"].model_dump(), "max_tokens": MAX_OUTPUT_TOKENS,
+        return {"output": out["parsed"].model_dump(), "max_tokens": self.max_tokens,
                 "usage": {"input_tokens": usage.get("input_tokens", 0), "output_tokens": usage.get("output_tokens", 0)}}
 
-    def __call__(self, system: str, user: str) -> GeneratorOutput:
+    def __call__(self, system: str, user: str) -> BaseModel:
         """Levanta `TruncatedOutput` si la respuesta (nueva o del caché) se cortó por el tope de salida."""
         key = self._key(system, user)
         response = self._get(key)
@@ -128,7 +134,7 @@ class CachedLLM:
             self.hits += 1
         if response.get("error") == "length":
             raise TruncatedOutput(response["raw"])
-        return GeneratorOutput.model_validate(response["output"])
+        return self.output_schema.model_validate(response["output"])
 
     @property
     def usd(self) -> float:
