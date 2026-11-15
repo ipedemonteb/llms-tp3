@@ -25,6 +25,9 @@ local = [  # embedders locales (E3 a E5); transformers<5 porque el código remot
 analysis = [  # gráficos de los resultados (src/tprag/eval/plots.py)
     "matplotlib>=3.9",
 ]
+ui = [
+    "streamlit>=1.40",
+]
 
 [build-system]
 requires = ["uv_build>=0.10.10,<0.11"]
