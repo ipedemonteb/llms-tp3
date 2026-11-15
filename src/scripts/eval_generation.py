@@ -9,8 +9,9 @@ Uso:
 
 La colección se elige con los mismos flags que build_index.py. El umbral sale de la corrida de eval_retrieval.py en dev
 con esa colección (o --threshold). Las respuestas del LLM quedan en caché (data/generate/): repetir una corrida no
-vuelve a pagar. Escribe en results/eval/gen/ (no versionado) el resumen y el detalle por ítem (código corregido,
-reporte, reemplazos y chequeos).
+vuelve a pagar. Escribe en results/eval/gen/ el resumen y el detalle por ítem (código corregido, reporte, reemplazos y
+chequeos). Si esas salidas ya existen no las pisa (tprag.eval.outputs): --tag <nombre> escribe la variante al lado
+(<corrida>__<nombre>) y --force la reemplaza.
 """
 
 import argparse
@@ -22,6 +23,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 
 from tprag.eval.generation import check_item, summarize
+from tprag.eval.outputs import refuse_overwrite, tag_arg, tagged
 from tprag.eval.query import QUERIES
 from tprag.eval.retrieval import dataset_info, select_items
 from tprag.eval.verify import load_items
@@ -57,6 +59,8 @@ def main() -> int:
     parser.add_argument("--max-usd", type=float, default=0.10, help="aborta si lo que hay que pagar lo supera")
     parser.add_argument("--offline", action="store_true", help="no consulta PyPI; lo que no está en caché: unknown")
     parser.add_argument("--dry-run", action="store_true", help="solo cuenta tokens y estima el costo")
+    parser.add_argument("--tag", type=tag_arg, help="sufijo __<tag> en las salidas: una variante al lado de la corrida")
+    parser.add_argument("--force", action="store_true", help="reemplaza las salidas si ya existen")
     args = parser.parse_args()
 
     cfg = IndexConfig(chunks=args.chunks, console_mode=args.console_examples, model=args.model,
@@ -75,6 +79,12 @@ def main() -> int:
         return 1
     fetch = CachedPyPI(offline=args.offline)
     llm = CachedLLM(CHAT_MODELS[args.llm])
+    # un resultado ya corrido no se pisa sin querer (tprag.eval.outputs): se chequea antes de llamar al LLM
+    stem = tagged(f"{name}__qA__{args.rerank + '__' if args.rerank else ''}{llm.model.name}__{args.split}", args.tag)
+    if refusal := refuse_overwrite([RESULTS_DIR / f"{stem}.json", RESULTS_DIR / f"{stem}.items.jsonl"], args.force):
+        print(refusal)
+        if not args.dry_run:
+            return 1
     items = select_items(load_items(), args.split, args.packages)
 
     # Las consultas al índice son las del paso 7: si ya se corrió eval_retrieval.py, están en el caché (0 USD).
@@ -121,10 +131,9 @@ def main() -> int:
         "budget": args.budget, "date": datetime.now().isoformat(timespec="seconds"), "config": asdict(cfg),
         "dataset": dataset_info(), "paid": {"calls": llm.misses, "input_tokens": llm.input_tokens,
                                             "output_tokens": llm.output_tokens, "usd": llm.usd},
-        "cache_hits": llm.hits, "seconds": seconds, "metrics": summarize(records),
+        "tag": args.tag, "cache_hits": llm.hits, "seconds": seconds, "metrics": summarize(records),
     }
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    stem = f"{name}__qA__{args.rerank + '__' if args.rerank else ''}{llm.model.name}__{args.split}"
     summary = json.dumps(report, indent=2, ensure_ascii=False) + "\n"
     (RESULTS_DIR / f"{stem}.json").write_text(summary, encoding="utf-8")
     with (RESULTS_DIR / f"{stem}.items.jsonl").open("w", encoding="utf-8") as fh:

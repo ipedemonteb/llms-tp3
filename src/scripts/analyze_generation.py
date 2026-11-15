@@ -24,7 +24,8 @@ puntaje): con una corrida no permisiva solo se pueden evaluar umbrales iguales o
 Si el dataset cambió desde la corrida (sha256 distinto), se niega a seguir salvo con --allow-dataset-mismatch
 (los ítems regenerados se compararían contra su versión nueva).
 
-Escribe results/study/generation_<corrida>_analysis.json y _table.md (con --print-only, solo imprime).
+Escribe results/study/generation_<corrida>_analysis.json y _table.md (con --print-only, solo imprime). Si ya existen
+no los pisa (tprag.eval.outputs): --tag <nombre> escribe la variante al lado (sufijo __<nombre>) y --force la reemplaza.
 """
 
 import argparse
@@ -33,6 +34,7 @@ import math
 from pathlib import Path
 from statistics import mean
 
+from tprag.eval.outputs import refuse_overwrite, tag_arg, tagged
 from tprag.eval.faithfulness import faithfulness, load_chunk_texts, record_context
 from tprag.eval.noise import summarize as noise_summary
 from tprag.eval.noise import target_groups
@@ -212,9 +214,21 @@ def main() -> int:
     parser.add_argument("--allow-dataset-mismatch", action="store_true",
                         help="analizar aunque el dataset haya cambiado desde la corrida (solo para probar)")
     parser.add_argument("--print-only", action="store_true", help="no escribe archivos")
+    parser.add_argument("--tag", type=tag_arg, help="sufijo __<tag> en las salidas: una variante al lado del análisis")
+    parser.add_argument("--force", action="store_true", help="reemplaza las salidas si ya existen")
     args = parser.parse_args()
 
     summary_path, items_path = run_paths(args.run)
+    params = {UTILITY: args.lam, PRECISION: args.min_precision, NR: args.min_nr, RETRIEVAL: args.pass_rate}
+    param = params[args.criterion]
+    name = items_path.name.removesuffix(".items.jsonl")
+    # el análisis principal (puntaje con λ = 2) conserva el nombre; cualquier otro lleva el criterio, para no pisarlo
+    suffix = "" if (args.criterion, param) == (UTILITY, LAMBDA) else f"_{args.criterion}-{param:g}"
+    out = STUDY_DIR / tagged(f"generation_{name}{suffix}", args.tag)
+    outputs = [out.with_name(out.name + "_analysis.json"), out.with_name(out.name + "_table.md")]
+    if not args.print_only and (refusal := refuse_overwrite(outputs, args.force)):
+        print(refusal)
+        return 1
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     records = [json.loads(line) for line in items_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     current = dataset_info()["sha256"]
@@ -236,14 +250,9 @@ def main() -> int:
     for r in rows:
         for metric, scores in per_item.items():
             r[metric], r[metric + "_n"] = mean_passing(records, scores, r["threshold"])
-    params = {UTILITY: args.lam, PRECISION: args.min_precision, NR: args.min_nr, RETRIEVAL: args.pass_rate}
-    param = params[args.criterion]
     chosen = choose(rows, param, args.criterion)
     noise = noise_summary(target_groups(records, items, chosen["threshold"], strict=not mismatch))
 
-    name = items_path.name.removesuffix(".items.jsonl")
-    # el análisis principal (puntaje con λ = 2) conserva el nombre; cualquier otro lleva el criterio, para no pisarlo
-    suffix = "" if (args.criterion, param) == (UTILITY, LAMBDA) else f"_{args.criterion}-{param:g}"
     analysis = {
         "run": {"name": name, "collection": summary["collection"], "reranker": summary.get("reranker"),
                 "llm": summary["llm"], "split": summary["split"], "threshold": summary["threshold"],
@@ -265,10 +274,8 @@ def main() -> int:
     print(text)
     if not args.print_only:
         STUDY_DIR.mkdir(parents=True, exist_ok=True)
-        out = STUDY_DIR / f"generation_{name}{suffix}"
-        out.with_name(out.name + "_analysis.json").write_text(
-            json.dumps(jsonable(analysis), ensure_ascii=False, indent=1), encoding="utf-8")
-        out.with_name(out.name + "_table.md").write_text(text, encoding="utf-8")
+        outputs[0].write_text(json.dumps(jsonable(analysis), ensure_ascii=False, indent=1), encoding="utf-8")
+        outputs[1].write_text(text, encoding="utf-8")
         print(f"escrito {out.name}_analysis.json y _table.md en {STUDY_DIR.relative_to(ROOT)}/")
     return 0
 
