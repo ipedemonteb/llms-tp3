@@ -2,7 +2,7 @@
 
 from langchain_core.documents import Document
 
-from tprag.eval.generation import acceptable_import, check_item, summarize
+from tprag.eval.generation import acceptable_import, check_item, new_undefined_names, summarize, undefined_names
 from tprag.generate.pipeline import FixResult, prepare
 from tprag.validate.packages import normalize
 from tprag.validate.pypi import PackageInfo
@@ -59,6 +59,12 @@ def test_positivo_que_no_parsea_o_no_se_aplico():
     assert not r["success"] and not r["applicable"] and not r["targets"][0]["target_gone"]
 
 
+def test_positivo_con_nombre_viejo_sin_importar():
+    fixed = FIXED + "pages = PyPDF2.PdfReader('b.pdf').pages\n"
+    r = run(["pypdf"], fixed, "reemplazado", "pypdf", ["--- [1] pypdf > Extract text > Ejemplo"])
+    assert not r["success"] and r["undefined_names"] == ["PyPDF2"] and r["targets"][0]["package_ok"]
+
+
 def test_fuente_inventada():
     assert not run(["pypdf"], FIXED, "reemplazado", "pypdf", ["pypdf > Otra página"])["sources_ok"]
 
@@ -84,3 +90,29 @@ def test_summarize():
     assert out["positives"]["success"] == 1.0 and out["negatives"]["success"] == 1.0
     # score 0,6 (distancia 0,4) contra umbral 0,5: el negativo llega al LLM y el LLM lo rechaza
     assert out["negatives"]["passed_threshold"] == 1 and out["negatives"]["rejected_by_llm"] == 1
+
+
+def test_undefined_names_sees_functions_classes_and_comprehensions():
+    code = ("import os\n\nclass A:\n    x = os.sep + missing_in_class\n\n"
+            "def f(n):\n    total = [i for i in range(n) if i not in skip]\n    return total, later, renamed\n\n"
+            "def later():\n    return print(__file__)\n")
+    assert undefined_names(code) == {"missing_in_class", "skip", "renamed"}
+
+
+def test_undefined_names_accepts_nested_scopes_globals_and_try_imports():
+    code = ("try:\n    from lxml import etree\nexcept ImportError:\n    import xml.etree.ElementTree as etree\n\n"
+            "def outer():\n    k = 1\n    def inner():\n        return k + len(etree.__name__)\n    return inner\n\n"
+            "def setup():\n    global CONFIG\n    CONFIG = 1\n\ndef use():\n    return CONFIG\n")
+    assert undefined_names(code) == set()
+
+
+def test_undefined_names_unknown_with_star_import_or_syntax_error():
+    assert undefined_names("from os import *\nprint(path)\n") is None
+    assert undefined_names("def (") is None
+
+
+def test_new_undefined_names_only_counts_what_the_fix_added():
+    original = "import viejo\n\ndef f(items):\n    for idx, x in enumerate(items):\n        print(idx, viejo.g(x), ya_faltaba)\n"
+    fixed = "import nuevo\n\ndef f(items):\n    for i, x in enumerate(items):\n        print(idx, nuevo.g(x), ya_faltaba)\n"
+    assert new_undefined_names(original, fixed) == ["idx"]
+    assert new_undefined_names(original, "from x import *\n") == []

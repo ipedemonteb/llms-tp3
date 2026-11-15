@@ -3,10 +3,17 @@
 Por ítem: los reemplazos se aplicaron, el script corregido parsea, el validador ya no marca el target y no aparece
 ningún import nuevo inexistente, el import nuevo es de un paquete aceptable, la decisión es la esperada (positivos →
 reemplazado; negativos → sin reemplazo y el código igual) y las fuentes citadas están entre los fragmentos recibidos.
+
+En los positivos, además, el script corregido no puede usar nombres nuevos sin definir (`undefined_names`): un nombre
+de la librería vieja que quedó sin importar o una variable renombrada a medias dan NameError al ejecutarse. Agregado el
+2026-11-15 después de la revisión manual de dev (metricas.md §3.8): 7 de los 12 éxitos de la muestra no hacían la tarea.
+No detecta métodos o atributos que no existen en la librería nueva.
 """
 
 import ast
+import builtins
 import re
+import symtable
 from statistics import mean
 
 from tprag.generate.pipeline import FixResult, Prepared, import_key
@@ -17,6 +24,40 @@ from tprag.validate.validate import ImportResult, validate
 
 STDLIB = "python-stdlib"
 _SOURCE_PREFIX = re.compile(r"^(-{3}\s*)?(\[\d+\]\s*)?")
+_MODULE_NAMES = {"__file__", "__builtins__", "__annotations__", "__path__", "__cached__"}
+
+
+def undefined_names(code: str) -> set[str] | None:
+    """Nombres que el código usa y no define en ningún lado (import, asignación, def/class, parámetro ni builtin): darían
+    NameError al ejecutarse. Con `symtable` (biblioteca estándar): un nombre usado dentro de una función o clase que no
+    es local ni de una función que la contiene tiene que estar definido en el módulo. None si no se puede saber (no
+    parsea, o tiene `from x import *`)."""
+    try:
+        tree = ast.parse(code)
+        table = symtable.symtable(code, "<script>", "exec")
+    except SyntaxError:
+        return None
+    if any(isinstance(n, ast.ImportFrom) and any(a.name == "*" for a in n.names) for n in ast.walk(tree)):
+        return None
+    defined, used = set(dir(builtins)) | _MODULE_NAMES, set()
+
+    def visit(t: symtable.SymbolTable, top: bool) -> None:
+        for s in t.get_symbols():
+            if (top or s.is_declared_global()) and (s.is_assigned() or s.is_imported()):
+                defined.add(s.get_name())
+            if s.is_referenced() and (top or s.is_global()):
+                used.add(s.get_name())
+        for child in t.get_children():
+            visit(child, False)
+
+    visit(table, True)
+    return used - defined
+
+
+def new_undefined_names(original: str, fixed: str) -> list[str]:
+    """Nombres sin definir que aparecen en el corregido y no en el original (lo que ya venía mal no se cuenta)."""
+    after, before = undefined_names(fixed), undefined_names(original)
+    return sorted(after - (before or set())) if after is not None and before is not None else []
 
 
 def acceptable_import(r: ImportResult, acceptable: list[str]) -> bool:
@@ -42,6 +83,7 @@ def check_item(item: dict, prep: Prepared, fix: FixResult, fetch: Fetch) -> dict
         new_results = None
     new_imports = [r for r in new_results or [] if import_key(r) not in original]
     hallucinated = [r.module for r in new_imports if r.status == "not_found"]
+    undefined = new_undefined_names(item["code"], fix.code)
     headers = {c["header"] for ctx in prep.contexts for c in ctx.chunks}
     sources = [s for e in fix.report for s in e.get("sources", [])]
     by_module = {e["module"]: e for e in fix.report}
@@ -61,7 +103,7 @@ def check_item(item: dict, prep: Prepared, fix: FixResult, fetch: Fetch) -> dict
                 r.module == t["module"] and r.to_rag for r in new_results)
             out["package_ok"] = any(acceptable_import(r, t["acceptable_packages"]) for r in new_imports)
             out["success"] = (out["decision_ok"] and not fix.edit_errors and new_results is not None
-                              and out["target_gone"] and out["package_ok"] and not hallucinated)
+                              and out["target_gone"] and out["package_ok"] and not hallucinated and not undefined)
         else:
             out["success"] = out["decision_ok"] and fix.code == item["code"]
         targets.append(out)
@@ -70,7 +112,7 @@ def check_item(item: dict, prep: Prepared, fix: FixResult, fetch: Fetch) -> dict
         "id": item["id"], "subset": item["subset"], "split": item.get("split"), "targets": targets,
         "llm_called": fix.llm_called, "llm_error": fix.llm_error,
         "applicable": not fix.edit_errors, "edit_errors": fix.edit_errors,
-        "parses": new_results is not None, "hallucinated_imports": hallucinated,
+        "parses": new_results is not None, "hallucinated_imports": hallucinated, "undefined_names": undefined,
         "sources_ok": all(_source_ok(s, headers) for s in sources),
         "success": all(t["success"] for t in targets),
     }
@@ -97,6 +139,7 @@ def summarize(records: list[dict]) -> dict:
             "parses": _rate([r["parses"] for r, _ in pos]),
             "target_gone": _rate([t["target_gone"] for _, t in pos]),
             "package_ok": _rate([t["package_ok"] for _, t in pos]),
+            "no_undefined_names": _rate([not r.get("undefined_names") for r, _ in pos]),
         },
         "negatives": {
             "targets": len(neg),
@@ -107,5 +150,6 @@ def summarize(records: list[dict]) -> dict:
         },
         "llm_errors": sum(bool(r.get("llm_error")) for r in records),
         "hallucinated_imports": sum(len(r["hallucinated_imports"]) for r in records),
+        "undefined_names": sum(len(r.get("undefined_names", [])) for r in records),
         "sources_ok": _rate([r["sources_ok"] for r in called]),
     }

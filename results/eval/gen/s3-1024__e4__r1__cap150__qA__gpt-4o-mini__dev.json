@@ -5,7 +5,7 @@
   "split": "dev",
   "threshold": -1000.0,
   "budget": 2000,
-  "date": "2026-11-14T18:52:08",
+  "date": "2026-11-15T11:04:11",
   "config": {
     "chunks": "s3-1024",
     "console_mode": "outputs_as_comments",
@@ -16,7 +16,7 @@
     "packages": null
   },
   "dataset": {
-    "commit": "3dd64b7",
+    "commit": "4bfcf53",
     "sha256": {
       "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
       "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
@@ -24,25 +24,26 @@
     }
   },
   "paid": {
-    "calls": 75,
-    "input_tokens": 254690,
-    "output_tokens": 21842,
-    "usd": 0.051309
+    "calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "usd": 0.0
   },
-  "cache_hits": 40,
-  "seconds": 307.3,
+  "cache_hits": 115,
+  "seconds": 0.6,
   "metrics": {
     "items": 115,
     "llm_calls": 115,
     "positives": {
       "targets": 113,
-      "success": 0.4336,
+      "success": 0.2655,
       "passed_threshold": 1,
       "decision_ok": 0.8673,
       "applicable": 0.7611,
       "parses": 0.9735,
       "target_gone": 0.5752,
-      "package_ok": 0.469
+      "package_ok": 0.469,
+      "no_undefined_names": 0.708
     },
     "negatives": {
       "targets": 9,
@@ -52,6 +53,7 @@
     },
     "llm_errors": 1,
     "hallucinated_imports": 0,
+    "undefined_names": 45,
     "sources_ok": 0.9652
   }
 }
