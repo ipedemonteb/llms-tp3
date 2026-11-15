@@ -1,0 +1,589 @@
+{
+ "n": 20,
+ "runs": {
+  "base": "s3-1024__e4__r1__cap150__qA__gpt-4o-mini__dev",
+  "rerank": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev"
+ },
+ "boot": 10000,
+ "seed": 2026,
+ "groups": {
+  "total": [
+   "R01",
+   "R02",
+   "R03",
+   "R04",
+   "R05",
+   "R06",
+   "R07",
+   "R08",
+   "R09",
+   "R10",
+   "R11",
+   "R12",
+   "R13",
+   "R14",
+   "R15",
+   "R16",
+   "R17",
+   "R18",
+   "R19",
+   "R20"
+  ],
+  "base": [
+   "R01",
+   "R02",
+   "R03",
+   "R05",
+   "R07",
+   "R08",
+   "R10",
+   "R15",
+   "R16",
+   "R18"
+  ],
+  "rerank": [
+   "R04",
+   "R06",
+   "R09",
+   "R11",
+   "R12",
+   "R13",
+   "R14",
+   "R17",
+   "R19",
+   "R20"
+  ]
+ },
+ "preservation": {
+  "gpt-4o-mini vs humano": {
+   "total": {
+    "n": 20,
+    "exact": 0.45,
+    "exact_ci": [
+     0.25,
+     0.65
+    ],
+    "within_one": 0.85,
+    "kappa": 0.2592592592592593,
+    "kappa_ci": [
+     0.06666666666666665,
+     0.5000000000000001
+    ],
+    "confusion": {
+     "si": {
+      "si": 2,
+      "parcial": 0,
+      "no": 3
+     },
+     "parcial": {
+      "si": 0,
+      "parcial": 3,
+      "no": 8
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 4
+     }
+    }
+   },
+   "base": {
+    "n": 10,
+    "exact": 0.4,
+    "exact_ci": [
+     0.1,
+     0.7
+    ],
+    "within_one": 0.8,
+    "kappa": 0.16666666666666666,
+    "kappa_ci": [
+     0.0,
+     0.4827586206896551
+    ],
+    "confusion": {
+     "si": {
+      "si": 0,
+      "parcial": 0,
+      "no": 2
+     },
+     "parcial": {
+      "si": 0,
+      "parcial": 2,
+      "no": 4
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 2
+     }
+    }
+   },
+   "rerank": {
+    "n": 10,
+    "exact": 0.5,
+    "exact_ci": [
+     0.2,
+     0.8
+    ],
+    "within_one": 0.9,
+    "kappa": 0.3333333333333333,
+    "kappa_ci": [
+     0.0,
+     0.696969696969697
+    ],
+    "confusion": {
+     "si": {
+      "si": 2,
+      "parcial": 0,
+      "no": 1
+     },
+     "parcial": {
+      "si": 0,
+      "parcial": 1,
+      "no": 4
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 2
+     }
+    }
+   }
+  },
+  "gpt-4o-mini vs opus": {
+   "total": {
+    "n": 20,
+    "exact": 0.4,
+    "exact_ci": [
+     0.2,
+     0.6
+    ],
+    "within_one": 0.85,
+    "kappa": 0.20792079207920794,
+    "kappa_ci": [
+     0.03614457831325304,
+     0.43462897526501765
+    ],
+    "confusion": {
+     "si": {
+      "si": 2,
+      "parcial": 0,
+      "no": 3
+     },
+     "parcial": {
+      "si": 1,
+      "parcial": 2,
+      "no": 8
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 4
+     }
+    }
+   },
+   "base": {
+    "n": 10,
+    "exact": 0.3,
+    "exact_ci": [
+     0.0,
+     0.6
+    ],
+    "within_one": 0.8,
+    "kappa": 0.07894736842105263,
+    "kappa_ci": [
+     -0.04651162790697675,
+     0.33333333333333326
+    ],
+    "confusion": {
+     "si": {
+      "si": 0,
+      "parcial": 0,
+      "no": 2
+     },
+     "parcial": {
+      "si": 1,
+      "parcial": 1,
+      "no": 4
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 2
+     }
+    }
+   },
+   "rerank": {
+    "n": 10,
+    "exact": 0.5,
+    "exact_ci": [
+     0.2,
+     0.8
+    ],
+    "within_one": 0.9,
+    "kappa": 0.3333333333333333,
+    "kappa_ci": [
+     0.0,
+     0.696969696969697
+    ],
+    "confusion": {
+     "si": {
+      "si": 2,
+      "parcial": 0,
+      "no": 1
+     },
+     "parcial": {
+      "si": 0,
+      "parcial": 1,
+      "no": 4
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 2
+     }
+    }
+   }
+  },
+  "opus vs humano": {
+   "total": {
+    "n": 20,
+    "exact": 0.95,
+    "exact_ci": [
+     0.85,
+     1.0
+    ],
+    "within_one": 1.0,
+    "kappa": 0.8773006134969324,
+    "kappa_ci": [
+     0.6296296296296299,
+     1.0
+    ],
+    "confusion": {
+     "si": {
+      "si": 2,
+      "parcial": 1,
+      "no": 0
+     },
+     "parcial": {
+      "si": 0,
+      "parcial": 2,
+      "no": 0
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 15
+     }
+    }
+   },
+   "base": {
+    "n": 10,
+    "exact": 0.9,
+    "exact_ci": [
+     0.7,
+     1.0
+    ],
+    "within_one": 1.0,
+    "kappa": 0.7058823529411765,
+    "kappa_ci": [
+     0.411764705882353,
+     1.0
+    ],
+    "confusion": {
+     "si": {
+      "si": 0,
+      "parcial": 1,
+      "no": 0
+     },
+     "parcial": {
+      "si": 0,
+      "parcial": 1,
+      "no": 0
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 8
+     }
+    }
+   },
+   "rerank": {
+    "n": 10,
+    "exact": 1.0,
+    "exact_ci": [
+     1.0,
+     1.0
+    ],
+    "within_one": 1.0,
+    "kappa": 1.0,
+    "kappa_ci": [
+     1.0,
+     1.0
+    ],
+    "confusion": {
+     "si": {
+      "si": 2,
+      "parcial": 0,
+      "no": 0
+     },
+     "parcial": {
+      "si": 0,
+      "parcial": 1,
+      "no": 0
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 7
+     }
+    }
+   }
+  }
+ },
+ "mean_score": {
+  "humano": {
+   "total": 0.175,
+   "base": 0.1,
+   "rerank": 0.25
+  },
+  "gpt-4o-mini": {
+   "total": 0.525,
+   "base": 0.5,
+   "rerank": 0.55
+  },
+  "opus": {
+   "total": 0.2,
+   "base": 0.15,
+   "rerank": 0.25
+  }
+ },
+ "faithfulness": {
+  "total": {
+   "items": 20,
+   "rows": 93,
+   "errors": 5,
+   "false_yes": 5,
+   "false_no": 0,
+   "accuracy": 0.946236559139785,
+   "items_with_error": [
+    "R02",
+    "R03",
+    "R12"
+   ]
+  },
+  "base": {
+   "items": 10,
+   "rows": 50,
+   "errors": 3,
+   "false_yes": 3,
+   "false_no": 0,
+   "accuracy": 0.94,
+   "items_with_error": [
+    "R02",
+    "R03"
+   ]
+  },
+  "rerank": {
+   "items": 10,
+   "rows": 43,
+   "errors": 2,
+   "false_yes": 2,
+   "false_no": 0,
+   "accuracy": 0.9534883720930233,
+   "items_with_error": [
+    "R12"
+   ]
+  }
+ },
+ "items": [
+  {
+   "review_id": "R01",
+   "run": "base",
+   "id": "syn-scipy-01",
+   "humano": "parcial",
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R02",
+   "run": "base",
+   "id": "dep-jose-validate-01",
+   "humano": "no",
+   "gpt-4o-mini": "si",
+   "opus": "no",
+   "errores_heuristica": [
+    5
+   ]
+  },
+  {
+   "review_id": "R03",
+   "run": "base",
+   "id": "syn-scrapy-01",
+   "humano": "no",
+   "gpt-4o-mini": "parcial",
+   "opus": "no",
+   "errores_heuristica": [
+    7,
+    8
+   ]
+  },
+  {
+   "review_id": "R04",
+   "run": "rerank",
+   "id": "syn-pydantic-02",
+   "humano": "no",
+   "gpt-4o-mini": "no",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R05",
+   "run": "base",
+   "id": "syn-pymupdf-02",
+   "humano": "no",
+   "gpt-4o-mini": "parcial",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R06",
+   "run": "rerank",
+   "id": "syn-lxml-02",
+   "humano": "si",
+   "gpt-4o-mini": "si",
+   "opus": "si",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R07",
+   "run": "base",
+   "id": "syn-typer-02",
+   "humano": "parcial",
+   "gpt-4o-mini": "parcial",
+   "opus": "si",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R08",
+   "run": "base",
+   "id": "syn-transformers-03",
+   "humano": "no",
+   "gpt-4o-mini": "no",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R09",
+   "run": "rerank",
+   "id": "syn-textual-02",
+   "humano": "parcial",
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R10",
+   "run": "base",
+   "id": "dep-oauth2client-sa-01",
+   "humano": "no",
+   "gpt-4o-mini": "si",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R11",
+   "run": "rerank",
+   "id": "dep-nose-generators-01",
+   "humano": "no",
+   "gpt-4o-mini": "si",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R12",
+   "run": "rerank",
+   "id": "neg-oauth2client-storage-01",
+   "humano": "no",
+   "gpt-4o-mini": "parcial",
+   "opus": "no",
+   "errores_heuristica": [
+    4,
+    8
+   ]
+  },
+  {
+   "review_id": "R13",
+   "run": "rerank",
+   "id": "syn-matplotlib-03",
+   "humano": "no",
+   "gpt-4o-mini": "parcial",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R14",
+   "run": "rerank",
+   "id": "dep-nose-asserts-01",
+   "humano": "no",
+   "gpt-4o-mini": "parcial",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R15",
+   "run": "base",
+   "id": "syn-scikit-learn-02",
+   "humano": "no",
+   "gpt-4o-mini": "no",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R16",
+   "run": "base",
+   "id": "syn-pydantic-01",
+   "humano": "no",
+   "gpt-4o-mini": "parcial",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R17",
+   "run": "rerank",
+   "id": "dep-fuzzywuzzy-suggest-01",
+   "humano": "no",
+   "gpt-4o-mini": "parcial",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R18",
+   "run": "base",
+   "id": "syn-matplotlib-01",
+   "humano": "no",
+   "gpt-4o-mini": "parcial",
+   "opus": "no",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R19",
+   "run": "rerank",
+   "id": "syn-wand-01",
+   "humano": "si",
+   "gpt-4o-mini": "si",
+   "opus": "si",
+   "errores_heuristica": []
+  },
+  {
+   "review_id": "R20",
+   "run": "rerank",
+   "id": "syn-celery-02",
+   "humano": "no",
+   "gpt-4o-mini": "no",
+   "opus": "no",
+   "errores_heuristica": []
+  }
+ ]
+}

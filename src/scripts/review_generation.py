@@ -5,6 +5,8 @@ Uso:
     uv run python src/scripts/review_generation.py sheet       # elige la muestra y escribe la planilla a completar
     uv run python src/scripts/review_generation.py opus        # exporta los prompts de (b) para Claude Opus 5.5
     uv run python src/scripts/review_generation.py opus-check  # valida y une las respuestas de Opus
+    uv run python src/scripts/review_generation.py context R02 [--chunks]  # dónde aparece cada identificador
+    uv run python src/scripts/review_generation.py agreement   # acuerdo con la planilla completa
 
 `sheet`: muestra estratificada de 20 scripts cambiados de las dos corridas permisivas de dev (10 de la base y 10 del
 reranker), con cupos por (éxito del nivel 1 × veredicto del juez) y sin repetir un ítem entre corridas; semilla fija.
@@ -15,6 +17,16 @@ Escribe results/study/review/sample.json y planilla.md. La planilla es a ciegas:
 results/study/review/opus/prompts_<k>.jsonl. Cada tanda la responde un agente de Claude Opus 5.5 lanzado desde Claude
 Code (0 USD del presupuesto de OpenAI) en opus/answers_<k>.jsonl. `opus-check` valida cada respuesta con el mismo
 esquema (`Preservation`) y las une en opus_answers.jsonl.
+
+`context`: para un ítem de la planilla, todas las líneas de los chunks en las que aparece cada identificador de su tabla
+(misma numeración y mismo criterio que la heurística), enteras y marcadas como código o prosa; con --chunks, además el
+texto completo de cada chunk. Solo imprime: no escribe archivos ni muestra la corrida, el éxito ni el veredicto.
+
+`agreement` (con la planilla completa): une la planilla, el .judge.jsonl de cada corrida y opus_answers.jsonl (cada R
+se asigna a su versión con sample.json). Preservación: acuerdo exacto, a un nivel y kappa de Cohen de gpt-4o-mini vs.
+humano, gpt-4o-mini vs. Opus y Opus vs. humano, en total y por versión, con IC 95% por bootstrap sobre ítems.
+Faithfulness: filas de la tabla que la persona marcó como error de la heurística (falsos sí / falsos no). Escribe
+results/study/review_agreement.{json,md}.
 """
 
 import argparse
@@ -25,7 +37,7 @@ import re
 from pathlib import Path
 
 from tprag.eval.faithfulness import claims, mentions, record_context
-from tprag.eval.judge import PRESERVE_SYSTEM, Preservation, preserve_prompt
+from tprag.eval.judge import PRESERVE_SCORE, PRESERVE_SYSTEM, Preservation, preserve_prompt
 from tprag.split.store import ROOT
 
 from analyze_generation import load_items  # mismo directorio de scripts
@@ -43,6 +55,12 @@ QUOTAS = {
 }
 VERDICTS = ("si", "parcial", "no")
 OPUS_DIR, OPUS_MODEL, OPUS_BATCH = REVIEW_DIR / "opus", "claude-opus-5-5", 5
+# Acuerdo (metricas.md §3.8): el veredicto como escala no < parcial < si, para el acuerdo "a un nivel"
+LEVEL = {"no": 0, "parcial": 1, "si": 2}
+RATERS = ("humano", "gpt-4o-mini", "opus")
+PAIRS = (("gpt-4o-mini", "humano"), ("gpt-4o-mini", "opus"), ("opus", "humano"))
+BOOT = 10_000
+AGREEMENT_OUT = ROOT / "results" / "study" / "review_agreement"
 
 
 def read_jsonl(path: Path) -> list[dict]:
@@ -76,6 +94,25 @@ def claim_rows(original: str, fixed: str, context: str) -> list[dict]:
         rows.append({"name": c.name, "line": c.line, "kind": c.kind, "in_context": mentions(context, c.name),
                      "where": where[:140] if where else None})
     return rows
+
+
+def name_hits(name: str, texts: list[str]) -> list[tuple[int, bool, str]]:
+    """Cada línea de los chunks en la que `name` aparece como palabra completa (mismo criterio que la heurística):
+    (número de chunk desde 1, ¿dentro de un bloque de código?, línea entera)."""
+    out = []
+    for k, text in enumerate(texts, 1):
+        in_code = False
+        for line in text.splitlines():
+            is_fence = line.lstrip().startswith("```")
+            if mentions(line, name):
+                out.append((k, in_code or is_fence, line.strip()))
+            if is_fence:
+                in_code = not in_code
+    return out
+
+
+def highlight(line: str, name: str) -> str:
+    return re.sub(rf"(?<![\w]){re.escape(name)}(?![\w])", lambda m: f"»{m.group(0)}«", line)
 
 
 def fence(code: str, lang: str) -> str:
@@ -267,6 +304,167 @@ def cmd_opus_check() -> int:
     return 0 if not missing else 1
 
 
+def kappa(pairs: list[tuple[str, str]]) -> float | None:
+    """Kappa de Cohen (sin pesos) entre dos evaluadores. None si el acuerdo por azar es 1 (los dos usan siempre el
+    mismo veredicto): la kappa no está definida."""
+    n = len(pairs)
+    po = sum(a == b for a, b in pairs) / n
+    pe = sum(sum(a == v for a, _ in pairs) / n * sum(b == v for _, b in pairs) / n for v in VERDICTS)
+    return None if pe == 1 else (po - pe) / (1 - pe)
+
+
+def percentile_ci(values: list[float]) -> list[float] | None:
+    if not values:
+        return None
+    s = sorted(values)
+    return [s[int(0.025 * len(s))], s[min(len(s) - 1, int(0.975 * len(s)))]]
+
+
+def agreement(pairs: list[tuple[str, str]], boot: int = BOOT, seed: int = SEED) -> dict:
+    """Acuerdo entre dos evaluadores sobre los mismos ítems: exacto, a un nivel (no/parcial/si como escala) y kappa de
+    Cohen, con IC 95% por bootstrap sobre ítems (percentiles; los remuestreos sin kappa definida no cuentan)."""
+    n = len(pairs)
+    exact = lambda ps: sum(a == b for a, b in ps) / len(ps)  # noqa: E731
+    rng = random.Random(seed)
+    exacts, kappas = [], []
+    for _ in range(boot):
+        resample = [pairs[rng.randrange(n)] for _ in range(n)]
+        exacts.append(exact(resample))
+        if (k := kappa(resample)) is not None:
+            kappas.append(k)
+    return {"n": n, "exact": exact(pairs), "exact_ci": percentile_ci(exacts),
+            "within_one": sum(abs(LEVEL[a] - LEVEL[b]) <= 1 for a, b in pairs) / n,
+            "kappa": kappa(pairs), "kappa_ci": percentile_ci(kappas),
+            "confusion": {a: {b: sum(p == (a, b) for p in pairs) for b in VERDICTS} for a in VERDICTS}}
+
+
+def heuristic_check(chosen: list[dict], human: dict[str, dict]) -> dict:
+    """Heurística de Faithfulness contra la persona: de las filas de la tabla de cada ítem (los claims de
+    sample.json, misma numeración que la planilla), cuántas marcó como error y de qué tipo."""
+    rows = false_yes = false_no = 0
+    with_error = []
+    for s in chosen:
+        errors, claims = human[s["review_id"]]["errores_heuristica"], s["claims"]
+        if bad := [i for i in errors if not 1 <= i <= len(claims)]:
+            raise ValueError(f"{s['review_id']}: errores_heuristica fuera de la tabla: {bad} (tiene {len(claims)} filas)")
+        rows += len(claims)
+        yes = sum(claims[i - 1]["in_context"] for i in errors)
+        false_yes, false_no = false_yes + yes, false_no + len(errors) - yes
+        if errors:
+            with_error.append(s["review_id"])
+    wrong = false_yes + false_no
+    return {"items": len(chosen), "rows": rows, "errors": wrong, "false_yes": false_yes, "false_no": false_no,
+            "accuracy": 1 - wrong / rows if rows else None, "items_with_error": with_error}
+
+
+def fmt(x: float | None, ci: list[float] | None = None) -> str:
+    if x is None:
+        return "—"
+    return f"{x:.2f}" + (f" [{ci[0]:.2f}, {ci[1]:.2f}]" if ci else "")
+
+
+def agreement_md(result: dict) -> str:
+    groups = list(result["faithfulness"])
+    lines = [
+        "# Acuerdo de la revisión manual",
+        "",
+        f"{result['n']} scripts de dev ({', '.join(f'{len(result['groups'][g])} de {g}' for g in groups[1:])}), "
+        "muestra estratificada por (éxito del nivel 1 × veredicto de gpt-4o-mini), revisada a ciegas "
+        "(metricas.md §3.8). IC 95% por bootstrap sobre ítems; con 10 ítems por versión son muy anchos.",
+        "",
+        "## Preservación de la tarea (Answer Relevance (b))",
+        "",
+        "| Par | Grupo | n | Acuerdo exacto | A un nivel | Kappa de Cohen |",
+        "|---|---|---|---|---|---|",
+    ]
+    for pair, by_group in result["preservation"].items():
+        for g, a in by_group.items():
+            lines.append(f"| {pair} | {g} | {a['n']} | {fmt(a['exact'], a['exact_ci'])} | {fmt(a['within_one'])} | "
+                         f"{fmt(a['kappa'], a['kappa_ci'])} |")
+    lines += ["", "Puntaje medio de cada evaluador (si = 1, parcial = 0,5, no = 0):", "",
+              "| Evaluador | " + " | ".join(groups) + " |", "|---|" + "---|" * len(groups)]
+    for rater, by_group in result["mean_score"].items():
+        lines.append(f"| {rater} | " + " | ".join(fmt(by_group[g]) for g in groups) + " |")
+    for pair in result["preservation"]:
+        conf = result["preservation"][pair]["total"]["confusion"]
+        a, b = pair.split(" vs ")
+        lines += ["", f"Matriz de confusión, total (filas: {a}; columnas: {b}):", "",
+                  "| | " + " | ".join(VERDICTS) + " |", "|---|" + "---|" * len(VERDICTS)]
+        lines += [f"| {r} | " + " | ".join(str(conf[r][c]) for c in VERDICTS) + " |" for r in VERDICTS]
+    lines += ["", "## Faithfulness (heurística) contra la persona", "",
+              "| Grupo | Ítems | Filas | Errores | Falsos sí | Falsos no | Acierto | Ítems con algún error |",
+              "|---|---|---|---|---|---|---|---|"]
+    for g, h in result["faithfulness"].items():
+        lines.append(f"| {g} | {h['items']} | {h['rows']} | {h['errors']} | {h['false_yes']} | {h['false_no']} | "
+                     f"{fmt(h['accuracy'])} | {', '.join(h['items_with_error']) or '—'} |")
+    lines += ["", "## Detalle por ítem", "", "| R | Versión | Ítem | humano | gpt-4o-mini | opus | Errores heurística |",
+              "|---|---|---|---|---|---|---|"]
+    lines += [f"| {it['review_id']} | {it['run']} | {it['id']} | {it['humano']} | {it['gpt-4o-mini']} | {it['opus']} | "
+              f"{', '.join(map(str, it['errores_heuristica'])) or 'ninguno'} |" for it in result["items"]]
+    return "\n".join(lines) + "\n"
+
+
+def cmd_agreement() -> int:
+    chosen = json.loads((REVIEW_DIR / "sample.json").read_text(encoding="utf-8"))["items"]
+    human = parse_sheet((REVIEW_DIR / "planilla.md").read_text(encoding="utf-8"))
+    missing = [s["review_id"] for s in chosen if s["review_id"] not in human
+               or human[s["review_id"]]["preserva"] is None or human[s["review_id"]]["errores_heuristica"] is None]
+    if missing:
+        print(f"falta completar en la planilla: {', '.join(missing)}")
+        return 1
+    judged = {run: {r["id"]: r for r in read_jsonl(GEN_DIR / f"{name}.judge.jsonl")} for run, name in RUNS.items()}
+    opus = {r["review_id"]: r for r in read_jsonl(REVIEW_DIR / "opus_answers.jsonl")}
+    verdicts = {s["review_id"]: {"humano": human[s["review_id"]]["preserva"],
+                                 "gpt-4o-mini": judged[s["run"]][s["id"]]["b"]["preserves"],
+                                 "opus": opus[s["review_id"]]["output"]["preserves"]} for s in chosen}
+    groups = {"total": chosen} | {run: [s for s in chosen if s["run"] == run] for run in RUNS}
+    result = {
+        "n": len(chosen), "runs": RUNS, "boot": BOOT, "seed": SEED,
+        "groups": {g: [s["review_id"] for s in items] for g, items in groups.items()},
+        "preservation": {f"{a} vs {b}": {g: agreement([(verdicts[s["review_id"]][a], verdicts[s["review_id"]][b])
+                                                         for s in items]) for g, items in groups.items()}
+                         for a, b in PAIRS},
+        "mean_score": {r: {g: sum(PRESERVE_SCORE[verdicts[s["review_id"]][r]] for s in items) / len(items)
+                           for g, items in groups.items()} for r in RATERS},
+        "faithfulness": {g: heuristic_check(items, human) for g, items in groups.items()},
+        "items": [{"review_id": s["review_id"], "run": s["run"], "id": s["id"], **verdicts[s["review_id"]],
+                   "errores_heuristica": human[s["review_id"]]["errores_heuristica"]} for s in chosen],
+    }
+    AGREEMENT_OUT.with_suffix(".json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n",
+                                                  encoding="utf-8")
+    md = agreement_md(result)
+    AGREEMENT_OUT.with_suffix(".md").write_text(md, encoding="utf-8")
+    print(md)
+    print(f"→ {AGREEMENT_OUT.relative_to(ROOT)}.{{json,md}}")
+    return 0
+
+
+def cmd_context(review_id: str, show_chunks: bool) -> int:
+    rid = review_id.upper()
+    chosen = {s["review_id"]: s for s in json.loads((REVIEW_DIR / "sample.json").read_text(encoding="utf-8"))["items"]}
+    if rid not in chosen:
+        print(f"{rid} no está en la muestra (R01-R{len(chosen):02d})")
+        return 1
+    s = chosen[rid]  # trae también el grupo (éxito y veredicto del juez): no se imprime, la revisión es a ciegas
+    record = next(r for r in read_jsonl(GEN_DIR / f"{RUNS[s['run']]}.items.jsonl") if r["id"] == s["id"])
+    chunks = [ch for ctx in record.get("contexts", []) for ch in ctx["chunks"]]  # mismo orden que record_context
+    texts = [ch["text"] for ch in chunks]
+    rows = claim_rows(load_items()[s["id"]]["code"], record["code"], record_context(record))
+    print(f"{rid}: {len(chunks)} chunks en el contexto")
+    for k, ch in enumerate(chunks, 1):
+        print(f"  chunk {k}: {ch['header']}")
+    for i, r in enumerate(rows, 1):
+        print(f"\n#{i} {r['name']} ({r['kind']}, línea {r['line']}) — heurística: {'sí' if r['in_context'] else 'no'}")
+        hits = name_hits(r["name"], texts)
+        for k, in_code, line in hits:
+            print(f"  chunk {k} [{'código' if in_code else 'prosa'}]  {highlight(line, r['name'])}")
+        print(f"  ({len(hits)} apariciones)" if hits else f"  no aparece en ninguno de los {len(chunks)} chunks")
+    if show_chunks:
+        for k, (ch, text) in enumerate(zip(chunks, texts), 1):
+            print(f"\n{'=' * 100}\nchunk {k}/{len(chunks)} · {ch['header']} · id {ch['id']}\n{'=' * 100}\n{text}")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -275,6 +473,10 @@ def main() -> int:
     opus = sub.add_parser("opus", help="exporta los prompts de (b) para Claude Opus 5.5, en tandas")
     opus.add_argument("--force", action="store_true", help="vuelve a escribir los prompts aunque haya respuestas")
     sub.add_parser("opus-check", help="valida las respuestas de Opus y las une en opus_answers.jsonl")
+    sub.add_parser("agreement", help="acuerdo humano / gpt-4o-mini / Opus y heurística contra la persona")
+    context = sub.add_parser("context", help="muestra dónde aparece cada identificador en los chunks de un ítem")
+    context.add_argument("review_id", help="p. ej. R02")
+    context.add_argument("--chunks", action="store_true", help="además, el texto completo de cada chunk")
     args = parser.parse_args()
     if args.cmd == "sheet":
         return cmd_sheet(args.force)
@@ -282,6 +484,10 @@ def main() -> int:
         return cmd_opus(args.force)
     if args.cmd == "opus-check":
         return cmd_opus_check()
+    if args.cmd == "agreement":
+        return cmd_agreement()
+    if args.cmd == "context":
+        return cmd_context(args.review_id, args.chunks)
     return 1
 
 

@@ -53,6 +53,24 @@ def test_claim_rows_say_where_each_name_appears():
     assert got["pypdf"]["in_context"] is False and got["pypdf"]["where"] is None
 
 
+def test_name_hits_marks_code_and_prose_in_every_chunk():
+    texts = ["El lector tiene `pages`.\n```python\nreader = PdfReader(f)\nreader.pages[0]\n```\nFin: pages.",
+             "Otro chunk sin el nombre.", "```\npages = 3\n```"]
+    assert review.name_hits("pages", texts) == [
+        (1, False, "El lector tiene `pages`."), (1, True, "reader.pages[0]"), (1, False, "Fin: pages."),
+        (3, True, "pages = 3")]
+
+
+def test_name_hits_uses_whole_words_like_the_heuristic():
+    texts = ["jwt_x = 1\nmyjwt.decode()", "import jwt"]
+    assert review.name_hits("jwt", texts) == [(2, False, "import jwt")]
+    assert review.name_hits("decode", ["nada"]) == []
+
+
+def test_highlight_marks_whole_words_only():
+    assert review.highlight("jwt.decode(jwt_x)", "jwt") == "»jwt«.decode(jwt_x)"
+
+
 SHEET = """# Revisión
 
 ## R01
@@ -112,3 +130,31 @@ def test_check_answer_validates_with_the_judge_schema():
         review.check_answer({"R01"}, ok | {"output": {"lost_or_changed": [], "preserves": "tal vez", "reason": "x"}})
     with pytest.raises(ValueError):
         review.check_answer({"R02"}, ok)
+
+
+def test_kappa_is_one_with_full_agreement_and_undefined_without_variation():
+    assert review.kappa([("si", "si"), ("no", "no"), ("parcial", "parcial")]) == pytest.approx(1)
+    assert review.kappa([("si", "si"), ("si", "si")]) is None
+
+
+def test_agreement_counts_exact_within_one_and_kappa():
+    pairs = [("si", "si"), ("no", "parcial"), ("si", "no"), ("parcial", "parcial")]
+    a = review.agreement(pairs, boot=200)
+    assert a["n"] == 4 and a["exact"] == 0.5 and a["within_one"] == 0.75
+    # po = 0,5; pe = 0,5·0,25 (si) + 0,25·0,5 (parcial) + 0,25·0,25 (no) = 0,3125
+    assert a["kappa"] == pytest.approx((0.5 - 0.3125) / (1 - 0.3125))
+    assert a["confusion"]["si"]["no"] == 1 and a["confusion"]["no"]["parcial"] == 1
+    lo, hi = a["exact_ci"]
+    assert 0 <= lo <= a["exact"] <= hi <= 1
+    assert review.agreement(pairs, boot=200) == a  # semilla fija
+
+
+def test_heuristic_check_splits_false_yes_and_false_no():
+    claims = [{"in_context": True}, {"in_context": False}, {"in_context": True}]
+    chosen = [{"review_id": "R01", "claims": claims}, {"review_id": "R02", "claims": claims[:1]}]
+    human = {"R01": {"errores_heuristica": [1, 2]}, "R02": {"errores_heuristica": []}}
+    h = review.heuristic_check(chosen, human)
+    assert (h["rows"], h["errors"], h["false_yes"], h["false_no"]) == (4, 2, 1, 1)
+    assert h["accuracy"] == 0.5 and h["items_with_error"] == ["R01"]
+    with pytest.raises(ValueError, match="fuera de la tabla"):
+        review.heuristic_check(chosen, {"R01": {"errores_heuristica": [4]}, "R02": {"errores_heuristica": []}})

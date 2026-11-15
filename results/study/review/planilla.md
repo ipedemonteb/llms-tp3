@@ -128,8 +128,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: parcial
+- que_se_perdio: no se pasa mas el parametro seed
 
 ### Faithfulness (heurística)
 
@@ -142,7 +142,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 3 | `d` | 12 | kwarg | sí | `engine = qmc.Halton(d=2)` |
 | 4 | `Halton` | 12 | attr | sí | `Several QMC samplers/engines are implemented. Here we look at two of the most used QMC methods: 'scipy.stats.qmc.Sobol' and 'scipy.stats.qmc` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R02
 
@@ -324,8 +324,8 @@ class ValidarJWT:
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: El middleware ya no puede validar tokens.
 
 ### Faithfulness (heurística)
 
@@ -342,7 +342,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 7 | `issuer` | 52 | kwarg | no | — |
 | 8 | `options` | 52 | kwarg | no | — |
 
-- errores_heuristica:
+- errores_heuristica: 5
 
 ## R03
 
@@ -506,8 +506,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: falla por imports y parametros inexistentes
 
 ### Faithfulness (heurística)
 
@@ -524,7 +524,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 7 | `crawl` | 45 | attr | sí | `- 'todo': provide a previously generated list of pages to visit (i.e. a crawl frontier)` |
 | 8 | `Request` | 24 | attr | sí | `Instead of implementing a 'scrapy.Spider.start' method that yields 'scrapy.Request' objects from URLs, you can define a 'scrapy.Spider.start` |
 
-- errores_heuristica:
+- errores_heuristica: 7, 8
 
 ## R04
 
@@ -655,8 +655,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: falla por errores de imports y funciones incorrectas.
 
 ### Faithfulness (heurística)
 
@@ -670,7 +670,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 4 | `Str` | 9 | attr | sí | `name = fields.Str()` |
 | 5 | `Int` | 10 | attr | sí | `age = fields.Int(validate=validate.Range(min=18, max=40))` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R05
 
@@ -833,8 +833,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: falla por NameError en la primera imagen
 
 ### Faithfulness (heurística)
 
@@ -849,7 +849,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 5 | `alpha` | 21 | attr | sí | `if pix.n - pix.alpha > 3: # CMYK: convert to RGB first` |
 | 6 | `csRGB` | 22 | attr | sí | `pix = pymupdf.Pixmap(pymupdf.csRGB, pix)` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R06
 
@@ -964,7 +964,7 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
+- preserva: si
 - que_se_perdio:
 
 ### Faithfulness (heurística)
@@ -976,7 +976,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 1 | `lxml` | 8 | module | sí | `prettyprint(tree)  # lxml 1.3.4 and later` |
 | 2 | `etree` | 8 | import | sí | `tree = etree.parse(some_file_or_file_like_object)` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R07
 
@@ -1099,8 +1099,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: parcial
+- que_se_perdio: la opcion --config pasa a ser argumento posicional
 
 ### Faithfulness (heurística)
 
@@ -1112,7 +1112,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 2 | `Typer` | 9 | attr | sí | `You can tell Typer to not show the default value in the help text with 'show_default=False':` |
 | 3 | `Abort` | 17 | attr | sí | `raise typer.Abort()` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R08
 
@@ -1251,8 +1251,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: agrega una consulta de hardware adicional en HuggingFace que no genera texto, y hay lineas que siguen usando imports que ya no estan importados.
 
 ### Faithfulness (heurística)
 
@@ -1265,7 +1265,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 3 | `accelerator` | 10 | attr | sí | `The 'accelerator', 'vendor', 'region', 'instance_type' and 'instance_size' values accepted by 'create_inference_endpoint' depend on each oth` |
 | 4 | `status` | 10 | attr | sí | `if hw.accelerator == "gpu" and hw.status == "available":` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R09
 
@@ -1431,8 +1431,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: parcial
+- que_se_perdio: toma la hoja de estilos de CSS y no de stylesheet y se pierde el alto y los fondos de cada panel
 
 ### Faithfulness (heurística)
 
@@ -1447,7 +1447,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 5 | `Static` | 6 | import | sí | `from textual.widgets import Static` |
 | 6 | `markup` | 39 | kwarg | sí | `When building a custom widget you can embed color and style information in the string returned from the Widget's 'render()' method. Markup i` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R10
 
@@ -1619,8 +1619,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: credenciales de google auth sin authorize. Error en uso de metodos. Falla al crear el servicio y no sube nada.
 
 ### Faithfulness (heurística)
 
@@ -1634,7 +1634,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 4 | `from_service_account_file` | 26 | attr | sí | `credentials = service_account.Credentials.from_service_account_file(` |
 | 5 | `Credentials` | 26 | attr | sí | `The google.oauth2.service_account.Credentials class is only used with OAuth 2.0 Service Accounts. No end-user is involved for these server-t` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R11
 
@@ -1797,8 +1797,8 @@ def test_result_is_always_utc():
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: cambio incorrecto de nose.tools por pendulum y hay lineas que siguen usando imports no importados.
 
 ### Faithfulness (heurística)
 
@@ -1808,7 +1808,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 |---|---|---|---|---|---|
 | 1 | `pendulum` | 5 | module | sí | `import pendulum` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R12
 
@@ -1957,8 +1957,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: abre flujo de autorizacion interactivo en el navegador en vez de leer y refrescar los tokens guardados
 
 ### Faithfulness (heurística)
 
@@ -1975,7 +1975,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 7 | `run_local_server` | 23 | attr | sí | `flow.run_local_server()` |
 | 8 | `refresh` | 31 | attr | sí | `Already obtained access token? We can use 'OAuth2Auth' directly in requests. But this OAuth2Auth can not refresh token automatically for you` |
 
-- errores_heuristica:
+- errores_heuristica: 4, 8
 
 ## R13
 
@@ -2136,8 +2136,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: hace grafico de columnas en excel en vez del grafico de barras horizontales interrumpidas.
 
 ### Faithfulness (heurística)
 
@@ -2152,7 +2152,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 5 | `insert_chart` | 39 | attr | sí | `It is then inserted into a worksheet as an embedded chart using the 'insert_chart' Worksheet method:` |
 | 6 | `add_series` | 38 | attr | sí | `chart.add_series({'values': '=Sheet1!$A$1:$A$5'})` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R14
 
@@ -2377,8 +2377,8 @@ def test_malformed_number_raises():
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: TypeError en importacion del modulo
 
 ### Faithfulness (heurística)
 
@@ -2390,7 +2390,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 2 | `raises` | 9 | import | sí | `with pytest.raises(ValueError, match=r".* 123 .*"):` |
 | 3 | `mark` | 9 | import | no | — |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R15
 
@@ -2529,8 +2529,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: se normaliza cada fila a norma L2 y no por media y varianza
 
 ### Faithfulness (heurística)
 
@@ -2542,7 +2542,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 2 | `preprocessing` | 5 | import | sí | `X_normalized = preprocessing.normalize(X, norm='l2')` |
 | 3 | `Normalizer` | 19 | attr | sí | `The 'preprocessing' module further provides a utility class 'Normalizer' that implements the same operation using the 'Transformer' API (eve` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R16
 
@@ -2683,8 +2683,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: se pierde la validacion y conversion de tipos, ademas de que se usa como decorador algo que no lo es
 
 ### Faithfulness (heurística)
 
@@ -2697,7 +2697,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 3 | `Option` | 15 | attr | sí | `def main(name: Annotated[str ¦ None, typer.Option(callback=name_callback)] = None):` |
 | 4 | `BadParameter` | 12 | attr | sí | `raise typer.BadParameter("Only Camila is allowed")` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R17
 
@@ -2826,8 +2826,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: devuelve solo una ciudad en vez de las N mas parecidas
 
 ### Faithfulness (heurística)
 
@@ -2839,7 +2839,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 2 | `extractOne` | 6 | import | sí | `from rapidfuzz.process import extractOne` |
 | 3 | `limit` | 23 | kwarg | no | — |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R18
 
@@ -2994,8 +2994,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: metodos incorrectos para los Figure de plotly
 
 ### Faithfulness (heurística)
 
@@ -3009,7 +3009,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 4 | `Figure` | 20 | attr | sí | `- 'matplotlib.figure.Figure.add_axes'` |
 | 5 | `add_layout_image` | 25 | attr | sí | `A background image can be added to the layout of a figure with 'fig.add_layout_image' or by setting the 'images' parameter of 'go.Layout'. T` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R19
 
@@ -3146,7 +3146,7 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
+- preserva: si
 - que_se_perdio:
 
 ### Faithfulness (heurística)
@@ -3162,7 +3162,7 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 5 | `gamma` | 18 | attr | sí | `Gamma correction allows you to adjust the luminance of an image. Resulting pixels are defined as 'pixel^(1/gamma)'. The value of 'gamma' is ` |
 | 6 | `save` | 20 | attr | sí | `img.save(filename='enhancement-level.jpg')` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
 
 ## R20
 
@@ -3289,8 +3289,8 @@ if __name__ == "__main__":
 
 ¿El script modificado hace la misma tarea que el original? `si` / `parcial` / `no`.
 
-- preserva:
-- que_se_perdio:
+- preserva: no
+- que_se_perdio: falla por llamado a un metodo que ya no esta importado
 
 ### Faithfulness (heurística)
 
@@ -3302,4 +3302,4 @@ Identificadores de la API nueva en las líneas cambiadas. La heurística dice qu
 | 2 | `bootsteps` | 5 | import | sí | `from celery import bootsteps` |
 | 3 | `StartStopStep` | 10 | attr | sí | `class ExampleWorkerStep(bootsteps.StartStopStep):` |
 
-- errores_heuristica:
+- errores_heuristica: ninguno
