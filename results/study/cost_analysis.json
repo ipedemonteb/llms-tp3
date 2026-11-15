@@ -1,0 +1,632 @@
+{
+  "date": "2026-11-15",
+  "llm": "gpt-4o-mini",
+  "llm_cache_calls": 443,
+  "calibration": {
+    "n": 27,
+    "input_overhead": 482,
+    "input_overhead_range": [
+      482,
+      482
+    ],
+    "output_ratio": 1.1314549699018044,
+    "output_ratio_range": [
+      0.9798657718120806,
+      1.546583850931677
+    ],
+    "output_mean_abs_error": 0.09361121980501333
+  },
+  "index": [
+    {
+      "collection": "s0-1024__e1__r1__cap150",
+      "model": "text-embedding-3-small",
+      "provider": "API",
+      "use_cases": 6460,
+      "tokens_total": 5361047,
+      "embedded_tokens": 4434543,
+      "embedded_texts": 4882,
+      "cache_hits": 1578,
+      "usd": 0.088691,
+      "seconds": 262.3,
+      "texts_per_second": 18.6,
+      "usd_full_corpus": 0.107221
+    },
+    {
+      "collection": "s1-1024__e1__r1__cap150",
+      "model": "text-embedding-3-small",
+      "provider": "API",
+      "use_cases": 6576,
+      "tokens_total": 4975413,
+      "embedded_tokens": 4769667,
+      "embedded_texts": 6255,
+      "cache_hits": 321,
+      "usd": 0.095393,
+      "seconds": 279.0,
+      "texts_per_second": 22.4,
+      "usd_full_corpus": 0.099508
+    },
+    {
+      "collection": "s2-1024__e1__r1__cap150",
+      "model": "text-embedding-3-small",
+      "provider": "API",
+      "use_cases": 8667,
+      "tokens_total": 3193551,
+      "embedded_tokens": 596214,
+      "embedded_texts": 885,
+      "cache_hits": 7782,
+      "usd": 0.011924,
+      "seconds": 32.3,
+      "texts_per_second": 27.4,
+      "usd_full_corpus": 0.063871
+    },
+    {
+      "collection": "s3-1024__e1__r1__cap150",
+      "model": "text-embedding-3-small",
+      "provider": "API",
+      "use_cases": 8633,
+      "tokens_total": 3242739,
+      "embedded_tokens": 3193030,
+      "embedded_texts": 8438,
+      "cache_hits": 195,
+      "usd": 0.063861,
+      "seconds": 138.4,
+      "texts_per_second": 61.0,
+      "usd_full_corpus": 0.064855
+    },
+    {
+      "collection": "s3-1024__e4__r1__cap150",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 8633,
+      "tokens_total": 3242739,
+      "embedded_tokens": 1492930,
+      "embedded_texts": 4281,
+      "cache_hits": 4352,
+      "usd": 0.0,
+      "seconds": 772.4,
+      "texts_per_second": 5.5,
+      "usd_full_corpus": 0.0
+    }
+  ],
+  "index_all": [
+    {
+      "collection": "char-1024__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 3786,
+      "tokens_total": 3232960,
+      "embedded_tokens": 1504007,
+      "embedded_texts": 1566,
+      "cache_hits": 2220,
+      "usd": 0.0,
+      "seconds": 719.8,
+      "texts_per_second": 2.2,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s0-1024__e1__r1__cap150",
+      "model": "text-embedding-3-small",
+      "provider": "API",
+      "use_cases": 6460,
+      "tokens_total": 5361047,
+      "embedded_tokens": 4434543,
+      "embedded_texts": 4882,
+      "cache_hits": 1578,
+      "usd": 0.088691,
+      "seconds": 262.3,
+      "texts_per_second": 18.6,
+      "usd_full_corpus": 0.107221
+    },
+    {
+      "collection": "s0-1024__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 3793,
+      "tokens_total": 3195330,
+      "embedded_tokens": 3094405,
+      "embedded_texts": 3651,
+      "cache_hits": 142,
+      "usd": 0.0,
+      "seconds": 1405.6,
+      "texts_per_second": 2.6,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s1-1024__e1__r1__cap150",
+      "model": "text-embedding-3-small",
+      "provider": "API",
+      "use_cases": 6576,
+      "tokens_total": 4975413,
+      "embedded_tokens": 4769667,
+      "embedded_texts": 6255,
+      "cache_hits": 321,
+      "usd": 0.095393,
+      "seconds": 279.0,
+      "texts_per_second": 22.4,
+      "usd_full_corpus": 0.099508
+    },
+    {
+      "collection": "s1-1024__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 3866,
+      "tokens_total": 2929999,
+      "embedded_tokens": 2288558,
+      "embedded_texts": 2812,
+      "cache_hits": 1054,
+      "usd": 0.0,
+      "seconds": 1037.7,
+      "texts_per_second": 2.7,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s2-1024__e1__r1__cap150",
+      "model": "text-embedding-3-small",
+      "provider": "API",
+      "use_cases": 8667,
+      "tokens_total": 3193551,
+      "embedded_tokens": 596214,
+      "embedded_texts": 885,
+      "cache_hits": 7782,
+      "usd": 0.011924,
+      "seconds": 32.3,
+      "texts_per_second": 27.4,
+      "usd_full_corpus": 0.063871
+    },
+    {
+      "collection": "s2-1024__e3__r1__cap150__sub-437d70f2",
+      "model": "BAAI/bge-m3",
+      "provider": "local",
+      "use_cases": 4357,
+      "tokens_total": 1705143,
+      "embedded_tokens": 365365,
+      "embedded_texts": 553,
+      "cache_hits": 3804,
+      "usd": 0.0,
+      "seconds": 365.2,
+      "texts_per_second": 1.5,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s2-1024__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 4357,
+      "tokens_total": 1705143,
+      "embedded_tokens": 347687,
+      "embedded_texts": 527,
+      "cache_hits": 3830,
+      "usd": 0.0,
+      "seconds": 108.4,
+      "texts_per_second": 4.9,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s2-1024__e5__r1__cap150__sub-437d70f2",
+      "model": "nomic-ai/nomic-embed-text-v1.5",
+      "provider": "local",
+      "use_cases": 4357,
+      "tokens_total": 1705143,
+      "embedded_tokens": 365365,
+      "embedded_texts": 553,
+      "cache_hits": 3804,
+      "usd": 0.0,
+      "seconds": 162.7,
+      "texts_per_second": 3.4,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024-min128__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 4345,
+      "tokens_total": 1757528,
+      "embedded_tokens": 27910,
+      "embedded_texts": 25,
+      "cache_hits": 4320,
+      "usd": 0.0,
+      "seconds": 23.7,
+      "texts_per_second": 1.1,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024-min64__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 4345,
+      "tokens_total": 1751680,
+      "embedded_tokens": 10964,
+      "embedded_texts": 9,
+      "cache_hits": 4336,
+      "usd": 0.0,
+      "seconds": 20.3,
+      "texts_per_second": 0.4,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024__e1__r1__cap150",
+      "model": "text-embedding-3-small",
+      "provider": "API",
+      "use_cases": 8633,
+      "tokens_total": 3242739,
+      "embedded_tokens": 3193030,
+      "embedded_texts": 8438,
+      "cache_hits": 195,
+      "usd": 0.063861,
+      "seconds": 138.4,
+      "texts_per_second": 61.0,
+      "usd_full_corpus": 0.064855
+    },
+    {
+      "collection": "s3-1024__e1__r1__cap150__sub-e56072ed",
+      "model": "text-embedding-3-small",
+      "provider": "API",
+      "use_cases": 187,
+      "tokens_total": 46840,
+      "embedded_tokens": 46840,
+      "embedded_texts": 187,
+      "cache_hits": 0,
+      "usd": 0.000937,
+      "seconds": 3.8,
+      "texts_per_second": 49.2,
+      "usd_full_corpus": 0.000937
+    },
+    {
+      "collection": "s3-1024__e3__r1__cap150__sub-437d70f2",
+      "model": "BAAI/bge-m3",
+      "provider": "local",
+      "use_cases": 4345,
+      "tokens_total": 1747238,
+      "embedded_tokens": 1746940,
+      "embedded_texts": 4344,
+      "cache_hits": 1,
+      "usd": 0.0,
+      "seconds": 1471.1,
+      "texts_per_second": 3.0,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024__e4__r1__cap150",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 8633,
+      "tokens_total": 3242739,
+      "embedded_tokens": 1492930,
+      "embedded_texts": 4281,
+      "cache_hits": 4352,
+      "usd": 0.0,
+      "seconds": 772.4,
+      "texts_per_second": 5.5,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 4345,
+      "tokens_total": 1747238,
+      "embedded_tokens": 902545,
+      "embedded_texts": 2130,
+      "cache_hits": 2215,
+      "usd": 0.0,
+      "seconds": 262.0,
+      "texts_per_second": 8.1,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024__e4__r1__cap300__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 7100,
+      "tokens_total": 2898281,
+      "embedded_tokens": 1148538,
+      "embedded_texts": 2749,
+      "cache_hits": 4351,
+      "usd": 0.0,
+      "seconds": 387.0,
+      "texts_per_second": 7.1,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024__e4__r1__cap75__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 2240,
+      "tokens_total": 911180,
+      "embedded_tokens": 0,
+      "embedded_texts": 0,
+      "cache_hits": 2240,
+      "usd": 0.0,
+      "seconds": 4.5,
+      "texts_per_second": null,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024__e4__r1__nocap__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 12493,
+      "tokens_total": 5171390,
+      "embedded_tokens": 2271086,
+      "embedded_texts": 5391,
+      "cache_hits": 7102,
+      "usd": 0.0,
+      "seconds": 972.7,
+      "texts_per_second": 5.5,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024__e4__raw__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 4345,
+      "tokens_total": 1685894,
+      "embedded_tokens": 1681192,
+      "embedded_texts": 4319,
+      "cache_hits": 26,
+      "usd": 0.0,
+      "seconds": 751.2,
+      "texts_per_second": 5.7,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-1024__e5__r1__cap150__sub-437d70f2",
+      "model": "nomic-ai/nomic-embed-text-v1.5",
+      "provider": "local",
+      "use_cases": 4345,
+      "tokens_total": 1747238,
+      "embedded_tokens": 1746940,
+      "embedded_texts": 4344,
+      "cache_hits": 1,
+      "usd": 0.0,
+      "seconds": 733.6,
+      "texts_per_second": 5.9,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-2048__e4l__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 4294,
+      "tokens_total": 1936320,
+      "embedded_tokens": 1936022,
+      "embedded_texts": 4293,
+      "cache_hits": 1,
+      "usd": 0.0,
+      "seconds": 1033.1,
+      "texts_per_second": 4.2,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-256__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 4472,
+      "tokens_total": 1021641,
+      "embedded_tokens": 530106,
+      "embedded_texts": 2471,
+      "cache_hits": 2001,
+      "usd": 0.0,
+      "seconds": 228.4,
+      "texts_per_second": 10.8,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "s3-512__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 4400,
+      "tokens_total": 1392849,
+      "embedded_tokens": 538400,
+      "embedded_texts": 1373,
+      "cache_hits": 3027,
+      "usd": 0.0,
+      "seconds": 214.1,
+      "texts_per_second": 6.4,
+      "usd_full_corpus": 0.0
+    },
+    {
+      "collection": "tok-1024__e4__r1__cap150__sub-437d70f2",
+      "model": "jinaai/jina-embeddings-v2-base-code",
+      "provider": "local",
+      "use_cases": 3792,
+      "tokens_total": 3332102,
+      "embedded_tokens": 3121758,
+      "embedded_texts": 3549,
+      "cache_hits": 243,
+      "usd": 0.0,
+      "seconds": 1543.5,
+      "texts_per_second": 2.3,
+      "usd_full_corpus": 0.0
+    }
+  ],
+  "generator": {
+    "base": {
+      "calls": 115,
+      "exact": 25,
+      "input_tokens": 385855,
+      "output_tokens": 29301,
+      "usd": 0.075458,
+      "per_call": {
+        "input_mean": 3355.2608695652175,
+        "input_p50": 3348,
+        "input_p95": 5098,
+        "output_mean": 254.7913043478261,
+        "output_p50": 239,
+        "output_p95": 467,
+        "usd_mean": 0.0006561565217391304,
+        "usd_p95": 0.000941
+      },
+      "input_parts_mean": {
+        "system": 505,
+        "script": 331.3304347826087,
+        "context": 2036.9304347826087
+      },
+      "output_share_of_usd": 0.23295078056667287,
+      "scripts": 115
+    },
+    "rerank": {
+      "calls": 115,
+      "exact": 2,
+      "input_tokens": 388232,
+      "output_tokens": 32538,
+      "usd": 0.077757,
+      "per_call": {
+        "input_mean": 3375.9304347826087,
+        "input_p50": 3314,
+        "input_p95": 4850,
+        "output_mean": 282.9391304347826,
+        "output_p50": 259,
+        "output_p95": 519,
+        "usd_mean": 0.0006761478260869565,
+        "usd_p95": 0.001008
+      },
+      "input_parts_mean": {
+        "system": 505,
+        "script": 331.3304347826087,
+        "context": 2057.6
+      },
+      "output_share_of_usd": 0.25103849171135717,
+      "scripts": 115
+    }
+  },
+  "operating_points": {
+    "base": {
+      "elegido": {
+        "threshold": 0.749112,
+        "llm_calls": 2,
+        "scripts": 115,
+        "call_rate": 0.017391304347826087,
+        "usd_per_1000_scripts": 0.0114
+      },
+      "permisivo_95": {
+        "threshold": 0.454727,
+        "llm_calls": 105,
+        "scripts": 115,
+        "call_rate": 0.9130434782608695,
+        "usd_per_1000_scripts": 0.5991
+      }
+    },
+    "rerank": {
+      "elegido": {
+        "threshold": 6.25,
+        "llm_calls": 10,
+        "scripts": 115,
+        "call_rate": 0.08695652173913043,
+        "usd_per_1000_scripts": 0.0588
+      },
+      "permisivo_95": {
+        "threshold": -4.515625,
+        "llm_calls": 103,
+        "scripts": 115,
+        "call_rate": 0.8956521739130435,
+        "usd_per_1000_scripts": 0.6056
+      }
+    }
+  },
+  "reranker": [
+    {
+      "reranker": "k1",
+      "label": "Qwen3-Reranker-0.6B",
+      "k": 10,
+      "seconds_per_pair": 0.5371799135350848,
+      "seconds_per_query": 5.37,
+      "peak_memory_mb": 2289,
+      "dtype": "float16",
+      "device": "mps",
+      "machine": "macOS-26.6.2-arm64-arm-64bit"
+    },
+    {
+      "reranker": "k1",
+      "label": "Qwen3-Reranker-0.6B",
+      "k": 20,
+      "seconds_per_pair": 0.5371799135350848,
+      "seconds_per_query": 10.74,
+      "peak_memory_mb": 2289,
+      "dtype": "float16",
+      "device": "mps",
+      "machine": "macOS-26.6.2-arm64-arm-64bit"
+    },
+    {
+      "reranker": "k1",
+      "label": "Qwen3-Reranker-0.6B",
+      "k": 30,
+      "seconds_per_pair": 0.5371799135350848,
+      "seconds_per_query": 16.12,
+      "peak_memory_mb": 2289,
+      "dtype": "float16",
+      "device": "mps",
+      "machine": "macOS-26.6.2-arm64-arm-64bit"
+    },
+    {
+      "reranker": "k1",
+      "label": "Qwen3-Reranker-0.6B",
+      "k": 50,
+      "seconds_per_pair": 0.5371799135350848,
+      "seconds_per_query": 26.86,
+      "peak_memory_mb": 2289,
+      "dtype": "float16",
+      "device": "mps",
+      "machine": "macOS-26.6.2-arm64-arm-64bit"
+    },
+    {
+      "reranker": "k2",
+      "label": "gte-reranker-modernbert-base",
+      "k": 10,
+      "seconds_per_pair": 0.12254738942467576,
+      "seconds_per_query": 1.23,
+      "peak_memory_mb": 1050,
+      "dtype": "float16",
+      "device": "mps",
+      "machine": "macOS-26.6.2-arm64-arm-64bit"
+    },
+    {
+      "reranker": "k2",
+      "label": "gte-reranker-modernbert-base",
+      "k": 20,
+      "seconds_per_pair": 0.12254738942467576,
+      "seconds_per_query": 2.45,
+      "peak_memory_mb": 1050,
+      "dtype": "float16",
+      "device": "mps",
+      "machine": "macOS-26.6.2-arm64-arm-64bit"
+    },
+    {
+      "reranker": "k2",
+      "label": "gte-reranker-modernbert-base",
+      "k": 30,
+      "seconds_per_pair": 0.12254738942467576,
+      "seconds_per_query": 3.68,
+      "peak_memory_mb": 1050,
+      "dtype": "float16",
+      "device": "mps",
+      "machine": "macOS-26.6.2-arm64-arm-64bit"
+    },
+    {
+      "reranker": "k2",
+      "label": "gte-reranker-modernbert-base",
+      "k": 50,
+      "seconds_per_pair": 0.12254738942467576,
+      "seconds_per_query": 6.13,
+      "peak_memory_mb": 1050,
+      "dtype": "float16",
+      "device": "mps",
+      "machine": "macOS-26.6.2-arm64-arm-64bit"
+    }
+  ],
+  "spend": {
+    "index": {
+      "texts": 20647,
+      "tokens": 13040294,
+      "usd": 0.260806
+    },
+    "llm_cache": {
+      "calls": 443,
+      "input_tokens": 1495136,
+      "output_tokens": 117585,
+      "usd": 0.294821
+    },
+    "total_usd": 0.5556,
+    "budget_usd": 10
+  }
+}
