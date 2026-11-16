@@ -158,3 +158,27 @@ def test_heuristic_check_splits_false_yes_and_false_no():
     assert h["accuracy"] == 0.5 and h["items_with_error"] == ["R01"]
     with pytest.raises(ValueError, match="fuera de la tabla"):
         review.heuristic_check(chosen, {"R01": {"errores_heuristica": [4]}, "R02": {"errores_heuristica": []}})
+
+
+def test_remaining_skips_the_sample_and_keys_by_version_and_item():
+    judged = {"base": {"b2": {}, "b1": {}, "x": {}}, "rerank": {"x": {}, "r1": {}}}
+    chosen = [{"run": "base", "id": "x", "review_id": "R01"}, {"run": "rerank", "id": "r1", "review_id": "R02"}]
+    todo = review.remaining(judged, chosen)
+    assert [t["review_id"] for t in todo] == ["base:b1", "base:b2", "rerank:x"]
+    assert todo[2] == {"run": "rerank", "id": "x", "review_id": "rerank:x"}
+
+
+def test_write_batches_splits_by_batch_size(tmp_path):
+    prompts = [{"review_id": f"base:{i}"} for i in range(review.OPUS_BATCH * 2 + 1)]
+    assert review.write_batches(prompts, tmp_path) == 3
+    sizes = [len(review.read_jsonl(tmp_path / f"prompts_{k}.jsonl")) for k in (1, 2, 3)]
+    assert sizes == [review.OPUS_BATCH, review.OPUS_BATCH, 1]
+
+
+def test_paired_difference_counts_direction_and_mean():
+    d = review.paired_difference([("si", "no"), ("parcial", "no"), ("no", "no"), ("no", "parcial")], boot=200)
+    assert (d["n"], d["higher"], d["equal"], d["lower"]) == (4, 2, 1, 1)
+    assert d["mean"] == pytest.approx((1 + 0.5 + 0 - 0.5) / 4)
+    lo, hi = d["ci"]
+    assert lo <= d["mean"] <= hi
+    assert review.paired_difference([("si", "no")] * 3, boot=200)["ci"] == [1, 1]

@@ -22,6 +22,13 @@ esquema (`Preservation`) y las une en opus_answers.jsonl.
 (misma numeración y mismo criterio que la heurística), enteras y marcadas como código o prosa; con --chunks, además el
 texto completo de cada chunk. Solo imprime: no escribe archivos ni muestra la corrida, el éxito ni el veredicto.
 
+`opus-all`: los mismos prompts de (b) para el resto de los scripts que juzgó gpt-4o-mini (todos los cambiados de las dos
+corridas, menos los 20 de la muestra, que ya tienen respuesta de Opus), en tandas, en results/study/review/opus_all/
+(clave `<versión>:<ítem>`). `opus-all-check` valida las respuestas y las une en opus_all_answers.jsonl. `judge-vs-opus`
+compara gpt-4o-mini con Opus sobre todos los scripts juzgados (sin la revisión humana, que se hizo con ayuda de Claude
+y no es independiente de Opus): preservación media de cada uno, diferencia pareada con IC y acuerdo. Escribe
+results/study/judge_vs_opus.{json,md}.
+
 `agreement` (con la planilla completa): une la planilla, el .judge.jsonl de cada corrida y opus_answers.jsonl (cada R
 se asigna a su versión con sample.json). Preservación: acuerdo exacto, a un nivel y kappa de Cohen de gpt-4o-mini vs.
 humano, gpt-4o-mini vs. Opus y Opus vs. humano, en total y por versión, con IC 95% por bootstrap sobre ítems.
@@ -55,6 +62,8 @@ QUOTAS = {
 }
 VERDICTS = ("si", "parcial", "no")
 OPUS_DIR, OPUS_MODEL, OPUS_BATCH = REVIEW_DIR / "opus", "claude-opus-5-5", 5
+OPUS_ALL_DIR = REVIEW_DIR / "opus_all"  # el resto de los scripts juzgados (judge-vs-opus)
+JUDGE_VS_OPUS_OUT = ROOT / "results" / "study" / "judge_vs_opus"
 # Acuerdo (metricas.md §3.8): el veredicto como escala no < parcial < si, para el acuerdo "a un nivel"
 LEVEL = {"no": 0, "parcial": 1, "si": 2}
 RATERS = ("humano", "gpt-4o-mini", "opus")
@@ -277,31 +286,132 @@ def cmd_opus(force: bool) -> int:
     chosen = json.loads(sample_path.read_text(encoding="utf-8"))["items"]
     records = {run: {r["id"]: r for r in read_jsonl(GEN_DIR / f"{name}.items.jsonl")} for run, name in RUNS.items()}
     prompts = opus_prompts(chosen, load_items(), records)
-    OPUS_DIR.mkdir(parents=True, exist_ok=True)
-    for k in range(0, len(prompts), OPUS_BATCH):
-        path = OPUS_DIR / f"prompts_{k // OPUS_BATCH + 1}.jsonl"
-        path.write_text("".join(json.dumps(p, ensure_ascii=False) + "\n" for p in prompts[k:k + OPUS_BATCH]),
-                        encoding="utf-8")
-    print(f"{len(prompts)} prompts en {-(-len(prompts) // OPUS_BATCH)} tandas → {OPUS_DIR.relative_to(ROOT)}/")
+    batches = write_batches(prompts, OPUS_DIR)
+    print(f"{len(prompts)} prompts en {batches} tandas → {OPUS_DIR.relative_to(ROOT)}/")
     return 0
 
 
-def cmd_opus_check() -> int:
-    prompt_ids = {p["review_id"] for path in sorted(OPUS_DIR.glob("prompts_*.jsonl")) for p in read_jsonl(path)}
+def cmd_opus_check(opus_dir: Path = OPUS_DIR, out: Path = REVIEW_DIR / "opus_answers.jsonl") -> int:
+    prompt_ids = {p["review_id"] for path in sorted(opus_dir.glob("prompts_*.jsonl")) for p in read_jsonl(path)}
     answers = {}
-    for path in sorted(OPUS_DIR.glob("answers_*.jsonl")):
+    for path in sorted(opus_dir.glob("answers_*.jsonl")):
         for row in read_jsonl(path):
             a = check_answer(prompt_ids, row)
             if a["review_id"] in answers:
                 raise ValueError(f"{a['review_id']} respondido dos veces")
             answers[a["review_id"]] = a
     missing = sorted(prompt_ids - answers.keys())
-    out = REVIEW_DIR / "opus_answers.jsonl"
     out.write_text("".join(json.dumps(answers[k], ensure_ascii=False) + "\n" for k in sorted(answers)),
                    encoding="utf-8")
     print(f"{len(answers)}/{len(prompt_ids)} respuestas válidas → {out.relative_to(ROOT)}"
           + (f"; faltan {', '.join(missing)}" if missing else ""))
     return 0 if not missing else 1
+
+
+def remaining(judged: dict[str, dict], chosen: list[dict]) -> list[dict]:
+    """Los scripts juzgados por gpt-4o-mini que no están en la muestra (esos ya tienen respuesta de Opus), en orden
+    estable (versión, ítem), con la clave `<versión>:<ítem>` como review_id."""
+    done = {(s["run"], s["id"]) for s in chosen}
+    return [{"run": run, "id": i, "review_id": f"{run}:{i}"} for run in judged for i in sorted(judged[run])
+            if (run, i) not in done]
+
+
+def write_batches(prompts: list[dict], opus_dir: Path) -> int:
+    opus_dir.mkdir(parents=True, exist_ok=True)
+    for k in range(0, len(prompts), OPUS_BATCH):
+        path = opus_dir / f"prompts_{k // OPUS_BATCH + 1}.jsonl"
+        path.write_text("".join(json.dumps(p, ensure_ascii=False) + "\n" for p in prompts[k:k + OPUS_BATCH]),
+                        encoding="utf-8")
+    return -(-len(prompts) // OPUS_BATCH)
+
+
+def cmd_opus_all(force: bool) -> int:
+    if OPUS_ALL_DIR.exists() and any(OPUS_ALL_DIR.glob("answers_*.jsonl")) and not force:
+        print(f"ya hay respuestas en {OPUS_ALL_DIR.relative_to(ROOT)}: no piso los prompts; usar --force")
+        return 1
+    chosen = json.loads((REVIEW_DIR / "sample.json").read_text(encoding="utf-8"))["items"]
+    judged = {run: {r["id"]: r for r in read_jsonl(GEN_DIR / f"{name}.judge.jsonl")} for run, name in RUNS.items()}
+    records = {run: {r["id"]: r for r in read_jsonl(GEN_DIR / f"{name}.items.jsonl")} for run, name in RUNS.items()}
+    todo = remaining(judged, chosen)
+    batches = write_batches(opus_prompts(todo, load_items(), records), OPUS_ALL_DIR)
+    by_run = {run: sum(t["run"] == run for t in todo) for run in RUNS}
+    print(f"juzgados por gpt-4o-mini: {', '.join(f'{run} {len(judged[run])}' for run in RUNS)}; ya respondidos por "
+          f"Opus (muestra): {len(chosen)}")
+    print(f"{len(todo)} prompts ({', '.join(f'{run} {n}' for run, n in by_run.items())}) en {batches} tandas de "
+          f"hasta {OPUS_BATCH} → {OPUS_ALL_DIR.relative_to(ROOT)}/")
+    return 0
+
+
+def paired_difference(pairs: list[tuple[str, str]], boot: int = BOOT, seed: int = SEED) -> dict:
+    """Diferencia pareada de preservación (primero − segundo, con si = 1, parcial = 0,5, no = 0) sobre los mismos ítems:
+    media con IC 95% por bootstrap y en cuántos ítems el primero da más, lo mismo o menos."""
+    diffs = [PRESERVE_SCORE[a] - PRESERVE_SCORE[b] for a, b in pairs]
+    n, rng = len(diffs), random.Random(seed)
+    means = [sum(diffs[rng.randrange(n)] for _ in range(n)) / n for _ in range(boot)]
+    return {"n": n, "mean": sum(diffs) / n, "ci": percentile_ci(means), "higher": sum(d > 0 for d in diffs),
+            "equal": sum(d == 0 for d in diffs), "lower": sum(d < 0 for d in diffs)}
+
+
+def judge_vs_opus_md(result: dict) -> str:
+    lines = [
+        "# gpt-4o-mini vs. Claude Opus 5.5 como jueces de preservación",
+        "",
+        "Todos los scripts cambiados que juzgó gpt-4o-mini en las corridas permisivas de dev, juzgados también por Opus 5.5 "
+        "con el mismo prompt y el mismo esquema (metricas.md §3.8). Sin estratificar: los promedios son de la población "
+        "juzgada. IC 95% por bootstrap sobre ítems. Sesgo a declarar: los scripts del dataset los escribió Claude.",
+        "",
+        "| Grupo | n | gpt-4o-mini | Opus 5.5 | Diferencia (gpt − Opus) | gpt más blando / igual / más estricto | "
+        "Acuerdo exacto | A un nivel | Kappa |",
+        "|---|---|---|---|---|---|---|---|---|",
+    ]
+    for g, r in result["groups"].items():
+        d, a = r["difference"], r["agreement"]
+        lines.append(f"| {g} | {r['n']} | {fmt(r['mean']['gpt-4o-mini'])} | {fmt(r['mean']['opus'])} | "
+                     f"{d['mean']:+.2f} [{d['ci'][0]:+.2f}, {d['ci'][1]:+.2f}] | {d['higher']} / {d['equal']} / "
+                     f"{d['lower']} | {fmt(a['exact'], a['exact_ci'])} | {fmt(a['within_one'])} | "
+                     f"{fmt(a['kappa'], a['kappa_ci'])} |")
+    lines += ["", "Veredictos de cada juez:", "", "| Grupo | Juez | si | parcial | no |", "|---|---|---|---|---|"]
+    for g, r in result["groups"].items():
+        lines += [f"| {g} | {j} | " + " | ".join(str(r["verdicts"][j][v]) for v in VERDICTS) + " |"
+                  for j in ("gpt-4o-mini", "opus")]
+    conf = result["groups"]["total"]["agreement"]["confusion"]
+    lines += ["", "Matriz de confusión, total (filas: gpt-4o-mini; columnas: Opus 5.5):", "",
+              "| | " + " | ".join(VERDICTS) + " |", "|---|" + "---|" * len(VERDICTS)]
+    lines += [f"| {r} | " + " | ".join(str(conf[r][c]) for c in VERDICTS) + " |" for r in VERDICTS]
+    return "\n".join(lines) + "\n"
+
+
+def cmd_judge_vs_opus() -> int:
+    chosen = json.loads((REVIEW_DIR / "sample.json").read_text(encoding="utf-8"))["items"]
+    judged = {run: {r["id"]: r for r in read_jsonl(GEN_DIR / f"{name}.judge.jsonl")} for run, name in RUNS.items()}
+    opus = {(s["run"], s["id"]): r["output"]["preserves"] for s in chosen
+            for r in read_jsonl(REVIEW_DIR / "opus_answers.jsonl") if r["review_id"] == s["review_id"]}
+    opus |= {tuple(r["review_id"].split(":", 1)): r["output"]["preserves"]
+             for r in read_jsonl(REVIEW_DIR / "opus_all_answers.jsonl")}
+    keys = [(run, i) for run in RUNS for i in sorted(judged[run])]
+    if missing := [f"{run}:{i}" for run, i in keys if (run, i) not in opus]:
+        print(f"faltan {len(missing)} respuestas de Opus (correr opus-all-check): {', '.join(missing[:10])}...")
+        return 1
+    pairs = {k: (judged[k[0]][k[1]]["b"]["preserves"], opus[k]) for k in keys}
+    groups = {"total": keys} | {run: [k for k in keys if k[0] == run] for run in RUNS}
+    result = {"runs": RUNS, "boot": BOOT, "seed": SEED, "groups": {}}
+    for g, ks in groups.items():
+        ps = [pairs[k] for k in ks]
+        result["groups"][g] = {
+            "n": len(ps),
+            "mean": {j: sum(PRESERVE_SCORE[p[x]] for p in ps) / len(ps) for x, j in enumerate(("gpt-4o-mini", "opus"))},
+            "verdicts": {j: {v: sum(p[x] == v for p in ps) for v in VERDICTS}
+                         for x, j in enumerate(("gpt-4o-mini", "opus"))},
+            "difference": paired_difference(ps), "agreement": agreement(ps)}
+    result["items"] = [{"run": run, "id": i, "gpt-4o-mini": pairs[(run, i)][0], "opus": pairs[(run, i)][1]}
+                       for run, i in keys]
+    JUDGE_VS_OPUS_OUT.with_suffix(".json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n",
+                                                      encoding="utf-8")
+    md = judge_vs_opus_md(result)
+    JUDGE_VS_OPUS_OUT.with_suffix(".md").write_text(md, encoding="utf-8")
+    print(md)
+    print(f"→ {JUDGE_VS_OPUS_OUT.relative_to(ROOT)}.{{json,md}}")
+    return 0
 
 
 def kappa(pairs: list[tuple[str, str]]) -> float | None:
@@ -474,6 +584,10 @@ def main() -> int:
     opus.add_argument("--force", action="store_true", help="vuelve a escribir los prompts aunque haya respuestas")
     sub.add_parser("opus-check", help="valida las respuestas de Opus y las une en opus_answers.jsonl")
     sub.add_parser("agreement", help="acuerdo humano / gpt-4o-mini / Opus y heurística contra la persona")
+    opus_all = sub.add_parser("opus-all", help="exporta los prompts de (b) del resto de los scripts juzgados, en tandas")
+    opus_all.add_argument("--force", action="store_true", help="vuelve a escribir los prompts aunque haya respuestas")
+    sub.add_parser("opus-all-check", help="valida esas respuestas y las une en opus_all_answers.jsonl")
+    sub.add_parser("judge-vs-opus", help="gpt-4o-mini vs. Opus sobre todos los scripts juzgados")
     context = sub.add_parser("context", help="muestra dónde aparece cada identificador en los chunks de un ítem")
     context.add_argument("review_id", help="p. ej. R02")
     context.add_argument("--chunks", action="store_true", help="además, el texto completo de cada chunk")
@@ -486,6 +600,12 @@ def main() -> int:
         return cmd_opus_check()
     if args.cmd == "agreement":
         return cmd_agreement()
+    if args.cmd == "opus-all":
+        return cmd_opus_all(args.force)
+    if args.cmd == "opus-all-check":
+        return cmd_opus_check(OPUS_ALL_DIR, REVIEW_DIR / "opus_all_answers.jsonl")
+    if args.cmd == "judge-vs-opus":
+        return cmd_judge_vs_opus()
     if args.cmd == "context":
         return cmd_context(args.review_id, args.chunks)
     return 1
