@@ -97,6 +97,15 @@ def test_record_context_uses_saved_text_or_lookup():
         record_context(record)
 
 
+def test_record_context_includes_chunk_headers():
+    # el LLM ve el título de cada chunk en el prompt: un nombre que solo está ahí cuenta como visto
+    record = {"id": "x", "contexts": [{"chunks": [{"id": "c1", "header": "rapidfuzz > `fuzz.partial_ratio(s1, s2)`",
+                                                    "text": "Calcula la similitud."}]}]}
+    context = record_context(record)
+    assert context == "rapidfuzz > `fuzz.partial_ratio(s1, s2)`\nCalcula la similitud."
+    assert mentions(context, "partial_ratio")
+
+
 def test_load_chunk_texts(tmp_path):
     path = tmp_path / "chunks.jsonl"
     path.write_text("\n".join(json.dumps({"id": i, "text": f"texto {i}"}) for i in ("a", "b", "c")) + "\n")

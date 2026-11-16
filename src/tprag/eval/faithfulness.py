@@ -161,13 +161,14 @@ def load_chunk_texts(path: Path, ids: set[str]) -> dict[str, str]:
 
 
 def record_context(record: dict, texts: dict[str, str] | None = None) -> str:
-    """Texto de todos los chunks que recibió el LLM en ese script (uno por import que pasó el umbral). Usa el `text`
-    guardado en el detalle; si falta, lo busca en `texts` (id → texto)."""
+    """Texto de todos los chunks que recibió el LLM en ese script (uno por import que pasó el umbral): el título y el
+    texto de cada uno, como en el prompt (`generate/prompt.py`), así un nombre que solo está en el título cuenta como
+    visto. Usa el `text` guardado en el detalle; si falta, lo busca en `texts` (id → texto)."""
     parts = []
     for ctx in record.get("contexts", []):
         for ch in ctx["chunks"]:
             text = ch.get("text") or (texts or {}).get(ch["id"])
             if text is None:
                 raise KeyError(f"{record['id']}: falta el texto del chunk {ch['id']} (pasar `texts`)")
-            parts.append(text)
+            parts.append(f"{ch['header']}\n{text}" if ch.get("header") else text)
     return "\n\n".join(parts)
