@@ -26,8 +26,13 @@ def agreement():
     g = {"n": 10, "exact": 0.5, "exact_ci": [0.2, 0.8], "kappa": 0.3, "kappa_ci": [0.0, 0.6]}
     groups = {"total": g | {"n": 20}, "base": g, "rerank": g | {"kappa": None, "kappa_ci": None}}
     mean = {"total": 0.4, "base": 0.3, "rerank": 0.5}
-    return {"preservation": {"gpt-4o-mini vs humano": groups, "gpt-4o-mini vs opus": groups},
+    return {"preservation": {"gpt-4o-mini vs humano": groups, "gpt-4o-mini vs opus": groups, "opus vs humano": groups},
             "mean_score": {"humano": mean, "gpt-4o-mini": mean, "opus": mean}}
+
+
+def judges():
+    group = {"n": 10, "mean": {"gpt-4o-mini": 0.6, "opus": 0.3}}
+    return {"groups": {g: group for g in ("total", "base", "rerank")}}
 
 
 def extra():
@@ -39,11 +44,12 @@ def extra():
                                                                     (True, False)}}
 
 
-def test_generation_figures_write_seven_pngs(tmp_path):
+def test_generation_figures_write_twelve_pngs(tmp_path):
     analyses = {"base": analysis(1), "rerank": analysis(10)}
     level1 = {v: {"anterior": row(0, 12, 4), "corregido": row(0, 8, 8)} for v in analyses}
-    paths = pg.generation_figures(analyses, level1, agreement(), {v: extra() for v in analyses}, tmp_path)
-    assert len(paths) == 7 and all(p.exists() and p.stat().st_size > 0 for p in paths)
+    paths = pg.generation_figures(analyses, level1, agreement(), judges(), {v: extra() for v in analyses},
+                                  tmp_path)
+    assert len(paths) == 12 and all(p.exists() and p.stat().st_size > 0 for p in paths)
 
 
 def target(score, positive=False, changed=False):

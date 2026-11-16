@@ -1,6 +1,6 @@
 """Gráficos del estudio del generador (docs/agents/metricas.md §3-§4). No usa API ni modelos: lee los análisis de las
-corridas permisivas de dev (analyze_generation.py), su detalle (para reconstruir el nivel 1 anterior) y el acuerdo de
-la revisión manual (review_generation.py agreement).
+corridas permisivas de dev (analyze_generation.py), su detalle (para reconstruir el nivel 1 anterior), el acuerdo de
+la revisión manual (review_generation.py agreement) y la comparación de jueces (review_generation.py judge-vs-opus).
 
 Uso:
     uv run --group analysis python src/scripts/plots_generation.py
@@ -45,11 +45,12 @@ def main() -> int:
     records = {v: read_jsonl(GEN_DIR / f"{name}.items.jsonl") for v, name in RUNS.items()}
     level1 = {v: level1_counts(records[v], originals) for v in RUNS}
     agreement = json.loads((STUDY_DIR / "review_agreement.json").read_text(encoding="utf-8"))
+    judges = json.loads((STUDY_DIR / "judge_vs_opus.json").read_text(encoding="utf-8"))
     extra = {v: {"negatives": negative_rejection_curve(targets(records[v], originals)),
                  "noise": noise_summary(target_groups(records[v], items, float("-inf"))),
                  "relevance": relevance_by_success(records[v], read_jsonl(GEN_DIR / f"{name}.judge.jsonl"))}
              for v, name in RUNS.items()}
-    for path in generation_figures(analyses, level1, agreement, extra, OUT_DIR):
+    for path in generation_figures(analyses, level1, agreement, judges, extra, OUT_DIR):
         print(path.relative_to(ROOT))
     return 0
 

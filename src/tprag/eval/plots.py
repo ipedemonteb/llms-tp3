@@ -97,10 +97,11 @@ def _rows(ax, labels: list[str], show=True):
     ax.set_yticklabels(labels if show else [""] * len(labels), color=INK2, fontsize=10)
 
 
-def _legend(fig, handles, labels, ncol=3):
+def _legend(fig, handles, labels, ncol=3, center=False, **kwargs):
     w, h = fig.get_size_inches()
-    fig.legend(handles, labels, loc="lower left", bbox_to_anchor=(0.3 / w, 0.05 / h), ncol=ncol, frameon=False,
-               fontsize=9.5, handlelength=1.2, columnspacing=1.6, labelcolor=INK2)
+    loc, anchor = ("lower center", (0.5, 0.05 / h)) if center else ("lower left", (0.3 / w, 0.05 / h))
+    fig.legend(handles, labels, loc=loc, bbox_to_anchor=anchor, ncol=ncol, frameon=False,
+               **{"fontsize": 9.5, "handlelength": 1.2, "columnspacing": 1.6, "labelcolor": INK2, **kwargs})
 
 
 def _color(s, top):
