@@ -1,0 +1,345 @@
+{
+ "runs": {
+  "iter7_test": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4.1-mini__test__iter7",
+  "iter6": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev__iter6"
+ },
+ "seed": 2026,
+ "key": {
+  "u052": {
+   "run": "iter7_test",
+   "id": "syn-huey-01"
+  },
+  "u021": {
+   "run": "iter7_test",
+   "id": "dep-pypdf4-split-01"
+  },
+  "u058": {
+   "run": "iter7_test",
+   "id": "syn-sh-01"
+  },
+  "u025": {
+   "run": "iter7_test",
+   "id": "dep-xlrd-large-01"
+  },
+  "u030": {
+   "run": "iter7_test",
+   "id": "syn-networkx-01"
+  },
+  "u001": {
+   "run": "iter7_test",
+   "id": "syn-tenacity-01"
+  },
+  "u027": {
+   "run": "iter7_test",
+   "id": "syn-kubernetes-01"
+  },
+  "u007": {
+   "run": "iter7_test",
+   "id": "syn-joblib-01"
+  },
+  "u024": {
+   "run": "iter7_test",
+   "id": "syn-eliot-01"
+  },
+  "u044": {
+   "run": "iter7_test",
+   "id": "syn-networkx-02"
+  },
+  "u051": {
+   "run": "iter7_test",
+   "id": "syn-feedparser-01"
+  },
+  "u057": {
+   "run": "iter7_test",
+   "id": "dep-pytz-meetings-01"
+  },
+  "u043": {
+   "run": "iter7_test",
+   "id": "syn-anyio-02"
+  },
+  "u048": {
+   "run": "iter7_test",
+   "id": "syn-huggingface-hub-02"
+  },
+  "u023": {
+   "run": "iter7_test",
+   "id": "dep-pypdf2-merge-01"
+  },
+  "u031": {
+   "run": "iter7_test",
+   "id": "syn-huggingface-hub-01"
+  },
+  "u015": {
+   "run": "iter7_test",
+   "id": "dep-pypdf2-watermark-01"
+  },
+  "u040": {
+   "run": "iter7_test",
+   "id": "syn-dynaconf-01"
+  },
+  "u046": {
+   "run": "iter7_test",
+   "id": "syn-httpx-01"
+  },
+  "u053": {
+   "run": "iter7_test",
+   "id": "syn-websocket-client-01"
+  },
+  "u035": {
+   "run": "iter7_test",
+   "id": "syn-altair-01"
+  },
+  "u038": {
+   "run": "iter7_test",
+   "id": "dep-xlrd-dates-01"
+  },
+  "u036": {
+   "run": "iter7_test",
+   "id": "syn-anyio-01"
+  },
+  "u059": {
+   "run": "iter7_test",
+   "id": "syn-trafilatura-02"
+  },
+  "u045": {
+   "run": "iter7_test",
+   "id": "neg-toml-dump-01"
+  },
+  "u002": {
+   "run": "iter7_test",
+   "id": "syn-hypothesis-01"
+  },
+  "u016": {
+   "run": "iter7_test",
+   "id": "syn-rich-02"
+  },
+  "u008": {
+   "run": "iter7_test",
+   "id": "syn-gradio-02"
+  },
+  "u032": {
+   "run": "iter7_test",
+   "id": "syn-psycopg-01"
+  },
+  "u039": {
+   "run": "iter7_test",
+   "id": "syn-pyarrow-01"
+  },
+  "u018": {
+   "run": "iter7_test",
+   "id": "syn-psycopg2-01"
+  },
+  "u006": {
+   "run": "iter7_test",
+   "id": "syn-rq-02"
+  },
+  "u009": {
+   "run": "iter7_test",
+   "id": "syn-sympy-01"
+  },
+  "u014": {
+   "run": "iter7_test",
+   "id": "syn-eliot-02"
+  },
+  "u047": {
+   "run": "iter7_test",
+   "id": "syn-websockets-02"
+  },
+  "u005": {
+   "run": "iter7_test",
+   "id": "dep-pytz-utc-01"
+  },
+  "u017": {
+   "run": "iter7_test",
+   "id": "dep-passlib-login-01"
+  },
+  "u004": {
+   "run": "iter7_test",
+   "id": "syn-click-01"
+  },
+  "u011": {
+   "run": "iter7_test",
+   "id": "syn-invoke-01"
+  },
+  "u054": {
+   "run": "iter7_test",
+   "id": "syn-prompt-toolkit-01"
+  },
+  "u026": {
+   "run": "iter7_test",
+   "id": "syn-marshmallow-02"
+  },
+  "u060": {
+   "run": "iter7_test",
+   "id": "syn-pydantic-settings-02"
+  },
+  "u029": {
+   "run": "iter7_test",
+   "id": "syn-platformdirs-01"
+  },
+  "u022": {
+   "run": "iter7_test",
+   "id": "syn-hydra-core-01"
+  },
+  "u049": {
+   "run": "iter7_test",
+   "id": "syn-openpyxl-01"
+  },
+  "u056": {
+   "run": "iter7_test",
+   "id": "syn-psutil-01"
+  },
+  "u020": {
+   "run": "iter7_test",
+   "id": "syn-prompt-toolkit-02"
+  },
+  "u042": {
+   "run": "iter7_test",
+   "id": "syn-cattrs-01"
+  },
+  "u010": {
+   "run": "iter7_test",
+   "id": "dep-toml-config-01"
+  },
+  "u041": {
+   "run": "iter7_test",
+   "id": "syn-psycopg-02"
+  },
+  "u050": {
+   "run": "iter7_test",
+   "id": "syn-trio-01"
+  },
+  "u019": {
+   "run": "iter7_test",
+   "id": "syn-msgspec-02"
+  },
+  "u028": {
+   "run": "iter7_test",
+   "id": "syn-filelock-02"
+  },
+  "u033": {
+   "run": "iter7_test",
+   "id": "dep-toml-pyproject-01"
+  },
+  "u012": {
+   "run": "iter6",
+   "id": "syn-wand-02"
+  },
+  "u034": {
+   "run": "iter6",
+   "id": "syn-pandas-03"
+  },
+  "u037": {
+   "run": "iter6",
+   "id": "syn-plotly-03"
+  },
+  "u003": {
+   "run": "iter6",
+   "id": "syn-scipy-02"
+  },
+  "u013": {
+   "run": "iter6",
+   "id": "dep-jose-validate-01"
+  },
+  "u055": {
+   "run": "iter6",
+   "id": "syn-pydantic-01"
+  }
+ },
+ "anchors": [
+  "u012",
+  "u034",
+  "u037",
+  "u003",
+  "u013",
+  "u055"
+ ],
+ "anchors_previous": [
+  "s011",
+  "s095",
+  "s169",
+  "s107",
+  "s065",
+  "s091"
+ ],
+ "agents": {
+  "1": [
+   "u012",
+   "u052",
+   "u025",
+   "u027",
+   "u034",
+   "u044",
+   "u043",
+   "u031",
+   "u037",
+   "u046",
+   "u038",
+   "u045",
+   "u003",
+   "u008",
+   "u018",
+   "u014",
+   "u013",
+   "u017",
+   "u054",
+   "u029",
+   "u055",
+   "u056",
+   "u010",
+   "u019"
+  ],
+  "2": [
+   "u012",
+   "u021",
+   "u030",
+   "u007",
+   "u034",
+   "u051",
+   "u048",
+   "u015",
+   "u037",
+   "u053",
+   "u036",
+   "u002",
+   "u003",
+   "u032",
+   "u006",
+   "u047",
+   "u013",
+   "u004",
+   "u026",
+   "u022",
+   "u055",
+   "u020",
+   "u041",
+   "u028"
+  ],
+  "3": [
+   "u012",
+   "u058",
+   "u001",
+   "u024",
+   "u034",
+   "u057",
+   "u023",
+   "u040",
+   "u037",
+   "u035",
+   "u059",
+   "u016",
+   "u003",
+   "u039",
+   "u009",
+   "u005",
+   "u013",
+   "u011",
+   "u060",
+   "u049",
+   "u055",
+   "u042",
+   "u050",
+   "u033"
+  ]
+ }
+}
