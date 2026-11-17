@@ -1,0 +1,333 @@
+{
+ "run": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4.1-mini__dev__iter7",
+ "threshold": -4.515625,
+ "positives": 113,
+ "good": 82,
+ "not_successful": 31,
+ "causes": {
+  "debajo_del_umbral": 5,
+  "respuesta_cortada": 0,
+  "abstencion_postvalidacion": 5,
+  "llm_se_abstiene_con_la_correcta": 11,
+  "llm_se_abstiene_sin_la_correcta": 5,
+  "no_aplica_los_cambios": 0,
+  "no_parsea": 0,
+  "migra_a_medias": 0,
+  "elige_mal_con_la_correcta": 2,
+  "elige_mal_sin_la_correcta": 3,
+  "otro": 0
+ },
+ "failures": [
+  {
+   "item": "dep-nose-setup-01",
+   "module": "nose.tools",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "dep-nose-generators-01",
+   "module": "nose.tools",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "dep-jose-validate-01",
+   "module": "jose",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "dep-oauth2client-sa-01",
+   "module": "oauth2client.service_account",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": "google.oauth2.service_account"
+  },
+  {
+   "item": "dep-oauth2client-installed-01",
+   "module": "oauth2client",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "google-auth-oauthlib"
+  },
+  {
+   "item": "syn-transformers-03",
+   "module": "ferrowave",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-scikit-learn-03",
+   "module": "sketchmatrix",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-torch-01",
+   "module": "glyphtrace",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-django-02",
+   "module": "replforge.cli",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-flask-01",
+   "module": "hallcast",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-flask-02",
+   "module": "ravenweb.testing",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-matplotlib-02",
+   "module": "panelcanvas",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-matplotlib-03",
+   "module": "gantterra",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": "altair"
+  },
+  {
+   "item": "syn-plotly-03",
+   "module": "vividchart",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "altair"
+  },
+  {
+   "item": "syn-streamlit-02",
+   "module": "plumquarry",
+   "cause": "debajo_del_umbral",
+   "replacement_package": "streamlit"
+  },
+  {
+   "item": "syn-streamlit-03",
+   "module": "ondrafeed",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-playwright-01",
+   "module": "sablewick.errors",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-playwright-02",
+   "module": "brimloom.asserts",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-lxml-01",
+   "module": "marrowlink",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pandas-02",
+   "module": "marlinframe",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-sqlalchemy-03",
+   "module": "rowforge",
+   "cause": "debajo_del_umbral",
+   "replacement_package": "SQLAlchemy"
+  },
+  {
+   "item": "syn-xlsxwriter-02",
+   "module": "tabulaforge",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "openpyxl"
+  },
+  {
+   "item": "syn-textual-01",
+   "module": "vividtui",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pydantic-02",
+   "module": "schemavault",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "marshmallow"
+  },
+  {
+   "item": "syn-pydantic-03",
+   "module": "fieldgate",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "marshmallow"
+  },
+  {
+   "item": "syn-celery-01",
+   "module": "jobtracer",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-celery-02",
+   "module": "plugsteps",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": "celery"
+  },
+  {
+   "item": "syn-authlib-03",
+   "module": "credgateqx",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-boto3-01",
+   "module": "objstashqx",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-python-stdlib-01",
+   "module": "probekitqx",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": "eliot"
+  },
+  {
+   "item": "syn-scikit-learn-04",
+   "module": "tricodex",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  }
+ ],
+ "wrong_changes": [],
+ "rewrite": {
+  "scripts": 86,
+  "median": 5.5,
+  "max": 18,
+  "over_10": 13
+ },
+ "comparisons": {
+  "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev": {
+   "success_pos": {
+    "a": 0.7257,
+    "b": 0.3097,
+    "a_ci": [
+     0.6429,
+     0.807
+    ],
+    "b_ci": [
+     0.2212,
+     0.4035
+    ],
+    "diff": 0.4159,
+    "ci": [
+     0.3103,
+     0.5221
+    ],
+    "verdict": "mejor"
+   },
+   "precision": {
+    "a": 0.9111,
+    "b": 0.4167,
+    "a_ci": [
+     0.8506,
+     0.9655
+    ],
+    "b_ci": [
+     0.3043,
+     0.5325
+    ],
+    "diff": 0.4944,
+    "ci": [
+     0.375,
+     0.6102
+    ],
+    "verdict": "mejor"
+   },
+   "negative_rejection": {
+    "a": 1.0,
+    "b": 0.8889,
+    "a_ci": [
+     1.0,
+     1.0
+    ],
+    "b_ci": [
+     0.625,
+     1.0
+    ],
+    "diff": 0.1111,
+    "ci": [
+     0.0,
+     0.375
+    ],
+    "verdict": "empate"
+   },
+   "positives_won": 51,
+   "positives_lost": 4
+  },
+  "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev__iter6": {
+   "success_pos": {
+    "a": 0.7257,
+    "b": 0.7345,
+    "a_ci": [
+     0.6429,
+     0.807
+    ],
+    "b_ci": [
+     0.6491,
+     0.8174
+    ],
+    "diff": -0.0088,
+    "ci": [
+     -0.0804,
+     0.0625
+    ],
+    "verdict": "empate"
+   },
+   "precision": {
+    "a": 0.9111,
+    "b": 0.8218,
+    "a_ci": [
+     0.8506,
+     0.9655
+    ],
+    "b_ci": [
+     0.7423,
+     0.8942
+    ],
+    "diff": 0.0893,
+    "ci": [
+     0.0163,
+     0.1699
+    ],
+    "verdict": "mejor"
+   },
+   "negative_rejection": {
+    "a": 1.0,
+    "b": 0.7778,
+    "a_ci": [
+     1.0,
+     1.0
+    ],
+    "b_ci": [
+     0.4444,
+     1.0
+    ],
+    "diff": 0.2222,
+    "ci": [
+     0.0,
+     0.5556
+    ],
+    "verdict": "empate"
+   },
+   "positives_won": 8,
+   "positives_lost": 9
+  }
+ }
+}
