@@ -763,16 +763,19 @@ def cmd_opus_rubric() -> int:
     return 0
 
 
-def cmd_opus_rubric_check() -> int:
+def cmd_opus_rubric_check(label: str | None = None) -> int:
     """Valida las respuestas de los tres agentes y, solo si están todas, escribe opus_rubric_answers.jsonl (una fila por
     agente y script, con la corrida y el ítem). Se niega si ya existe."""
-    if RUBRIC_ANSWERS.exists():
-        print(f"ya existe {RUBRIC_ANSWERS.relative_to(ROOT)}: no se pisa")
+    suffix = f"_{label}" if label else ""  # con --label: la revisión de opus-rubric-run (p. ej. iter7)
+    answers_path = REVIEW_DIR / f"opus_rubric{suffix}_answers.jsonl"
+    rubric_dir, key_path = REVIEW_DIR / f"opus_rubric{suffix}", REVIEW_DIR / f"opus_rubric{suffix}_key.json"
+    if answers_path.exists():
+        print(f"ya existe {answers_path.relative_to(ROOT)}: no se pisa")
         return 1
-    plan = json.loads(RUBRIC_KEY.read_text(encoding="utf-8"))
+    plan = json.loads(key_path.read_text(encoding="utf-8"))
     rows, missing = [], []
     for agent, ids in plan["agents"].items():
-        folder = RUBRIC_DIR / f"agent_{agent}"
+        folder = rubric_dir / f"agent_{agent}"
         answers = {}
         for path in sorted(folder.glob("answers_*.jsonl")):
             for row in read_jsonl(path):
@@ -786,8 +789,8 @@ def cmd_opus_rubric_check() -> int:
     if missing:
         print(f"faltan {len(missing)} respuestas ({', '.join(missing[:10])}): no se escribe nada")
         return 1
-    RUBRIC_ANSWERS.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
-    print(f"{len(rows)} respuestas válidas → {RUBRIC_ANSWERS.relative_to(ROOT)}")
+    answers_path.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    print(f"{len(rows)} respuestas válidas → {answers_path.relative_to(ROOT)}")
     return 0
 
 
@@ -895,6 +898,66 @@ def cmd_rubric_compare() -> int:
     return 0
 
 
+def cmd_rubric_compare_run(run: str, label: str) -> int:
+    """Opus con rúbrica para la corrida de opus-rubric-run `label`: su preservación (total, exitosos, no exitosos), gpt-4o-mini
+    (el juez de siempre) contra Opus, y la diferencia pareada de la preservación según Opus contra `__iter6` (de
+    opus-rubric, misma escala: las mismas anclas) sobre los scripts que cambiaron las dos. Escribe
+    judge_rubric_<label>.{json,md}; no los pisa."""
+    out = ROOT / "results" / "study" / f"judge_rubric_{label}"
+    if any(out.with_suffix(x).exists() for x in (".json", ".md")):
+        print(f"ya existe {out.relative_to(ROOT)}.json/.md: no se pisa")
+        return 1
+    rows = read_jsonl(REVIEW_DIR / f"opus_rubric_{label}_answers.jsonl")
+    anchors_new = {}
+    for r in rows:
+        if r["anchor"]:
+            anchors_new.setdefault(r["id"], []).append(r["output"]["preserves"])
+    opus = {r["id"]: r["output"]["preserves"] for r in rows if not r["anchor"]}
+    previous = {}
+    for r in read_jsonl(RUBRIC_ANSWERS):
+        if r["run"] == "iter6":
+            previous.setdefault(r["id"], []).append(r["output"]["preserves"])
+    opus6 = {i: max(set(v), key=v.count) for i, v in previous.items()}
+    anchors_agree = sum(all(x == opus6[i] for x in v) for i, v in anchors_new.items())
+    records = {r["id"]: r for r in read_jsonl(GEN_DIR / f"{run}.items.jsonl")}
+    keys = sorted(opus)
+    groups = {"total": keys, "exitosos": [i for i in keys if records[i]["success"]],
+              "no exitosos": [i for i in keys if not records[i]["success"]]}
+    summary = {g: {"n": len(ks), "mean": sum(PRESERVE_SCORE[opus[i]] for i in ks) / len(ks) if ks else None,
+                   "verdicts": {v: sum(opus[i] == v for i in ks) for v in VERDICTS}} for g, ks in groups.items()}
+    judged = {r["id"]: r["b"]["preserves"] for r in read_jsonl(GEN_DIR / f"{run}.judge.jsonl")}
+    gpt = compare_groups({i: (judged[i], opus[i]) for i in keys}, groups)
+    both = sorted(set(opus) & set(opus6))
+    vs6 = paired_difference([(opus[i], opus6[i]) for i in both])
+    result = {"run": run, "label": label, "anchors": {"n": len(anchors_new), "agree_with_previous": anchors_agree},
+              "opus_rubric": summary, "gpt_vs_opus": gpt, "paired_vs_iter6": vs6,
+              "items": [{"id": i, "success": records[i]["success"], "opus": opus[i], "gpt-4o-mini": judged.get(i),
+                         "opus_iter6": opus6.get(i)} for i in keys]}
+    lines = [f"# Preservación de la tarea con rúbrica: `{label}`", "",
+             f"`{run}`: scripts cambiados que pasan el umbral, juzgados a ciegas por tres agentes de Opus 5.5 con la "
+             "rúbrica común. Anclas (las de la revisión de sin iterar e `__iter6`): los agentes nuevos coinciden con la "
+             f"revisión anterior en {anchors_agree} de {len(anchors_new)}. IC 95% por bootstrap sobre ítems.", "",
+             "| Grupo | n | Opus con rúbrica | si / parcial / no |", "|---|---|---|---|"]
+    lines += [f"| {g} | {r['n']} | {fmt(r['mean'])} | {r['verdicts']['si']} / {r['verdicts']['parcial']} / "
+              f"{r['verdicts']['no']} |" for g, r in summary.items() if r["n"]]
+    lines += ["", "| gpt-4o-mini (juez de siempre) vs. Opus con rúbrica | n | gpt | Opus | gpt − Opus | Acuerdo exacto | "
+              "Kappa |", "|---|---|---|---|---|---|---|"]
+    for g, r in gpt.items():
+        d, a = r["difference"], r["agreement"]
+        lines.append(f"| {g} | {r['n']} | {fmt(r['mean']['gpt-4o-mini'])} | {fmt(r['mean']['opus'])} | "
+                     f"{d['mean']:+.2f} [{d['ci'][0]:+.2f}, {d['ci'][1]:+.2f}] | {fmt(a['exact'], a['exact_ci'])} | "
+                     f"{fmt(a['kappa'], a['kappa_ci'])} |")
+    lines += ["", f"Pareado contra `__iter6` (Opus con rúbrica, los {vs6['n']} scripts que cambiaron las dos corridas): "
+              f"{label} − iter6 = {vs6['mean']:+.2f} [{vs6['ci'][0]:+.2f}, {vs6['ci'][1]:+.2f}]; {label} preserva más en "
+              f"{vs6['higher']}, igual en {vs6['equal']}, menos en {vs6['lower']}.", ""]
+    md = "\n".join(lines)
+    out.with_suffix(".json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    out.with_suffix(".md").write_text(md, encoding="utf-8")
+    print(md)
+    print(f"→ {out.relative_to(ROOT)}.{{json,md}}")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -914,8 +977,12 @@ def main() -> int:
         p.add_argument("run", help="nombre de la corrida en results/eval/gen/ (sin extensión)")
         p.add_argument("--label", required=True, help="nombre corto (p. ej. iter6): carpeta y archivos propios")
     sub.add_parser("opus-rubric", help="exporta la revisión con rúbrica (reranker sin iterar + iter6), a ciegas")
-    sub.add_parser("opus-rubric-check", help="valida las respuestas con rúbrica y las une")
+    rubric_check = sub.add_parser("opus-rubric-check", help="valida las respuestas con rúbrica y las une")
+    rubric_check.add_argument("--label", help="la revisión de opus-rubric-run con ese nombre (p. ej. iter7)")
     sub.add_parser("rubric-compare", help="Opus con rúbrica como referencia: gpt-4o-mini con y sin rúbrica")
+    rubric_cmp = sub.add_parser("rubric-compare-run", help="Opus con rúbrica de una corrida de opus-rubric-run vs. iter6")
+    rubric_cmp.add_argument("run", help="nombre de la corrida en results/eval/gen/ (sin extensión)")
+    rubric_cmp.add_argument("--label", required=True)
     rubric_run = sub.add_parser("opus-rubric-run", help="la misma revisión con rúbrica para otra corrida, mismas anclas")
     rubric_run.add_argument("run", help="nombre de la corrida en results/eval/gen/ (sin extensión)")
     rubric_run.add_argument("--label", required=True, help="nombre corto (p. ej. iter7)")
@@ -942,9 +1009,11 @@ def main() -> int:
     if args.cmd == "opus-rubric":
         return cmd_opus_rubric()
     if args.cmd == "opus-rubric-check":
-        return cmd_opus_rubric_check()
+        return cmd_opus_rubric_check(args.label)
     if args.cmd == "rubric-compare":
         return cmd_rubric_compare()
+    if args.cmd == "rubric-compare-run":
+        return cmd_rubric_compare_run(args.run, args.label)
     if args.cmd == "opus-rubric-run":
         return cmd_opus_rubric_run(args.run, args.label)
     if args.cmd == "opus-run":

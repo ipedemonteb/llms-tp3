@@ -182,3 +182,34 @@ def test_paired_difference_counts_direction_and_mean():
     lo, hi = d["ci"]
     assert lo <= d["mean"] <= hi
     assert review.paired_difference([("si", "no")] * 3, boot=200)["ci"] == [1, 1]
+
+
+# --- Revisión con rúbrica común (a ciegas, 3 agentes, anclas) -----------------------------------------------------
+
+def rubric_scripts():
+    scripts = [("rerank", f"r{i}") for i in range(20)] + [("iter6", f"i{i}") for i in range(24)]
+    previous = {f"i{i}": ("si", "parcial", "no")[i % 3] for i in range(24)}
+    return scripts, previous
+
+
+def test_rubric_plan_a_ciegas_con_anclas_y_corridas_intercaladas():
+    scripts, previous = rubric_scripts()
+    plan = review.rubric_plan(scripts, previous)
+    assert plan == review.rubric_plan(scripts, previous)  # semilla fija
+    key, anchors = plan["key"], plan["anchors"]
+    assert len(key) == len(scripts) and all(b.startswith("s") and len(b) == 4 for b in key)
+    assert sorted((v["run"], v["id"]) for v in key.values()) == sorted(scripts)
+    assert [previous[key[b]["id"]] for b in anchors].count("no") == 2 and all(key[b]["run"] == "iter6" for b in anchors)
+    rest = [b for ids in plan["agents"].values() for b in ids if b not in anchors]
+    assert sorted(rest) == sorted(set(key) - set(anchors))  # cada script no ancla, una sola vez
+    for ids in plan["agents"].values():
+        assert set(anchors) <= set(ids)  # las anclas, en los tres agentes
+        assert {key[b]["run"] for b in ids if b not in anchors} == {"rerank", "iter6"}  # las dos corridas
+
+
+def test_prompt_con_rubrica_solo_cambia_las_instrucciones():
+    from tprag.eval.judge import PRESERVE_RUBRIC, PRESERVE_SYSTEM, preserve_prompt
+
+    plain, rubric = preserve_prompt("a", "b", ["m"]), preserve_prompt("a", "b", ["m"], rubric=True)
+    assert plain[0] == PRESERVE_SYSTEM and rubric[0] == PRESERVE_SYSTEM + "\n\n" + PRESERVE_RUBRIC
+    assert plain[1] == rubric[1]

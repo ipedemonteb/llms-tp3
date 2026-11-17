@@ -13,7 +13,11 @@ Protecciones: sin --confirm no llama a la API aunque el costo esté bajo --max-u
 falta pagar supera --max-usd (0,05 por defecto). Las respuestas quedan en data/generate/cache/judge.sqlite y los
 embeddings de (a) en el caché de embeddings: juzgar de nuevo no vuelve a pagar.
 
-Escribe results/eval/gen/<corrida>.judge.jsonl (una línea por script) y muestra el resumen.
+Escribe results/eval/gen/<corrida>.judge.jsonl (una línea por script) y muestra el resumen. Si ya existe no lo pisa
+(tprag.eval.outputs): --tag <nombre> escribe <corrida>.judge__<nombre>.jsonl al lado y --force lo reemplaza.
+
+--rubric (solo con --judge b y --tag): las instrucciones de (b) + la rúbrica común (tprag.eval.judge.PRESERVE_RUBRIC),
+el mismo texto que recibe Claude Opus en la revisión con rúbrica. Sin la opción, el prompt es el de siempre.
 """
 
 import argparse
@@ -25,6 +29,7 @@ from dotenv import load_dotenv
 
 from tprag.eval.judge import (JUDGES, PRESERVE_SCORE, JudgeLLM, describe_prompt, judged_records, preserve_prompt,
                               relevance_a)
+from tprag.eval.outputs import refuse_overwrite, tag_arg
 from tprag.eval.retrieval import dataset_info
 from tprag.generate.llm import CHAT_MODELS, TruncatedOutput
 from tprag.split.store import ROOT
@@ -47,9 +52,20 @@ def main() -> int:
     parser.add_argument("--export", type=Path, help="escribe los prompts (JSONL) para validar con otro juez; no paga")
     parser.add_argument("--max-usd", type=float, default=0.05, help="aborta si lo que hay que pagar lo supera")
     parser.add_argument("--confirm", action="store_true", help="necesario para llamar a la API")
+    parser.add_argument("--rubric", action="store_true", help="(b) con la rúbrica común; exige --judge b y --tag")
+    parser.add_argument("--tag", type=tag_arg, help="escribe <corrida>.judge__<tag>.jsonl al lado")
+    parser.add_argument("--force", action="store_true", help="reemplaza el juicio si ya existe")
     args = parser.parse_args()
+    if args.rubric and (args.judge != "b" or not args.tag):
+        parser.error("--rubric va con --judge b y --tag: no escribe con el nombre del juicio de siempre")
 
     summary_path, items_path = run_paths(args.run)
+    stem = items_path.name.removesuffix(".items.jsonl") + ".judge" + (f"__{args.tag}" if args.tag else "")
+    path = items_path.with_name(stem + ".jsonl")
+    if not args.export and (refusal := refuse_overwrite([path], args.force)):
+        print(refusal)
+        if not args.dry_run:
+            return 1
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     records = [json.loads(line) for line in items_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     current = dataset_info()["sha256"]
@@ -68,7 +84,7 @@ def main() -> int:
     prompts = {}
     for r in selected:
         modules = [t["module"] for t in r["targets"]]
-        prompts[r["id"]] = {"a": describe_prompt(r["code"]), "b": preserve_prompt(originals[r["id"]], r["code"], modules)}
+        prompts[r["id"]] = {"a": describe_prompt(r["code"]), "b": preserve_prompt(originals[r["id"]], r["code"], modules, args.rubric)}
 
     if args.export:
         with args.export.open("w", encoding="utf-8") as f:
@@ -128,7 +144,6 @@ def main() -> int:
             f"{j}={'cortada' if row[j]['score'] is None else format(row[j]['score'], '.2f')}"
             for j in ("a", "b") if j in row))
 
-    path = items_path.with_name(items_path.name.removesuffix(".items.jsonl") + ".judge.jsonl")
     path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in out), encoding="utf-8")
     for j in ("a", "b"):
         scored = [row for row in out if j in row and row[j]["score"] is not None]

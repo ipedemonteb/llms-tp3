@@ -60,12 +60,40 @@ PRESERVE_SYSTEM = (
     "pierde o cambia algo, y `no` si ya no hace la tarea.")
 
 
+# Rúbrica común (2026-11-17), apagada por defecto: sin ella, el prompt de (b) es el de siempre. Se agregó después de que
+# tres agentes de Opus resolvieran de forma distinta el caso dudoso (una llamada a una API que quizás no existe) en la
+# revisión de `__iter6`; con ella, Opus y gpt-4o-mini reciben el mismo texto (iteracion_ej4.md §9).
+PRESERVE_RUBRIC = """\
+Rúbrica común. La pregunta es: si se ejecuta el script modificado, ¿hace la misma tarea que el original?
+
+Camino principal: lo que el script hace cuando se ejecuta normalmente para cumplir su tarea (el flujo que produce su \
+resultado principal). Partes secundarias: opciones, manejo de errores, validaciones, mensajes y formatos de salida \
+accesorios.
+
+- `si`: el camino principal y las partes secundarias se comportan igual. Que cambien los nombres o la sintaxis por la \
+librería nueva no importa si el comportamiento es el mismo.
+- `parcial`: el camino principal funciona igual, pero algo secundario se pierde, cambia o falla.
+- `no`: el camino principal no funciona o hace otra cosa. Por ejemplo: código borrado o reemplazado por un \
+placeholder (`pass`, `TODO`, `None`, un valor fijo en lugar de un cálculo), lógica central cambiada, o una llamada que \
+falla en el camino principal.
+
+APIs de la librería nueva:
+- Si sabés con seguridad que una clase, función, método o parámetro no existe en la librería nueva, o que su firma o \
+lo que devuelve es incompatible con cómo se usa (por ejemplo, desempaquetar 2 valores de algo que devuelve 3), es una \
+falla: `no` si está en el camino principal, `parcial` si está en una parte secundaria.
+- Si no estás seguro de si existe, no la penalices: juzgá por el resto del código. No adivines.
+
+No evalúes si la librería elegida es la mejor ni el estilo. Aplicá esta rúbrica igual en todos los scripts."""
+
+
 def describe_prompt(fixed: str) -> tuple[str, str]:
     return DESCRIBE_SYSTEM, f"```python\n{fixed}\n```"
 
 
-def preserve_prompt(original: str, fixed: str, modules: list[str]) -> tuple[str, str]:
-    return PRESERVE_SYSTEM, (f"Módulo reemplazado: {', '.join(modules)}\n\n"
+def preserve_prompt(original: str, fixed: str, modules: list[str], rubric: bool = False) -> tuple[str, str]:
+    """Con `rubric`, las instrucciones de siempre + `PRESERVE_RUBRIC`; el mensaje es el mismo."""
+    system = PRESERVE_SYSTEM + "\n\n" + PRESERVE_RUBRIC if rubric else PRESERVE_SYSTEM
+    return system, (f"Módulo reemplazado: {', '.join(modules)}\n\n"
                              f"Script original:\n```python\n{original}\n```\n\n"
                              f"Script modificado:\n```python\n{fixed}\n```")
 
