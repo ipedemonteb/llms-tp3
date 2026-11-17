@@ -32,3 +32,25 @@ def test_respuesta_cortada_se_paga_una_vez_y_se_levanta_tambien_desde_el_cache(t
     with pytest.raises(TruncatedOutput):
         llm("s", "u")
     assert len(calls) == 1 and llm.hits == 1 and llm.missing([("s", "u")]) == []
+
+
+def test_peek_lee_el_caché_sin_llamar_a_la_api(tmp_path):
+    llm, calls = llm_with(tmp_path, OK)
+    assert llm.peek("s", "u") is None
+    llm("s", "u")
+    assert llm.peek("s", "u").edits == [] and len(calls) == 1 and llm.hits == 0
+    cut, _ = llm_with(tmp_path / "otro", CUT)
+    with pytest.raises(TruncatedOutput):
+        cut("s", "u")
+    with pytest.raises(TruncatedOutput):
+        cut.peek("s", "u")
+
+
+def test_el_esquema_entra_en_la_clave(tmp_path):
+    from tprag.generate.schema import ScriptOutput
+
+    llm, _ = llm_with(tmp_path, OK)
+    llm("s", "u")
+    script = CachedLLM(CHAT_MODELS["gpt-4o-mini"], path=tmp_path / "llm.sqlite")
+    script.output_schema = ScriptOutput
+    assert script.peek("s", "u") is None and script.missing([("s", "u")]) == [("s", "u")]

@@ -52,8 +52,8 @@ CHAT_MODELS = {
 }
 
 
-def _schema() -> str:
-    return json.dumps(GeneratorOutput.model_json_schema(), sort_keys=True)
+def _schema(schema: type[BaseModel] = GeneratorOutput) -> str:
+    return json.dumps(schema.model_json_schema(), sort_keys=True)
 
 
 class CachedLLM:
@@ -74,7 +74,9 @@ class CachedLLM:
         self.hits = self.misses = self.input_tokens = self.output_tokens = 0
 
     def _key(self, system: str, user: str) -> str:
-        return hashlib.sha256("\x00".join((system, user, _schema())).encode()).hexdigest()
+        """El esquema de salida entra en la clave: una respuesta en formato "script" (`ScriptOutput`) no se confunde
+        con una de reemplazos aunque el mensaje fuera el mismo. Con `GeneratorOutput`, la clave de siempre."""
+        return hashlib.sha256("\x00".join((system, user, _schema(self.output_schema))).encode()).hexdigest()
 
     def _get(self, key: str) -> dict | None:
         row = self._db.execute("SELECT response FROM responses WHERE model = ? AND key = ?",
@@ -117,6 +119,16 @@ class CachedLLM:
         usage = out["raw"].usage_metadata or {}
         return {"output": out["parsed"].model_dump(), "max_tokens": self.max_tokens,
                 "usage": {"input_tokens": usage.get("input_tokens", 0), "output_tokens": usage.get("output_tokens", 0)}}
+
+    def peek(self, system: str, user: str) -> BaseModel | None:
+        """La respuesta guardada en el caché, sin llamar a la API; None si no está. Para el dry-run del reintento, que
+        necesita la primera respuesta para saber qué se reintentaría. Levanta `TruncatedOutput` como `__call__`."""
+        response = self._get(self._key(system, user))
+        if response is None:
+            return None
+        if response.get("error") == "length":
+            raise TruncatedOutput(response["raw"])
+        return self.output_schema.model_validate(response["output"])
 
     def __call__(self, system: str, user: str) -> BaseModel:
         """Levanta `TruncatedOutput` si la respuesta (nueva o del caché) se cortó por el tope de salida."""

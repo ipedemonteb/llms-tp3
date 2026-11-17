@@ -12,6 +12,19 @@ con esa colección (o --threshold). Las respuestas del LLM quedan en caché (dat
 vuelve a pagar. Escribe en results/eval/gen/ el resumen y el detalle por ítem (código corregido, reporte, reemplazos y
 chequeos). Si esas salidas ya existen no las pisa (tprag.eval.outputs): --tag <nombre> escribe la variante al lado
 (<corrida>__<nombre>) y --force la reemplaza.
+
+--retry-format edits|script: la iteración (iteracion_ej4.md §3.2), apagada por defecto. Si la corrección tiene problemas
+que se ven sin el dataset (reemplazo que no se aplica, código que no parsea, nombres nuevos sin definir), un reintento con
+esos problemas, pidiendo reemplazos (edits, la corrida `__iter`) o el script completo (script, `__iter2`); si siguen, se
+abstiene. La primera llamada es la misma que sin la opción (sale del caché); el dry-run cuenta los reintentos con las
+primeras respuestas del caché. Exige --tag, para no escribir nunca con el nombre de la corrida sin iteración.
+
+--first-format script: la variante uniforme (`__iter3`): el primer intento también pide el script completo (sin
+iteración, el primer intento es siempre "edits", la lista de reemplazos). Exige --tag. Como esas primeras respuestas
+no están en el caché, el dry-run estima los reintentos en el peor caso (que se reintenten todas).
+
+--check-context: sobre la variante uniforme (`__iter4`), también va al reintento un script que usa nombres de la API
+nueva que no aparecen en los fragmentos (la heurística de Faithfulness). Exige --first-format script y --tag.
 """
 
 import argparse
@@ -28,8 +41,10 @@ from tprag.eval.query import QUERIES
 from tprag.eval.retrieval import dataset_info, select_items
 from tprag.eval.verify import load_items
 from tprag.generate.context import dev_threshold, load_reranker, rerank_threshold
-from tprag.generate.llm import CHAT_MODELS, CachedLLM
-from tprag.generate.pipeline import answer, prepare
+from tprag.generate.llm import CHAT_MODELS, CachedLLM, TruncatedOutput
+from tprag.generate.pipeline import answer, finish, first_prompt, prepare, retry_prompt
+from tprag.split.tokens import token_counter
+from tprag.generate.schema import ScriptOutput
 from tprag.index.build import REPRESENTATIONS, IndexConfig, open_collection
 from tprag.index.cost import estimate
 from tprag.index.embeddings import MODELS, cached
@@ -39,6 +54,39 @@ from tprag.validate.pypi import CachedPyPI
 from tprag.validate.validate import validate
 
 RESULTS_DIR = ROOT / "results" / "eval" / "gen"
+
+
+def retry_prompts(preps: list, llm: CachedLLM, fmt: str, first: str = "edits",
+                  context_check: bool = False) -> tuple[list[tuple[str, str]], list[tuple[str, str]]]:
+    """Prompts de los reintentos que haría --retry-format `fmt`, armados con las primeras respuestas del caché (sin
+    API), y los primeros prompts que faltan en el caché (sus reintentos no se pueden saber antes de pagarlos)."""
+    prompts, unknown = [], []
+    for prep in preps:
+        if (prompt := first_prompt(prep, first)) is None:
+            continue
+        try:
+            output = llm.peek(*prompt)
+        except TruncatedOutput:
+            continue  # respuesta cortada: el script queda igual, no hay nada que reintentar
+        if output is None:
+            unknown.append(prompt)
+        elif retry := retry_prompt(prep, finish(prep, output), fmt, first == "script", context_check):
+            prompts.append(retry)
+    return prompts, unknown
+
+
+RETRY_EXTRA_TOKENS = 850  # peor caso de un reintento sin la primera respuesta: el script o los reemplazos anteriores
+#                           (~700, la salida estimada) + problemas y líneas del import (~150), sobre el mismo mensaje
+
+
+def worst_case_retries(prompts: list[tuple[str, str]], llm: CachedLLM) -> dict:
+    """Costo de reintentar todas estas llamadas cuando las primeras respuestas todavía no existen (no se puede saber
+    cuáles tendrían problemas): el mismo mensaje + `RETRY_EXTRA_TOKENS` de entrada y la salida estimada de `llm`."""
+    count = token_counter(llm.model.tokenizer)
+    input_tokens = sum(count(system) + count(user) + RETRY_EXTRA_TOKENS for system, user in prompts)
+    output_tokens = llm.estimate(prompts)["output_tokens_estimate"]
+    return {"calls": len(prompts), "input_tokens": input_tokens, "output_tokens_estimate": output_tokens,
+            "usd": llm.model.usd(input_tokens, output_tokens)}
 
 
 def main() -> int:
@@ -59,9 +107,25 @@ def main() -> int:
     parser.add_argument("--max-usd", type=float, default=0.10, help="aborta si lo que hay que pagar lo supera")
     parser.add_argument("--offline", action="store_true", help="no consulta PyPI; lo que no está en caché: unknown")
     parser.add_argument("--dry-run", action="store_true", help="solo cuenta tokens y estima el costo")
+    parser.add_argument("--retry-format", choices=("edits", "script"),
+                        help="iteración: un reintento con los problemas de la corrección (pidiendo reemplazos o el script "
+                             "completo) y, si siguen, abstención; exige --tag")
+    parser.add_argument("--first-format", choices=("edits", "script"), default="edits",
+                        help="formato del primer intento: edits (el de siempre) o script (variante uniforme; exige "
+                             "--tag y --retry-format script)")
+    parser.add_argument("--check-context", action="store_true",
+                        help="sobre la variante uniforme: reintento también si usa nombres de la API nueva que no "
+                             "aparecen en los fragmentos; exige --first-format script y --tag")
     parser.add_argument("--tag", type=tag_arg, help="sufijo __<tag> en las salidas: una variante al lado de la corrida")
     parser.add_argument("--force", action="store_true", help="reemplaza las salidas si ya existen")
     args = parser.parse_args()
+    if (args.retry_format or args.first_format != "edits") and not args.tag:
+        parser.error("--retry-format y --first-format script exigen --tag: la iteración no escribe con el nombre de la "
+                     "corrida sin iteración")
+    if args.check_context and args.first_format != "script":
+        parser.error("--check-context va sobre la variante uniforme: --first-format script --retry-format script")
+    if args.first_format == "script" and args.retry_format != "script":
+        parser.error("--first-format script va con --retry-format script (variante uniforme)")
 
     cfg = IndexConfig(chunks=args.chunks, console_mode=args.console_examples, model=args.model,
                       representation=args.representation, cap=args.cap or None, strategy=args.strategy,
@@ -79,6 +143,12 @@ def main() -> int:
         return 1
     fetch = CachedPyPI(offline=args.offline)
     llm = CachedLLM(CHAT_MODELS[args.llm])
+    retry_llm = llm
+    if args.retry_format == "script":  # el mismo caché; la clave incluye el esquema, así que no se mezcla con "edits"
+        retry_llm = CachedLLM(CHAT_MODELS[args.llm])
+        retry_llm.output_schema = ScriptOutput
+    if args.first_format == "script":  # variante uniforme: el primer intento también devuelve `ScriptOutput`
+        llm = retry_llm
     # un resultado ya corrido no se pisa sin querer (tprag.eval.outputs): se chequea antes de llamar al LLM
     stem = tagged(f"{name}__qA__{args.rerank + '__' if args.rerank else ''}{llm.model.name}__{args.split}", args.tag)
     if refusal := refuse_overwrite([RESULTS_DIR / f"{stem}.json", RESULTS_DIR / f"{stem}.items.jsonl"], args.force):
@@ -100,12 +170,24 @@ def main() -> int:
     if reranker:  # el dry-run también reordena: los pares que no estén en el caché se calculan con el modelo local
         print(f"reranker {reranker.variant}: puntúa {reranker.k} chunks por import (los del caché no se recalculan)")
     preps = [prepare(it["code"], store, fetch, threshold, args.budget, reranker) for it in items]
-    prompts = [p.prompt for p in preps if p.prompt]
+    prompts = [p for prep in preps if (p := first_prompt(prep, args.first_format))]
     to_pay = llm.estimate(llm.missing(prompts))
     print(f"{name} / {args.rerank or 'sin reranker'} / {args.llm} / {args.split}: {len(items)} ítems, umbral {threshold}, "
           f"{len(prompts)} llamadas al LLM ({len(items) - len(prompts)} sin LLM: ningún import pasó el umbral)")
     print(f"a pagar (fuera del caché): {to_pay['calls']} llamadas, {to_pay['input_tokens']} tokens de entrada + "
           f"~{to_pay['output_tokens_estimate']} de salida (estimada) = ~{to_pay['usd']:.4f} USD")
+    if args.retry_format:
+        retries, unknown = retry_prompts(preps, llm, args.retry_format, args.first_format, args.check_context)
+        retry_pay = retry_llm.estimate(retry_llm.missing(retries))
+        print(f"reintentos: {len(retries)} con problemas en la primera respuesta, {retry_pay['calls']} fuera del caché "
+              f"= ~{retry_pay['usd']:.4f} USD")
+        to_pay["usd"] += retry_pay["usd"]
+        if unknown:  # primeras respuestas que todavía no existen: no se sabe cuáles se reintentarían
+            worst = worst_case_retries(unknown, retry_llm)
+            print(f"  + peor caso de las {worst['calls']} primeras respuestas fuera del caché (que se reintenten todas): "
+                  f"{worst['input_tokens']} tokens de entrada + ~{worst['output_tokens_estimate']} de salida = "
+                  f"~{worst['usd']:.4f} USD")
+            to_pay["usd"] += worst["usd"]
     if args.dry_run:
         return 0
     if to_pay["usd"] > args.max_usd:
@@ -115,23 +197,30 @@ def main() -> int:
     start = time.time()
     records = []
     for it, prep in zip(items, preps):
-        fix = answer(prep, llm)
+        fix = answer(prep, llm, retry=args.retry_format, retry_llm=retry_llm, first=args.first_format,
+                     context_check=args.check_context)
         record = check_item(it, prep, fix, fetch)
-        record |= {"code": fix.code, "report": fix.report, "edits": fix.edits, "llm_raw": fix.llm_raw,
+        record |= {"code": fix.code, "report": fix.report, "edits": fix.edits, "llm_raw": fix.llm_raw, "retry": fix.retry,
                    "contexts": [{"module": c.module, "score": c.score, "passed": c.passed,
                                  "chunks": [{k: ch[k] for k in ("header", "package", "id", "n_tokens", "text")}
                                             for ch in c.chunks]} for c in prep.contexts]}
+        if fix.changed_lines is not None:  # variante uniforme
+            record["changed_lines"] = fix.changed_lines
         records.append(record)
         print(f"{'ok' if record['success'] else 'FALLA':<6} {it['id']}"
               f"{'  (respuesta del LLM cortada por el tope de salida)' if fix.llm_error else ''}")
     seconds = round(time.time() - start, 1)
+    llms = [llm] + ([retry_llm] if retry_llm is not llm else [])  # con --retry-format script, dos cachés (esquemas)
+    paid = {"calls": sum(x.misses for x in llms), "input_tokens": sum(x.input_tokens for x in llms),
+            "output_tokens": sum(x.output_tokens for x in llms), "usd": round(sum(x.usd for x in llms), 6)}
 
     report = {
         "collection": name, "reranker": args.rerank, "llm": llm.model.name, "split": args.split, "threshold": threshold,
         "budget": args.budget, "date": datetime.now().isoformat(timespec="seconds"), "config": asdict(cfg),
-        "dataset": dataset_info(), "paid": {"calls": llm.misses, "input_tokens": llm.input_tokens,
-                                            "output_tokens": llm.output_tokens, "usd": llm.usd},
-        "tag": args.tag, "cache_hits": llm.hits, "seconds": seconds, "metrics": summarize(records),
+        "dataset": dataset_info(), "paid": paid,
+        "tag": args.tag, "cache_hits": sum(x.hits for x in llms), "seconds": seconds, "metrics": summarize(records),
+        "first_format": args.first_format, "check_context": args.check_context, "retry": {"format": args.retry_format, "retried": sum(r["retry"] is not None for r in records),
+                  "abstained": sum(bool(r["retry"] and r["retry"]["remaining"]) for r in records)},
     }
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     summary = json.dumps(report, indent=2, ensure_ascii=False) + "\n"
@@ -141,8 +230,8 @@ def main() -> int:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
 
     m = report["metrics"]
-    print(f"listo en {seconds} s: {llm.misses} llamadas pagas ({llm.input_tokens} + {llm.output_tokens} tokens, "
-          f"{llm.usd:.4f} USD), {llm.hits} del caché")
+    print(f"listo en {seconds} s: {paid['calls']} llamadas pagas ({paid['input_tokens']} + {paid['output_tokens']} "
+          f"tokens, {paid['usd']:.4f} USD), {report['cache_hits']} del caché")
     print(f"positivos: éxito {m['positives']['success']}; negativos: éxito {m['negatives']['success']} "
           f"({m['negatives']['rejected_by_llm']}/{m['negatives']['passed_threshold']} rechazados por el LLM); "
           f"imports alucinados: {m['hallucinated_imports']}; respuestas cortadas por el tope: {m['llm_errors']}")

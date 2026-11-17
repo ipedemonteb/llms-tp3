@@ -34,3 +34,11 @@ class ImportDecision(BaseModel):
 class GeneratorOutput(BaseModel):
     imports: list[ImportDecision]
     edits: list[Edit]
+
+
+class ScriptOutput(BaseModel):
+    """Respuesta con el script completo (formato "script", solo en el reintento de la iteración, iteracion_ej4.md
+    §3.2): el mismo reporte por import, y el script corregido en vez de los reemplazos."""
+
+    imports: list[ImportDecision]
+    script: str = Field(description="El script completo corregido, de la primera a la última línea")
