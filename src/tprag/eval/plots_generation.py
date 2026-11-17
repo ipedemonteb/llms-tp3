@@ -210,8 +210,7 @@ def fig_agreement_pair(agreement: dict, pair: str, pair_label: str, name: str, o
 def fig_mean_score(judges: dict, out_dir: Path) -> Path:
     """Preservación media de la tarea según cada juez (sí = 1, parcial = 0,5, no = 0), total y por versión: gpt-4o-mini
     y Opus 5.5 con el mismo prompt sobre todos los scripts juzgados (`review_generation.py judge-vs-opus`). La revisión
-    manual no va: se hizo con ayuda de Claude, así que no es una referencia independiente de Opus (sus valores siguen en
-    `review_agreement.json`)."""
+    manual no va: está deprecada (sus valores siguen en `review_agreement.json`)."""
     raters = (("gpt-4o-mini", "gpt-4o-mini (juez)"), ("opus", "Opus 5.5"))
     groups = (("total", INK2, "Total"), ("base", COLOR["base"], NAME["base"]), ("rerank", COLOR["rerank"],
                                                                                    NAME["rerank"]))

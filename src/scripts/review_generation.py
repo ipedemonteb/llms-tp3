@@ -25,8 +25,8 @@ texto completo de cada chunk. Solo imprime: no escribe archivos ni muestra la co
 `opus-all`: los mismos prompts de (b) para el resto de los scripts que juzgó gpt-4o-mini (todos los cambiados de las dos
 corridas, menos los 20 de la muestra, que ya tienen respuesta de Opus), en tandas, en results/study/review/opus_all/
 (clave `<versión>:<ítem>`). `opus-all-check` valida las respuestas y las une en opus_all_answers.jsonl. `judge-vs-opus`
-compara gpt-4o-mini con Opus sobre todos los scripts juzgados (sin la revisión humana, que se hizo con ayuda de Claude
-y no es independiente de Opus): preservación media de cada uno, diferencia pareada con IC y acuerdo. Escribe
+compara gpt-4o-mini con Opus sobre todos los scripts juzgados (sin la revisión manual, que está deprecada):
+preservación media de cada uno, diferencia pareada con IC y acuerdo. Escribe
 results/study/judge_vs_opus.{json,md}.
 
 `opus-run <corrida> --label <nombre>` / `opus-run-check --label <nombre>` / `judge-vs-opus-run <corrida> --label
@@ -51,6 +51,9 @@ import json
 import random
 import re
 from pathlib import Path
+from typing import Literal
+
+from pydantic import BaseModel, Field
 
 from tprag.eval.faithfulness import claims, mentions, record_context
 from tprag.eval.judge import PRESERVE_SCORE, PRESERVE_SYSTEM, Preservation, preserve_prompt
@@ -969,6 +972,235 @@ def cmd_rubric_compare_run(run: str, label: str, vs: str | None = None) -> int:
     return 0
 
 
+# --- Validación de la heurística de Faithfulness contra Opus (docs/agents/prompt_opus_faithfulness.md) ---------------
+
+FAITH_DIR, FAITH_KEY = REVIEW_DIR / "opus_faith", REVIEW_DIR / "opus_faith_key.json"
+FAITH_ANSWERS, FAITH_OUT = REVIEW_DIR / "opus_faith_answers.jsonl", ROOT / "results" / "study" / "faith_vs_opus"
+FAITH_ANCHORS = {"con_no_fiel": 2, "sin_no_fiel": 2}
+KIND_ES = {"module": "módulo importado", "import": "nombre importado", "attr": "atributo o método",
+           "kwarg": "argumento por nombre"}
+FAITH_SYSTEM = """\
+Vas a revisar si un script de Python corregido usa la API de una librería tal como la muestra la documentación que \
+recibió. A otro modelo se le dio un script con un import deprecado o inexistente y fragmentos de documentación de \
+otra librería, y él reescribió las líneas necesarias. Te damos esos fragmentos, las líneas que cambiaron y una lista de \
+nombres de la API nueva que aparecen en esas líneas. Para cada nombre decidí si su uso está respaldado por los \
+fragmentos.
+
+Rúbrica común.
+
+Un nombre está respaldado si los fragmentos muestran que existe en la librería nueva y que se usa como lo usa el \
+script:
+- Módulo o nombre importado: el fragmento muestra que se importa así de esa librería (en el código o en el \
+encabezado del fragmento).
+- Atributo o método: aparece como atributo o método del mismo objeto o clase, o de lo que devuelve la misma llamada.
+- Argumento por nombre: aparece como parámetro de la misma función o método.
+
+No está respaldado si no aparece en los fragmentos, si aparece pero en otra función, clase o contexto (por ejemplo, \
+`limit` como parámetro de otra función), o si el fragmento lo contradice.
+
+Solo cuentan los fragmentos: no uses lo que sabés de la librería. Si el nombre existe en la librería pero no está en \
+los fragmentos, no está respaldado.
+
+Respondé un elemento por cada nombre de la lista, en el mismo orden. Aplicá esta rúbrica igual en todos los scripts."""
+
+
+class FaithClaim(BaseModel):
+    name: str = Field(description="El nombre tal como figura en la lista")
+    supported: Literal["si", "no"] = Field(description="¿Su uso está respaldado por los fragmentos?")
+    fragment: int | None = Field(description="Número del fragmento que lo respalda, o null")
+    reason: str = Field(description="En castellano, una oración")
+
+
+class FaithReview(BaseModel):
+    claims: list[FaithClaim]
+
+
+def faith_items(run: str, items: dict[str, dict]) -> list[dict]:
+    """Los scripts de `run` con Faithfulness definida sobre el umbral elegido (los que promedia analyze_generation.py):
+    sus nombres distintos (con el tipo y la línea de su primera aparición), el veredicto de la heurística, las líneas
+    cambiadas y los fragmentos que recibió el LLM."""
+    from tprag.eval.faithfulness import changed_lines, claims, mentions, record_context  # noqa: PLC0415
+
+    out = []
+    records = {r["id"]: r for r in read_jsonl(GEN_DIR / f"{run}.items.jsonl")}
+    for i in passing(run, items):
+        r, original = records[i], items[i]["code"]
+        context = record_context(r)
+        try:
+            found = claims(original, r["code"], context)
+        except SyntaxError:  # como la heurística: el script no parsea, no hay Faithfulness
+            continue
+        first = {}
+        for c in sorted(found, key=lambda c: c.line):
+            first.setdefault(c.name, c)
+        if not first:
+            continue
+        lines = r["code"].splitlines()
+        out.append({"id": i, "claims": [{"name": c.name, "kind": c.kind, "line": c.line} for c in first.values()],
+                    "heuristic": {n: mentions(context, n) for n in first},
+                    "changed": [(n, lines[n - 1]) for n in sorted(changed_lines(original, r["code"]))],
+                    "fragments": [(ch["header"], ch["text"]) for ctx in r["contexts"] for ch in ctx["chunks"]]})
+    return out
+
+
+def faith_user_message(item: dict) -> str:
+    parts = ["## Fragmentos de documentación que recibió el modelo"]
+    for n, (header, text) in enumerate(item["fragments"], start=1):
+        parts += ["", f"--- [{n}] {header}", text.strip("\n")]
+    parts += ["", "## Líneas del script corregido que cambiaron", ""]
+    parts += [f"{n}: {text}" for n, text in item["changed"]]
+    parts += ["", "## Nombres a revisar", ""]
+    parts += [f"{k}. {c['name']} ({KIND_ES[c['kind']]}) — línea {c['line']}" for k, c in enumerate(item["claims"], 1)]
+    return "\n".join(parts) + "\n"
+
+
+def faith_plan(faith: list[dict], seed: int = SEED) -> dict:
+    """A ciegas (ids `f001`...), anclas (2 con algún "no fiel" según la heurística y 2 sin) para los tres agentes y el
+    resto repartido en ronda."""
+    rng = random.Random(seed)
+    order = [f["id"] for f in faith]
+    rng.shuffle(order)
+    blind = {i: f"f{n:03d}" for n, i in enumerate(order, start=1)}
+    by_id = {f["id"]: f for f in faith}
+    with_no = sorted(i for i in order if not all(by_id[i]["heuristic"].values()))
+    without = sorted(i for i in order if all(by_id[i]["heuristic"].values()))
+    anchors = rng.sample(with_no, FAITH_ANCHORS["con_no_fiel"]) + rng.sample(without, FAITH_ANCHORS["sin_no_fiel"])
+    rest = [i for i in order if i not in anchors]
+    agents = {a: [i for n, i in enumerate(rest) if n % RUBRIC_AGENTS == a - 1] for a in range(1, RUBRIC_AGENTS + 1)}
+    for keys in agents.values():
+        step = max(1, len(keys) // len(anchors))
+        for n, anchor in enumerate(anchors):
+            keys.insert(n * (step + 1), anchor)
+    return {"key": {blind[i]: i for i in order}, "anchors": [blind[i] for i in anchors],
+            "agents": {str(a): [blind[i] for i in keys] for a, keys in agents.items()},
+            "names": {blind[i]: [c["name"] for c in by_id[i]["claims"]] for i in order}}
+
+
+def cmd_opus_faith() -> int:
+    """Exporta la validación de la Faithfulness (reranker sin iterar, dev) en opus_faith/agent_<a>/prompts_<k>.jsonl y la
+    clave en opus_faith_key.json (con el veredicto de la heurística, que Opus no ve). Se niega si ya existen."""
+    if FAITH_DIR.exists() or FAITH_KEY.exists():
+        print(f"ya existe {FAITH_DIR.relative_to(ROOT)} o {FAITH_KEY.name}: no se pisa")
+        return 1
+    run = RUBRIC_RUNS["rerank"]
+    faith = faith_items(run, load_items())
+    plan = faith_plan(faith)
+    by_id = {f["id"]: f for f in faith}
+    schema = FaithReview.model_json_schema()
+    for agent, ids in plan["agents"].items():
+        prompts = [{"review_id": b, "system": FAITH_SYSTEM, "user": faith_user_message(by_id[plan["key"][b]]),
+                    "schema": schema} for b in ids]
+        write_batches(prompts, FAITH_DIR / f"agent_{agent}")
+    plan |= {"run": run, "seed": SEED, "heuristic": {plan_b: by_id[i]["heuristic"] for plan_b, i in plan["key"].items()}}
+    FAITH_KEY.write_text(json.dumps(plan, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    n_claims = sum(len(f["claims"]) for f in faith)
+    n_no = sum(not v for f in faith for v in f["heuristic"].values())
+    print(f"{len(faith)} scripts de {run}, {n_claims} nombres ({n_no} no fieles según la heurística), "
+          f"{len(plan['anchors'])} anclas; " + ", ".join(f"agente {a}: {len(ids)}" for a, ids in plan["agents"].items())
+          + f" → {FAITH_DIR.relative_to(ROOT)}/")
+    return 0
+
+
+def check_faith_answer(names: dict[str, list[str]], row: dict) -> dict:
+    """Valida una respuesta con el esquema y que los nombres sean los de la lista, en el mismo orden."""
+    if row.get("review_id") not in names:
+        raise ValueError(f"review_id desconocido: {row.get('review_id')!r}")
+    v = FaithReview.model_validate(row["output"])
+    if [c.name for c in v.claims] != names[row["review_id"]]:
+        raise ValueError(f"{row['review_id']}: los nombres no coinciden con la lista")
+    return {"review_id": row["review_id"], "model": row.get("model", OPUS_MODEL), "output": v.model_dump()}
+
+
+def cmd_opus_faith_check() -> int:
+    """Valida las respuestas de los tres agentes y, solo si están todas, escribe opus_faith_answers.jsonl. Se niega si
+    ya existe."""
+    if FAITH_ANSWERS.exists():
+        print(f"ya existe {FAITH_ANSWERS.relative_to(ROOT)}: no se pisa")
+        return 1
+    plan = json.loads(FAITH_KEY.read_text(encoding="utf-8"))
+    rows, missing = [], []
+    for agent, ids in plan["agents"].items():
+        answers = {}
+        for path in sorted((FAITH_DIR / f"agent_{agent}").glob("answers_*.jsonl")):
+            for row in read_jsonl(path):
+                a = check_faith_answer({b: plan["names"][b] for b in ids}, row)
+                if a["review_id"] in answers:
+                    raise ValueError(f"agente {agent}: {a['review_id']} respondido dos veces")
+                answers[a["review_id"]] = a
+        missing += [f"{agent}:{b}" for b in ids if b not in answers]
+        rows += [{"blind_id": b, "id": plan["key"][b], "agent": int(agent), "anchor": b in plan["anchors"],
+                  "model": answers[b]["model"], "output": answers[b]["output"]} for b in ids if b in answers]
+    if missing:
+        print(f"faltan {len(missing)} respuestas ({', '.join(missing[:10])}): no se escribe nada")
+        return 1
+    FAITH_ANSWERS.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    print(f"{len(rows)} respuestas válidas → {FAITH_ANSWERS.relative_to(ROOT)}")
+    return 0
+
+
+def faith_compare(plan: dict, rows: list[dict], boot: int = BOOT, seed: int = SEED) -> dict:
+    """Heurística vs. Opus por nombre (anclas: el veredicto de la mayoría de los tres agentes) y por script."""
+    votes: dict[tuple[str, str], list[bool]] = {}
+    for r in rows:
+        for c in r["output"]["claims"]:
+            votes.setdefault((r["blind_id"], c["name"]), []).append(c["supported"] == "si")
+    opus = {k: sum(v) * 2 > len(v) for k, v in votes.items()}
+    pairs = [(b, n, plan["heuristic"][b][n], opus[(b, n)]) for b in plan["key"] for n in plan["names"][b]]
+    tp = sum(h and o for _, _, h, o in pairs)
+    fp = sum(h and not o for _, _, h, o in pairs)  # falso "fiel": la heurística lo da por respaldado y Opus no
+    fn = sum(not h and o for _, _, h, o in pairs)  # falso "no fiel"
+    tn = sum(not h and not o for _, _, h, o in pairs)
+    n = len(pairs)
+    po = (tp + tn) / n
+    pe = ((tp + fp) * (tp + fn) + (fn + tn) * (fp + tn)) / n ** 2
+    kappa = (po - pe) / (1 - pe) if pe < 1 else None
+    scripts = sorted(plan["key"])
+    per = {b: [(h, o) for bb, _, h, o in pairs if bb == b] for b in scripts}
+    rng = random.Random(seed)
+    accs = []
+    for _ in range(boot):
+        sample = [p for _ in scripts for p in per[scripts[rng.randrange(len(scripts))]]]
+        accs.append(sum(h == o for h, o in sample) / len(sample))
+    score = {who: sum(sum(p[x] for p in per[b]) / len(per[b]) for b in scripts) / len(scripts)
+             for x, who in enumerate(("heuristica", "opus"))}
+    anchors = {b: [v for (bb, _), v in votes.items() if bb == b] for b in plan["anchors"]}
+    anchor_claims = [v for (bb, _), v in votes.items() if bb in plan["anchors"]]
+    return {"scripts": len(scripts), "claims": n, "accuracy": po, "accuracy_ci": percentile_ci(accs), "kappa": kappa,
+            "confusion": {"fiel_respaldado": tp, "falso_fiel": fp, "falso_no_fiel": fn, "no_fiel_no_respaldado": tn},
+            "faithfulness": score, "anchors": {"scripts": len(anchors), "claims": len(anchor_claims),
+                                                "claims_all_agree": sum(len(set(v)) == 1 for v in anchor_claims)},
+            "disagreements": [{"blind_id": b, "id": plan["key"][b], "name": nm, "heuristica": h, "opus": o}
+                              for b, nm, h, o in pairs if h != o]}
+
+
+def cmd_faith_vs_opus() -> int:
+    if any(FAITH_OUT.with_suffix(x).exists() for x in (".json", ".md")):
+        print(f"ya existe {FAITH_OUT.relative_to(ROOT)}.json/.md: no se pisa")
+        return 1
+    plan = json.loads(FAITH_KEY.read_text(encoding="utf-8"))
+    result = {"run": plan["run"], **faith_compare(plan, read_jsonl(FAITH_ANSWERS))}
+    c, a = result["confusion"], result["anchors"]
+    md = "\n".join([
+        "# Faithfulness: heurística vs. Claude Opus 5.5", "",
+        f"`{result['run']}`: los scripts con Faithfulness definida sobre el umbral elegido, juzgados a ciegas por tres "
+        "agentes de Opus 5.5 con la rúbrica de docs/agents/prompt_opus_faithfulness.md (¿el uso de cada nombre está "
+        "respaldado por los fragmentos?). Unidad: nombre distinto por script. IC 95% por bootstrap sobre scripts.", "",
+        f"Anclas: {a['scripts']} scripts, {a['claims']} nombres; los tres agentes coinciden en {a['claims_all_agree']}.",
+        "", "| Scripts | Nombres | Acierto de la heurística | Kappa |", "|---|---|---|---|",
+        f"| {result['scripts']} | {result['claims']} | {fmt(result['accuracy'], result['accuracy_ci'])} | "
+        f"{fmt(result['kappa'])} |", "",
+        "| | Opus: respaldado | Opus: no respaldado |", "|---|---|---|",
+        f"| Heurística: fiel | {c['fiel_respaldado']} | {c['falso_fiel']} (falso fiel) |",
+        f"| Heurística: no fiel | {c['falso_no_fiel']} (falso no fiel) | {c['no_fiel_no_respaldado']} |", "",
+        f"Faithfulness promedio por script: heurística {fmt(result['faithfulness']['heuristica'])}, Opus "
+        f"{fmt(result['faithfulness']['opus'])}.", ""])
+    FAITH_OUT.with_suffix(".json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    FAITH_OUT.with_suffix(".md").write_text(md, encoding="utf-8")
+    print(md)
+    print(f"→ {FAITH_OUT.relative_to(ROOT)}.{{json,md}}")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -990,6 +1222,9 @@ def main() -> int:
     sub.add_parser("opus-rubric", help="exporta la revisión con rúbrica (reranker sin iterar + iter6), a ciegas")
     rubric_check = sub.add_parser("opus-rubric-check", help="valida las respuestas con rúbrica y las une")
     rubric_check.add_argument("--label", help="la revisión de opus-rubric-run con ese nombre (p. ej. iter7)")
+    sub.add_parser("opus-faith", help="exporta la validación de la Faithfulness contra Opus (a ciegas, con anclas)")
+    sub.add_parser("opus-faith-check", help="valida las respuestas de la validación de la Faithfulness")
+    sub.add_parser("faith-vs-opus", help="heurística de Faithfulness vs. Opus")
     sub.add_parser("rubric-compare", help="Opus con rúbrica como referencia: gpt-4o-mini con y sin rúbrica")
     rubric_cmp = sub.add_parser("rubric-compare-run", help="Opus con rúbrica de una corrida de opus-rubric-run vs. iter6")
     rubric_cmp.add_argument("run", help="nombre de la corrida en results/eval/gen/ (sin extensión)")
@@ -1023,6 +1258,12 @@ def main() -> int:
         return cmd_opus_rubric()
     if args.cmd == "opus-rubric-check":
         return cmd_opus_rubric_check(args.label)
+    if args.cmd == "opus-faith":
+        return cmd_opus_faith()
+    if args.cmd == "opus-faith-check":
+        return cmd_opus_faith_check()
+    if args.cmd == "faith-vs-opus":
+        return cmd_faith_vs_opus()
     if args.cmd == "rubric-compare":
         return cmd_rubric_compare()
     if args.cmd == "rubric-compare-run":
