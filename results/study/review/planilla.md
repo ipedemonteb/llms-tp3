@@ -1,5 +1,9 @@
 # Revisión manual de la generación
 
+> **DEPRECADA (2026-11-17): no se usa.** Las métricas automáticas se validan contra Claude Opus 5.5 con rúbrica común,
+> a ciegas y con scripts ancla (`docs/agents/metricas.md` §3.8): `results/study/judge_rubric*.md` (Éxito automático y LLM as a Judge) y
+> `results/study/faith_vs_opus.md` (Faithfulness). Se conserva solo por trazabilidad.
+
 20 scripts de dev corregidos por gpt-4o-mini (metricas.md §3.8). Para cada uno, completá después de los dos puntos (sin borrar la etiqueta):
 
 - `preserva:` `si`, `parcial` o `no`.
