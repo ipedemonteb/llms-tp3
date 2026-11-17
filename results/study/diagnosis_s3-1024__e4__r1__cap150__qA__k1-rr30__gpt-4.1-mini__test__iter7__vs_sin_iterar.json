@@ -1,0 +1,563 @@
+{
+ "run": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4.1-mini__test__iter7",
+ "threshold": -4.515625,
+ "positives": 122,
+ "good": 44,
+ "not_successful": 78,
+ "causes": {
+  "debajo_del_umbral": 40,
+  "respuesta_cortada": 0,
+  "abstencion_postvalidacion": 10,
+  "llm_se_abstiene_con_la_correcta": 13,
+  "llm_se_abstiene_sin_la_correcta": 4,
+  "no_aplica_los_cambios": 0,
+  "no_parsea": 0,
+  "migra_a_medias": 1,
+  "elige_mal_con_la_correcta": 3,
+  "elige_mal_sin_la_correcta": 7,
+  "otro": 0
+ },
+ "failures": [
+  {
+   "item": "dep-pypdf2-extract-01",
+   "module": "PyPDF2",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "dep-pypdf2-encrypt-01",
+   "module": "PyPDF2",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "dep-pypdf4-metadata-01",
+   "module": "PyPDF4",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "dep-xlrd-rows-01",
+   "module": "xlrd",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "dep-passlib-register-01",
+   "module": "passlib.context",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "dep-passlib-login-01",
+   "module": "passlib.hash",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "pwdlib"
+  },
+  {
+   "item": "dep-toml-pyproject-01",
+   "module": "toml",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "msgspec"
+  },
+  {
+   "item": "dep-pytz-dst-01",
+   "module": "pytz",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-alembic-01",
+   "module": "schemavault.core",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-attrs-01",
+   "module": "recordsmith",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-beartype-01",
+   "module": "typegate.lens",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-beautifulsoup4-01",
+   "module": "markupscope",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-cattrs-01",
+   "module": "rowmapper",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "marshmallow"
+  },
+  {
+   "item": "syn-cattrs-01",
+   "module": "rowmapper.rules",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-click-01",
+   "module": "argdeck",
+   "cause": "migra_a_medias",
+   "replacement_package": "click"
+  },
+  {
+   "item": "syn-configobj-01",
+   "module": "iniweave",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": "pymupdf"
+  },
+  {
+   "item": "syn-datasets-01",
+   "module": "shardlake",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-factory-boy-01",
+   "module": "seedcraft",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-factory-boy-01",
+   "module": "seedcraft.orm",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-filelock-01",
+   "module": "gatekeepqx",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-gradio-01",
+   "module": "canvasbard",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-huey-01",
+   "module": "burrowqx",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "rq"
+  },
+  {
+   "item": "syn-hydra-core-01",
+   "module": "kilnqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-hydra-core-01",
+   "module": "kilnqx.jobs",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "scikit-learn"
+  },
+  {
+   "item": "syn-logbook-01",
+   "module": "tracelineqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-loguru-01",
+   "module": "sinkweave",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-markdown-01",
+   "module": "glyphwright",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-marshmallow-01",
+   "module": "cargoshape",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-mistune-01",
+   "module": "treeparseqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-msgspec-01",
+   "module": "bytewire",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-oauthlib-01",
+   "module": "tokenbridge",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-oauthlib-01",
+   "module": "tokenbridge.models",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pendulum-01",
+   "module": "zonewarp",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pillow-01",
+   "module": "pixmaker",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-psycopg2-01",
+   "module": "echobus",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "redis"
+  },
+  {
+   "item": "syn-pyarrow-01",
+   "module": "columnarqx",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "pandas"
+  },
+  {
+   "item": "syn-pycryptodome-01",
+   "module": "cipherbox",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pydantic-settings-01",
+   "module": "envknobs",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pygithub-01",
+   "module": "forgeapiqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pypdf-01",
+   "module": "paperstamp",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": "pypdf"
+  },
+  {
+   "item": "syn-pytest-django-01",
+   "module": "harnessdb",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-python-dateutil-01",
+   "module": "zonecal",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-python-docx-01",
+   "module": "pagekitqx",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-python-pptx-01",
+   "module": "slidecraftqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-redis-01",
+   "module": "shardbus",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-requests-01",
+   "module": "brackwire",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-rich-01",
+   "module": "quartzgrid",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-rq-01",
+   "module": "hangarq",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-seaborn-01",
+   "module": "paletteloom",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-sh-01",
+   "module": "cwdlens",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "hydra-core"
+  },
+  {
+   "item": "syn-slack-sdk-01",
+   "module": "chatrelayqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-starlette-01",
+   "module": "padlockweb",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-structlog-01",
+   "module": "ledgerlight",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-testcontainers-01",
+   "module": "vesselbox",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-tornado-01",
+   "module": "glowroute",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-trafilatura-01",
+   "module": "hashfold",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-urllib3-01",
+   "module": "linkscout",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-websockets-01",
+   "module": "wardenlink",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-werkzeug-01",
+   "module": "plumblineqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pycryptodome-02",
+   "module": "sealkit",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-huggingface-hub-02",
+   "module": "depotkit",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "gradio-client"
+  },
+  {
+   "item": "syn-datasets-02",
+   "module": "gridarray",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-beartype-02",
+   "module": "typecrown",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-starlette-02",
+   "module": "pulsegate",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-openpyxl-02",
+   "module": "sheetweave",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pypdf-02",
+   "module": "scrollsmith",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-sympy-02",
+   "module": "girderlab",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pyarrow-02",
+   "module": "columnvault",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-cattrs-02",
+   "module": "shapeshift",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-hypothesis-02",
+   "module": "probeforge",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-slack-sdk-02",
+   "module": "pigeonpostqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-hydra-core-02",
+   "module": "gridtune",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pendulum-02",
+   "module": "chronoword",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-websocket-client-02",
+   "module": "wsforge",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-redis-02",
+   "module": "kvfleetqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-urllib3-02",
+   "module": "bytepull",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-psycopg-02",
+   "module": "pgbridge",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "psycopg2"
+  },
+  {
+   "item": "syn-dynaconf-02",
+   "module": "harnesskitqx",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  }
+ ],
+ "wrong_changes": [
+  {
+   "item": "neg-toml-dump-01",
+   "module": "toml",
+   "replacement_package": "dynaconf"
+  }
+ ],
+ "rewrite": {
+  "scripts": 54,
+  "median": 7.0,
+  "max": 15,
+  "over_10": 8
+ },
+ "comparisons": {
+  "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__test": {
+   "success_pos": {
+    "a": 0.3607,
+    "b": 0.1803,
+    "a_ci": [
+     0.2713,
+     0.4538
+    ],
+    "b_ci": [
+     0.1145,
+     0.2522
+    ],
+    "diff": 0.1803,
+    "ci": [
+     0.0887,
+     0.272
+    ],
+    "verdict": "mejor"
+   },
+   "precision": {
+    "a": 0.7857,
+    "b": 0.3667,
+    "a_ci": [
+     0.6667,
+     0.8889
+    ],
+    "b_ci": [
+     0.2453,
+     0.5
+    ],
+    "diff": 0.419,
+    "ci": [
+     0.271,
+     0.5644
+    ],
+    "verdict": "mejor"
+   },
+   "negative_rejection": {
+    "a": 0.9,
+    "b": 0.9,
+    "a_ci": [
+     0.6667,
+     1.0
+    ],
+    "b_ci": [
+     0.6667,
+     1.0
+    ],
+    "diff": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "verdict": "empate"
+   },
+   "positives_won": 27,
+   "positives_lost": 5
+  }
+ }
+}

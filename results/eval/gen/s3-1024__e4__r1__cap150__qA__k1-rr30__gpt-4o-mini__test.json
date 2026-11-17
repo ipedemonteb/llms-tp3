@@ -1,0 +1,68 @@
+{
+  "collection": "s3-1024__e4__r1__cap150",
+  "reranker": "k1-rr30",
+  "llm": "gpt-4o-mini",
+  "split": "test",
+  "threshold": -4.515625,
+  "budget": 2000,
+  "date": "2026-11-17T14:23:39",
+  "config": {
+    "chunks": "s3-1024",
+    "console_mode": "outputs_as_comments",
+    "model": "e4",
+    "representation": "r1",
+    "cap": 150,
+    "strategy": "round_robin",
+    "packages": null
+  },
+  "dataset": {
+    "commit": "b9023e9",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
+      "synthetic.jsonl": "af7b1e34d7d7d82331108a2f7c02cb523226bf5d7a832b8639a59fef42bc2b06"
+    }
+  },
+  "paid": {
+    "calls": 82,
+    "input_tokens": 271854,
+    "output_tokens": 22592,
+    "usd": 0.054333
+  },
+  "tag": null,
+  "cache_hits": 0,
+  "seconds": 315.2,
+  "metrics": {
+    "items": 126,
+    "llm_calls": 82,
+    "positives": {
+      "targets": 122,
+      "success": 0.1803,
+      "passed_threshold": 0.6721,
+      "decision_ok": 0.6311,
+      "applicable": 0.8443,
+      "parses": 0.9836,
+      "target_gone": 0.4508,
+      "package_ok": 0.3525,
+      "no_undefined_names": 0.7541
+    },
+    "negatives": {
+      "targets": 10,
+      "success": 0.8,
+      "passed_threshold": 3,
+      "rejected_by_llm": 1
+    },
+    "llm_errors": 0,
+    "hallucinated_imports": 0,
+    "undefined_names": 37,
+    "sources_ok": 0.9634
+  },
+  "first_format": "edits",
+  "check_context": false,
+  "first_prompt": "v1",
+  "retry": {
+    "format": null,
+    "retried": 0,
+    "abstained": 0
+  }
+}
