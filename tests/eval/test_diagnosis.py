@@ -98,3 +98,18 @@ def test_el_script_no_pisa_salidas(tmp_path, monkeypatch):
     (tmp_path / "diagnosis_corrida.md").write_text("no tocar")
     assert mod.main() == 1 and (tmp_path / "diagnosis_corrida.md").read_text() == "no tocar"
     assert before.startswith("# Diagnóstico del generador")
+
+
+def test_umbral_fijo_no_se_elige(tmp_path, monkeypatch):
+    path = Path(__file__).parents[2] / "src" / "scripts"
+    monkeypatch.syspath_prepend(str(path))
+    spec = importlib.util.spec_from_file_location("diagnose_generation", path / "diagnose_generation.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    monkeypatch.setattr(mod, "STUDY_DIR", tmp_path)
+    monkeypatch.setattr(mod, "load_run", lambda run: ("corrida", [record("a", score=0.3, success=True)]))
+    monkeypatch.setattr(mod, "load_items", lambda: items("a"))
+    monkeypatch.setattr(sys, "argv", ["diagnose_generation.py", "corrida", "--threshold", "0.5"])
+    assert mod.main() == 0
+    text = (tmp_path / "diagnosis_corrida.md").read_text()
+    assert "Umbral (fijo, calibrado en dev; no se elige): 0.5000" in text and "Debajo del umbral" in text

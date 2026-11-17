@@ -696,13 +696,14 @@ RUBRIC_ANSWERS = REVIEW_DIR / "opus_rubric_answers.jsonl"
 RUBRIC_AGENTS, RUBRIC_ANCHORS = 3, {"si": 2, "parcial": 2, "no": 2}  # anclas: de iter6, por el veredicto anterior
 
 
-def passing(run: str, items: dict[str, dict]) -> list[str]:
-    """Los scripts juzgados de `run` con algún target sobre el umbral elegido (los que promedia analyze_generation.py)."""
+def passing(run: str, items: dict[str, dict], fixed: float | None = None) -> list[str]:
+    """Los scripts juzgados de `run` con algún target sobre el umbral elegido (los que promedia analyze_generation.py);
+    con `fixed`, sobre ese umbral (en test: el de dev, que no se elige)."""
     from tprag.eval.threshold import RETRIEVAL, choose, sweep, targets  # noqa: PLC0415
 
     records = {r["id"]: r for r in read_jsonl(GEN_DIR / f"{run}.items.jsonl")}
-    threshold = choose(sweep(targets(list(records.values()), {i: it["code"] for i, it in items.items()})),
-                       criterion=RETRIEVAL)["threshold"]
+    threshold = fixed if fixed is not None else choose(
+        sweep(targets(list(records.values()), {i: it["code"] for i, it in items.items()})), criterion=RETRIEVAL)["threshold"]
     judge_path = GEN_DIR / f"{run}.judge.jsonl"
     judged = (sorted(r["id"] for r in read_jsonl(judge_path)) if judge_path.exists() else  # sin juicio todavía: los
               sorted(i for i, r in records.items() if r["code"] != items[i]["code"]))  # cambiados (lo que se juzga)
@@ -794,7 +795,7 @@ def cmd_opus_rubric_check(label: str | None = None) -> int:
     return 0
 
 
-def cmd_opus_rubric_run(run: str, label: str) -> int:
+def cmd_opus_rubric_run(run: str, label: str, threshold: float | None = None) -> int:
     """La misma revisión con rúbrica para otra corrida (p. ej. `__iter7`), a ciegas, en 3 agentes, con **las mismas 6
     anclas** de opus-rubric (de `__iter6`, ya juzgadas por otros tres agentes): si los agentes nuevos las juzgan igual,
     la escala es la misma entre revisiones. Escribe opus_rubric_<label>/agent_<a>/ y opus_rubric_<label>_key.json; se
@@ -808,7 +809,7 @@ def cmd_opus_rubric_run(run: str, label: str) -> int:
     previous = json.loads(RUBRIC_KEY.read_text(encoding="utf-8"))
     anchors = [(previous["key"][b]["run"], previous["key"][b]["id"]) for b in previous["anchors"]]
     items = load_items()
-    scripts = [(label, i) for i in passing(run, items)]
+    scripts = [(label, i) for i in passing(run, items, threshold)]
     rng = random.Random(SEED)
     order = scripts[:]
     rng.shuffle(order)
@@ -927,8 +928,8 @@ def cmd_rubric_compare_run(run: str, label: str) -> int:
                    "verdicts": {v: sum(opus[i] == v for i in ks) for v in VERDICTS}} for g, ks in groups.items()}
     judged = {r["id"]: r["b"]["preserves"] for r in read_jsonl(GEN_DIR / f"{run}.judge.jsonl")}
     gpt = compare_groups({i: (judged[i], opus[i]) for i in keys}, groups)
-    both = sorted(set(opus) & set(opus6))
-    vs6 = paired_difference([(opus[i], opus6[i]) for i in both])
+    both = sorted(set(opus) & set(opus6))  # vacío en test: otros scripts
+    vs6 = paired_difference([(opus[i], opus6[i]) for i in both]) if both else None
     result = {"run": run, "label": label, "anchors": {"n": len(anchors_new), "agree_with_previous": anchors_agree},
               "opus_rubric": summary, "gpt_vs_opus": gpt, "paired_vs_iter6": vs6,
               "items": [{"id": i, "success": records[i]["success"], "opus": opus[i], "gpt-4o-mini": judged.get(i),
@@ -947,9 +948,12 @@ def cmd_rubric_compare_run(run: str, label: str) -> int:
         lines.append(f"| {g} | {r['n']} | {fmt(r['mean']['gpt-4o-mini'])} | {fmt(r['mean']['opus'])} | "
                      f"{d['mean']:+.2f} [{d['ci'][0]:+.2f}, {d['ci'][1]:+.2f}] | {fmt(a['exact'], a['exact_ci'])} | "
                      f"{fmt(a['kappa'], a['kappa_ci'])} |")
-    lines += ["", f"Pareado contra `__iter6` (Opus con rúbrica, los {vs6['n']} scripts que cambiaron las dos corridas): "
-              f"{label} − iter6 = {vs6['mean']:+.2f} [{vs6['ci'][0]:+.2f}, {vs6['ci'][1]:+.2f}]; {label} preserva más en "
-              f"{vs6['higher']}, igual en {vs6['equal']}, menos en {vs6['lower']}.", ""]
+    if vs6:
+        lines += ["", f"Pareado contra `__iter6` (Opus con rúbrica, los {vs6['n']} scripts que cambiaron las dos "
+                  f"corridas): {label} − iter6 = {vs6['mean']:+.2f} [{vs6['ci'][0]:+.2f}, {vs6['ci'][1]:+.2f}]; {label} "
+                  f"preserva más en {vs6['higher']}, igual en {vs6['equal']}, menos en {vs6['lower']}.", ""]
+    else:
+        lines += ["", "Sin scripts en común con `__iter6` (otro split): no hay comparación pareada.", ""]
     md = "\n".join(lines)
     out.with_suffix(".json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     out.with_suffix(".md").write_text(md, encoding="utf-8")
@@ -986,6 +990,7 @@ def main() -> int:
     rubric_run = sub.add_parser("opus-rubric-run", help="la misma revisión con rúbrica para otra corrida, mismas anclas")
     rubric_run.add_argument("run", help="nombre de la corrida en results/eval/gen/ (sin extensión)")
     rubric_run.add_argument("--label", required=True, help="nombre corto (p. ej. iter7)")
+    rubric_run.add_argument("--threshold", type=float, help="umbral fijo (en test: el de dev), en vez de elegirlo")
     check = sub.add_parser("opus-run-check", help="valida las respuestas de opus-run y las une")
     check.add_argument("--label", required=True)
     context = sub.add_parser("context", help="muestra dónde aparece cada identificador en los chunks de un ítem")
@@ -1015,7 +1020,7 @@ def main() -> int:
     if args.cmd == "rubric-compare-run":
         return cmd_rubric_compare_run(args.run, args.label)
     if args.cmd == "opus-rubric-run":
-        return cmd_opus_rubric_run(args.run, args.label)
+        return cmd_opus_rubric_run(args.run, args.label, args.threshold)
     if args.cmd == "opus-run":
         return cmd_opus_run(args.run, args.label)
     if args.cmd == "opus-run-check":

@@ -12,6 +12,9 @@ Con el umbral elegido de cada corrida (la regla de retrieval al 95%, como analyz
 - con --vs, la diferencia pareada de éxito, precisión y Negative Rejection contra cada corrida, con IC 95% (bootstrap
   por script, 10.000 remuestreos, semilla 2026).
 
+--threshold <valor> (para test): usa ese umbral (el de dev) en la corrida, en vez de elegirlo; las corridas de --vs
+siguen con el suyo.
+
 Escribe results/study/diagnosis_<corrida>.json y .md (con --print-only, solo imprime). Si ya existen no los pisa
 (tprag.eval.outputs): --tag <nombre> escribe la variante al lado y --force la reemplaza.
 """
@@ -39,9 +42,11 @@ def chosen_threshold(records: list[dict], items: dict[str, dict]) -> float:
     return choose(sweep(targets(records, originals)), criterion=RETRIEVAL)["threshold"]
 
 
-def table(name: str, d: dict, comparisons: dict[str, dict]) -> str:
+def table(name: str, d: dict, comparisons: dict[str, dict], label: str | None = None) -> str:
+    """`label`: con umbral fijo, cómo se fijó (sin él, el encabezado de siempre: el umbral elegido con la regla)."""
+    head = f"Umbral elegido ({describe(RETRIEVAL)})" if label is None else f"Umbral ({label})"
     lines = [f"# Diagnóstico del generador: `{name}`", "",
-             f"Umbral elegido ({describe(RETRIEVAL)}): {fmt(d['threshold'], 4)}. Positivos: {d['positives']}; "
+             f"{head}: {fmt(d['threshold'], 4)}. Positivos: {d['positives']}; "
              f"exitosos: {d['good']}; no exitosos: {d['not_successful']}.", "",
              "## Por qué fallan los imports no exitosos (una causa por import: la primera en este orden)", "",
              "| Causa | Imports |", "|---|---|"]
@@ -72,6 +77,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("run", help="nombre de la corrida en results/eval/gen/ (sin extensión) o su ruta")
     parser.add_argument("--vs", nargs="*", default=[], help="corridas contra las que comparar (pareado)")
+    parser.add_argument("--threshold", type=float, help="umbral fijo (p. ej. el de dev, en test): no se elige")
     parser.add_argument("--print-only", action="store_true", help="no escribe archivos")
     parser.add_argument("--tag", type=tag_arg, help="sufijo __<tag> en las salidas: una variante al lado")
     parser.add_argument("--force", action="store_true", help="reemplaza las salidas si ya existen")
@@ -84,14 +90,15 @@ def main() -> int:
         print(refusal)
         return 1
     items = load_items()
-    threshold = chosen_threshold(records, items)
+    threshold = chosen_threshold(records, items) if args.threshold is None else args.threshold
     d = diagnose(records, items, threshold)
     comparisons = {}
     for other in args.vs:
         other_name, other_records = load_run(other)
         comparisons[other_name] = compare_runs(records, other_records, items, threshold,
                                                chosen_threshold(other_records, items))
-    text = table(name, d, comparisons)
+    text = (table(name, d, comparisons) if args.threshold is None else
+            table(name, d, comparisons, "fijo, calibrado en dev; no se elige"))
     print(text)
     if not args.print_only:
         STUDY_DIR.mkdir(parents=True, exist_ok=True)

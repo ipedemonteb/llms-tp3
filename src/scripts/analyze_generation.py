@@ -25,6 +25,9 @@ puntaje): con una corrida no permisiva solo se pueden evaluar umbrales iguales o
 Si el dataset cambió desde la corrida (sha256 distinto), se niega a seguir salvo con --allow-dataset-mismatch
 (los ítems regenerados se compararían contra su versión nueva).
 
+--threshold <valor> (para test): no elige el umbral, usa ese (el calibrado en dev); el barrido se muestra igual, solo
+como información. Sin la opción, todo es como antes.
+
 Escribe results/study/generation_<corrida>_analysis.json y _table.md (con --print-only, solo imprime). Si ya existen
 no los pisa (tprag.eval.outputs): --tag <nombre> escribe la variante al lado (sufijo __<nombre>) y --force la reemplaza.
 """
@@ -41,8 +44,8 @@ from tprag.eval.noise import summarize as noise_summary
 from tprag.eval.noise import target_groups
 from tprag.eval.retrieval import dataset_info
 from tprag.eval.threshold import (BAD, CORRECT_ABSTENTION, CRITERIA, DEFAULT_PARAMS, GOOD, LAMBDA, MISSED, NR,
-                                  PRECISION, RETRIEVAL, SENSITIVITY, UTILITY, WRONG_CHANGE, by_subset, choose, compare,
-                                  describe, sensitivity, sweep, targets, utility)
+                                  PRECISION, RETRIEVAL, SENSITIVITY, UTILITY, WRONG_CHANGE, by_subset, candidates, choose,
+                                  compare, describe, sensitivity, sweep, targets, utility)
 from tprag.eval.verify import EVAL_DIR, EVAL_FILES
 from tprag.split.store import ROOT
 
@@ -216,6 +219,7 @@ def main() -> int:
     parser.add_argument("--pass-rate", type=float, default=DEFAULT_PARAMS[RETRIEVAL])
     parser.add_argument("--allow-dataset-mismatch", action="store_true",
                         help="analizar aunque el dataset haya cambiado desde la corrida (solo para probar)")
+    parser.add_argument("--threshold", type=float, help="umbral fijo (p. ej. el de dev, en test): no se elige")
     parser.add_argument("--print-only", action="store_true", help="no escribe archivos")
     parser.add_argument("--tag", type=tag_arg, help="sufijo __<tag> en las salidas: una variante al lado del análisis")
     parser.add_argument("--force", action="store_true", help="reemplaza las salidas si ya existen")
@@ -245,7 +249,7 @@ def main() -> int:
     items = load_items()
     originals = {i: it["code"] for i, it in items.items()}
     ts = targets(records, originals)
-    rows = sweep(ts)
+    rows = sweep(ts) if args.threshold is None else sweep(ts, sorted({*candidates(ts), args.threshold}))
     faith = faithfulness_by_item(records, originals, chunk_texts(summary, records))
     judge = load_judge(items_path)
     per_item = {"faithfulness": {i: f["score"] for i, f in faith.items()},
@@ -254,7 +258,8 @@ def main() -> int:
     for r in rows:
         for metric, scores in per_item.items():
             r[metric], r[metric + "_n"] = mean_passing(records, scores, r["threshold"])
-    chosen = choose(rows, param, args.criterion)
+    chosen = (choose(rows, param, args.criterion) if args.threshold is None else
+              next(r for r in rows if r["threshold"] == args.threshold))
     noise = noise_summary(target_groups(records, items, chosen["threshold"], strict=not mismatch))
 
     analysis = {
@@ -262,7 +267,9 @@ def main() -> int:
                 "llm": summary["llm"], "split": summary["split"], "threshold": summary["threshold"],
                 "permissive": all(t.passed_run for t in ts if t.score is not None), "judged": len(judge),
                 "dataset_mismatch": sorted(mismatch)},
-        "criterion": {"name": args.criterion, "param": param, "label": describe(args.criterion, param)},
+        "criterion": ({"name": args.criterion, "param": param, "label": describe(args.criterion, param)}
+                      if args.threshold is None else
+                      {"name": "fijo", "param": args.threshold, "label": "umbral fijo, calibrado en dev; no se elige"}),
         "lambda": args.lam,
         "chosen": chosen,
         "sensitivity": sensitivity(rows),
