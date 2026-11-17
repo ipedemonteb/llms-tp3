@@ -1,0 +1,758 @@
+{
+ "run": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev__iter6",
+ "label": "iter6",
+ "threshold": -4.515625,
+ "boot": 10000,
+ "seed": 2026,
+ "groups": {
+  "total": {
+   "n": 94,
+   "mean": {
+    "gpt-4o-mini": 0.7819148936170213,
+    "opus": 0.5478723404255319
+   },
+   "verdicts": {
+    "gpt-4o-mini": {
+     "si": 53,
+     "parcial": 41,
+     "no": 0
+    },
+    "opus": {
+     "si": 37,
+     "parcial": 29,
+     "no": 28
+    }
+   },
+   "difference": {
+    "n": 94,
+    "mean": 0.23404255319148937,
+    "ci": [
+     0.1595744680851064,
+     0.3191489361702128
+    ],
+    "higher": 36,
+    "equal": 53,
+    "lower": 5
+   },
+   "agreement": {
+    "n": 94,
+    "exact": 0.5638297872340425,
+    "exact_ci": [
+     0.4574468085106383,
+     0.6595744680851063
+    ],
+    "within_one": 0.8617021276595744,
+    "kappa": 0.3221948645796694,
+    "kappa_ci": [
+     0.19925925925925914,
+     0.44607142857142856
+    ],
+    "confusion": {
+     "si": {
+      "si": 32,
+      "parcial": 8,
+      "no": 13
+     },
+     "parcial": {
+      "si": 5,
+      "parcial": 21,
+      "no": 15
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 0
+     }
+    }
+   }
+  },
+  "exitosos": {
+   "n": 76,
+   "mean": {
+    "gpt-4o-mini": 0.8223684210526315,
+    "opus": 0.631578947368421
+   },
+   "verdicts": {
+    "gpt-4o-mini": {
+     "si": 49,
+     "parcial": 27,
+     "no": 0
+    },
+    "opus": {
+     "si": 36,
+     "parcial": 24,
+     "no": 16
+    }
+   },
+   "difference": {
+    "n": 76,
+    "mean": 0.19078947368421054,
+    "ci": [
+     0.09868421052631579,
+     0.28289473684210525
+    ],
+    "higher": 23,
+    "equal": 48,
+    "lower": 5
+   },
+   "agreement": {
+    "n": 76,
+    "exact": 0.631578947368421,
+    "exact_ci": [
+     0.5131578947368421,
+     0.7368421052631579
+    ],
+    "within_one": 0.8552631578947368,
+    "kappa": 0.3674197384066587,
+    "kappa_ci": [
+     0.202876835480971,
+     0.5232974910394267
+    ],
+    "confusion": {
+     "si": {
+      "si": 31,
+      "parcial": 7,
+      "no": 11
+     },
+     "parcial": {
+      "si": 5,
+      "parcial": 17,
+      "no": 5
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 0
+     }
+    }
+   }
+  },
+  "no exitosos": {
+   "n": 18,
+   "mean": {
+    "gpt-4o-mini": 0.6111111111111112,
+    "opus": 0.19444444444444445
+   },
+   "verdicts": {
+    "gpt-4o-mini": {
+     "si": 4,
+     "parcial": 14,
+     "no": 0
+    },
+    "opus": {
+     "si": 1,
+     "parcial": 5,
+     "no": 12
+    }
+   },
+   "difference": {
+    "n": 18,
+    "mean": 0.4166666666666667,
+    "ci": [
+     0.2777777777777778,
+     0.5555555555555556
+    ],
+    "higher": 13,
+    "equal": 5,
+    "lower": 0
+   },
+   "agreement": {
+    "n": 18,
+    "exact": 0.2777777777777778,
+    "exact_ci": [
+     0.1111111111111111,
+     0.5
+    ],
+    "within_one": 0.8888888888888888,
+    "kappa": 0.06400000000000003,
+    "kappa_ci": [
+     -0.1020408163265306,
+     0.24651162790697673
+    ],
+    "confusion": {
+     "si": {
+      "si": 1,
+      "parcial": 1,
+      "no": 2
+     },
+     "parcial": {
+      "si": 0,
+      "parcial": 4,
+      "no": 10
+     },
+     "no": {
+      "si": 0,
+      "parcial": 0,
+      "no": 0
+     }
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "dep-fuzzywuzzy-dedup-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "dep-fuzzywuzzy-match-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "dep-fuzzywuzzy-suggest-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "dep-jose-issue-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "dep-jose-jwk-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "dep-jose-validate-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "dep-mock-chained-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "dep-mock-patch-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "dep-mock-sideeffect-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "dep-nose-asserts-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "dep-nose-setup-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "dep-oauth2client-adc-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "dep-oauth2client-installed-01",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "dep-oauth2client-sa-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "neg-oauth2client-storage-01",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "neg-zipcrypt-01",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-aiohttp-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-aiohttp-03",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-authlib-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "syn-authlib-02",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-boto3-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-celery-01",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-celery-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "syn-cryptography-01",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-cryptography-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-cryptography-03",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "si"
+  },
+  {
+   "id": "syn-django-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-django-02",
+   "success": false,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "syn-django-03",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-fastapi-01",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-fastapi-02",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-fastapi-03",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-fastapi-04",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-flask-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-flask-03",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-lxml-01",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-lxml-02",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-matplotlib-01",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-matplotlib-03",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-matplotlib-04",
+   "success": false,
+   "gpt-4o-mini": "si",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-numpy-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-numpy-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-numpy-03",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-pandas-01",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-pandas-02",
+   "success": false,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "syn-pandas-03",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-playwright-01",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-playwright-02",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-playwright-03",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-plotly-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-plotly-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-plotly-03",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-plotly-04",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-pydantic-01",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-pydantic-02",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-pydantic-03",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-pydantic-04",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-pymupdf-01",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-pymupdf-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-pymupdf-03",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-pytest-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "syn-python-stdlib-01",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-scikit-image-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-scikit-image-03",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-scikit-learn-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-scikit-learn-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-scipy-01",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "si"
+  },
+  {
+   "id": "syn-scipy-02",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-scipy-03",
+   "success": false,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-scrapy-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-scrapy-02",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-scrapy-03",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "si"
+  },
+  {
+   "id": "syn-sqlalchemy-01",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "no"
+  },
+  {
+   "id": "syn-sqlalchemy-02",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-streamlit-01",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-textual-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-textual-02",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-textual-03",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-textual-04",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "no"
+  },
+  {
+   "id": "syn-torch-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-torch-03",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "si"
+  },
+  {
+   "id": "syn-transformers-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-transformers-02",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-transformers-04",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-typer-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-typer-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-typer-03",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "si"
+  },
+  {
+   "id": "syn-typer-04",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-wand-01",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-wand-02",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-wand-03",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  },
+  {
+   "id": "syn-xlsxwriter-01",
+   "success": true,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-xlsxwriter-02",
+   "success": false,
+   "gpt-4o-mini": "parcial",
+   "opus": "parcial"
+  },
+  {
+   "id": "syn-xlsxwriter-03",
+   "success": true,
+   "gpt-4o-mini": "si",
+   "opus": "si"
+  }
+ ]
+}
