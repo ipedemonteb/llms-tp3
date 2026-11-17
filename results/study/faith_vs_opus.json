@@ -1,0 +1,224 @@
+{
+ "run": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev",
+ "scripts": 71,
+ "claims": 360,
+ "accuracy": 0.9222222222222223,
+ "accuracy_ci": [
+  0.8666666666666667,
+  0.9682080924855492
+ ],
+ "kappa": 0.5531914893617024,
+ "confusion": {
+  "fiel_respaldado": 312,
+  "falso_fiel": 28,
+  "falso_no_fiel": 0,
+  "no_fiel_no_respaldado": 20
+ },
+ "faithfulness": {
+  "heuristica": 0.9450368879946345,
+  "opus": 0.8841716968477532
+ },
+ "anchors": {
+  "scripts": 4,
+  "claims": 21,
+  "claims_all_agree": 21
+ },
+ "disagreements": [
+  {
+   "blind_id": "f006",
+   "id": "dep-jose-issue-01",
+   "name": "header",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f006",
+   "id": "dep-jose-issue-01",
+   "name": "payload",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f006",
+   "id": "dep-jose-issue-01",
+   "name": "key",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f007",
+   "id": "syn-scikit-image-03",
+   "name": "bins",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f008",
+   "id": "syn-matplotlib-04",
+   "name": "lw",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f008",
+   "id": "syn-matplotlib-04",
+   "name": "plot",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f008",
+   "id": "syn-matplotlib-04",
+   "name": "alpha",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f008",
+   "id": "syn-matplotlib-04",
+   "name": "fill_between",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f008",
+   "id": "syn-matplotlib-04",
+   "name": "grid",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f008",
+   "id": "syn-matplotlib-04",
+   "name": "set_ylabel",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f008",
+   "id": "syn-matplotlib-04",
+   "name": "suptitle",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f008",
+   "id": "syn-matplotlib-04",
+   "name": "autofmt_xdate",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f012",
+   "id": "dep-mock-sideeffect-01",
+   "name": "call",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f016",
+   "id": "syn-streamlit-01",
+   "name": "filesystem",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f016",
+   "id": "syn-streamlit-01",
+   "name": "input_format",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f016",
+   "id": "syn-streamlit-01",
+   "name": "ttl",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f016",
+   "id": "syn-streamlit-01",
+   "name": "read_table",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f020",
+   "id": "neg-oauth2client-storage-01",
+   "name": "Credentials",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f020",
+   "id": "neg-oauth2client-storage-01",
+   "name": "refresh",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f023",
+   "id": "syn-flask-02",
+   "name": "db",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f026",
+   "id": "syn-plotly-03",
+   "name": "color",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f026",
+   "id": "syn-plotly-03",
+   "name": "size",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f026",
+   "id": "syn-plotly-03",
+   "name": "url",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f028",
+   "id": "syn-xlsxwriter-01",
+   "name": "Workbook",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f043",
+   "id": "syn-aiohttp-03",
+   "name": "serve",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f047",
+   "id": "syn-torch-03",
+   "name": "tensor",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f048",
+   "id": "syn-numpy-02",
+   "name": "StringDType",
+   "heuristica": true,
+   "opus": false
+  },
+  {
+   "blind_id": "f062",
+   "id": "syn-scikit-learn-01",
+   "name": "sparse",
+   "heuristica": true,
+   "opus": false
+  }
+ ]
+}

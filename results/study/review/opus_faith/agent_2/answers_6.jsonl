@@ -1,0 +1,1 @@
+{"review_id": "f069", "model": "claude-opus-5-5", "output": {"claims": [{"name": "transformers", "supported": "si", "fragment": 1, "reason": "El fragmento muestra from transformers import PreTrainedConfig."}, {"name": "PreTrainedConfig", "supported": "si", "fragment": 1, "reason": "El fragmento muestra from transformers import PreTrainedConfig y una clase que hereda de él."}]}}

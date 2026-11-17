@@ -1,0 +1,1178 @@
+{
+ "key": {
+  "f001": "syn-cryptography-03",
+  "f002": "syn-fastapi-01",
+  "f003": "syn-boto3-01",
+  "f004": "syn-playwright-01",
+  "f005": "dep-nose-generators-01",
+  "f006": "dep-jose-issue-01",
+  "f007": "syn-scikit-image-03",
+  "f008": "syn-matplotlib-04",
+  "f009": "syn-pydantic-04",
+  "f010": "syn-scipy-03",
+  "f011": "syn-scrapy-02",
+  "f012": "dep-mock-sideeffect-01",
+  "f013": "syn-scikit-learn-04",
+  "f014": "dep-fuzzywuzzy-match-01",
+  "f015": "syn-scikit-image-02",
+  "f016": "syn-streamlit-01",
+  "f017": "dep-oauth2client-installed-01",
+  "f018": "dep-fuzzywuzzy-suggest-01",
+  "f019": "syn-pymupdf-02",
+  "f020": "neg-oauth2client-storage-01",
+  "f021": "syn-playwright-02",
+  "f022": "dep-nose-setup-01",
+  "f023": "syn-flask-02",
+  "f024": "syn-textual-04",
+  "f025": "dep-nose-asserts-01",
+  "f026": "syn-plotly-03",
+  "f027": "syn-lxml-02",
+  "f028": "syn-xlsxwriter-01",
+  "f029": "syn-python-stdlib-01",
+  "f030": "syn-scikit-learn-03",
+  "f031": "syn-textual-02",
+  "f032": "syn-matplotlib-03",
+  "f033": "syn-pandas-02",
+  "f034": "syn-wand-03",
+  "f035": "syn-pandas-03",
+  "f036": "syn-scrapy-01",
+  "f037": "syn-django-02",
+  "f038": "dep-jose-jwk-01",
+  "f039": "syn-numpy-03",
+  "f040": "syn-fastapi-03",
+  "f041": "syn-pydantic-03",
+  "f042": "syn-django-03",
+  "f043": "syn-aiohttp-03",
+  "f044": "syn-fastapi-04",
+  "f045": "syn-transformers-04",
+  "f046": "syn-django-01",
+  "f047": "syn-torch-03",
+  "f048": "syn-numpy-02",
+  "f049": "syn-pymupdf-01",
+  "f050": "syn-sqlalchemy-01",
+  "f051": "syn-textual-01",
+  "f052": "dep-mock-chained-01",
+  "f053": "syn-scipy-01",
+  "f054": "syn-celery-02",
+  "f055": "dep-mock-patch-01",
+  "f056": "dep-jose-validate-01",
+  "f057": "syn-pydantic-01",
+  "f058": "dep-fuzzywuzzy-dedup-01",
+  "f059": "syn-xlsxwriter-03",
+  "f060": "syn-wand-01",
+  "f061": "syn-plotly-01",
+  "f062": "syn-scikit-learn-01",
+  "f063": "syn-scikit-image-04",
+  "f064": "syn-torch-02",
+  "f065": "syn-scipy-02",
+  "f066": "syn-matplotlib-01",
+  "f067": "dep-oauth2client-sa-01",
+  "f068": "syn-transformers-03",
+  "f069": "syn-transformers-01",
+  "f070": "syn-pydantic-02",
+  "f071": "syn-aiohttp-01"
+ },
+ "anchors": [
+  "f026",
+  "f052",
+  "f024",
+  "f067"
+ ],
+ "agents": {
+  "1": [
+   "f026",
+   "f001",
+   "f004",
+   "f007",
+   "f010",
+   "f013",
+   "f052",
+   "f016",
+   "f019",
+   "f022",
+   "f027",
+   "f030",
+   "f024",
+   "f033",
+   "f036",
+   "f039",
+   "f042",
+   "f045",
+   "f067",
+   "f048",
+   "f051",
+   "f055",
+   "f058",
+   "f061",
+   "f064",
+   "f068",
+   "f071"
+  ],
+  "2": [
+   "f026",
+   "f002",
+   "f005",
+   "f008",
+   "f011",
+   "f014",
+   "f052",
+   "f017",
+   "f020",
+   "f023",
+   "f028",
+   "f031",
+   "f024",
+   "f034",
+   "f037",
+   "f040",
+   "f043",
+   "f046",
+   "f067",
+   "f049",
+   "f053",
+   "f056",
+   "f059",
+   "f062",
+   "f065",
+   "f069"
+  ],
+  "3": [
+   "f026",
+   "f003",
+   "f006",
+   "f009",
+   "f012",
+   "f015",
+   "f052",
+   "f018",
+   "f021",
+   "f025",
+   "f029",
+   "f032",
+   "f024",
+   "f035",
+   "f038",
+   "f041",
+   "f044",
+   "f047",
+   "f067",
+   "f050",
+   "f054",
+   "f057",
+   "f060",
+   "f063",
+   "f066",
+   "f070"
+  ]
+ },
+ "names": {
+  "f001": [
+   "cryptography.hazmat.decrepit.ciphers.algorithms",
+   "ARC4",
+   "cryptography.hazmat.primitives.ciphers",
+   "Cipher",
+   "mode",
+   "encryptor",
+   "decryptor"
+  ],
+  "f002": [
+   "fastapi",
+   "FastAPI",
+   "Request"
+  ],
+  "f003": [
+   "boto3",
+   "client",
+   "Bucket",
+   "get_bucket_cors"
+  ],
+  "f004": [
+   "playwright.sync_api",
+   "sync_playwright",
+   "launch",
+   "chromium",
+   "TimeoutError",
+   "timeout",
+   "click",
+   "locator",
+   "new_page",
+   "close"
+  ],
+  "f005": [
+   "pendulum"
+  ],
+  "f006": [
+   "authlib.jose",
+   "jwt",
+   "header",
+   "payload",
+   "key"
+  ],
+  "f007": [
+   "skimage",
+   "exposure",
+   "adjust_gamma",
+   "bins",
+   "cumulative_distribution",
+   "adjust_log"
+  ],
+  "f008": [
+   "plotly.graph_objects",
+   "Figure",
+   "add_subplot",
+   "lw",
+   "plot",
+   "alpha",
+   "fill_between",
+   "grid",
+   "set_ylabel",
+   "suptitle",
+   "autofmt_xdate",
+   "show"
+  ],
+  "f009": [
+   "pydantic.dataclasses",
+   "dataclass"
+  ],
+  "f010": [
+   "numpy",
+   "scipy",
+   "linalg",
+   "inv",
+   "array"
+  ],
+  "f011": [
+   "scrapy.loader",
+   "ItemLoader",
+   "myproject.items",
+   "Product",
+   "item",
+   "response",
+   "add_xpath",
+   "add_css",
+   "add_value",
+   "load_item"
+  ],
+  "f012": [
+   "unittest.mock",
+   "MagicMock",
+   "call",
+   "patch"
+  ],
+  "f013": [
+   "sklearn.multiclass",
+   "OutputCodeClassifier",
+   "sklearn.svm",
+   "LinearSVC",
+   "random_state",
+   "code_size",
+   "sklearn",
+   "datasets",
+   "return_X_y",
+   "load_iris"
+  ],
+  "f014": [
+   "rapidfuzz",
+   "fuzz",
+   "process"
+  ],
+  "f015": [
+   "skimage.feature",
+   "fisher_vector",
+   "ORB",
+   "learn_gmm",
+   "skimage.transform",
+   "resize",
+   "n_keypoints",
+   "harris_k",
+   "detect_and_extract",
+   "astype",
+   "descriptors",
+   "n_modes"
+  ],
+  "f016": [
+   "pyarrow",
+   "fs",
+   "S3FileSystem",
+   "filesystem",
+   "input_format",
+   "ttl",
+   "read_table"
+  ],
+  "f017": [
+   "google_auth_oauthlib.flow",
+   "Flow",
+   "scopes",
+   "redirect_uri",
+   "from_client_secrets_file",
+   "code",
+   "fetch_token"
+  ],
+  "f018": [
+   "rapidfuzz.process",
+   "extractOne",
+   "limit"
+  ],
+  "f019": [
+   "pymupdf",
+   "Pixmap",
+   "csRGB",
+   "save"
+  ],
+  "f020": [
+   "google_auth_oauthlib.flow",
+   "InstalledAppFlow",
+   "google.oauth2.credentials",
+   "Credentials",
+   "scopes",
+   "from_client_secrets_file",
+   "run_local_server",
+   "refresh"
+  ],
+  "f021": [
+   "playwright",
+   "click",
+   "name",
+   "get_by_role",
+   "Error",
+   "sync_api",
+   "launch",
+   "new_page"
+  ],
+  "f022": [
+   "pytest"
+  ],
+  "f023": [
+   "flask",
+   "g",
+   "db"
+  ],
+  "f024": [
+   "textual.app",
+   "App"
+  ],
+  "f025": [
+   "pytest",
+   "raises",
+   "mark"
+  ],
+  "f026": [
+   "altair",
+   "x",
+   "y",
+   "color",
+   "size",
+   "mark_point",
+   "Chart",
+   "url",
+   "Dataset",
+   "save"
+  ],
+  "f027": [
+   "lxml",
+   "etree"
+  ],
+  "f028": [
+   "xlsxwriter",
+   "add_table",
+   "Workbook",
+   "add_worksheet",
+   "close"
+  ],
+  "f029": [
+   "eliot",
+   "log_call",
+   "action_type"
+  ],
+  "f030": [
+   "scipy",
+   "sparse",
+   "numpy",
+   "coo_array",
+   "todense"
+  ],
+  "f031": [
+   "textual.app",
+   "App",
+   "ComposeResult",
+   "textual.widgets",
+   "Static",
+   "markup"
+  ],
+  "f032": [
+   "xlsxwriter",
+   "Workbook",
+   "add_worksheet",
+   "add_chart",
+   "add_series",
+   "insert_chart"
+  ],
+  "f033": [
+   "rich.table",
+   "Table",
+   "from_columns"
+  ],
+  "f034": [
+   "wand.image",
+   "Image",
+   "filename",
+   "artifacts",
+   "number_colors",
+   "max_iterations",
+   "tolerance",
+   "kmeans",
+   "save"
+  ],
+  "f035": [
+   "pandas",
+   "DataFrame"
+  ],
+  "f036": [
+   "scrapy",
+   "scrapy_spider_metadata",
+   "Args",
+   "Spider",
+   "Request",
+   "CrawlerRunner",
+   "crawler",
+   "pages",
+   "crawl"
+  ],
+  "f037": [
+   "rich.console",
+   "Console"
+  ],
+  "f038": [
+   "authlib.jose",
+   "JsonWebToken",
+   "JsonWebKey",
+   "import_key",
+   "audience"
+  ],
+  "f039": [
+   "numpy",
+   "array"
+  ],
+  "f040": [
+   "fastapi",
+   "FastAPI",
+   "pydantic",
+   "BaseModel"
+  ],
+  "f041": [
+   "marshmallow",
+   "Schema",
+   "fields",
+   "ValidationError"
+  ],
+  "f042": [
+   "django.db.migrations.serializer",
+   "BaseSerializer"
+  ],
+  "f043": [
+   "websockets",
+   "serve",
+   "host",
+   "port"
+  ],
+  "f044": [
+   "fastapi",
+   "FastAPI"
+  ],
+  "f045": [
+   "transformers",
+   "AutoModelForCausalLM",
+   "AutoTokenizer",
+   "torch",
+   "from_pretrained",
+   "to",
+   "dtype",
+   "float16",
+   "max_new_tokens",
+   "generate",
+   "skip_special_tokens",
+   "batch_decode"
+  ],
+  "f046": [
+   "django.db",
+   "migrations",
+   "Migration",
+   "RunPython"
+  ],
+  "f047": [
+   "torch",
+   "compile",
+   "tensor",
+   "torch._dynamo.decorators",
+   "mark_dynamic"
+  ],
+  "f048": [
+   "numpy",
+   "na_object",
+   "StringDType",
+   "dtype",
+   "array"
+  ],
+  "f049": [
+   "pymupdf",
+   "ocr",
+   "ocr_function",
+   "rasterize_always",
+   "to_markdown",
+   "EngineError"
+  ],
+  "f050": [
+   "sqlalchemy",
+   "create_engine",
+   "update",
+   "handle",
+   "where",
+   "begin",
+   "execute"
+  ],
+  "f051": [
+   "textual.app",
+   "App",
+   "ComposeResult",
+   "textual.containers",
+   "Container",
+   "textual.renderables.gradient",
+   "LinearGradient",
+   "textual.widgets",
+   "Static"
+  ],
+  "f052": [
+   "unittest.mock",
+   "MagicMock",
+   "call",
+   "sentinel"
+  ],
+  "f053": [
+   "scipy.stats",
+   "qmc",
+   "d",
+   "Halton",
+   "random"
+  ],
+  "f054": [
+   "celery",
+   "bootsteps",
+   "StartStopStep"
+  ],
+  "f055": [
+   "unittest",
+   "mock"
+  ],
+  "f056": [
+   "authlib.jose",
+   "ExpiredSignatureError",
+   "JWTError",
+   "jwt"
+  ],
+  "f057": [
+   "typer",
+   "BadParameter",
+   "callback",
+   "Option"
+  ],
+  "f058": [
+   "rapidfuzz",
+   "fuzz"
+  ],
+  "f059": [
+   "xlsxwriter",
+   "Workbook",
+   "add_worksheet",
+   "add_format",
+   "write",
+   "close"
+  ],
+  "f060": [
+   "wand.image",
+   "Image",
+   "filename",
+   "clone",
+   "gamma",
+   "save"
+  ],
+  "f061": [
+   "plotly.figure_factory",
+   "color_threshold",
+   "create_dendrogram"
+  ],
+  "f062": [
+   "sklearn.feature_extraction",
+   "DictVectorizer",
+   "sparse"
+  ],
+  "f063": [
+   "skimage",
+   "restoration",
+   "num_iter",
+   "richardson_lucy"
+  ],
+  "f064": [
+   "sklearn",
+   "preprocessing",
+   "normalize",
+   "track_grad"
+  ],
+  "f065": [
+   "scipy.stats.sampling",
+   "TransformedDensityRejection",
+   "numpy",
+   "random_state"
+  ],
+  "f066": [
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "load_sample_image",
+   "subplots",
+   "color",
+   "bar",
+   "zorder",
+   "alpha",
+   "figimage"
+  ],
+  "f067": [
+   "google.oauth2",
+   "service_account",
+   "scopes",
+   "from_service_account_file",
+   "Credentials"
+  ],
+  "f068": [
+   "huggingface_hub",
+   "list_jobs_hardware",
+   "run_job"
+  ],
+  "f069": [
+   "transformers",
+   "PreTrainedConfig"
+  ],
+  "f070": [
+   "marshmallow",
+   "Schema",
+   "fields",
+   "Str",
+   "Int"
+  ],
+  "f071": [
+   "aiohttp.test_utils",
+   "TestClient",
+   "TestServer",
+   "aiohttp",
+   "web",
+   "Application",
+   "add_routes",
+   "text",
+   "Response"
+  ]
+ },
+ "run": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev",
+ "seed": 2026,
+ "heuristic": {
+  "f001": {
+   "cryptography.hazmat.decrepit.ciphers.algorithms": true,
+   "ARC4": true,
+   "cryptography.hazmat.primitives.ciphers": true,
+   "Cipher": true,
+   "mode": true,
+   "encryptor": true,
+   "decryptor": true
+  },
+  "f002": {
+   "fastapi": true,
+   "FastAPI": true,
+   "Request": true
+  },
+  "f003": {
+   "boto3": true,
+   "client": true,
+   "Bucket": true,
+   "get_bucket_cors": true
+  },
+  "f004": {
+   "playwright.sync_api": true,
+   "sync_playwright": true,
+   "launch": true,
+   "chromium": true,
+   "TimeoutError": true,
+   "timeout": true,
+   "click": true,
+   "locator": true,
+   "new_page": true,
+   "close": true
+  },
+  "f005": {
+   "pendulum": true
+  },
+  "f006": {
+   "authlib.jose": true,
+   "jwt": true,
+   "header": true,
+   "payload": true,
+   "key": true
+  },
+  "f007": {
+   "skimage": true,
+   "exposure": true,
+   "adjust_gamma": true,
+   "bins": true,
+   "cumulative_distribution": true,
+   "adjust_log": true
+  },
+  "f008": {
+   "plotly.graph_objects": true,
+   "Figure": true,
+   "add_subplot": false,
+   "lw": true,
+   "plot": true,
+   "alpha": true,
+   "fill_between": true,
+   "grid": true,
+   "set_ylabel": true,
+   "suptitle": true,
+   "autofmt_xdate": true,
+   "show": true
+  },
+  "f009": {
+   "pydantic.dataclasses": true,
+   "dataclass": true
+  },
+  "f010": {
+   "numpy": true,
+   "scipy": true,
+   "linalg": true,
+   "inv": true,
+   "array": true
+  },
+  "f011": {
+   "scrapy.loader": true,
+   "ItemLoader": true,
+   "myproject.items": true,
+   "Product": true,
+   "item": true,
+   "response": true,
+   "add_xpath": true,
+   "add_css": true,
+   "add_value": true,
+   "load_item": true
+  },
+  "f012": {
+   "unittest.mock": true,
+   "MagicMock": true,
+   "call": true,
+   "patch": true
+  },
+  "f013": {
+   "sklearn.multiclass": true,
+   "OutputCodeClassifier": true,
+   "sklearn.svm": true,
+   "LinearSVC": true,
+   "random_state": true,
+   "code_size": true,
+   "sklearn": true,
+   "datasets": true,
+   "return_X_y": true,
+   "load_iris": true
+  },
+  "f014": {
+   "rapidfuzz": true,
+   "fuzz": true,
+   "process": true
+  },
+  "f015": {
+   "skimage.feature": true,
+   "fisher_vector": true,
+   "ORB": true,
+   "learn_gmm": true,
+   "skimage.transform": true,
+   "resize": true,
+   "n_keypoints": true,
+   "harris_k": true,
+   "detect_and_extract": true,
+   "astype": true,
+   "descriptors": true,
+   "n_modes": true
+  },
+  "f016": {
+   "pyarrow": true,
+   "fs": true,
+   "S3FileSystem": true,
+   "filesystem": true,
+   "input_format": true,
+   "ttl": true,
+   "read_table": true
+  },
+  "f017": {
+   "google_auth_oauthlib.flow": true,
+   "Flow": true,
+   "scopes": true,
+   "redirect_uri": true,
+   "from_client_secrets_file": true,
+   "code": true,
+   "fetch_token": true
+  },
+  "f018": {
+   "rapidfuzz.process": true,
+   "extractOne": true,
+   "limit": false
+  },
+  "f019": {
+   "pymupdf": true,
+   "Pixmap": true,
+   "csRGB": true,
+   "save": true
+  },
+  "f020": {
+   "google_auth_oauthlib.flow": true,
+   "InstalledAppFlow": true,
+   "google.oauth2.credentials": false,
+   "Credentials": true,
+   "scopes": true,
+   "from_client_secrets_file": true,
+   "run_local_server": true,
+   "refresh": true
+  },
+  "f021": {
+   "playwright": true,
+   "click": true,
+   "name": true,
+   "get_by_role": true,
+   "Error": false,
+   "sync_api": true,
+   "launch": false,
+   "new_page": false
+  },
+  "f022": {
+   "pytest": true
+  },
+  "f023": {
+   "flask": true,
+   "g": true,
+   "db": true
+  },
+  "f024": {
+   "textual.app": true,
+   "App": true
+  },
+  "f025": {
+   "pytest": true,
+   "raises": true,
+   "mark": false
+  },
+  "f026": {
+   "altair": true,
+   "x": true,
+   "y": true,
+   "color": true,
+   "size": true,
+   "mark_point": true,
+   "Chart": true,
+   "url": true,
+   "Dataset": false,
+   "save": true
+  },
+  "f027": {
+   "lxml": true,
+   "etree": true
+  },
+  "f028": {
+   "xlsxwriter": true,
+   "add_table": true,
+   "Workbook": true,
+   "add_worksheet": false,
+   "close": false
+  },
+  "f029": {
+   "eliot": true,
+   "log_call": true,
+   "action_type": true
+  },
+  "f030": {
+   "scipy": true,
+   "sparse": true,
+   "numpy": true,
+   "coo_array": true,
+   "todense": true
+  },
+  "f031": {
+   "textual.app": true,
+   "App": true,
+   "ComposeResult": true,
+   "textual.widgets": true,
+   "Static": true,
+   "markup": true
+  },
+  "f032": {
+   "xlsxwriter": true,
+   "Workbook": true,
+   "add_worksheet": true,
+   "add_chart": true,
+   "add_series": true,
+   "insert_chart": true
+  },
+  "f033": {
+   "rich.table": true,
+   "Table": true,
+   "from_columns": false
+  },
+  "f034": {
+   "wand.image": true,
+   "Image": true,
+   "filename": true,
+   "artifacts": true,
+   "number_colors": true,
+   "max_iterations": true,
+   "tolerance": true,
+   "kmeans": true,
+   "save": true
+  },
+  "f035": {
+   "pandas": true,
+   "DataFrame": true
+  },
+  "f036": {
+   "scrapy": true,
+   "scrapy_spider_metadata": true,
+   "Args": true,
+   "Spider": true,
+   "Request": true,
+   "CrawlerRunner": true,
+   "crawler": true,
+   "pages": true,
+   "crawl": true
+  },
+  "f037": {
+   "rich.console": true,
+   "Console": true
+  },
+  "f038": {
+   "authlib.jose": true,
+   "JsonWebToken": true,
+   "JsonWebKey": true,
+   "import_key": true,
+   "audience": false
+  },
+  "f039": {
+   "numpy": true,
+   "array": true
+  },
+  "f040": {
+   "fastapi": true,
+   "FastAPI": true,
+   "pydantic": true,
+   "BaseModel": true
+  },
+  "f041": {
+   "marshmallow": true,
+   "Schema": true,
+   "fields": true,
+   "ValidationError": true
+  },
+  "f042": {
+   "django.db.migrations.serializer": true,
+   "BaseSerializer": true
+  },
+  "f043": {
+   "websockets": true,
+   "serve": true,
+   "host": true,
+   "port": true
+  },
+  "f044": {
+   "fastapi": true,
+   "FastAPI": true
+  },
+  "f045": {
+   "transformers": true,
+   "AutoModelForCausalLM": true,
+   "AutoTokenizer": true,
+   "torch": true,
+   "from_pretrained": true,
+   "to": true,
+   "dtype": true,
+   "float16": true,
+   "max_new_tokens": true,
+   "generate": true,
+   "skip_special_tokens": true,
+   "batch_decode": true
+  },
+  "f046": {
+   "django.db": true,
+   "migrations": true,
+   "Migration": true,
+   "RunPython": true
+  },
+  "f047": {
+   "torch": true,
+   "compile": true,
+   "tensor": true,
+   "torch._dynamo.decorators": true,
+   "mark_dynamic": true
+  },
+  "f048": {
+   "numpy": true,
+   "na_object": true,
+   "StringDType": true,
+   "dtype": true,
+   "array": true
+  },
+  "f049": {
+   "pymupdf": true,
+   "ocr": true,
+   "ocr_function": true,
+   "rasterize_always": false,
+   "to_markdown": true,
+   "EngineError": false
+  },
+  "f050": {
+   "sqlalchemy": true,
+   "create_engine": false,
+   "update": true,
+   "handle": false,
+   "where": true,
+   "begin": true,
+   "execute": true
+  },
+  "f051": {
+   "textual.app": true,
+   "App": true,
+   "ComposeResult": true,
+   "textual.containers": true,
+   "Container": true,
+   "textual.renderables.gradient": true,
+   "LinearGradient": true,
+   "textual.widgets": true,
+   "Static": true
+  },
+  "f052": {
+   "unittest.mock": true,
+   "MagicMock": true,
+   "call": true,
+   "sentinel": false
+  },
+  "f053": {
+   "scipy.stats": true,
+   "qmc": true,
+   "d": true,
+   "Halton": true,
+   "random": true
+  },
+  "f054": {
+   "celery": true,
+   "bootsteps": true,
+   "StartStopStep": true
+  },
+  "f055": {
+   "unittest": true,
+   "mock": true
+  },
+  "f056": {
+   "authlib.jose": true,
+   "ExpiredSignatureError": false,
+   "JWTError": false,
+   "jwt": true
+  },
+  "f057": {
+   "typer": true,
+   "BadParameter": true,
+   "callback": true,
+   "Option": true
+  },
+  "f058": {
+   "rapidfuzz": true,
+   "fuzz": true
+  },
+  "f059": {
+   "xlsxwriter": true,
+   "Workbook": true,
+   "add_worksheet": true,
+   "add_format": true,
+   "write": true,
+   "close": true
+  },
+  "f060": {
+   "wand.image": true,
+   "Image": true,
+   "filename": true,
+   "clone": true,
+   "gamma": true,
+   "save": true
+  },
+  "f061": {
+   "plotly.figure_factory": true,
+   "color_threshold": true,
+   "create_dendrogram": true
+  },
+  "f062": {
+   "sklearn.feature_extraction": true,
+   "DictVectorizer": true,
+   "sparse": true
+  },
+  "f063": {
+   "skimage": true,
+   "restoration": true,
+   "num_iter": true,
+   "richardson_lucy": true
+  },
+  "f064": {
+   "sklearn": true,
+   "preprocessing": true,
+   "normalize": true,
+   "track_grad": false
+  },
+  "f065": {
+   "scipy.stats.sampling": true,
+   "TransformedDensityRejection": true,
+   "numpy": true,
+   "random_state": true
+  },
+  "f066": {
+   "matplotlib.pyplot": true,
+   "sklearn.datasets": true,
+   "load_sample_image": true,
+   "subplots": true,
+   "color": true,
+   "bar": true,
+   "zorder": true,
+   "alpha": true,
+   "figimage": true
+  },
+  "f067": {
+   "google.oauth2": true,
+   "service_account": true,
+   "scopes": true,
+   "from_service_account_file": true,
+   "Credentials": true
+  },
+  "f068": {
+   "huggingface_hub": true,
+   "list_jobs_hardware": true,
+   "run_job": true
+  },
+  "f069": {
+   "transformers": true,
+   "PreTrainedConfig": true
+  },
+  "f070": {
+   "marshmallow": true,
+   "Schema": true,
+   "fields": true,
+   "Str": true,
+   "Int": true
+  },
+  "f071": {
+   "aiohttp.test_utils": true,
+   "TestClient": true,
+   "TestServer": true,
+   "aiohttp": true,
+   "web": true,
+   "Application": true,
+   "add_routes": true,
+   "text": true,
+   "Response": true
+  }
+ }
+}
