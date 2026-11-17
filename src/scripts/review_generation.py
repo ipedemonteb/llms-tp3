@@ -899,12 +899,13 @@ def cmd_rubric_compare() -> int:
     return 0
 
 
-def cmd_rubric_compare_run(run: str, label: str) -> int:
+def cmd_rubric_compare_run(run: str, label: str, vs: str | None = None) -> int:
     """Opus con rúbrica para la corrida de opus-rubric-run `label`: su preservación (total, exitosos, no exitosos), gpt-4o-mini
     (el juez de siempre) contra Opus, y la diferencia pareada de la preservación según Opus contra `__iter6` (de
     opus-rubric, misma escala: las mismas anclas) sobre los scripts que cambiaron las dos. Escribe
-    judge_rubric_<label>.{json,md}; no los pisa."""
-    out = ROOT / "results" / "study" / f"judge_rubric_{label}"
+    judge_rubric_<label>.{json,md}; no los pisa. Con `vs` (otra revisión de opus-rubric-run, p. ej. sin_iterar_test),
+    la comparación pareada es contra esa en vez de `__iter6`, en judge_rubric_<label>__vs_<vs>.{json,md}."""
+    out = ROOT / "results" / "study" / (f"judge_rubric_{label}" + (f"__vs_{vs}" if vs else ""))
     if any(out.with_suffix(x).exists() for x in (".json", ".md")):
         print(f"ya existe {out.relative_to(ROOT)}.json/.md: no se pisa")
         return 1
@@ -920,6 +921,11 @@ def cmd_rubric_compare_run(run: str, label: str) -> int:
             previous.setdefault(r["id"], []).append(r["output"]["preserves"])
     opus6 = {i: max(set(v), key=v.count) for i, v in previous.items()}
     anchors_agree = sum(all(x == opus6[i] for x in v) for i, v in anchors_new.items())
+    other_name = vs or "iter6"
+    shown = vs or "__iter6"  # como figura en el texto de siempre
+    other = opus6 if vs is None else {r["id"]: r["output"]["preserves"]
+                                      for r in read_jsonl(REVIEW_DIR / f"opus_rubric_{vs}_answers.jsonl")
+                                      if not r["anchor"]}
     records = {r["id"]: r for r in read_jsonl(GEN_DIR / f"{run}.items.jsonl")}
     keys = sorted(opus)
     groups = {"total": keys, "exitosos": [i for i in keys if records[i]["success"]],
@@ -928,12 +934,13 @@ def cmd_rubric_compare_run(run: str, label: str) -> int:
                    "verdicts": {v: sum(opus[i] == v for i in ks) for v in VERDICTS}} for g, ks in groups.items()}
     judged = {r["id"]: r["b"]["preserves"] for r in read_jsonl(GEN_DIR / f"{run}.judge.jsonl")}
     gpt = compare_groups({i: (judged[i], opus[i]) for i in keys}, groups)
-    both = sorted(set(opus) & set(opus6))  # vacío en test: otros scripts
-    vs6 = paired_difference([(opus[i], opus6[i]) for i in both]) if both else None
+    both = sorted(set(opus) & set(other))  # vacío si son de otro split
+    vs6 = paired_difference([(opus[i], other[i]) for i in both]) if both else None
     result = {"run": run, "label": label, "anchors": {"n": len(anchors_new), "agree_with_previous": anchors_agree},
-              "opus_rubric": summary, "gpt_vs_opus": gpt, "paired_vs_iter6": vs6,
+              "opus_rubric": summary, "gpt_vs_opus": gpt, **({"paired_vs_iter6": vs6} if vs is None else
+                                                              {"paired_vs": vs, "paired": vs6}),
               "items": [{"id": i, "success": records[i]["success"], "opus": opus[i], "gpt-4o-mini": judged.get(i),
-                         "opus_iter6": opus6.get(i)} for i in keys]}
+                         f"opus_{other_name}": other.get(i)} for i in keys]}
     lines = [f"# Preservación de la tarea con rúbrica: `{label}`", "",
              f"`{run}`: scripts cambiados que pasan el umbral, juzgados a ciegas por tres agentes de Opus 5.5 con la "
              "rúbrica común. Anclas (las de la revisión de sin iterar e `__iter6`): los agentes nuevos coinciden con la "
@@ -949,11 +956,11 @@ def cmd_rubric_compare_run(run: str, label: str) -> int:
                      f"{d['mean']:+.2f} [{d['ci'][0]:+.2f}, {d['ci'][1]:+.2f}] | {fmt(a['exact'], a['exact_ci'])} | "
                      f"{fmt(a['kappa'], a['kappa_ci'])} |")
     if vs6:
-        lines += ["", f"Pareado contra `__iter6` (Opus con rúbrica, los {vs6['n']} scripts que cambiaron las dos "
-                  f"corridas): {label} − iter6 = {vs6['mean']:+.2f} [{vs6['ci'][0]:+.2f}, {vs6['ci'][1]:+.2f}]; {label} "
+        lines += ["", f"Pareado contra `{shown}` (Opus con rúbrica, los {vs6['n']} scripts que cambiaron las dos "
+                  f"corridas): {label} − {other_name} = {vs6['mean']:+.2f} [{vs6['ci'][0]:+.2f}, {vs6['ci'][1]:+.2f}]; {label} "
                   f"preserva más en {vs6['higher']}, igual en {vs6['equal']}, menos en {vs6['lower']}.", ""]
     else:
-        lines += ["", "Sin scripts en común con `__iter6` (otro split): no hay comparación pareada.", ""]
+        lines += ["", f"Sin scripts en común con `{shown}` (otro split): no hay comparación pareada.", ""]
     md = "\n".join(lines)
     out.with_suffix(".json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     out.with_suffix(".md").write_text(md, encoding="utf-8")
@@ -987,6 +994,7 @@ def main() -> int:
     rubric_cmp = sub.add_parser("rubric-compare-run", help="Opus con rúbrica de una corrida de opus-rubric-run vs. iter6")
     rubric_cmp.add_argument("run", help="nombre de la corrida en results/eval/gen/ (sin extensión)")
     rubric_cmp.add_argument("--label", required=True)
+    rubric_cmp.add_argument("--vs", help="otra revisión de opus-rubric-run para el pareado (default: iter6)")
     rubric_run = sub.add_parser("opus-rubric-run", help="la misma revisión con rúbrica para otra corrida, mismas anclas")
     rubric_run.add_argument("run", help="nombre de la corrida en results/eval/gen/ (sin extensión)")
     rubric_run.add_argument("--label", required=True, help="nombre corto (p. ej. iter7)")
@@ -1018,7 +1026,7 @@ def main() -> int:
     if args.cmd == "rubric-compare":
         return cmd_rubric_compare()
     if args.cmd == "rubric-compare-run":
-        return cmd_rubric_compare_run(args.run, args.label)
+        return cmd_rubric_compare_run(args.run, args.label, args.vs)
     if args.cmd == "opus-rubric-run":
         return cmd_opus_rubric_run(args.run, args.label, args.threshold)
     if args.cmd == "opus-run":
