@@ -1,0 +1,66 @@
+{
+  "collection": "s3-1024__e4__r1__cap150",
+  "reranker": "k1-rr30",
+  "llm": "gpt-4o-mini",
+  "split": "dev",
+  "threshold": -1000.0,
+  "budget": 2000,
+  "date": "2026-11-16T23:06:29",
+  "config": {
+    "chunks": "s3-1024",
+    "console_mode": "outputs_as_comments",
+    "model": "e4",
+    "representation": "r1",
+    "cap": 150,
+    "strategy": "round_robin",
+    "packages": null
+  },
+  "dataset": {
+    "commit": "abb0ccd",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
+      "synthetic.jsonl": "af7b1e34d7d7d82331108a2f7c02cb523226bf5d7a832b8639a59fef42bc2b06"
+    }
+  },
+  "paid": {
+    "calls": 126,
+    "input_tokens": 427984,
+    "output_tokens": 66084,
+    "usd": 0.103848
+  },
+  "tag": "iter3",
+  "cache_hits": 1,
+  "seconds": 861.4,
+  "metrics": {
+    "items": 115,
+    "llm_calls": 115,
+    "positives": {
+      "targets": 113,
+      "success": 0.708,
+      "passed_threshold": 1,
+      "decision_ok": 0.8761,
+      "applicable": 1,
+      "parses": 1,
+      "target_gone": 0.8761,
+      "package_ok": 0.708,
+      "no_undefined_names": 1
+    },
+    "negatives": {
+      "targets": 9,
+      "success": 0.6667,
+      "passed_threshold": 9,
+      "rejected_by_llm": 6
+    },
+    "llm_errors": 1,
+    "hallucinated_imports": 0,
+    "undefined_names": 0,
+    "sources_ok": 0.9043
+  },
+  "first_format": "script",
+  "retry": {
+    "format": "script",
+    "retried": 12,
+    "abstained": 4
+  }
+}
