@@ -1,0 +1,427 @@
+{
+  "collection": "s3-1024__e4__r1__cap150",
+  "query": "A",
+  "split": "test",
+  "date": "2026-11-16T22:22:28",
+  "config": {
+    "chunks": "s3-1024",
+    "console_mode": "outputs_as_comments",
+    "model": "e4",
+    "representation": "r1",
+    "cap": 150,
+    "strategy": "round_robin",
+    "packages": null
+  },
+  "dataset": {
+    "commit": "abb0ccd",
+    "sha256": {
+      "manual.jsonl": "26b3a1719f89622261bdd91fe11ddeca4503d3821b6405cea22828be341f4b02",
+      "negatives.jsonl": "495a46e049ee7f6ce217d4f03b3b13e73ace5eaba06b617b14be63b01b8c7746",
+      "synthetic.jsonl": "af7b1e34d7d7d82331108a2f7c02cb523226bf5d7a832b8639a59fef42bc2b06"
+    }
+  },
+  "budget": 2000,
+  "items": 126,
+  "targets_dropped_outside_packages": 0,
+  "n_results": 50,
+  "model": "jinaai/jina-embeddings-v2-base-code",
+  "paid": {
+    "texts": 132,
+    "tokens": 9943,
+    "usd": 0.0,
+    "api_calls_texts": 132
+  },
+  "cache_hits": 0,
+  "seconds": 32.8,
+  "metrics": {
+    "all": {
+      "targets": 122,
+      "package": {
+        "best_chunk": {
+          "hit@1": 0.4672,
+          "hit@3": 0.7213,
+          "hit@5": 0.8033,
+          "hit@10": 0.8852,
+          "mrr": 0.6099
+        },
+        "sum_rr@5": {
+          "hit@1": 0.4672,
+          "hit@3": 0.7131,
+          "hit@5": 0.8033,
+          "hit@10": 0.8852,
+          "mrr": 0.6038
+        },
+        "sum_rr@10": {
+          "hit@1": 0.4754,
+          "hit@3": 0.7213,
+          "hit@5": 0.8033,
+          "hit@10": 0.8852,
+          "mrr": 0.6089
+        },
+        "sum_rr@20": {
+          "hit@1": 0.4508,
+          "hit@3": 0.7213,
+          "hit@5": 0.8197,
+          "hit@10": 0.8852,
+          "mrr": 0.6009
+        },
+        "count@5": {
+          "hit@1": 0.4508,
+          "hit@3": 0.7131,
+          "hit@5": 0.8033,
+          "hit@10": 0.8852,
+          "mrr": 0.5942
+        },
+        "count@10": {
+          "hit@1": 0.4426,
+          "hit@3": 0.7213,
+          "hit@5": 0.8033,
+          "hit@10": 0.8852,
+          "mrr": 0.5908
+        },
+        "count@20": {
+          "hit@1": 0.459,
+          "hit@3": 0.7459,
+          "hit@5": 0.8279,
+          "hit@10": 0.8852,
+          "mrr": 0.6082
+        }
+      },
+      "span": {
+        "hit@1": 0.1639,
+        "hit@3": 0.2951,
+        "hit@5": 0.3607,
+        "hit@10": 0.459,
+        "ndcg@10": 0.2806,
+        "hit@2000tok": 0.377
+      }
+    },
+    "by_subset": {
+      "manual_deprecated": {
+        "targets": 16,
+        "package": {
+          "best_chunk": {
+            "hit@1": 0.625,
+            "hit@3": 0.875,
+            "hit@5": 0.875,
+            "hit@10": 0.875,
+            "mrr": 0.7396
+          },
+          "sum_rr@5": {
+            "hit@1": 0.625,
+            "hit@3": 0.875,
+            "hit@5": 0.875,
+            "hit@10": 0.875,
+            "mrr": 0.7188
+          },
+          "sum_rr@10": {
+            "hit@1": 0.5625,
+            "hit@3": 0.875,
+            "hit@5": 0.875,
+            "hit@10": 0.875,
+            "mrr": 0.7083
+          },
+          "sum_rr@20": {
+            "hit@1": 0.5,
+            "hit@3": 0.875,
+            "hit@5": 0.875,
+            "hit@10": 0.875,
+            "mrr": 0.6667
+          },
+          "count@5": {
+            "hit@1": 0.5,
+            "hit@3": 0.875,
+            "hit@5": 0.875,
+            "hit@10": 0.875,
+            "mrr": 0.6562
+          },
+          "count@10": {
+            "hit@1": 0.4375,
+            "hit@3": 0.875,
+            "hit@5": 0.875,
+            "hit@10": 0.875,
+            "mrr": 0.6354
+          },
+          "count@20": {
+            "hit@1": 0.5625,
+            "hit@3": 0.8125,
+            "hit@5": 0.875,
+            "hit@10": 0.875,
+            "mrr": 0.6927
+          }
+        },
+        "span": {
+          "hit@1": 0.375,
+          "hit@3": 0.625,
+          "hit@5": 0.6875,
+          "hit@10": 0.6875,
+          "ndcg@10": 0.434,
+          "hit@2000tok": 0.6875
+        }
+      },
+      "negative": {
+        "targets": 0,
+        "package": {
+          "best_chunk": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "sum_rr@5": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "sum_rr@10": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "sum_rr@20": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "count@5": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "count@10": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          },
+          "count@20": {
+            "hit@1": null,
+            "hit@3": null,
+            "hit@5": null,
+            "hit@10": null,
+            "mrr": null
+          }
+        },
+        "span": {
+          "hit@1": null,
+          "hit@3": null,
+          "hit@5": null,
+          "hit@10": null,
+          "ndcg@10": null,
+          "hit@2000tok": null
+        }
+      },
+      "synthetic": {
+        "targets": 106,
+        "package": {
+          "best_chunk": {
+            "hit@1": 0.4434,
+            "hit@3": 0.6981,
+            "hit@5": 0.7925,
+            "hit@10": 0.8868,
+            "mrr": 0.5903
+          },
+          "sum_rr@5": {
+            "hit@1": 0.4434,
+            "hit@3": 0.6887,
+            "hit@5": 0.7925,
+            "hit@10": 0.8868,
+            "mrr": 0.5864
+          },
+          "sum_rr@10": {
+            "hit@1": 0.4623,
+            "hit@3": 0.6981,
+            "hit@5": 0.7925,
+            "hit@10": 0.8868,
+            "mrr": 0.5939
+          },
+          "sum_rr@20": {
+            "hit@1": 0.4434,
+            "hit@3": 0.6981,
+            "hit@5": 0.8113,
+            "hit@10": 0.8868,
+            "mrr": 0.591
+          },
+          "count@5": {
+            "hit@1": 0.4434,
+            "hit@3": 0.6887,
+            "hit@5": 0.7925,
+            "hit@10": 0.8868,
+            "mrr": 0.5848
+          },
+          "count@10": {
+            "hit@1": 0.4434,
+            "hit@3": 0.6981,
+            "hit@5": 0.7925,
+            "hit@10": 0.8868,
+            "mrr": 0.584
+          },
+          "count@20": {
+            "hit@1": 0.4434,
+            "hit@3": 0.7358,
+            "hit@5": 0.8208,
+            "hit@10": 0.8868,
+            "mrr": 0.5954
+          }
+        },
+        "span": {
+          "hit@1": 0.1321,
+          "hit@3": 0.2453,
+          "hit@5": 0.3113,
+          "hit@10": 0.4245,
+          "ndcg@10": 0.2574,
+          "hit@2000tok": 0.3302
+        }
+      }
+    },
+    "by_lang": {
+      "en": {
+        "targets": 62,
+        "package": {
+          "best_chunk": {
+            "hit@1": 0.3548,
+            "hit@3": 0.6774,
+            "hit@5": 0.7581,
+            "hit@10": 0.8387,
+            "mrr": 0.5245
+          },
+          "sum_rr@5": {
+            "hit@1": 0.4032,
+            "hit@3": 0.6613,
+            "hit@5": 0.7581,
+            "hit@10": 0.8387,
+            "mrr": 0.5447
+          },
+          "sum_rr@10": {
+            "hit@1": 0.4194,
+            "hit@3": 0.6452,
+            "hit@5": 0.7581,
+            "hit@10": 0.8387,
+            "mrr": 0.5495
+          },
+          "sum_rr@20": {
+            "hit@1": 0.4194,
+            "hit@3": 0.629,
+            "hit@5": 0.7742,
+            "hit@10": 0.8387,
+            "mrr": 0.5522
+          },
+          "count@5": {
+            "hit@1": 0.4194,
+            "hit@3": 0.6613,
+            "hit@5": 0.7581,
+            "hit@10": 0.8387,
+            "mrr": 0.5527
+          },
+          "count@10": {
+            "hit@1": 0.4032,
+            "hit@3": 0.6613,
+            "hit@5": 0.7581,
+            "hit@10": 0.8387,
+            "mrr": 0.5447
+          },
+          "count@20": {
+            "hit@1": 0.4516,
+            "hit@3": 0.6935,
+            "hit@5": 0.7742,
+            "hit@10": 0.8387,
+            "mrr": 0.5799
+          }
+        },
+        "span": {
+          "hit@1": 0.0645,
+          "hit@3": 0.2097,
+          "hit@5": 0.3226,
+          "hit@10": 0.4194,
+          "ndcg@10": 0.2187,
+          "hit@2000tok": 0.3387
+        }
+      },
+      "es": {
+        "targets": 60,
+        "package": {
+          "best_chunk": {
+            "hit@1": 0.5833,
+            "hit@3": 0.7667,
+            "hit@5": 0.85,
+            "hit@10": 0.9333,
+            "mrr": 0.6981
+          },
+          "sum_rr@5": {
+            "hit@1": 0.5333,
+            "hit@3": 0.7667,
+            "hit@5": 0.85,
+            "hit@10": 0.9333,
+            "mrr": 0.6648
+          },
+          "sum_rr@10": {
+            "hit@1": 0.5333,
+            "hit@3": 0.8,
+            "hit@5": 0.85,
+            "hit@10": 0.9333,
+            "mrr": 0.6704
+          },
+          "sum_rr@20": {
+            "hit@1": 0.4833,
+            "hit@3": 0.8167,
+            "hit@5": 0.8667,
+            "hit@10": 0.9333,
+            "mrr": 0.6513
+          },
+          "count@5": {
+            "hit@1": 0.4833,
+            "hit@3": 0.7667,
+            "hit@5": 0.85,
+            "hit@10": 0.9333,
+            "mrr": 0.637
+          },
+          "count@10": {
+            "hit@1": 0.4833,
+            "hit@3": 0.7833,
+            "hit@5": 0.85,
+            "hit@10": 0.9333,
+            "mrr": 0.6384
+          },
+          "count@20": {
+            "hit@1": 0.4667,
+            "hit@3": 0.8,
+            "hit@5": 0.8833,
+            "hit@10": 0.9333,
+            "mrr": 0.6374
+          }
+        },
+        "span": {
+          "hit@1": 0.2667,
+          "hit@3": 0.3833,
+          "hit@5": 0.4,
+          "hit@10": 0.5,
+          "ndcg@10": 0.3446,
+          "hit@2000tok": 0.4167
+        }
+      }
+    },
+    "auroc": {
+      "value": 0.6902,
+      "positives": 122,
+      "negatives": 10
+    },
+    "threshold": {
+      "min_positive_pass": 0.95,
+      "value": 0.422485,
+      "positives_pass": 116,
+      "positives": 122,
+      "negatives_pass": 6,
+      "negatives": 10
+    }
+  }
+}
