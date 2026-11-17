@@ -1,5 +1,6 @@
 """Interfaz web del corrector (extra de la consigna). El mismo pipeline que `fix_script.py`, mostrando cada etapa:
-validador → retrieval (+ reranker) → umbral → gpt-4o-mini → post-validación, con tiempos, tokens y USD.
+validador → retrieval (+ reranker) → umbral → LLM → post-validación, con tiempos, tokens y USD. El generador se elige
+entre el iterado del Ej. 4 (gpt-4.1-mini, script completo, reintento y abstención) y el de antes de iterar.
 
 Uso (desde la raíz del repo):
     uv run --group local --group ui streamlit run src/scripts/app.py
@@ -15,8 +16,8 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from tprag.split.store import ROOT
-from tprag.ui.engine import VERSIONS, Engine
-from tprag.ui.view import (decision_rows, fixed_name, import_rows, load_examples, report_json, target_rows,
+from tprag.ui.engine import GENERATORS, ITERATED, NOT_ITERATED, VERSIONS, Engine
+from tprag.ui.view import (decision_rows, fixed_name, import_rows, load_examples, report_json, retry_note, target_rows,
                            unified_diff)
 
 load_dotenv(ROOT / ".env")
@@ -24,6 +25,10 @@ st.set_page_config(page_title="Corrector de dependencias · TP3 Grupo 7", page_i
 
 VERSION_HELP = {"base": "Orden del índice denso (coseno). Rápido.",
                 "k1-rr30": "Qwen3-Reranker-0.6B reordena los 30 primeros (~16 s por import en una Mac M3; más en CPU)."}
+GENERATOR_LABEL = {ITERATED: "Iterado (Ej. 4)", NOT_ITERATED: "Sin iteración"}
+GENERATOR_HELP = {ITERATED: "gpt-4.1-mini devuelve el script completo; si la corrección no parsea o deja nombres sin "
+                            "definir, un reintento y, si sigue mal, abstención.",
+                  NOT_ITERATED: "gpt-4o-mini devuelve una lista de reemplazos; sin reintento."}
 
 
 @st.cache_resource(show_spinner="Abriendo el índice…")
@@ -40,10 +45,12 @@ def seconds(s: float) -> str:
     return f"{s:.2f} s".replace(".", ",")
 
 
-def sidebar(eng: Engine) -> tuple[str, float, int]:
+def sidebar(eng: Engine) -> tuple[str, str, float, int]:
     st.sidebar.header("Configuración")
     version = st.sidebar.radio("Retrieval", list(VERSIONS), format_func=lambda v: "Base" if v == "base" else
                                "Reranker k1-rr30", captions=[VERSION_HELP[v] for v in VERSIONS])
+    generator = st.sidebar.radio("Generador", list(GENERATORS), format_func=GENERATOR_LABEL.get,
+                                 captions=[GENERATOR_HELP[g] for g in GENERATORS])
     calibrated = eng.threshold(version)
     custom = st.sidebar.toggle("Cambiar el umbral", help="Por defecto, el calibrado en dev (pasa ≥ 95% de los "
                                                           "positivos), el mismo que usa fix_script.py.")
@@ -54,7 +61,7 @@ def sidebar(eng: Engine) -> tuple[str, float, int]:
     st.sidebar.caption(f"Umbral calibrado de esta versión: {calibrated:.4f}".replace(".", ","))
     st.sidebar.caption("API de OpenAI: " + ("configurada" if os.environ.get("OPENAI_API_KEY") else
                                            "**sin `OPENAI_API_KEY`** (el paso 2 solo anda con respuestas en caché)"))
-    return version, float(threshold if custom else calibrated), int(budget)
+    return version, generator, float(threshold if custom else calibrated), int(budget)
 
 
 def script_input() -> tuple[str, str] | None:
@@ -110,14 +117,21 @@ def show_fix(fix, original: str, name: str) -> None:
     cols[0].metric("LLM", seconds(fix.seconds) if fix.paid["input_tokens"] else "del caché")
     cols[1].metric("Tokens pagados (entrada)", f"{fix.paid['input_tokens']:,}".replace(",", "."))
     cols[2].metric("Tokens pagados (salida)", f"{fix.paid['output_tokens']:,}".replace(",", "."))
-    cols[3].metric("USD de esta llamada", f"{fix.paid['usd']:.5f}".replace(".", ","),
-                   help="0 si la respuesta ya estaba en el caché del LLM")
+    cols[3].metric("USD pagados", f"{fix.paid['usd']:.5f}".replace(".", ","),
+                   help="0 si las respuestas ya estaban en el caché del LLM; incluye el reintento si lo hubo")
     st.markdown("**Decisiones**")
     st.dataframe(decision_rows(result.report), hide_index=True, width="stretch")
     if result.llm_error:
         st.warning("La respuesta del LLM se cortó por el tope de tokens: el script queda igual.")
     for msg in result.edit_errors:
         st.warning(f"No se aplicaron los cambios (todo o nada): {msg}")
+    if (note := retry_note(result)) is not None:
+        abstained, problems = note
+        (st.warning if abstained else st.info)(
+            ("La corrección no pasó la post-validación ni después del reintento: el sistema se abstiene y el script "
+             "queda igual." if abstained else
+             "La primera respuesta no pasó la post-validación y el reintento la corrigió.") +
+            "".join(f"\n- {p.splitlines()[0]}" for p in problems))
     diff = unified_diff(original, result.code, name)
     if diff:
         st.markdown("**Cambios sugeridos** (revisalos antes de aplicarlos)")
@@ -143,7 +157,7 @@ def main() -> None:
     if eng.chunks() == 0:
         st.error(f"El índice `{eng.collection}` no existe o está vacío: armarlo con build_index.py.")
         return
-    version, threshold, budget = sidebar(eng)
+    version, generator, threshold, budget = sidebar(eng)
     picked = script_input()
     if picked is None:
         st.info("Elegí un ejemplo, subí un archivo o pegá código.")
@@ -152,12 +166,12 @@ def main() -> None:
     with st.expander(f"Script: `{name}`", expanded=False):
         st.code(code, language="python")
 
-    key = hashlib.sha256(f"{code}\x00{version}\x00{threshold}\x00{budget}".encode()).hexdigest()
+    key = hashlib.sha256(f"{code}\x00{version}\x00{generator}\x00{threshold}\x00{budget}".encode()).hexdigest()
     st.subheader("1 · Analizar (sin LLM, sin costo de API)")
     if st.button("Analizar", type="primary"):
         try:
             with st.spinner("Validando y recuperando…"):
-                st.session_state.analysis = (key, eng.analyze(code, version, threshold, budget))
+                st.session_state.analysis = (key, eng.analyze(code, version, threshold, budget, generator))
         except SyntaxError as e:
             st.error(f"El script no parsea: {e}")
             return
@@ -167,7 +181,8 @@ def main() -> None:
     analysis = st.session_state.analysis[1]
     show_analysis(analysis)
 
-    st.subheader("2 · Corregir con gpt-4o-mini")
+    model = GENERATORS[generator].llm
+    st.subheader(f"2 · Corregir con {model}")
     if analysis.llm_estimate is None:
         if analysis.prepared.contexts:
             st.info("Ningún import problemático pasa el umbral: no se llama al LLM (costo 0) y el reporte los marca "
@@ -176,10 +191,11 @@ def main() -> None:
     est = analysis.llm_estimate
     st.caption(f"Estimado: {est['input_tokens']:,} tokens de entrada".replace(",", ".") +
                f" + ~{est['output_tokens_estimate']} de salida ≈ {est['usd']:.5f} USD".replace(".", ",") +
-               (" · **ya está en el caché: no se paga**" if analysis.llm_cached else ""))
+               (" · **ya está en el caché: no se paga**" if analysis.llm_cached else "") +
+               (" · un reintento, si hace falta, se paga aparte" if GENERATORS[generator].retry else ""))
     can_call = analysis.llm_cached or bool(os.environ.get("OPENAI_API_KEY"))
     if st.button("Corregir", type="primary", disabled=not can_call):
-        with st.spinner("Consultando a gpt-4o-mini…"):
+        with st.spinner(f"Consultando a {model}…"):
             st.session_state.fix = (key, eng.fix(analysis))
     if st.session_state.get("fix", (None,))[0] == key:
         show_fix(st.session_state.fix[1], code, name)
