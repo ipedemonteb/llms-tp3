@@ -67,6 +67,64 @@ Reporte, una entrada por cada import problemático recibido:
 SYSTEMS = {fmt: _HEAD + changes + _REPORT for fmt, changes in _CHANGES.items()}
 SYSTEM = SYSTEMS["edits"]
 
+# Primer prompt v2 (`__iter5`, apagado por defecto). En iter3 el modelo resumía el script en un solo aspecto y elegía la
+# librería del fragmento que cubría ese aspecto (pyarrow por "carga desde S3" en un script de streamlit), a veces una que
+# no estaba en los fragmentos (numpy); se abstenía con la correcta en el contexto por el "ESO MISMO" del paso 2, y en
+# los negativos reemplazaba por algo "similar" (pycryptodome para armar un ZIP cifrado). La cabecera separa elegir el
+# paquete (el que cubre más usos) de decidir (reemplazar solo si los cubre todos). En el formato "script" también pide
+# que el script siga haciendo lo mismo y sea Python válido (dos respuestas de iter3 rompieron una comilla y un
+# corchete). El reporte es el mismo. Va con los esquemas `*V2` (campo `candidates`).
+_HEAD_V2 = """\
+Sos un asistente que corrige dependencias de Python deprecadas o inexistentes.
+
+Recibís un script, la lista de sus imports problemáticos y, para cada uno, fragmentos de documentación de librerías \
+reales recuperados de un índice. Cada fragmento empieza con un encabezado `paquete > página > sección`.
+
+Para cada import problemático, en este orden:
+1. "script_usage": TODOS los usos del import en el script: qué nombres usa (clases, funciones, métodos, atributos) y \
+para qué. No resumas el script en un solo aspecto.
+2. "candidates": por cada paquete que aparece en los encabezados de los fragmentos, qué usos del paso 1 cubre y con \
+qué nombres de su API que aparecen en los fragmentos. Solo paquetes de los encabezados: nunca propongas uno que no \
+esté ahí, aunque lo conozcas. Breve: una línea por paquete en "covered_usages" y solo nombres en "api_names".
+3. "matching_fragment": el encabezado de un fragmento del paquete que cubre MÁS usos del paso 1, no el primero que \
+parece del mismo tema. A igual cobertura, preferí el paquete cuya API se parece más a la que usa el script (nombres y \
+estructura de las llamadas). null si ningún paquete cubre ninguno.
+4. "decision":
+- "reemplazado": solo si el paquete de "matching_fragment" cubre TODOS los usos del paso 1 con API que aparece en los \
+fragmentos. Usá la API tal como aparece en los fragmentos.
+- "sin_reemplazo_confiable": si cubre solo una parte de los usos (por ejemplo, cifra pero no arma el ZIP), si solo \
+hace algo "similar" o si "matching_fragment" es null. Un reemplazo equivocado es peor que no reemplazar: ante la \
+duda, "sin_reemplazo_confiable". En ese caso no cambies nada relacionado con ese import.
+
+"""
+
+_SCRIPT_V2 = _CHANGES["script"].replace("""\
+- No agregues imports de paquetes""", """\
+- El script corregido tiene que seguir haciendo lo mismo que el original: las mismas entradas, salidas y \
+comportamiento, ahora con la librería nueva.
+- Tiene que ser Python válido: revisá que las líneas que cambiaste cierren sus comillas, paréntesis y corchetes igual \
+que en el original.
+- No agregues imports de paquetes""")
+
+# Primer prompt v3 (`__iter6`): v2 con otra decisión. En iter5, "reemplazar solo si cubre TODOS los usos" y "ante la
+# duda, sin_reemplazo_confiable" hicieron que se abstuviera en 15 imports que iter3 corregía bien. v3 reemplaza si el
+# paquete cubre el uso principal; si un uso secundario queda mal migrado, lo agarra la post-validación.
+_DECISION_V2 = _HEAD_V2[_HEAD_V2.index('4. "decision":'):]
+_HEAD_V3 = _HEAD_V2.replace(_DECISION_V2, """\
+4. "decision":
+- "reemplazado": si el paquete de "matching_fragment" cubre el uso principal del script (para qué importa la \
+librería) con API que aparece en los fragmentos. Migrá todos los usos con la API de ese paquete.
+- "sin_reemplazo_confiable": si ningún paquete cubre el uso principal, o si el que más cubre hace otra cosa del mismo \
+tema (por ejemplo, cifra datos cuando el script arma un ZIP cifrado). Un reemplazo equivocado es peor que no \
+reemplazar. En ese caso no cambies nada relacionado con ese import.
+
+""")
+
+# Mensajes de sistema por versión del primer prompt y formato. "v1" es el de siempre (sin la opción, nada cambia).
+PROMPTS = {"v1": SYSTEMS,
+           "v2": {"edits": _HEAD_V2 + _CHANGES["edits"] + _REPORT, "script": _HEAD_V2 + _SCRIPT_V2 + _REPORT},
+           "v3": {"edits": _HEAD_V3 + _CHANGES["edits"] + _REPORT, "script": _HEAD_V3 + _SCRIPT_V2 + _REPORT}}
+
 STATUS = {"deprecated": "deprecado", "not_found": "no existe en PyPI"}
 
 

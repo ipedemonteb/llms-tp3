@@ -54,3 +54,15 @@ def test_el_esquema_entra_en_la_clave(tmp_path):
     script = CachedLLM(CHAT_MODELS["gpt-4o-mini"], path=tmp_path / "llm.sqlite")
     script.output_schema = ScriptOutput
     assert script.peek("s", "u") is None and script.missing([("s", "u")]) == [("s", "u")]
+
+
+def test_el_esquema_v2_tiene_su_propia_clave():
+    from tprag.generate.llm import _schema
+    from tprag.generate.schema import GeneratorOutput, ScriptOutput, ScriptOutputV2
+
+    keys = set()
+    for schema in (GeneratorOutput, ScriptOutput, ScriptOutputV2):
+        llm = CachedLLM.__new__(CachedLLM)
+        llm.output_schema = schema
+        keys.add(llm._key("s", "u"))
+    assert len(keys) == 3 and _schema(ScriptOutputV2) != _schema(ScriptOutput)

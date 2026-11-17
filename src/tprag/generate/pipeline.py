@@ -33,7 +33,7 @@ from tprag.validate.validate import ImportResult, validate
 from .context import Reranker, TargetContext, build_context
 from .llm import TruncatedOutput
 from .names import new_undefined_names
-from .prompt import SYSTEM, SYSTEMS, retry_message, user_message
+from .prompt import PROMPTS, SYSTEM, retry_message, user_message
 from .schema import NO_REPLACEMENT, REPLACED, GeneratorOutput, ScriptOutput
 
 LLM = Callable[[str, str], GeneratorOutput]
@@ -140,8 +140,8 @@ def _entry(r: ImportResult, ctx: TargetContext | None, decision: dict | None, ll
     if decision is None:
         return entry | {"decision": NO_REPLACEMENT, "replacement_package": None,
                         "reason": "el LLM no devolvió una decisión para este import", "sources": []}
-    return entry | {k: decision[k] for k in ("script_usage", "matching_fragment", "decision", "replacement_package",
-                                             "reason", "sources")}
+    keys = ("script_usage", "candidates", "matching_fragment", "decision", "replacement_package", "reason", "sources")
+    return entry | {k: decision[k] for k in keys if k in decision}  # `candidates`: solo el primer prompt v2
 
 
 def script_code(original: str, script: str) -> str:
@@ -202,14 +202,36 @@ def context_text(prep: Prepared) -> str:
     return record_context({"id": "", "contexts": [{"chunks": c.chunks} for c in prep.contexts if c.passed]})
 
 
+def _original_line(original: str, fixed: str, n: int) -> str | None:
+    """La línea del original que corresponde a la línea `n` del corregido, si hay una clara: el corregido la cambió
+    dentro de un bloque reemplazado del mismo tamaño. None si la línea es nueva, si quedó igual o si no se sabe."""
+    a, b = original.splitlines(), fixed.splitlines()
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+        if j1 <= n - 1 < j2:
+            return a[i1 + n - 1 - j1] if tag == "replace" and i2 - i1 == j2 - j1 else None
+    return None
+
+
+def _name_lines(code: str, names: list[str], limit: int = 3) -> list[tuple[int, str]]:
+    """Líneas del script (que parsea) donde se usa cada nombre, hasta `limit` por nombre, en orden."""
+    lines = code.splitlines()
+    found: dict[str, set[int]] = {n: set() for n in names}
+    for node in ast.walk(ast.parse(code)):
+        if isinstance(node, ast.Name) and node.id in found:
+            found[node.id].add(node.lineno)
+    numbers = sorted({n for name in names for n in sorted(found[name])[:limit]})
+    return [(n, lines[n - 1].strip()) for n in numbers]
+
+
 def fix_problems(prep: Prepared, result: FixResult, fmt: str = "edits", unchanged: bool = False,
-                 context_check: bool = False) -> list[str]:
+                 context_check: bool = False, detail: bool = False) -> list[str]:
     """Problemas de una corrección que se ven sin el dataset, redactados para el LLM (el reintento). Solo si el LLM
     reemplazó algún import: una abstención no tiene nada que revisar. `fmt` es el formato que se le pide en el
     reintento: con "script" no se le explica cómo copiar el "antes", porque ya no va a escribir reemplazos. Con
     `unchanged` (solo la variante uniforme, para no cambiar las otras), también es un problema decir "reemplazado" y
     devolver el script sin cambios. Con `context_check`, también usar nombres de la API nueva que no aparecen en los
-    fragmentos."""
+    fragmentos. Con `detail` (el reintento v2 y v3, `__iter5` y `__iter6`), muestra las líneas: la que no parsea (y la del original que
+    le corresponde) y las que usan los nombres sin definir; sin él, los textos de siempre."""
     if not any(e.get("decision") == REPLACED for e in result.report):
         return []
     out = []
@@ -230,12 +252,22 @@ def fix_problems(prep: Prepared, result: FixResult, fmt: str = "edits", unchange
         try:
             ast.parse(result.code)
         except SyntaxError as e:
-            out.append(f"El script corregido no es Python válido: línea {e.lineno}: {e.msg}.")
+            problem = f"El script corregido no es Python válido: línea {e.lineno}: {e.msg}."
+            lines = result.code.splitlines()
+            if detail and e.lineno and 0 < e.lineno <= len(lines):
+                problem += f"\n  Tu línea {e.lineno}: {lines[e.lineno - 1].strip()}"
+                if (before := _original_line(prep.code, result.code, e.lineno)) is not None:
+                    problem += f"\n  En el original: {before.strip()}"
+                problem += "\n  Copiá sin cambios las líneas que no hace falta migrar."
+            out.append(problem)
         else:
             if names := new_undefined_names(prep.code, result.code):
-                out.append("El script corregido usa nombres que no están definidos ni importados: "
+                problem = ("El script corregido usa nombres que no están definidos ni importados: "
                            f"{', '.join(f'`{n}`' for n in names)}. Migrá también esos usos a la librería nueva, con la "
                            "API que aparece en los fragmentos.")
+                if detail and (where := _name_lines(result.code, names)):
+                    problem += "\n  Dónde los usa tu script:" + "".join(f"\n  - línea {n}: {t}" for n, t in where)
+                out.append(problem)
             if context_check and (unfaithful := faithfulness(prep.code, result.code, context_text(prep))["unfaithful"]):
                 out.append("El script corregido usa nombres de la librería nueva que no aparecen en los fragmentos: "
                            f"{', '.join(f'`{n}`' for n in unfaithful)}. Usá solo la API que aparece en los fragmentos; "
@@ -274,25 +306,26 @@ def usages(prep: Prepared) -> dict[str, list[tuple[int, str]]]:
     return out
 
 
-def first_prompt(prep: Prepared, fmt: str = "edits") -> tuple[str, str] | None:
-    """El prompt del primer intento en formato `fmt` ("edits": el de siempre, `prep.prompt`)."""
-    return (SYSTEMS[fmt], prep.user) if prep.user is not None else None
+def first_prompt(prep: Prepared, fmt: str = "edits", version: str = "v1") -> tuple[str, str] | None:
+    """El prompt del primer intento en formato `fmt` ("edits" y "v1": el de siempre, `prep.prompt`). `version`: la del
+    primer prompt (`prompt.PROMPTS`; "v2" es `__iter5`)."""
+    return (PROMPTS[version][fmt], prep.user) if prep.user is not None else None
 
 
 def retry_prompt(prep: Prepared, first: FixResult, fmt: str = "edits", uniform: bool = False,
-                 context_check: bool = False) -> tuple[str, str] | None:
+                 context_check: bool = False, version: str = "v1") -> tuple[str, str] | None:
     """El prompt del reintento en formato `fmt` para esta primera respuesta, o None si no hay problemas (no se
     reintenta). Con `uniform` (la primera respuesta fue el script completo), en "Tu respuesta anterior" va ese script."""
-    found = fix_problems(prep, first, fmt, unchanged=uniform, context_check=context_check)
+    found = fix_problems(prep, first, fmt, unchanged=uniform, context_check=context_check, detail=version != "v1")
     if not found:
         return None
     previous = first.code if uniform else None
-    return SYSTEMS[fmt], retry_message(prep.user, first.edits, found, fmt, usages(prep) if fmt == "script" else None,
+    return PROMPTS[version][fmt], retry_message(prep.user, first.edits, found, fmt, usages(prep) if fmt == "script" else None,
                                        previous)
 
 
 def answer(prep: Prepared, llm: LLM, retry: str | None = None, retry_llm: LLM | None = None,
-           first: str = "edits", context_check: bool = False) -> FixResult:
+           first: str = "edits", context_check: bool = False, version: str = "v1") -> FixResult:
     """Llama al LLM si algún import pasó el umbral y arma el resultado; una respuesta cortada por el tope de salida
     deja el script igual (`llm_error="length"`) en vez de cortar todo.
 
@@ -304,26 +337,29 @@ def answer(prep: Prepared, llm: LLM, retry: str | None = None, retry_llm: LLM | 
 
     Con `first="script"` (variante uniforme): el primer intento también pide el script completo, a `llm`, que en ese
     caso devuelve `ScriptOutput`; el reintento es "script" y se le muestra el script anterior. `context_check`: ver
-    `fix_problems`."""
+    `fix_problems`. Con `version="v2"` o `"v3"` (`__iter5`, `__iter6`), el primer intento y el reintento usan ese
+    primer prompt (`prompt.PROMPTS`) y el reintento muestra las líneas de los problemas; los LLM tienen que devolver
+    los esquemas `*V2`."""
     if prep.prompt is None:
         return finish(prep, None)
     uniform = first == "script"
-    result = _ask(prep, llm, *first_prompt(prep, first))
-    if retry is not None and (prompt := retry_prompt(prep, result, retry, uniform, context_check)) is not None:
-        result = _retry(prep, result, prompt, retry, retry_llm if retry == "script" else llm, uniform, context_check)
+    result = _ask(prep, llm, *first_prompt(prep, first, version))
+    if retry is not None and (prompt := retry_prompt(prep, result, retry, uniform, context_check, version)) is not None:
+        result = _retry(prep, result, prompt, retry, retry_llm if retry == "script" else llm, uniform, context_check,
+                        version != "v1")
     if uniform:
         result.changed_lines = changed_lines(prep.code, result.code)
     return result
 
 
 def _retry(prep: Prepared, first_result: FixResult, prompt: tuple[str, str], retry: str, llm: LLM,
-           uniform: bool, context_check: bool = False) -> FixResult:
+           uniform: bool, context_check: bool = False, detail: bool = False) -> FixResult:
     """El reintento de `answer`: la segunda respuesta si no tiene problemas; si no, `abstain`."""
     second = _ask(prep, llm, *prompt)
-    left = fix_problems(prep, second, retry, unchanged=uniform, context_check=context_check)
+    left = fix_problems(prep, second, retry, unchanged=uniform, context_check=context_check, detail=detail)
     result = abstain(prep, left) if left else second
     result.retry = {"format": retry, "problems": fix_problems(prep, first_result, retry, unchanged=uniform,
-                                                             context_check=context_check),
+                                                             context_check=context_check, detail=detail),
                     "first_edits": first_result.edits, "remaining": left}
     if uniform:
         result.retry["first_code"] = first_result.code

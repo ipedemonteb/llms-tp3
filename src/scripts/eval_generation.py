@@ -25,6 +25,11 @@ no están en el caché, el dry-run estima los reintentos en el peor caso (que se
 
 --check-context: sobre la variante uniforme (`__iter4`), también va al reintento un script que usa nombres de la API
 nueva que no aparecen en los fragmentos (la heurística de Faithfulness). Exige --first-format script y --tag.
+
+--first-prompt v2: sobre la variante uniforme, sin --check-context (`__iter5`), el primer prompt v2 (prompt.PROMPTS):
+antes de elegir, el modelo lista todos los usos del import y qué cubre cada paquete de los fragmentos. Las respuestas
+usan los esquemas `*V2`, así que ninguna sale del caché de las otras corridas. Exige --tag. Sin la opción: "v1", el de
+siempre. --first-prompt v3 (`__iter6`): v2 con otra decisión (reemplaza si el paquete cubre el uso principal, no todos).
 """
 
 import argparse
@@ -44,7 +49,7 @@ from tprag.generate.context import dev_threshold, load_reranker, rerank_threshol
 from tprag.generate.llm import CHAT_MODELS, CachedLLM, TruncatedOutput
 from tprag.generate.pipeline import answer, finish, first_prompt, prepare, retry_prompt
 from tprag.split.tokens import token_counter
-from tprag.generate.schema import ScriptOutput
+from tprag.generate.schema import ScriptOutput, ScriptOutputV2
 from tprag.index.build import REPRESENTATIONS, IndexConfig, open_collection
 from tprag.index.cost import estimate
 from tprag.index.embeddings import MODELS, cached
@@ -56,13 +61,13 @@ from tprag.validate.validate import validate
 RESULTS_DIR = ROOT / "results" / "eval" / "gen"
 
 
-def retry_prompts(preps: list, llm: CachedLLM, fmt: str, first: str = "edits",
-                  context_check: bool = False) -> tuple[list[tuple[str, str]], list[tuple[str, str]]]:
+def retry_prompts(preps: list, llm: CachedLLM, fmt: str, first: str = "edits", context_check: bool = False,
+                  version: str = "v1") -> tuple[list[tuple[str, str]], list[tuple[str, str]]]:
     """Prompts de los reintentos que haría --retry-format `fmt`, armados con las primeras respuestas del caché (sin
     API), y los primeros prompts que faltan en el caché (sus reintentos no se pueden saber antes de pagarlos)."""
     prompts, unknown = [], []
     for prep in preps:
-        if (prompt := first_prompt(prep, first)) is None:
+        if (prompt := first_prompt(prep, first, version)) is None:
             continue
         try:
             output = llm.peek(*prompt)
@@ -70,7 +75,7 @@ def retry_prompts(preps: list, llm: CachedLLM, fmt: str, first: str = "edits",
             continue  # respuesta cortada: el script queda igual, no hay nada que reintentar
         if output is None:
             unknown.append(prompt)
-        elif retry := retry_prompt(prep, finish(prep, output), fmt, first == "script", context_check):
+        elif retry := retry_prompt(prep, finish(prep, output), fmt, first == "script", context_check, version):
             prompts.append(retry)
     return prompts, unknown
 
@@ -116,12 +121,18 @@ def main() -> int:
     parser.add_argument("--check-context", action="store_true",
                         help="sobre la variante uniforme: reintento también si usa nombres de la API nueva que no "
                              "aparecen en los fragmentos; exige --first-format script y --tag")
+    parser.add_argument("--first-prompt", choices=("v1", "v2", "v3"), default="v1",
+                        help="primer prompt: v1 (el de siempre) o v2/v3 (lista los usos y los paquetes candidatos antes "
+                             "de elegir; exige --tag y la variante uniforme, sin --check-context)")
     parser.add_argument("--tag", type=tag_arg, help="sufijo __<tag> en las salidas: una variante al lado de la corrida")
     parser.add_argument("--force", action="store_true", help="reemplaza las salidas si ya existen")
     args = parser.parse_args()
-    if (args.retry_format or args.first_format != "edits") and not args.tag:
-        parser.error("--retry-format y --first-format script exigen --tag: la iteración no escribe con el nombre de la "
-                     "corrida sin iteración")
+    if (args.retry_format or args.first_format != "edits" or args.first_prompt != "v1") and not args.tag:
+        parser.error("--retry-format, --first-format script y --first-prompt v2/v3 exigen --tag: la iteración no escribe "
+                     "con el nombre de la corrida sin iteración")
+    if args.first_prompt != "v1" and (args.first_format != "script" or args.check_context):
+        parser.error("--first-prompt v2/v3 va sobre la variante uniforme sin --check-context: --first-format script "
+                     "--retry-format script")
     if args.check_context and args.first_format != "script":
         parser.error("--check-context va sobre la variante uniforme: --first-format script --retry-format script")
     if args.first_format == "script" and args.retry_format != "script":
@@ -146,7 +157,7 @@ def main() -> int:
     retry_llm = llm
     if args.retry_format == "script":  # el mismo caché; la clave incluye el esquema, así que no se mezcla con "edits"
         retry_llm = CachedLLM(CHAT_MODELS[args.llm])
-        retry_llm.output_schema = ScriptOutput
+        retry_llm.output_schema = ScriptOutputV2 if args.first_prompt != "v1" else ScriptOutput
     if args.first_format == "script":  # variante uniforme: el primer intento también devuelve `ScriptOutput`
         llm = retry_llm
     # un resultado ya corrido no se pisa sin querer (tprag.eval.outputs): se chequea antes de llamar al LLM
@@ -170,14 +181,15 @@ def main() -> int:
     if reranker:  # el dry-run también reordena: los pares que no estén en el caché se calculan con el modelo local
         print(f"reranker {reranker.variant}: puntúa {reranker.k} chunks por import (los del caché no se recalculan)")
     preps = [prepare(it["code"], store, fetch, threshold, args.budget, reranker) for it in items]
-    prompts = [p for prep in preps if (p := first_prompt(prep, args.first_format))]
+    prompts = [p for prep in preps if (p := first_prompt(prep, args.first_format, args.first_prompt))]
     to_pay = llm.estimate(llm.missing(prompts))
     print(f"{name} / {args.rerank or 'sin reranker'} / {args.llm} / {args.split}: {len(items)} ítems, umbral {threshold}, "
           f"{len(prompts)} llamadas al LLM ({len(items) - len(prompts)} sin LLM: ningún import pasó el umbral)")
     print(f"a pagar (fuera del caché): {to_pay['calls']} llamadas, {to_pay['input_tokens']} tokens de entrada + "
           f"~{to_pay['output_tokens_estimate']} de salida (estimada) = ~{to_pay['usd']:.4f} USD")
     if args.retry_format:
-        retries, unknown = retry_prompts(preps, llm, args.retry_format, args.first_format, args.check_context)
+        retries, unknown = retry_prompts(preps, llm, args.retry_format, args.first_format, args.check_context,
+                                         args.first_prompt)
         retry_pay = retry_llm.estimate(retry_llm.missing(retries))
         print(f"reintentos: {len(retries)} con problemas en la primera respuesta, {retry_pay['calls']} fuera del caché "
               f"= ~{retry_pay['usd']:.4f} USD")
@@ -198,7 +210,7 @@ def main() -> int:
     records = []
     for it, prep in zip(items, preps):
         fix = answer(prep, llm, retry=args.retry_format, retry_llm=retry_llm, first=args.first_format,
-                     context_check=args.check_context)
+                     context_check=args.check_context, version=args.first_prompt)
         record = check_item(it, prep, fix, fetch)
         record |= {"code": fix.code, "report": fix.report, "edits": fix.edits, "llm_raw": fix.llm_raw, "retry": fix.retry,
                    "contexts": [{"module": c.module, "score": c.score, "passed": c.passed,
@@ -219,7 +231,8 @@ def main() -> int:
         "budget": args.budget, "date": datetime.now().isoformat(timespec="seconds"), "config": asdict(cfg),
         "dataset": dataset_info(), "paid": paid,
         "tag": args.tag, "cache_hits": sum(x.hits for x in llms), "seconds": seconds, "metrics": summarize(records),
-        "first_format": args.first_format, "check_context": args.check_context, "retry": {"format": args.retry_format, "retried": sum(r["retry"] is not None for r in records),
+        "first_format": args.first_format, "check_context": args.check_context, "first_prompt": args.first_prompt,
+        "retry": {"format": args.retry_format, "retried": sum(r["retry"] is not None for r in records),
                   "abstained": sum(bool(r["retry"] and r["retry"]["remaining"]) for r in records)},
     }
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)

@@ -406,3 +406,98 @@ def test_sin_context_check_la_api_fuera_de_los_fragmentos_no_es_un_problema():
     result = answer(prepare(CODE, FakeStore([doc(0)], best_score=0.6), fetch, threshold=0.4), llm, retry="script",
                     retry_llm=llm, first="script")
     assert len(calls) == 1 and result.code == INVENTED and result.retry is None
+
+
+# --- Primer prompt v2 sobre la variante uniforme (`__iter5`) --------------------------------------------------------
+
+def test_primer_prompt_v1_es_el_de_siempre():
+    from tprag.generate.prompt import PROMPTS, SYSTEM
+
+    prep = prepare(CODE, FakeStore([doc(0)], best_score=0.6), fetch, threshold=0.4)
+    assert PROMPTS["v1"] is SYSTEMS and first_prompt(prep) == first_prompt(prep, "edits", "v1") == (SYSTEM, prep.user)
+
+
+def test_primer_prompt_v2_cambia_la_cabecera_y_en_script_pide_tarea_y_python_valido():
+    from tprag.generate.prompt import PROMPTS
+
+    for fmt in ("edits", "script"):
+        v1, v2 = SYSTEMS[fmt], PROMPTS["v2"][fmt]
+        assert v1 != v2 and '"candidates"' in v2 and '"candidates"' not in v1
+        assert v2[v2.index("Reporte,"):] == v1[v1.index("Reporte,"):]  # el reporte, igual
+    v1, v2 = SYSTEMS["edits"], PROMPTS["v2"]["edits"]
+    assert v2[v2.index("Cambios:"):] == v1[v1.index("Cambios:"):]
+    v1, v2 = SYSTEMS["script"], PROMPTS["v2"]["script"]
+    extra = [line for line in v2[v2.index("Cambios:"):].splitlines() if line not in v1]
+    assert len(extra) == 2 and extra[0].startswith("- El script corregido tiene que seguir haciendo lo mismo")
+    assert extra[1].startswith("- Tiene que ser Python válido")
+
+
+def test_v2_usa_el_prompt_v2_en_el_primer_intento_y_en_el_reintento():
+    from tprag.generate.prompt import PROMPTS
+    from tprag.generate.schema import ImportDecisionV2, ScriptOutputV2
+
+    decision = ImportDecisionV2(candidates=[{"package": "pypdf", "covered_usages": "todos",
+                                             "api_names": ["PdfReader"]}], **OUTPUT.imports[0].model_dump())
+    calls = []
+
+    def llm(system, user):
+        calls.append((system, user))
+        return ScriptOutputV2(imports=[decision], script=[CODE, FIXED][len(calls) - 1])
+
+    result = answer(prepare(CODE, FakeStore([doc(0)], best_score=0.6), fetch, threshold=0.4), llm, retry="script",
+                    retry_llm=llm, first="script", version="v2")
+    assert [s for s, _ in calls] == [PROMPTS["v2"]["script"]] * 2 and result.code == FIXED
+    [entry] = [e for e in result.report if e["module"] == "PyPDF2"]
+    assert entry["candidates"][0]["package"] == "pypdf" and entry["replacement_package"] == "pypdf"
+
+
+BROKEN = CODE.replace("from PyPDF2 import PdfReader", "from pypdf import PdfReader").replace(
+    "    return [p.extract_text() for p in reader.pages]", "    return [p.extract_text() for p in reader.pages)")
+UNDEFINED = FIXED.replace("    reader = PdfReader(path)", "    reader = Lector(path)")
+
+
+def test_reintento_v2_muestra_la_linea_rota_y_la_del_original():
+    prep = prepare(CODE, FakeStore([doc(0)], best_score=0.6), fetch, threshold=0.4)
+    result = finish(prep, ScriptOutput(imports=OUTPUT.imports, script=BROKEN))
+    [plain] = fix_problems(prep, result, "script")
+    [detailed] = fix_problems(prep, result, "script", detail=True)
+    assert "\n" not in plain and detailed.startswith(plain)
+    assert "Tu línea 7: return [p.extract_text() for p in reader.pages)" in detailed
+    assert "En el original: return [p.extract_text() for p in reader.pages]" in detailed
+
+
+def test_reintento_v2_muestra_donde_se_usan_los_nombres_sin_definir():
+    prep = prepare(CODE, FakeStore([doc(0)], best_score=0.6), fetch, threshold=0.4)
+    result = finish(prep, ScriptOutput(imports=OUTPUT.imports, script=UNDEFINED))
+    [plain] = fix_problems(prep, result, "script")
+    [detailed] = fix_problems(prep, result, "script", detail=True)
+    assert "`Lector`" in plain and "\n" not in plain and detailed.startswith(plain)
+    assert detailed.endswith("Dónde los usa tu script:\n  - línea 6: reader = Lector(path)")
+
+
+def test_v1_reintenta_con_los_textos_de_siempre_y_v2_con_detalle():
+    for version, detailed in (("v1", False), ("v2", True)):
+        llm, calls = script_llm(BROKEN, FIXED)
+        answer(prepare(CODE, FakeStore([doc(0)], best_score=0.6), fetch, threshold=0.4), llm, retry="script",
+               retry_llm=llm, first="script", version=version)
+        assert ("Tu línea 7:" in calls[1][1]) is detailed
+
+
+def test_v3_es_v2_con_otra_decision():
+    from tprag.generate.prompt import PROMPTS
+
+    v2, v3 = PROMPTS["v2"]["script"], PROMPTS["v3"]["script"]
+    cut = '4. "decision":'
+    assert v3[:v3.index(cut)] == v2[:v2.index(cut)]  # pasos 1 a 3, iguales
+    assert v3[v3.index("Cambios:"):] == v2[v2.index("Cambios:"):]  # cambios y reporte, iguales
+    assert "TODOS los usos del paso 1 con API" in v2 and "TODOS los usos del paso 1 con API" not in v3
+    assert "ante la duda" not in v3 and "cubre el uso principal del script" in v3
+
+
+def test_v3_reintenta_con_detalle():
+    llm, calls = script_llm(BROKEN, FIXED)
+    answer(prepare(CODE, FakeStore([doc(0)], best_score=0.6), fetch, threshold=0.4), llm, retry="script",
+           retry_llm=llm, first="script", version="v3")
+    from tprag.generate.prompt import PROMPTS
+
+    assert [s for s, _ in calls] == [PROMPTS["v3"]["script"]] * 2 and "Tu línea 7:" in calls[1][1]
