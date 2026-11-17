@@ -4,8 +4,8 @@ import json
 
 from tprag.generate.context import TargetContext
 from tprag.generate.pipeline import FixResult
-from tprag.ui.view import (decision_rows, fixed_name, import_rows, load_examples, report_json, target_rows,
-                           unified_diff)
+from tprag.ui.view import (decision_rows, fixed_name, import_rows, load_examples, report_json, retry_note,
+                           target_rows, unified_diff)
 from tprag.validate.validate import ImportResult
 
 
@@ -59,3 +59,11 @@ def test_load_examples_keeps_the_handwritten_subsets(tmp_path):
              {"id": "syn-1", "subset": "synthetic", "task": "t", "code": "c", "split": "dev"}]
     (tmp_path / "a.jsonl").write_text("\n".join(json.dumps(i) for i in items) + "\n")
     assert sorted(load_examples(tmp_path)) == ["dep-1", "neg-1"]
+
+
+def test_retry_note_says_whether_the_retry_fixed_it_or_the_system_abstained():
+    assert retry_note(FixResult("x", [], True)) is None
+    fixed = FixResult("x", [], True, retry={"problems": ["nombres sin definir: `a`"], "remaining": []})
+    assert retry_note(fixed) == (False, ["nombres sin definir: `a`"])
+    abstained = FixResult("x", [], True, retry={"problems": ["primero"], "remaining": ["sigue mal"]})
+    assert retry_note(abstained) == (True, ["sigue mal"])

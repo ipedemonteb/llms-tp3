@@ -51,6 +51,16 @@ def decision_rows(report: list[dict]) -> list[dict]:
              "fuentes": len(e.get("sources", []))} for e in report if "decision" in e]
 
 
+def retry_note(result: FixResult) -> tuple[bool, list[str]] | None:
+    """Qué pasó en la post-validación del generador iterado: None si la primera respuesta no tuvo problemas (o no hubo
+    iteración); si no, (se abstuvo, problemas). Los problemas son los que quedaron después del reintento si el sistema
+    se abstuvo, y los de la primera respuesta si el reintento los arregló."""
+    if not result.retry:
+        return None
+    left = result.retry["remaining"]
+    return bool(left), list(left or result.retry["problems"])
+
+
 def unified_diff(original: str, fixed: str, name: str = "script.py") -> str:
     """Diff unificado del script original contra el corregido ("" si no cambió)."""
     lines = difflib.unified_diff(original.splitlines(keepends=True), fixed.splitlines(keepends=True),
