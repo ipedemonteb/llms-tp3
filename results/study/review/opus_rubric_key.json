@@ -1,0 +1,892 @@
+{
+ "runs": {
+  "rerank": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev",
+  "iter6": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev__iter6"
+ },
+ "seed": 2026,
+ "key": {
+  "s001": {
+   "run": "iter6",
+   "id": "syn-fastapi-03"
+  },
+  "s002": {
+   "run": "rerank",
+   "id": "syn-plotly-01"
+  },
+  "s003": {
+   "run": "iter6",
+   "id": "syn-django-01"
+  },
+  "s004": {
+   "run": "iter6",
+   "id": "dep-mock-patch-01"
+  },
+  "s005": {
+   "run": "rerank",
+   "id": "dep-nose-generators-01"
+  },
+  "s006": {
+   "run": "rerank",
+   "id": "syn-cryptography-03"
+  },
+  "s007": {
+   "run": "rerank",
+   "id": "syn-playwright-02"
+  },
+  "s008": {
+   "run": "iter6",
+   "id": "syn-numpy-02"
+  },
+  "s009": {
+   "run": "rerank",
+   "id": "syn-pydantic-03"
+  },
+  "s010": {
+   "run": "rerank",
+   "id": "dep-jose-validate-01"
+  },
+  "s011": {
+   "run": "iter6",
+   "id": "syn-wand-02"
+  },
+  "s012": {
+   "run": "rerank",
+   "id": "dep-mock-sideeffect-01"
+  },
+  "s013": {
+   "run": "iter6",
+   "id": "syn-xlsxwriter-02"
+  },
+  "s014": {
+   "run": "iter6",
+   "id": "syn-pymupdf-02"
+  },
+  "s015": {
+   "run": "rerank",
+   "id": "dep-nose-asserts-01"
+  },
+  "s016": {
+   "run": "iter6",
+   "id": "syn-scipy-01"
+  },
+  "s017": {
+   "run": "rerank",
+   "id": "dep-mock-patch-01"
+  },
+  "s018": {
+   "run": "iter6",
+   "id": "syn-python-stdlib-01"
+  },
+  "s019": {
+   "run": "iter6",
+   "id": "syn-cryptography-01"
+  },
+  "s020": {
+   "run": "rerank",
+   "id": "syn-transformers-01"
+  },
+  "s021": {
+   "run": "rerank",
+   "id": "syn-pydantic-04"
+  },
+  "s022": {
+   "run": "rerank",
+   "id": "syn-xlsxwriter-02"
+  },
+  "s023": {
+   "run": "rerank",
+   "id": "syn-django-03"
+  },
+  "s024": {
+   "run": "rerank",
+   "id": "syn-pymupdf-01"
+  },
+  "s025": {
+   "run": "iter6",
+   "id": "syn-typer-03"
+  },
+  "s026": {
+   "run": "iter6",
+   "id": "syn-pydantic-03"
+  },
+  "s027": {
+   "run": "iter6",
+   "id": "syn-scikit-learn-01"
+  },
+  "s028": {
+   "run": "iter6",
+   "id": "neg-zipcrypt-01"
+  },
+  "s029": {
+   "run": "iter6",
+   "id": "dep-mock-chained-01"
+  },
+  "s030": {
+   "run": "rerank",
+   "id": "syn-plotly-02"
+  },
+  "s031": {
+   "run": "iter6",
+   "id": "syn-transformers-04"
+  },
+  "s032": {
+   "run": "rerank",
+   "id": "syn-pydantic-01"
+  },
+  "s033": {
+   "run": "iter6",
+   "id": "syn-numpy-03"
+  },
+  "s034": {
+   "run": "iter6",
+   "id": "syn-fastapi-01"
+  },
+  "s035": {
+   "run": "rerank",
+   "id": "syn-aiohttp-03"
+  },
+  "s036": {
+   "run": "iter6",
+   "id": "syn-xlsxwriter-01"
+  },
+  "s037": {
+   "run": "iter6",
+   "id": "syn-xlsxwriter-03"
+  },
+  "s038": {
+   "run": "iter6",
+   "id": "syn-fastapi-04"
+  },
+  "s039": {
+   "run": "iter6",
+   "id": "syn-playwright-02"
+  },
+  "s040": {
+   "run": "rerank",
+   "id": "syn-pymupdf-02"
+  },
+  "s041": {
+   "run": "iter6",
+   "id": "syn-plotly-01"
+  },
+  "s042": {
+   "run": "iter6",
+   "id": "dep-fuzzywuzzy-match-01"
+  },
+  "s043": {
+   "run": "iter6",
+   "id": "syn-celery-02"
+  },
+  "s044": {
+   "run": "iter6",
+   "id": "syn-lxml-02"
+  },
+  "s045": {
+   "run": "rerank",
+   "id": "syn-scipy-01"
+  },
+  "s046": {
+   "run": "iter6",
+   "id": "syn-textual-01"
+  },
+  "s047": {
+   "run": "iter6",
+   "id": "syn-pymupdf-03"
+  },
+  "s048": {
+   "run": "iter6",
+   "id": "syn-scrapy-02"
+  },
+  "s049": {
+   "run": "rerank",
+   "id": "syn-plotly-03"
+  },
+  "s050": {
+   "run": "rerank",
+   "id": "syn-pandas-02"
+  },
+  "s051": {
+   "run": "rerank",
+   "id": "syn-fastapi-04"
+  },
+  "s052": {
+   "run": "iter6",
+   "id": "syn-django-03"
+  },
+  "s053": {
+   "run": "iter6",
+   "id": "syn-typer-04"
+  },
+  "s054": {
+   "run": "rerank",
+   "id": "syn-scikit-image-04"
+  },
+  "s055": {
+   "run": "rerank",
+   "id": "syn-python-stdlib-01"
+  },
+  "s056": {
+   "run": "iter6",
+   "id": "syn-authlib-01"
+  },
+  "s057": {
+   "run": "iter6",
+   "id": "syn-plotly-02"
+  },
+  "s058": {
+   "run": "rerank",
+   "id": "syn-matplotlib-03"
+  },
+  "s059": {
+   "run": "rerank",
+   "id": "syn-pydantic-02"
+  },
+  "s060": {
+   "run": "iter6",
+   "id": "syn-boto3-01"
+  },
+  "s061": {
+   "run": "rerank",
+   "id": "dep-oauth2client-adc-01"
+  },
+  "s062": {
+   "run": "iter6",
+   "id": "syn-pandas-02"
+  },
+  "s063": {
+   "run": "rerank",
+   "id": "syn-django-02"
+  },
+  "s064": {
+   "run": "iter6",
+   "id": "syn-textual-04"
+  },
+  "s065": {
+   "run": "iter6",
+   "id": "dep-jose-validate-01"
+  },
+  "s066": {
+   "run": "iter6",
+   "id": "syn-pytest-01"
+  },
+  "s067": {
+   "run": "rerank",
+   "id": "dep-jose-jwk-01"
+  },
+  "s068": {
+   "run": "rerank",
+   "id": "dep-fuzzywuzzy-match-01"
+  },
+  "s069": {
+   "run": "rerank",
+   "id": "syn-numpy-03"
+  },
+  "s070": {
+   "run": "rerank",
+   "id": "syn-playwright-01"
+  },
+  "s071": {
+   "run": "iter6",
+   "id": "syn-sqlalchemy-01"
+  },
+  "s072": {
+   "run": "rerank",
+   "id": "syn-scikit-learn-04"
+  },
+  "s073": {
+   "run": "iter6",
+   "id": "dep-fuzzywuzzy-dedup-01"
+  },
+  "s074": {
+   "run": "iter6",
+   "id": "dep-nose-asserts-01"
+  },
+  "s075": {
+   "run": "iter6",
+   "id": "syn-scrapy-03"
+  },
+  "s076": {
+   "run": "iter6",
+   "id": "syn-pandas-01"
+  },
+  "s077": {
+   "run": "rerank",
+   "id": "syn-playwright-03"
+  },
+  "s078": {
+   "run": "iter6",
+   "id": "syn-playwright-01"
+  },
+  "s079": {
+   "run": "rerank",
+   "id": "syn-transformers-04"
+  },
+  "s080": {
+   "run": "rerank",
+   "id": "syn-matplotlib-04"
+  },
+  "s081": {
+   "run": "rerank",
+   "id": "syn-transformers-02"
+  },
+  "s082": {
+   "run": "iter6",
+   "id": "dep-oauth2client-adc-01"
+  },
+  "s083": {
+   "run": "rerank",
+   "id": "syn-scipy-03"
+  },
+  "s084": {
+   "run": "iter6",
+   "id": "syn-scipy-03"
+  },
+  "s085": {
+   "run": "rerank",
+   "id": "neg-oauth2client-storage-01"
+  },
+  "s086": {
+   "run": "rerank",
+   "id": "syn-lxml-02"
+  },
+  "s087": {
+   "run": "iter6",
+   "id": "syn-django-02"
+  },
+  "s088": {
+   "run": "rerank",
+   "id": "syn-authlib-01"
+  },
+  "s089": {
+   "run": "rerank",
+   "id": "syn-scrapy-02"
+  },
+  "s090": {
+   "run": "iter6",
+   "id": "syn-matplotlib-04"
+  },
+  "s091": {
+   "run": "iter6",
+   "id": "syn-pydantic-01"
+  },
+  "s092": {
+   "run": "iter6",
+   "id": "syn-transformers-01"
+  },
+  "s093": {
+   "run": "rerank",
+   "id": "dep-oauth2client-installed-01"
+  },
+  "s094": {
+   "run": "iter6",
+   "id": "dep-mock-sideeffect-01"
+  },
+  "s095": {
+   "run": "iter6",
+   "id": "syn-pandas-03"
+  },
+  "s096": {
+   "run": "iter6",
+   "id": "dep-oauth2client-sa-01"
+  },
+  "s097": {
+   "run": "iter6",
+   "id": "syn-plotly-04"
+  },
+  "s098": {
+   "run": "rerank",
+   "id": "syn-aiohttp-01"
+  },
+  "s099": {
+   "run": "iter6",
+   "id": "syn-celery-01"
+  },
+  "s100": {
+   "run": "iter6",
+   "id": "syn-streamlit-01"
+  },
+  "s101": {
+   "run": "iter6",
+   "id": "syn-pydantic-04"
+  },
+  "s102": {
+   "run": "rerank",
+   "id": "dep-jose-issue-01"
+  },
+  "s103": {
+   "run": "rerank",
+   "id": "syn-torch-02"
+  },
+  "s104": {
+   "run": "rerank",
+   "id": "syn-textual-04"
+  },
+  "s105": {
+   "run": "iter6",
+   "id": "syn-textual-03"
+  },
+  "s106": {
+   "run": "rerank",
+   "id": "syn-wand-01"
+  },
+  "s107": {
+   "run": "iter6",
+   "id": "syn-scipy-02"
+  },
+  "s108": {
+   "run": "rerank",
+   "id": "syn-numpy-02"
+  },
+  "s109": {
+   "run": "rerank",
+   "id": "syn-torch-03"
+  },
+  "s110": {
+   "run": "rerank",
+   "id": "syn-scikit-image-02"
+  },
+  "s111": {
+   "run": "rerank",
+   "id": "syn-streamlit-01"
+  },
+  "s112": {
+   "run": "rerank",
+   "id": "syn-xlsxwriter-03"
+  },
+  "s113": {
+   "run": "iter6",
+   "id": "syn-flask-02"
+  },
+  "s114": {
+   "run": "iter6",
+   "id": "syn-scikit-image-01"
+  },
+  "s115": {
+   "run": "iter6",
+   "id": "syn-cryptography-03"
+  },
+  "s116": {
+   "run": "iter6",
+   "id": "syn-typer-01"
+  },
+  "s117": {
+   "run": "iter6",
+   "id": "syn-typer-02"
+  },
+  "s118": {
+   "run": "rerank",
+   "id": "dep-oauth2client-sa-01"
+  },
+  "s119": {
+   "run": "iter6",
+   "id": "syn-flask-03"
+  },
+  "s120": {
+   "run": "rerank",
+   "id": "syn-textual-01"
+  },
+  "s121": {
+   "run": "rerank",
+   "id": "syn-transformers-03"
+  },
+  "s122": {
+   "run": "iter6",
+   "id": "syn-pymupdf-01"
+  },
+  "s123": {
+   "run": "iter6",
+   "id": "syn-matplotlib-01"
+  },
+  "s124": {
+   "run": "rerank",
+   "id": "syn-scikit-image-03"
+  },
+  "s125": {
+   "run": "rerank",
+   "id": "dep-nose-setup-01"
+  },
+  "s126": {
+   "run": "rerank",
+   "id": "syn-scikit-learn-03"
+  },
+  "s127": {
+   "run": "rerank",
+   "id": "syn-scrapy-01"
+  },
+  "s128": {
+   "run": "iter6",
+   "id": "syn-aiohttp-01"
+  },
+  "s129": {
+   "run": "iter6",
+   "id": "syn-aiohttp-03"
+  },
+  "s130": {
+   "run": "rerank",
+   "id": "dep-mock-chained-01"
+  },
+  "s131": {
+   "run": "iter6",
+   "id": "dep-fuzzywuzzy-suggest-01"
+  },
+  "s132": {
+   "run": "rerank",
+   "id": "syn-pandas-03"
+  },
+  "s133": {
+   "run": "iter6",
+   "id": "syn-numpy-01"
+  },
+  "s134": {
+   "run": "iter6",
+   "id": "syn-torch-02"
+  },
+  "s135": {
+   "run": "rerank",
+   "id": "syn-xlsxwriter-01"
+  },
+  "s136": {
+   "run": "rerank",
+   "id": "syn-django-01"
+  },
+  "s137": {
+   "run": "iter6",
+   "id": "dep-nose-setup-01"
+  },
+  "s138": {
+   "run": "rerank",
+   "id": "syn-boto3-01"
+  },
+  "s139": {
+   "run": "iter6",
+   "id": "syn-wand-03"
+  },
+  "s140": {
+   "run": "iter6",
+   "id": "syn-authlib-02"
+  },
+  "s141": {
+   "run": "iter6",
+   "id": "neg-oauth2client-storage-01"
+  },
+  "s142": {
+   "run": "iter6",
+   "id": "dep-oauth2client-installed-01"
+  },
+  "s143": {
+   "run": "rerank",
+   "id": "syn-textual-02"
+  },
+  "s144": {
+   "run": "iter6",
+   "id": "syn-cryptography-02"
+  },
+  "s145": {
+   "run": "rerank",
+   "id": "syn-scikit-learn-01"
+  },
+  "s146": {
+   "run": "iter6",
+   "id": "dep-jose-issue-01"
+  },
+  "s147": {
+   "run": "iter6",
+   "id": "syn-torch-03"
+  },
+  "s148": {
+   "run": "rerank",
+   "id": "dep-fuzzywuzzy-suggest-01"
+  },
+  "s149": {
+   "run": "iter6",
+   "id": "syn-matplotlib-03"
+  },
+  "s150": {
+   "run": "rerank",
+   "id": "syn-fastapi-01"
+  },
+  "s151": {
+   "run": "rerank",
+   "id": "syn-wand-03"
+  },
+  "s152": {
+   "run": "rerank",
+   "id": "syn-flask-02"
+  },
+  "s153": {
+   "run": "rerank",
+   "id": "syn-celery-02"
+  },
+  "s154": {
+   "run": "rerank",
+   "id": "dep-fuzzywuzzy-dedup-01"
+  },
+  "s155": {
+   "run": "rerank",
+   "id": "syn-sqlalchemy-01"
+  },
+  "s156": {
+   "run": "iter6",
+   "id": "syn-lxml-01"
+  },
+  "s157": {
+   "run": "iter6",
+   "id": "syn-sqlalchemy-02"
+  },
+  "s158": {
+   "run": "iter6",
+   "id": "syn-playwright-03"
+  },
+  "s159": {
+   "run": "iter6",
+   "id": "syn-scikit-image-03"
+  },
+  "s160": {
+   "run": "iter6",
+   "id": "syn-scrapy-01"
+  },
+  "s161": {
+   "run": "iter6",
+   "id": "syn-fastapi-02"
+  },
+  "s162": {
+   "run": "iter6",
+   "id": "syn-scikit-learn-02"
+  },
+  "s163": {
+   "run": "iter6",
+   "id": "syn-transformers-02"
+  },
+  "s164": {
+   "run": "iter6",
+   "id": "syn-textual-02"
+  },
+  "s165": {
+   "run": "rerank",
+   "id": "syn-scipy-02"
+  },
+  "s166": {
+   "run": "rerank",
+   "id": "syn-fastapi-03"
+  },
+  "s167": {
+   "run": "iter6",
+   "id": "syn-wand-01"
+  },
+  "s168": {
+   "run": "iter6",
+   "id": "syn-pydantic-02"
+  },
+  "s169": {
+   "run": "iter6",
+   "id": "syn-plotly-03"
+  },
+  "s170": {
+   "run": "iter6",
+   "id": "dep-jose-jwk-01"
+  },
+  "s171": {
+   "run": "rerank",
+   "id": "syn-matplotlib-01"
+  }
+ },
+ "anchors": [
+  "s011",
+  "s095",
+  "s169",
+  "s107",
+  "s065",
+  "s091"
+ ],
+ "agents": {
+  "1": [
+   "s011",
+   "s001",
+   "s004",
+   "s007",
+   "s010",
+   "s014",
+   "s017",
+   "s020",
+   "s023",
+   "s026",
+   "s095",
+   "s029",
+   "s032",
+   "s035",
+   "s038",
+   "s041",
+   "s044",
+   "s047",
+   "s050",
+   "s053",
+   "s169",
+   "s056",
+   "s059",
+   "s062",
+   "s066",
+   "s069",
+   "s072",
+   "s075",
+   "s078",
+   "s081",
+   "s107",
+   "s084",
+   "s087",
+   "s090",
+   "s094",
+   "s098",
+   "s101",
+   "s104",
+   "s108",
+   "s111",
+   "s065",
+   "s114",
+   "s117",
+   "s120",
+   "s123",
+   "s126",
+   "s129",
+   "s132",
+   "s135",
+   "s138",
+   "s091",
+   "s141",
+   "s144",
+   "s147",
+   "s150",
+   "s153",
+   "s156",
+   "s159",
+   "s162",
+   "s165",
+   "s168"
+  ],
+  "2": [
+   "s011",
+   "s002",
+   "s005",
+   "s008",
+   "s012",
+   "s015",
+   "s018",
+   "s021",
+   "s024",
+   "s027",
+   "s095",
+   "s030",
+   "s033",
+   "s036",
+   "s039",
+   "s042",
+   "s045",
+   "s048",
+   "s051",
+   "s054",
+   "s169",
+   "s057",
+   "s060",
+   "s063",
+   "s067",
+   "s070",
+   "s073",
+   "s076",
+   "s079",
+   "s082",
+   "s107",
+   "s085",
+   "s088",
+   "s092",
+   "s096",
+   "s099",
+   "s102",
+   "s105",
+   "s109",
+   "s112",
+   "s065",
+   "s115",
+   "s118",
+   "s121",
+   "s124",
+   "s127",
+   "s130",
+   "s133",
+   "s136",
+   "s139",
+   "s091",
+   "s142",
+   "s145",
+   "s148",
+   "s151",
+   "s154",
+   "s157",
+   "s160",
+   "s163",
+   "s166",
+   "s170"
+  ],
+  "3": [
+   "s011",
+   "s003",
+   "s006",
+   "s009",
+   "s013",
+   "s016",
+   "s019",
+   "s022",
+   "s025",
+   "s028",
+   "s095",
+   "s031",
+   "s034",
+   "s037",
+   "s040",
+   "s043",
+   "s046",
+   "s049",
+   "s052",
+   "s055",
+   "s169",
+   "s058",
+   "s061",
+   "s064",
+   "s068",
+   "s071",
+   "s074",
+   "s077",
+   "s080",
+   "s083",
+   "s107",
+   "s086",
+   "s089",
+   "s093",
+   "s097",
+   "s100",
+   "s103",
+   "s106",
+   "s110",
+   "s113",
+   "s065",
+   "s116",
+   "s119",
+   "s122",
+   "s125",
+   "s128",
+   "s131",
+   "s134",
+   "s137",
+   "s140",
+   "s091",
+   "s143",
+   "s146",
+   "s149",
+   "s152",
+   "s155",
+   "s158",
+   "s161",
+   "s164",
+   "s167",
+   "s171"
+  ]
+ }
+}
