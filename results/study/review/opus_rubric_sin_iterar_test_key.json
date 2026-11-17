@@ -1,0 +1,365 @@
+{
+ "runs": {
+  "sin_iterar_test": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__test",
+  "iter6": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev__iter6"
+ },
+ "seed": 2026,
+ "key": {
+  "u052": {
+   "run": "sin_iterar_test",
+   "id": "syn-httpx-01"
+  },
+  "u018": {
+   "run": "sin_iterar_test",
+   "id": "syn-hypothesis-01"
+  },
+  "u054": {
+   "run": "sin_iterar_test",
+   "id": "dep-pypdf2-extract-01"
+  },
+  "u022": {
+   "run": "sin_iterar_test",
+   "id": "syn-kubernetes-01"
+  },
+  "u051": {
+   "run": "sin_iterar_test",
+   "id": "syn-rich-02"
+  },
+  "u062": {
+   "run": "sin_iterar_test",
+   "id": "dep-pypdf2-watermark-01"
+  },
+  "u024": {
+   "run": "sin_iterar_test",
+   "id": "neg-toml-dump-01"
+  },
+  "u031": {
+   "run": "sin_iterar_test",
+   "id": "syn-rich-01"
+  },
+  "u021": {
+   "run": "sin_iterar_test",
+   "id": "syn-joblib-01"
+  },
+  "u028": {
+   "run": "sin_iterar_test",
+   "id": "dep-pypdf4-metadata-01"
+  },
+  "u058": {
+   "run": "sin_iterar_test",
+   "id": "syn-sympy-02"
+  },
+  "u064": {
+   "run": "sin_iterar_test",
+   "id": "syn-pypdf-01"
+  },
+  "u039": {
+   "run": "sin_iterar_test",
+   "id": "syn-dynaconf-01"
+  },
+  "u047": {
+   "run": "sin_iterar_test",
+   "id": "syn-pydantic-settings-02"
+  },
+  "u001": {
+   "run": "sin_iterar_test",
+   "id": "syn-psycopg-02"
+  },
+  "u045": {
+   "run": "sin_iterar_test",
+   "id": "syn-filelock-02"
+  },
+  "u012": {
+   "run": "sin_iterar_test",
+   "id": "dep-toml-pyproject-01"
+  },
+  "u036": {
+   "run": "sin_iterar_test",
+   "id": "syn-beautifulsoup4-01"
+  },
+  "u053": {
+   "run": "sin_iterar_test",
+   "id": "syn-filelock-01"
+  },
+  "u055": {
+   "run": "sin_iterar_test",
+   "id": "dep-xlrd-dates-01"
+  },
+  "u043": {
+   "run": "sin_iterar_test",
+   "id": "dep-pypdf2-merge-01"
+  },
+  "u040": {
+   "run": "sin_iterar_test",
+   "id": "syn-trafilatura-01"
+  },
+  "u034": {
+   "run": "sin_iterar_test",
+   "id": "syn-beartype-02"
+  },
+  "u049": {
+   "run": "sin_iterar_test",
+   "id": "syn-gradio-02"
+  },
+  "u060": {
+   "run": "sin_iterar_test",
+   "id": "syn-hydra-core-02"
+  },
+  "u010": {
+   "run": "sin_iterar_test",
+   "id": "syn-huey-01"
+  },
+  "u013": {
+   "run": "sin_iterar_test",
+   "id": "syn-huggingface-hub-02"
+  },
+  "u002": {
+   "run": "sin_iterar_test",
+   "id": "dep-xlrd-large-01"
+  },
+  "u038": {
+   "run": "sin_iterar_test",
+   "id": "dep-toml-config-01"
+  },
+  "u032": {
+   "run": "sin_iterar_test",
+   "id": "dep-xlrd-rows-01"
+  },
+  "u015": {
+   "run": "sin_iterar_test",
+   "id": "syn-pyarrow-01"
+  },
+  "u009": {
+   "run": "sin_iterar_test",
+   "id": "syn-trio-01"
+  },
+  "u003": {
+   "run": "sin_iterar_test",
+   "id": "syn-psycopg2-01"
+  },
+  "u011": {
+   "run": "sin_iterar_test",
+   "id": "syn-prompt-toolkit-01"
+  },
+  "u063": {
+   "run": "sin_iterar_test",
+   "id": "syn-psycopg-01"
+  },
+  "u033": {
+   "run": "sin_iterar_test",
+   "id": "syn-sympy-01"
+  },
+  "u014": {
+   "run": "sin_iterar_test",
+   "id": "syn-configobj-01"
+  },
+  "u029": {
+   "run": "sin_iterar_test",
+   "id": "syn-websocket-client-01"
+  },
+  "u007": {
+   "run": "sin_iterar_test",
+   "id": "dep-pypdf4-split-01"
+  },
+  "u025": {
+   "run": "sin_iterar_test",
+   "id": "syn-requests-01"
+  },
+  "u048": {
+   "run": "sin_iterar_test",
+   "id": "dep-pypdf2-encrypt-01"
+  },
+  "u056": {
+   "run": "sin_iterar_test",
+   "id": "syn-anyio-01"
+  },
+  "u061": {
+   "run": "sin_iterar_test",
+   "id": "syn-hydra-core-01"
+  },
+  "u037": {
+   "run": "sin_iterar_test",
+   "id": "syn-networkx-02"
+  },
+  "u030": {
+   "run": "sin_iterar_test",
+   "id": "syn-hypothesis-02"
+  },
+  "u041": {
+   "run": "sin_iterar_test",
+   "id": "syn-python-docx-01"
+  },
+  "u059": {
+   "run": "sin_iterar_test",
+   "id": "syn-networkx-01"
+  },
+  "u023": {
+   "run": "sin_iterar_test",
+   "id": "syn-huggingface-hub-01"
+  },
+  "u005": {
+   "run": "sin_iterar_test",
+   "id": "syn-marshmallow-02"
+  },
+  "u027": {
+   "run": "sin_iterar_test",
+   "id": "syn-platformdirs-01"
+  },
+  "u019": {
+   "run": "sin_iterar_test",
+   "id": "syn-openpyxl-01"
+  },
+  "u004": {
+   "run": "sin_iterar_test",
+   "id": "syn-alembic-01"
+  },
+  "u044": {
+   "run": "sin_iterar_test",
+   "id": "dep-pytz-dst-01"
+  },
+  "u017": {
+   "run": "sin_iterar_test",
+   "id": "syn-prompt-toolkit-02"
+  },
+  "u046": {
+   "run": "sin_iterar_test",
+   "id": "syn-trafilatura-02"
+  },
+  "u006": {
+   "run": "sin_iterar_test",
+   "id": "syn-invoke-01"
+  },
+  "u008": {
+   "run": "sin_iterar_test",
+   "id": "syn-feedparser-01"
+  },
+  "u057": {
+   "run": "sin_iterar_test",
+   "id": "dep-pytz-meetings-01"
+  },
+  "u050": {
+   "run": "iter6",
+   "id": "syn-wand-02"
+  },
+  "u035": {
+   "run": "iter6",
+   "id": "syn-pandas-03"
+  },
+  "u042": {
+   "run": "iter6",
+   "id": "syn-plotly-03"
+  },
+  "u016": {
+   "run": "iter6",
+   "id": "syn-scipy-02"
+  },
+  "u026": {
+   "run": "iter6",
+   "id": "dep-jose-validate-01"
+  },
+  "u020": {
+   "run": "iter6",
+   "id": "syn-pydantic-01"
+  }
+ },
+ "anchors": [
+  "u050",
+  "u035",
+  "u042",
+  "u016",
+  "u026",
+  "u020"
+ ],
+ "anchors_previous": [
+  "s011",
+  "s095",
+  "s169",
+  "s107",
+  "s065",
+  "s091"
+ ],
+ "agents": {
+  "1": [
+   "u050",
+   "u052",
+   "u022",
+   "u024",
+   "u035",
+   "u028",
+   "u039",
+   "u045",
+   "u042",
+   "u053",
+   "u040",
+   "u060",
+   "u016",
+   "u002",
+   "u015",
+   "u011",
+   "u026",
+   "u014",
+   "u025",
+   "u061",
+   "u020",
+   "u041",
+   "u005",
+   "u004",
+   "u046",
+   "u057"
+  ],
+  "2": [
+   "u050",
+   "u018",
+   "u051",
+   "u031",
+   "u035",
+   "u058",
+   "u047",
+   "u012",
+   "u042",
+   "u055",
+   "u034",
+   "u010",
+   "u016",
+   "u038",
+   "u009",
+   "u063",
+   "u026",
+   "u029",
+   "u048",
+   "u037",
+   "u020",
+   "u059",
+   "u027",
+   "u044",
+   "u006"
+  ],
+  "3": [
+   "u050",
+   "u054",
+   "u062",
+   "u021",
+   "u035",
+   "u064",
+   "u001",
+   "u036",
+   "u042",
+   "u043",
+   "u049",
+   "u013",
+   "u016",
+   "u032",
+   "u003",
+   "u033",
+   "u026",
+   "u007",
+   "u056",
+   "u030",
+   "u020",
+   "u023",
+   "u019",
+   "u017",
+   "u008"
+  ]
+ }
+}
