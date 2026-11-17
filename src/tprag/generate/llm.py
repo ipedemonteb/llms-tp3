@@ -49,6 +49,8 @@ class ChatModel:
 
 CHAT_MODELS = {
     "gpt-4o-mini": ChatModel("gpt-4o-mini", "gpt-4o-mini", "gpt-4o-mini", 0.15, 0.60),
+    # generador más capaz para la iteración (`__iter7`, iteracion_ej4.md §9); precio verificado el 2026-11-17
+    "gpt-4.1-mini": ChatModel("gpt-4.1-mini", "gpt-4.1-mini", "gpt-4.1-mini", 0.40, 1.60),
 }
 
 
