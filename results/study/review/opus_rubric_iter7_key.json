@@ -1,0 +1,490 @@
+{
+ "runs": {
+  "iter7": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4.1-mini__dev__iter7",
+  "iter6": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev__iter6"
+ },
+ "seed": 2026,
+ "key": {
+  "u061": {
+   "run": "iter7",
+   "id": "syn-scipy-03"
+  },
+  "u020": {
+   "run": "iter7",
+   "id": "dep-mock-patch-01"
+  },
+  "u039": {
+   "run": "iter7",
+   "id": "syn-scrapy-02"
+  },
+  "u071": {
+   "run": "iter7",
+   "id": "syn-textual-04"
+  },
+  "u021": {
+   "run": "iter7",
+   "id": "dep-mock-sideeffect-01"
+  },
+  "u077": {
+   "run": "iter7",
+   "id": "syn-pymupdf-01"
+  },
+  "u043": {
+   "run": "iter7",
+   "id": "syn-pydantic-03"
+  },
+  "u070": {
+   "run": "iter7",
+   "id": "syn-aiohttp-01"
+  },
+  "u073": {
+   "run": "iter7",
+   "id": "syn-torch-03"
+  },
+  "u079": {
+   "run": "iter7",
+   "id": "syn-scikit-image-01"
+  },
+  "u078": {
+   "run": "iter7",
+   "id": "syn-plotly-01"
+  },
+  "u049": {
+   "run": "iter7",
+   "id": "syn-typer-03"
+  },
+  "u057": {
+   "run": "iter7",
+   "id": "syn-pydantic-04"
+  },
+  "u089": {
+   "run": "iter7",
+   "id": "syn-textual-03"
+  },
+  "u060": {
+   "run": "iter7",
+   "id": "syn-flask-03"
+  },
+  "u003": {
+   "run": "iter7",
+   "id": "syn-transformers-04"
+  },
+  "u027": {
+   "run": "iter7",
+   "id": "syn-pandas-01"
+  },
+  "u053": {
+   "run": "iter7",
+   "id": "dep-nose-asserts-01"
+  },
+  "u040": {
+   "run": "iter7",
+   "id": "syn-scikit-image-02"
+  },
+  "u022": {
+   "run": "iter7",
+   "id": "syn-pymupdf-03"
+  },
+  "u041": {
+   "run": "iter7",
+   "id": "syn-scikit-learn-01"
+  },
+  "u081": {
+   "run": "iter7",
+   "id": "syn-playwright-03"
+  },
+  "u075": {
+   "run": "iter7",
+   "id": "syn-typer-02"
+  },
+  "u055": {
+   "run": "iter7",
+   "id": "syn-scikit-learn-02"
+  },
+  "u085": {
+   "run": "iter7",
+   "id": "dep-jose-issue-01"
+  },
+  "u017": {
+   "run": "iter7",
+   "id": "syn-xlsxwriter-03"
+  },
+  "u058": {
+   "run": "iter7",
+   "id": "syn-cryptography-02"
+  },
+  "u036": {
+   "run": "iter7",
+   "id": "syn-pytest-01"
+  },
+  "u044": {
+   "run": "iter7",
+   "id": "syn-wand-01"
+  },
+  "u002": {
+   "run": "iter7",
+   "id": "syn-xlsxwriter-01"
+  },
+  "u051": {
+   "run": "iter7",
+   "id": "dep-fuzzywuzzy-suggest-01"
+  },
+  "u029": {
+   "run": "iter7",
+   "id": "syn-lxml-02"
+  },
+  "u008": {
+   "run": "iter7",
+   "id": "syn-plotly-02"
+  },
+  "u069": {
+   "run": "iter7",
+   "id": "syn-pydantic-01"
+  },
+  "u019": {
+   "run": "iter7",
+   "id": "syn-fastapi-03"
+  },
+  "u037": {
+   "run": "iter7",
+   "id": "dep-fuzzywuzzy-match-01"
+  },
+  "u066": {
+   "run": "iter7",
+   "id": "syn-django-01"
+  },
+  "u018": {
+   "run": "iter7",
+   "id": "syn-wand-03"
+  },
+  "u083": {
+   "run": "iter7",
+   "id": "dep-oauth2client-adc-01"
+  },
+  "u011": {
+   "run": "iter7",
+   "id": "syn-matplotlib-04"
+  },
+  "u074": {
+   "run": "iter7",
+   "id": "syn-plotly-04"
+  },
+  "u063": {
+   "run": "iter7",
+   "id": "syn-cryptography-03"
+  },
+  "u038": {
+   "run": "iter7",
+   "id": "syn-pandas-03"
+  },
+  "u086": {
+   "run": "iter7",
+   "id": "syn-playwright-01"
+  },
+  "u028": {
+   "run": "iter7",
+   "id": "dep-mock-chained-01"
+  },
+  "u048": {
+   "run": "iter7",
+   "id": "syn-fastapi-01"
+  },
+  "u025": {
+   "run": "iter7",
+   "id": "dep-jose-jwk-01"
+  },
+  "u064": {
+   "run": "iter7",
+   "id": "syn-xlsxwriter-02"
+  },
+  "u088": {
+   "run": "iter7",
+   "id": "syn-numpy-03"
+  },
+  "u032": {
+   "run": "iter7",
+   "id": "syn-pymupdf-02"
+  },
+  "u062": {
+   "run": "iter7",
+   "id": "syn-fastapi-04"
+  },
+  "u010": {
+   "run": "iter7",
+   "id": "syn-scrapy-03"
+  },
+  "u033": {
+   "run": "iter7",
+   "id": "syn-fastapi-02"
+  },
+  "u050": {
+   "run": "iter7",
+   "id": "syn-cryptography-01"
+  },
+  "u087": {
+   "run": "iter7",
+   "id": "syn-flask-02"
+  },
+  "u016": {
+   "run": "iter7",
+   "id": "syn-wand-02"
+  },
+  "u076": {
+   "run": "iter7",
+   "id": "syn-django-03"
+  },
+  "u065": {
+   "run": "iter7",
+   "id": "syn-scrapy-01"
+  },
+  "u005": {
+   "run": "iter7",
+   "id": "syn-numpy-02"
+  },
+  "u042": {
+   "run": "iter7",
+   "id": "syn-pydantic-02"
+  },
+  "u006": {
+   "run": "iter7",
+   "id": "syn-sqlalchemy-02"
+  },
+  "u001": {
+   "run": "iter7",
+   "id": "syn-scikit-image-03"
+  },
+  "u024": {
+   "run": "iter7",
+   "id": "syn-torch-02"
+  },
+  "u082": {
+   "run": "iter7",
+   "id": "syn-scipy-02"
+  },
+  "u013": {
+   "run": "iter7",
+   "id": "syn-aiohttp-02"
+  },
+  "u047": {
+   "run": "iter7",
+   "id": "syn-playwright-02"
+  },
+  "u046": {
+   "run": "iter7",
+   "id": "syn-authlib-01"
+  },
+  "u068": {
+   "run": "iter7",
+   "id": "dep-oauth2client-installed-01"
+  },
+  "u052": {
+   "run": "iter7",
+   "id": "dep-fuzzywuzzy-dedup-01"
+  },
+  "u007": {
+   "run": "iter7",
+   "id": "syn-numpy-01"
+  },
+  "u012": {
+   "run": "iter7",
+   "id": "syn-scipy-01"
+  },
+  "u009": {
+   "run": "iter7",
+   "id": "syn-sqlalchemy-01"
+  },
+  "u026": {
+   "run": "iter7",
+   "id": "syn-transformers-01"
+  },
+  "u054": {
+   "run": "iter7",
+   "id": "syn-typer-01"
+  },
+  "u035": {
+   "run": "iter7",
+   "id": "syn-scikit-image-04"
+  },
+  "u045": {
+   "run": "iter7",
+   "id": "syn-transformers-02"
+  },
+  "u056": {
+   "run": "iter7",
+   "id": "syn-typer-04"
+  },
+  "u084": {
+   "run": "iter7",
+   "id": "syn-matplotlib-01"
+  },
+  "u067": {
+   "run": "iter7",
+   "id": "syn-aiohttp-03"
+  },
+  "u015": {
+   "run": "iter7",
+   "id": "syn-textual-02"
+  },
+  "u004": {
+   "run": "iter7",
+   "id": "syn-streamlit-01"
+  },
+  "u031": {
+   "run": "iter7",
+   "id": "syn-plotly-03"
+  },
+  "u072": {
+   "run": "iter7",
+   "id": "syn-authlib-02"
+  },
+  "u034": {
+   "run": "iter6",
+   "id": "syn-wand-02"
+  },
+  "u023": {
+   "run": "iter6",
+   "id": "syn-pandas-03"
+  },
+  "u059": {
+   "run": "iter6",
+   "id": "syn-plotly-03"
+  },
+  "u080": {
+   "run": "iter6",
+   "id": "syn-scipy-02"
+  },
+  "u030": {
+   "run": "iter6",
+   "id": "dep-jose-validate-01"
+  },
+  "u014": {
+   "run": "iter6",
+   "id": "syn-pydantic-01"
+  }
+ },
+ "anchors": [
+  "u034",
+  "u023",
+  "u059",
+  "u080",
+  "u030",
+  "u014"
+ ],
+ "anchors_previous": [
+  "s011",
+  "s095",
+  "s169",
+  "s107",
+  "s065",
+  "s091"
+ ],
+ "agents": {
+  "1": [
+   "u034",
+   "u061",
+   "u071",
+   "u043",
+   "u079",
+   "u023",
+   "u057",
+   "u003",
+   "u040",
+   "u081",
+   "u059",
+   "u085",
+   "u036",
+   "u051",
+   "u069",
+   "u080",
+   "u066",
+   "u011",
+   "u038",
+   "u048",
+   "u030",
+   "u088",
+   "u010",
+   "u087",
+   "u065",
+   "u014",
+   "u006",
+   "u082",
+   "u046",
+   "u007",
+   "u026",
+   "u045",
+   "u067",
+   "u031"
+  ],
+  "2": [
+   "u034",
+   "u020",
+   "u021",
+   "u070",
+   "u078",
+   "u023",
+   "u089",
+   "u027",
+   "u022",
+   "u075",
+   "u059",
+   "u017",
+   "u044",
+   "u029",
+   "u019",
+   "u080",
+   "u018",
+   "u074",
+   "u086",
+   "u025",
+   "u030",
+   "u032",
+   "u033",
+   "u016",
+   "u005",
+   "u014",
+   "u001",
+   "u013",
+   "u068",
+   "u012",
+   "u054",
+   "u056",
+   "u015",
+   "u072"
+  ],
+  "3": [
+   "u034",
+   "u039",
+   "u077",
+   "u073",
+   "u049",
+   "u023",
+   "u060",
+   "u053",
+   "u041",
+   "u055",
+   "u059",
+   "u058",
+   "u002",
+   "u008",
+   "u037",
+   "u080",
+   "u083",
+   "u063",
+   "u028",
+   "u064",
+   "u030",
+   "u062",
+   "u050",
+   "u076",
+   "u042",
+   "u014",
+   "u024",
+   "u047",
+   "u052",
+   "u009",
+   "u035",
+   "u084",
+   "u004"
+  ]
+ }
+}
