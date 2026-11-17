@@ -1,0 +1,338 @@
+{
+ "run": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev__iter6",
+ "threshold": -4.515625,
+ "positives": 113,
+ "good": 83,
+ "not_successful": 30,
+ "causes": {
+  "debajo_del_umbral": 5,
+  "respuesta_cortada": 1,
+  "abstencion_postvalidacion": 1,
+  "llm_se_abstiene_con_la_correcta": 4,
+  "llm_se_abstiene_sin_la_correcta": 3,
+  "no_aplica_los_cambios": 0,
+  "no_parsea": 0,
+  "migra_a_medias": 0,
+  "elige_mal_con_la_correcta": 11,
+  "elige_mal_sin_la_correcta": 5,
+  "otro": 0
+ },
+ "failures": [
+  {
+   "item": "dep-nose-generators-01",
+   "module": "nose.tools",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "dep-oauth2client-installed-01",
+   "module": "oauth2client",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "google-auth-oauthlib"
+  },
+  {
+   "item": "syn-transformers-03",
+   "module": "ferrowave",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-scikit-learn-03",
+   "module": "sketchmatrix",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-torch-01",
+   "module": "glyphtrace",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-django-02",
+   "module": "replforge.cli",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "rich"
+  },
+  {
+   "item": "syn-flask-01",
+   "module": "hallcast",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-matplotlib-02",
+   "module": "panelcanvas",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-matplotlib-03",
+   "module": "gantterra",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "xlsxwriter"
+  },
+  {
+   "item": "syn-plotly-03",
+   "module": "vividchart",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "altair"
+  },
+  {
+   "item": "syn-streamlit-01",
+   "module": "pulsedeck",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "pyarrow"
+  },
+  {
+   "item": "syn-streamlit-02",
+   "module": "plumquarry",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-streamlit-03",
+   "module": "ondrafeed",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-lxml-01",
+   "module": "marrowlink",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "feedparser"
+  },
+  {
+   "item": "syn-pandas-02",
+   "module": "marlinframe",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "rich"
+  },
+  {
+   "item": "syn-scipy-03",
+   "module": "vortexlin",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "numpy"
+  },
+  {
+   "item": "syn-sqlalchemy-03",
+   "module": "rowforge",
+   "cause": "debajo_del_umbral",
+   "replacement_package": "SQLAlchemy"
+  },
+  {
+   "item": "syn-xlsxwriter-02",
+   "module": "tabulaforge",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "openpyxl"
+  },
+  {
+   "item": "syn-pymupdf-03",
+   "module": "pdfstreamkit",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "pypdf"
+  },
+  {
+   "item": "syn-pydantic-01",
+   "module": "argcheckone",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "configobj"
+  },
+  {
+   "item": "syn-pydantic-02",
+   "module": "schemavault",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "marshmallow"
+  },
+  {
+   "item": "syn-pydantic-03",
+   "module": "fieldgate",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "marshmallow"
+  },
+  {
+   "item": "syn-scikit-image-02",
+   "module": "vectrafeat",
+   "cause": "respuesta_cortada",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-celery-01",
+   "module": "jobtracer",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "rq"
+  },
+  {
+   "item": "syn-authlib-03",
+   "module": "credgateqx",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-aiohttp-02",
+   "module": "reqtrail.abc",
+   "cause": "abstencion_postvalidacion",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-python-stdlib-01",
+   "module": "probekitqx",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "eliot"
+  },
+  {
+   "item": "syn-matplotlib-04",
+   "module": "trendgraph",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "plotly"
+  },
+  {
+   "item": "syn-scikit-learn-04",
+   "module": "tricodex",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-scikit-image-04",
+   "module": "sharpenlab",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  }
+ ],
+ "wrong_changes": [
+  {
+   "item": "neg-oauth2client-storage-01",
+   "module": "oauth2client.file",
+   "replacement_package": "google-auth-oauthlib"
+  },
+  {
+   "item": "neg-zipcrypt-01",
+   "module": "zipcryptor",
+   "replacement_package": "pycryptodome"
+  }
+ ],
+ "rewrite": {
+  "scripts": 98,
+  "median": 6.0,
+  "max": 16,
+  "over_10": 15
+ },
+ "comparisons": {
+  "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev": {
+   "success_pos": {
+    "a": 0.7345,
+    "b": 0.3097,
+    "a_ci": [
+     0.6491,
+     0.8174
+    ],
+    "b_ci": [
+     0.2212,
+     0.4035
+    ],
+    "diff": 0.4248,
+    "ci": [
+     0.3226,
+     0.5273
+    ],
+    "verdict": "mejor"
+   },
+   "precision": {
+    "a": 0.8218,
+    "b": 0.4167,
+    "a_ci": [
+     0.7423,
+     0.8942
+    ],
+    "b_ci": [
+     0.3043,
+     0.5325
+    ],
+    "diff": 0.4051,
+    "ci": [
+     0.2855,
+     0.5229
+    ],
+    "verdict": "mejor"
+   },
+   "negative_rejection": {
+    "a": 0.7778,
+    "b": 0.8889,
+    "a_ci": [
+     0.4444,
+     1.0
+    ],
+    "b_ci": [
+     0.625,
+     1.0
+    ],
+    "diff": -0.1111,
+    "ci": [
+     -0.375,
+     0.0
+    ],
+    "verdict": "empate"
+   },
+   "positives_won": 50,
+   "positives_lost": 2
+  },
+  "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev__iter3": {
+   "success_pos": {
+    "a": 0.7345,
+    "b": 0.6991,
+    "a_ci": [
+     0.6491,
+     0.8174
+    ],
+    "b_ci": [
+     0.6095,
+     0.7857
+    ],
+    "diff": 0.0354,
+    "ci": [
+     -0.0172,
+     0.0926
+    ],
+    "verdict": "empate"
+   },
+   "precision": {
+    "a": 0.8218,
+    "b": 0.798,
+    "a_ci": [
+     0.7423,
+     0.8942
+    ],
+    "b_ci": [
+     0.7143,
+     0.8762
+    ],
+    "diff": 0.0238,
+    "ci": [
+     -0.0237,
+     0.0729
+    ],
+    "verdict": "empate"
+   },
+   "negative_rejection": {
+    "a": 0.7778,
+    "b": 0.7778,
+    "a_ci": [
+     0.4444,
+     1.0
+    ],
+    "b_ci": [
+     0.4444,
+     1.0
+    ],
+    "diff": 0.0,
+    "ci": [
+     0.0,
+     0.0
+    ],
+    "verdict": "empate"
+   },
+   "positives_won": 6,
+   "positives_lost": 2
+  }
+ }
+}

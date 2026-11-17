@@ -1,0 +1,499 @@
+{
+ "run": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__dev",
+ "threshold": -4.515625,
+ "positives": 113,
+ "good": 35,
+ "not_successful": 78,
+ "causes": {
+  "debajo_del_umbral": 5,
+  "respuesta_cortada": 0,
+  "abstencion_postvalidacion": 0,
+  "llm_se_abstiene_con_la_correcta": 2,
+  "llm_se_abstiene_sin_la_correcta": 1,
+  "no_aplica_los_cambios": 22,
+  "no_parsea": 6,
+  "migra_a_medias": 26,
+  "elige_mal_con_la_correcta": 10,
+  "elige_mal_sin_la_correcta": 6,
+  "otro": 0
+ },
+ "failures": [
+  {
+   "item": "dep-nose-asserts-01",
+   "module": "nose.tools",
+   "cause": "migra_a_medias",
+   "replacement_package": "pytest"
+  },
+  {
+   "item": "dep-nose-setup-01",
+   "module": "nose.tools",
+   "cause": "migra_a_medias",
+   "replacement_package": "pytest"
+  },
+  {
+   "item": "dep-nose-generators-01",
+   "module": "nose.tools",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "pendulum"
+  },
+  {
+   "item": "dep-oauth2client-installed-01",
+   "module": "oauth2client",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "google-auth-oauthlib"
+  },
+  {
+   "item": "dep-oauth2client-adc-01",
+   "module": "oauth2client.client",
+   "cause": "no_parsea",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-transformers-02",
+   "module": "lexiloom",
+   "cause": "no_parsea",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-transformers-03",
+   "module": "ferrowave",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "huggingface-hub"
+  },
+  {
+   "item": "syn-scikit-learn-02",
+   "module": "meanvarkit",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-scikit-learn-03",
+   "module": "sketchmatrix",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "scipy"
+  },
+  {
+   "item": "syn-torch-01",
+   "module": "glyphtrace",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-torch-02",
+   "module": "vectorlensqx",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "scikit-learn"
+  },
+  {
+   "item": "syn-torch-03",
+   "module": "shapeforgeqx",
+   "cause": "migra_a_medias",
+   "replacement_package": "torch"
+  },
+  {
+   "item": "syn-django-01",
+   "module": "quillmigrate",
+   "cause": "migra_a_medias",
+   "replacement_package": "Django"
+  },
+  {
+   "item": "syn-django-02",
+   "module": "replforge.cli",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "rich"
+  },
+  {
+   "item": "syn-django-03",
+   "module": "serialbridge.serializers",
+   "cause": "migra_a_medias",
+   "replacement_package": "Django"
+  },
+  {
+   "item": "syn-django-03",
+   "module": "serialbridge.writer",
+   "cause": "migra_a_medias",
+   "replacement_package": "Django"
+  },
+  {
+   "item": "syn-fastapi-02",
+   "module": "routecraft",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-fastapi-03",
+   "module": "vortexapi",
+   "cause": "migra_a_medias",
+   "replacement_package": "fastapi"
+  },
+  {
+   "item": "syn-flask-01",
+   "module": "hallcast",
+   "cause": "llm_se_abstiene_sin_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-flask-02",
+   "module": "ravenweb.db",
+   "cause": "migra_a_medias",
+   "replacement_package": "Flask"
+  },
+  {
+   "item": "syn-flask-02",
+   "module": "ravenweb.testing",
+   "cause": "migra_a_medias",
+   "replacement_package": "Flask"
+  },
+  {
+   "item": "syn-flask-03",
+   "module": "hopstash",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-matplotlib-01",
+   "module": "plotnimbus",
+   "cause": "migra_a_medias",
+   "replacement_package": "matplotlib"
+  },
+  {
+   "item": "syn-matplotlib-02",
+   "module": "panelcanvas",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-matplotlib-03",
+   "module": "gantterra",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "xlsxwriter"
+  },
+  {
+   "item": "syn-plotly-02",
+   "module": "ohlcforge",
+   "cause": "no_parsea",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-plotly-03",
+   "module": "vividchart",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "altair"
+  },
+  {
+   "item": "syn-streamlit-01",
+   "module": "pulsedeck",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "pyarrow"
+  },
+  {
+   "item": "syn-streamlit-02",
+   "module": "plumquarry",
+   "cause": "debajo_del_umbral",
+   "replacement_package": "pyarrow"
+  },
+  {
+   "item": "syn-streamlit-03",
+   "module": "ondrafeed",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-playwright-02",
+   "module": "brimloom",
+   "cause": "migra_a_medias",
+   "replacement_package": "playwright"
+  },
+  {
+   "item": "syn-playwright-02",
+   "module": "brimloom.asserts",
+   "cause": "migra_a_medias",
+   "replacement_package": "playwright"
+  },
+  {
+   "item": "syn-playwright-03",
+   "module": "quillframe",
+   "cause": "no_parsea",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-scrapy-02",
+   "module": "crawlfunnel",
+   "cause": "migra_a_medias",
+   "replacement_package": "Scrapy"
+  },
+  {
+   "item": "syn-scrapy-02",
+   "module": "crawlfunnel.records",
+   "cause": "migra_a_medias",
+   "replacement_package": "Scrapy"
+  },
+  {
+   "item": "syn-scrapy-03",
+   "module": "quotefern",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-lxml-01",
+   "module": "marrowlink",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pandas-01",
+   "module": "fennelgrid",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pandas-02",
+   "module": "marlinframe",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "rich"
+  },
+  {
+   "item": "syn-numpy-01",
+   "module": "bytewright",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-sqlalchemy-01",
+   "module": "rowbinder",
+   "cause": "migra_a_medias",
+   "replacement_package": "SQLAlchemy"
+  },
+  {
+   "item": "syn-sqlalchemy-02",
+   "module": "vaultorm",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-sqlalchemy-03",
+   "module": "rowforge",
+   "cause": "debajo_del_umbral",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-xlsxwriter-02",
+   "module": "tabulaforge",
+   "cause": "no_parsea",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pymupdf-01",
+   "module": "pagevortex",
+   "cause": "migra_a_medias",
+   "replacement_package": "pymupdf"
+  },
+  {
+   "item": "syn-pymupdf-01",
+   "module": "pagevortex.ocr",
+   "cause": "migra_a_medias",
+   "replacement_package": "pymupdf"
+  },
+  {
+   "item": "syn-pymupdf-03",
+   "module": "pdfstreamkit",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-textual-01",
+   "module": "vividtui",
+   "cause": "migra_a_medias",
+   "replacement_package": "textual"
+  },
+  {
+   "item": "syn-textual-03",
+   "module": "gridlayer",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-typer-01",
+   "module": "commandsmithy",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-typer-02",
+   "module": "optionweaver",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-typer-03",
+   "module": "subcmdhub",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-pydantic-01",
+   "module": "argcheckone",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "typer"
+  },
+  {
+   "item": "syn-pydantic-02",
+   "module": "schemavault",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "marshmallow"
+  },
+  {
+   "item": "syn-pydantic-03",
+   "module": "fieldgate",
+   "cause": "elige_mal_sin_la_correcta",
+   "replacement_package": "marshmallow"
+  },
+  {
+   "item": "syn-scikit-image-01",
+   "module": "tilegridflow",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-scikit-image-02",
+   "module": "vectrafeat",
+   "cause": "migra_a_medias",
+   "replacement_package": "scikit-image"
+  },
+  {
+   "item": "syn-scikit-image-03",
+   "module": "contrastkit",
+   "cause": "migra_a_medias",
+   "replacement_package": "scikit-image"
+  },
+  {
+   "item": "syn-wand-02",
+   "module": "blobmeasure",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-celery-01",
+   "module": "jobtracer",
+   "cause": "llm_se_abstiene_con_la_correcta",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-celery-02",
+   "module": "plugsteps",
+   "cause": "migra_a_medias",
+   "replacement_package": "celery"
+  },
+  {
+   "item": "syn-pytest-01",
+   "module": "testrigkit",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-authlib-01",
+   "module": "signetkey",
+   "cause": "no_parsea",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-authlib-02",
+   "module": "ledgerdb",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-authlib-03",
+   "module": "credgateqx",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-cryptography-01",
+   "module": "keyforgeqx.kdf",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-cryptography-02",
+   "module": "sealboxqx.tokens",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-cryptography-03",
+   "module": "bytestreamer.ciphers",
+   "cause": "migra_a_medias",
+   "replacement_package": "cryptography"
+  },
+  {
+   "item": "syn-aiohttp-02",
+   "module": "reqtrail.abc",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-aiohttp-03",
+   "module": "brookwire",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "websockets"
+  },
+  {
+   "item": "syn-boto3-01",
+   "module": "objstashqx",
+   "cause": "migra_a_medias",
+   "replacement_package": "boto3"
+  },
+  {
+   "item": "syn-python-stdlib-01",
+   "module": "probekitqx",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "eliot"
+  },
+  {
+   "item": "syn-plotly-04",
+   "module": "reliefscope",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-transformers-04",
+   "module": "lexiloom",
+   "cause": "migra_a_medias",
+   "replacement_package": "transformers"
+  },
+  {
+   "item": "syn-typer-04",
+   "module": "crispcli",
+   "cause": "no_aplica_los_cambios",
+   "replacement_package": null
+  },
+  {
+   "item": "syn-textual-04",
+   "module": "glyphdeckqx",
+   "cause": "migra_a_medias",
+   "replacement_package": "textual"
+  },
+  {
+   "item": "syn-matplotlib-04",
+   "module": "trendgraph",
+   "cause": "elige_mal_con_la_correcta",
+   "replacement_package": "plotly"
+  },
+  {
+   "item": "syn-scikit-image-04",
+   "module": "sharpenlab",
+   "cause": "migra_a_medias",
+   "replacement_package": "scikit-image"
+  }
+ ],
+ "wrong_changes": [
+  {
+   "item": "neg-oauth2client-storage-01",
+   "module": "oauth2client.file",
+   "replacement_package": "google-auth-oauthlib"
+  }
+ ],
+ "rewrite": null,
+ "comparisons": {}
+}
