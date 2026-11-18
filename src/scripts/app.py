@@ -113,14 +113,6 @@ def show_analysis(analysis) -> None:
 
 def show_fix(fix, original: str, name: str) -> None:
     result = fix.result
-    cols = st.columns(4)
-    cols[0].metric("LLM", seconds(fix.seconds) if fix.paid["input_tokens"] else "del caché")
-    cols[1].metric("Tokens pagados (entrada)", f"{fix.paid['input_tokens']:,}".replace(",", "."))
-    cols[2].metric("Tokens pagados (salida)", f"{fix.paid['output_tokens']:,}".replace(",", "."))
-    cols[3].metric("USD pagados", f"{fix.paid['usd']:.5f}".replace(".", ","),
-                   help="0 si las respuestas ya estaban en el caché del LLM; incluye el reintento si lo hubo")
-    st.markdown("**Decisiones**")
-    st.dataframe(decision_rows(result.report), hide_index=True, width="stretch")
     if result.llm_error:
         st.warning("La respuesta del LLM se cortó por el tope de tokens: el script queda igual.")
     for msg in result.edit_errors:
@@ -132,10 +124,20 @@ def show_fix(fix, original: str, name: str) -> None:
              "queda igual." if abstained else
              "La primera respuesta no pasó la post-validación y el reintento la corrigió.") +
             "".join(f"\n- {p.splitlines()[0]}" for p in problems))
+    cols = st.columns(4)
+    cols[0].metric("LLM", seconds(fix.seconds) if fix.paid["input_tokens"] else "del caché")
+    cols[1].metric("Tokens pagados (entrada)", f"{fix.paid['input_tokens']:,}".replace(",", "."))
+    cols[2].metric("Tokens pagados (salida)", f"{fix.paid['output_tokens']:,}".replace(",", "."))
+    cols[3].metric("USD pagados", f"{fix.paid['usd']:.5f}".replace(".", ","),
+                   help="0 si las respuestas ya estaban en el caché del LLM; incluye el reintento si lo hubo")
+    st.markdown("**Decisiones**")
+    st.dataframe(decision_rows(result.report), hide_index=True, width="stretch")
     diff = unified_diff(original, result.code, name)
     if diff:
         st.markdown("**Cambios sugeridos** (revisalos antes de aplicarlos)")
-        st.code(diff, language="diff")
+        tab_diff, tab_fixed = st.tabs(["Diff", "Script corregido"])
+        tab_diff.code(diff, language="diff")
+        tab_fixed.code(result.code, language="python", line_numbers=True)
     else:
         st.info("El script queda igual.")
     new = [e for e in result.report if e.get("new_imports")]
@@ -153,8 +155,14 @@ def show_fix(fix, original: str, name: str) -> None:
 def main() -> None:
     st.title("Corrector de dependencias alucinadas o deprecadas")
     st.caption("TP3 · 73.69 Large Language Models · Grupo 7. RAG sobre la documentación de 101 librerías de Python.")
-    eng = engine()
-    if eng.chunks() == 0:
+    try:
+        eng = engine()
+        empty = eng.chunks() == 0
+    except Exception as e:  # noqa: BLE001  (falta el grupo `local`, el índice está roto, ...)
+        st.error(f"No se pudo abrir el índice: {type(e).__name__}: {e}")
+        st.caption("La app se corre con `uv run --group local --group ui streamlit run src/scripts/app.py`.")
+        return
+    if empty:
         st.error(f"El índice `{eng.collection}` no existe o está vacío: armarlo con build_index.py.")
         return
     version, generator, threshold, budget = sidebar(eng)
@@ -169,14 +177,23 @@ def main() -> None:
     key = hashlib.sha256(f"{code}\x00{version}\x00{generator}\x00{threshold}\x00{budget}".encode()).hexdigest()
     st.subheader("1 · Analizar (sin LLM, sin costo de API)")
     if st.button("Analizar", type="primary"):
+        for stale in ("analysis", "fix", "error"):
+            st.session_state.pop(stale, None)
         try:
-            with st.spinner("Validando y recuperando…"):
+            with st.spinner("Validando y recuperando…" if version == "base" else
+                            "Validando, recuperando y reordenando (el reranker tarda)…"):
                 st.session_state.analysis = (key, eng.analyze(code, version, threshold, budget, generator))
         except SyntaxError as e:
-            st.error(f"El script no parsea: {e}")
-            return
-        st.session_state.pop("fix", None)
-    if st.session_state.get("analysis", (None,))[0] != key:
+            st.session_state.error = (key, f"El script no parsea como Python: {e}")
+        except Exception as e:  # noqa: BLE001  (sin red para bajar el reranker, índice roto, ...)
+            st.session_state.error = (key, f"No se pudo analizar el script: {type(e).__name__}: {e}")
+    if st.session_state.get("error", (None,))[0] == key:  # se guarda: sigue a la vista si la página se vuelve a correr
+        st.error(st.session_state.error[1])
+        return
+    if "analysis" not in st.session_state:
+        return
+    if st.session_state.analysis[0] != key:
+        st.info("Cambió el script o la configuración: volvé a analizar para ver el resultado.")
         return
     analysis = st.session_state.analysis[1]
     show_analysis(analysis)
@@ -194,9 +211,17 @@ def main() -> None:
                (" · **ya está en el caché: no se paga**" if analysis.llm_cached else "") +
                (" · un reintento, si hace falta, se paga aparte" if GENERATORS[generator].retry else ""))
     can_call = analysis.llm_cached or bool(os.environ.get("OPENAI_API_KEY"))
+    if not can_call:
+        st.warning("Falta `OPENAI_API_KEY` en `.env` y esta respuesta no está en el caché: el paso 2 no se puede "
+                   "correr. El paso 1 no usa la API.")
     if st.button("Corregir", type="primary", disabled=not can_call):
-        with st.spinner(f"Consultando a {model}…"):
-            st.session_state.fix = (key, eng.fix(analysis))
+        st.session_state.pop("fix", None)
+        try:
+            with st.spinner(f"Consultando a {model}…"):
+                st.session_state.fix = (key, eng.fix(analysis))
+        except Exception as e:  # noqa: BLE001  (la API no responde, la key no sirve, se acabó la cuota, ...)
+            st.error(f"El LLM no respondió ({type(e).__name__}: {e}). El script queda igual: los imports "
+                     "problemáticos ya están marcados en el paso 1.")
     if st.session_state.get("fix", (None,))[0] == key:
         show_fix(st.session_state.fix[1], code, name)
 

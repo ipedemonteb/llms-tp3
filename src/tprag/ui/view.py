@@ -16,7 +16,15 @@ STATUS = {  # estado del validador → (etiqueta, va al RAG)
     "not_found": ("no existe en PyPI", True),
     "unknown": ("sin datos de PyPI", False),
 }
+WARNINGS = {"no_recent_release": "sin releases recientes",  # advertencia del validador → etiqueta
+            "known_vulnerabilities": "vulnerabilidades conocidas"}
 EXAMPLE_SUBSETS = ("manual_deprecated", "negative")  # scripts realistas escritos a mano (el sintético es más fácil)
+
+
+def warning_text(warning: dict) -> str:
+    """Una advertencia del validador en palabras, con su detalle (la fecha de la última release, los CVE)."""
+    label = WARNINGS.get(warning["code"], warning["code"])
+    return f"{label} ({warning['detail']})" if warning.get("detail") else label
 
 
 def import_rows(results: list[ImportResult]) -> list[dict]:
@@ -25,7 +33,7 @@ def import_rows(results: list[ImportResult]) -> list[dict]:
              "estado": STATUS.get(r.status, (r.status, False))[0],
              "va al RAG": "sí" if r.to_rag else "no",
              "motivo": r.reason or "",
-             "advertencias": ", ".join(w["code"] for w in r.warnings)} for r in results]
+             "advertencias": "; ".join(warning_text(w) for w in r.warnings)} for r in results]
 
 
 def target_rows(contexts: list[TargetContext], threshold: float) -> list[dict]:

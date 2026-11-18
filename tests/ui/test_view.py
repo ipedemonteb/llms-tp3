@@ -12,10 +12,12 @@ from tprag.validate.validate import ImportResult
 def test_import_rows_say_what_goes_to_the_rag():
     rows = import_rows([ImportResult("csv", 1, [], [], "stdlib"),
                         ImportResult("PyPDF2", 2, [], [], "deprecated", package="PyPDF2", reason="siguió como pypdf",
-                                     warnings=[{"code": "no_recent_release", "detail": "x"}])])
+                                     warnings=[{"code": "no_recent_release", "detail": "última release 2022-12-31"},
+                                               {"code": "otra"}])])
     assert [(r["import"], r["estado"], r["va al RAG"]) for r in rows] == [("csv", "biblioteca estándar", "no"),
                                                                           ("PyPDF2", "deprecado", "sí")]
-    assert rows[1]["advertencias"] == "no_recent_release" and rows[0]["paquete"] == "-"
+    assert rows[1]["advertencias"] == "sin releases recientes (última release 2022-12-31); otra"
+    assert rows[0]["paquete"] == "-" and rows[0]["advertencias"] == ""
 
 
 def test_target_rows_compare_the_score_with_the_threshold():
