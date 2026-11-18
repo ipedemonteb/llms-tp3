@@ -1,0 +1,7 @@
+# Tema de la interfaz (src/scripts/app.py). Streamlit lo lee si la app se corre desde la raíz del repo.
+[theme]
+base = "dark"
+primaryColor = "#6366f1"
+
+[client]
+toolbarMode = "minimal"
