@@ -1,0 +1,43 @@
+{
+ "threshold": -4.515625,
+ "steps": {
+  "Sin iterar": {
+   "run": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4o-mini__test",
+   "positives": 122,
+   "automatic": 22,
+   "confirmed": 4,
+   "automatic_rate": 0.18032786885245902,
+   "confirmed_rate": 0.03278688524590164,
+   "opus_on_successful": {
+    "si": 4,
+    "parcial": 2,
+    "no": 16
+   },
+   "opus_on_unsuccessful": {
+    "si": 0,
+    "parcial": 1,
+    "no": 36
+   },
+   "mixed_scripts": []
+  },
+  "Variante 7": {
+   "run": "s3-1024__e4__r1__cap150__qA__k1-rr30__gpt-4.1-mini__test__iter7",
+   "positives": 122,
+   "automatic": 44,
+   "confirmed": 22,
+   "automatic_rate": 0.36065573770491804,
+   "confirmed_rate": 0.18032786885245902,
+   "opus_on_successful": {
+    "si": 22,
+    "parcial": 4,
+    "no": 18
+   },
+   "opus_on_unsuccessful": {
+    "si": 2,
+    "parcial": 2,
+    "no": 7
+   },
+   "mixed_scripts": []
+  }
+ }
+}
