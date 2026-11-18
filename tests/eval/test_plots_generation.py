@@ -19,15 +19,13 @@ def analysis(scale):
     sweep = [row("-inf", 10, 8, 1), row(0.1 * scale, 10, 8, 1), row(0.5 * scale, 6, 2), row(0.9 * scale, 1, 0),
              row("inf", 0, 0)]
     return {"sweep": sweep, "chosen": sweep[3] | {"threshold": 0.9 * scale},
-            "comparison": {"retrieval": {"row": sweep[1]}}}
+            "comparison": {"retrieval": {"row": sweep[1]}, "precision": {"row": sweep[2]}}}
 
 
 def agreement():
     g = {"n": 10, "exact": 0.5, "exact_ci": [0.2, 0.8], "kappa": 0.3, "kappa_ci": [0.0, 0.6]}
     groups = {"total": g | {"n": 20}, "base": g, "rerank": g | {"kappa": None, "kappa_ci": None}}
-    mean = {"total": 0.4, "base": 0.3, "rerank": 0.5}
-    return {"preservation": {"gpt-4o-mini vs humano": groups, "gpt-4o-mini vs opus": groups, "opus vs humano": groups},
-            "mean_score": {"humano": mean, "gpt-4o-mini": mean, "opus": mean}}
+    return {"preservation": {"gpt-4o-mini vs opus": groups}}
 
 
 def judges():
@@ -44,12 +42,12 @@ def extra():
                                                                     (True, False)}}
 
 
-def test_generation_figures_write_twelve_pngs(tmp_path):
+def test_generation_figures_write_eleven_pngs(tmp_path):
     analyses = {"base": analysis(1), "rerank": analysis(10)}
     level1 = {v: {"anterior": row(0, 12, 4), "corregido": row(0, 8, 8)} for v in analyses}
     paths = pg.generation_figures(analyses, level1, agreement(), judges(), {v: extra() for v in analyses},
                                   tmp_path)
-    assert len(paths) == 12 and all(p.exists() and p.stat().st_size > 0 for p in paths)
+    assert len(paths) == 11 and all(p.exists() and p.stat().st_size > 0 for p in paths)
 
 
 def target(score, positive=False, changed=False):

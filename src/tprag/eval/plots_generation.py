@@ -1,6 +1,6 @@
 """Gráficos del estudio del generador (metricas.md §3-§4). Los arma `src/scripts/plots_generation.py` a partir de los
 análisis de las corridas permisivas de dev (`generation_<corrida>_analysis.json`), del detalle de cada corrida (para
-el nivel 1 anterior), del acuerdo de la revisión manual (`review_agreement.json`) y de la comparación de los dos
+el nivel 1 anterior), del acuerdo entre evaluadores (`review_agreement.json`) y de la comparación de los dos
 jueces sobre todos los scripts juzgados (`judge_vs_opus.json`).
 
 Misma convención que `plots.py` (skill dataviz): sin título (va en la diapositiva), fondo claro, PNG. Color = versión
@@ -173,9 +173,7 @@ def fig_level1(counts: dict[str, dict[str, dict]], out_dir: Path) -> Path:
     return _save(fig, out_dir, "3_nivel1_antes_despues")
 
 
-PAIRS = (("gpt-4o-mini vs humano", "gpt-4o-mini vs. humano", "4a_acuerdo_gpt_vs_humano"),
-         ("gpt-4o-mini vs opus", "gpt-4o-mini vs. Opus 5.5", "4b_acuerdo_gpt_vs_opus"),
-         ("opus vs humano", "Opus 5.5 vs. humano", "4c_acuerdo_opus_vs_humano"))
+PAIRS = (("gpt-4o-mini vs opus", "gpt-4o-mini vs. Opus 5.5", "4b_acuerdo_gpt_vs_opus"),)
 GROUPS = (("total", INK2, "Total"), ("base", COLOR["base"], NAME["base"]), ("rerank", COLOR["rerank"], NAME["rerank"]))
 
 
@@ -209,8 +207,7 @@ def fig_agreement_pair(agreement: dict, pair: str, pair_label: str, name: str, o
 
 def fig_mean_score(judges: dict, out_dir: Path) -> Path:
     """Preservación media de la tarea según cada juez (sí = 1, parcial = 0,5, no = 0), total y por versión: gpt-4o-mini
-    y Opus 5.5 con el mismo prompt sobre todos los scripts juzgados (`review_generation.py judge-vs-opus`). La revisión
-    manual no va: está deprecada (sus valores siguen en `review_agreement.json`)."""
+    y Opus 5.5 con el mismo prompt sobre todos los scripts juzgados (`review_generation.py judge-vs-opus`)."""
     raters = (("gpt-4o-mini", "gpt-4o-mini (juez)"), ("opus", "Opus 5.5"))
     groups = (("total", INK2, "Total"), ("base", COLOR["base"], NAME["base"]), ("rerank", COLOR["rerank"],
                                                                                    NAME["rerank"]))

@@ -6,7 +6,7 @@ reemplazado; negativos → sin reemplazo y el código igual) y las fuentes citad
 
 En los positivos, además, el script corregido no puede usar nombres nuevos sin definir (`undefined_names`): un nombre
 de la librería vieja que quedó sin importar o una variable renombrada a medias dan NameError al ejecutarse. Agregado el
-2026-11-15 después de la revisión manual de dev (metricas.md §3.8): 7 de los 12 éxitos de la muestra no hacían la tarea.
+2026-11-15, al ver que varios éxitos automáticos de dev no ejecutaban la tarea.
 No detecta métodos o atributos que no existen en la librería nueva.
 """
 

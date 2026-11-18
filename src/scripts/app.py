@@ -1,160 +1,107 @@
-"""Interfaz web del corrector (extra de la consigna). El mismo pipeline que `fix_script.py`, mostrando cada etapa:
-validador → retrieval (+ reranker) → umbral → LLM → post-validación, con tiempos, tokens y USD. El generador se elige
-entre el iterado del Ej. 4 (gpt-4.1-mini, script completo, reintento y abstención) y el de antes de iterar.
+"""Interfaz web del corrector (extra de la consigna). El sistema final (`tprag.generate.system`, el mismo que corre
+`fix_script.py`) en un solo paso: la persona pega o sube un script y recibe el script corregido y el reporte. No tiene
+opciones: la configuración es la elegida en el Ej. 4, y lo interno del sistema no se muestra.
 
 Uso (desde la raíz del repo):
     uv run --group local --group ui streamlit run src/scripts/app.py
 
-Necesita el índice `s3-1024__e4__r1__cap150` en data/index/ (build_index.py) y, para el paso 2, `OPENAI_API_KEY` en
-.env (el paso 1 no usa la API). La primera vez descarga el embedder jina-code y, si se elige el reranker, Qwen3.
+Necesita el índice `s3-1024__e4__r1__cap150` en data/index/ (build_index.py) y `OPENAI_API_KEY` en .env: el LLM no usa
+el caché de los estudios, así que cada corrección es una llamada real. Los puntajes del reranker sí salen de su caché
+cuando están. La primera vez descarga el embedder jina-code y el reranker Qwen3.
 """
 
 import hashlib
 import os
 
+import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
 
 from tprag.split.store import ROOT
-from tprag.ui.engine import GENERATORS, ITERATED, NOT_ITERATED, VERSIONS, Engine
-from tprag.ui.view import (decision_rows, fixed_name, import_rows, load_examples, report_json, retry_note, target_rows,
-                           unified_diff)
+from tprag.ui.engine import Engine
+from tprag.ui.view import decision_rows, fixed_name, outcome, report_json, unified_diff
 
 load_dotenv(ROOT / ".env")
 st.set_page_config(page_title="Corrector de dependencias · TP3 Grupo 7", page_icon="🐍", layout="wide")
 
-VERSION_HELP = {"base": "Orden del índice denso (coseno). Rápido.",
-                "k1-rr30": "Qwen3-Reranker-0.6B reordena los 30 primeros (~16 s por import en una Mac M3; más en CPU)."}
-GENERATOR_LABEL = {ITERATED: "Iterado (Ej. 4)", NOT_ITERATED: "Sin iteración"}
-GENERATOR_HELP = {ITERATED: "gpt-4.1-mini devuelve el script completo; si la corrección no parsea o deja nombres sin "
-                            "definir, un reintento y, si sigue mal, abstención.",
-                  NOT_ITERATED: "gpt-4o-mini devuelve una lista de reemplazos; sin reintento."}
-
+CSS = """
+<style>
+.block-container {max-width: 1150px; padding-top: 2.5rem;}
+.app-header {margin-bottom: 1.5rem;}
+.app-header h1 {font-size: 2.1rem; line-height: 1.2; margin: 0.2rem 0 0.4rem; padding: 0;}
+.app-header p {font-size: 1.05rem; opacity: 0.75; margin: 0;}
+[data-testid="stFileUploaderDropzone"] {min-height: 240px;}  /* la altura del área de texto del otro panel */
+.stTextArea textarea {font-family: "Source Code Pro", ui-monospace, monospace; font-size: 0.85rem;}
+</style>
+"""
 
 @st.cache_resource(show_spinner="Abriendo el índice…")
 def engine() -> Engine:
     return Engine()
 
 
-@st.cache_data
-def examples() -> dict[str, dict]:
-    return load_examples(ROOT / "data" / "eval")
-
-
-def seconds(s: float) -> str:
-    return f"{s:.2f} s".replace(".", ",")
-
-
-def sidebar(eng: Engine) -> tuple[str, str, float, int]:
-    st.sidebar.header("Configuración")
-    version = st.sidebar.radio("Retrieval", list(VERSIONS), format_func=lambda v: "Base" if v == "base" else
-                               "Reranker k1-rr30", captions=[VERSION_HELP[v] for v in VERSIONS])
-    generator = st.sidebar.radio("Generador", list(GENERATORS), format_func=GENERATOR_LABEL.get,
-                                 captions=[GENERATOR_HELP[g] for g in GENERATORS])
-    calibrated = eng.threshold(version)
-    custom = st.sidebar.toggle("Cambiar el umbral", help="Por defecto, el calibrado en dev (pasa ≥ 95% de los "
-                                                          "positivos), el mismo que usa fix_script.py.")
-    threshold = st.sidebar.number_input("Umbral de confianza", value=calibrated, format="%.4f", disabled=not custom)
-    budget = st.sidebar.number_input("Tokens de contexto por import", 500, 8000, 2000, step=500)
-    st.sidebar.divider()
-    st.sidebar.caption(f"Índice `{eng.collection}` · {eng.chunks():,} casos de uso".replace(",", "."))
-    st.sidebar.caption(f"Umbral calibrado de esta versión: {calibrated:.4f}".replace(".", ","))
-    st.sidebar.caption("API de OpenAI: " + ("configurada" if os.environ.get("OPENAI_API_KEY") else
-                                           "**sin `OPENAI_API_KEY`** (el paso 2 solo anda con respuestas en caché)"))
-    return version, generator, float(threshold if custom else calibrated), int(budget)
-
-
 def script_input() -> tuple[str, str] | None:
-    """(nombre, código) elegido por la persona, o None."""
-    tab_example, tab_upload, tab_paste = st.tabs(["Ejemplo del dataset", "Subir un .py", "Pegar código"])
-    with tab_example:
-        ex = examples()
-        key = st.selectbox("Script", sorted(ex), format_func=lambda k: f"{k} · {ex[k]['task']}")
-        use_example = st.button("Usar este ejemplo")
-    with tab_upload:
-        uploaded = st.file_uploader("Archivo de Python", type=["py"])
-    with tab_paste:
-        pasted = st.text_area("Código", height=220, placeholder="import PyPDF2\n...")
-        use_pasted = st.button("Usar este código")
-    if use_example:
-        st.session_state.script = (f"{key}.py", ex[key]["code"])
-    elif uploaded is not None and st.session_state.get("uploaded") != uploaded.file_id:
-        st.session_state.uploaded = uploaded.file_id
-        st.session_state.script = (uploaded.name, uploaded.getvalue().decode("utf-8", errors="replace"))
-    elif use_pasted and pasted.strip():
-        st.session_state.script = ("script.py", pasted)
-    return st.session_state.get("script")
+    """(nombre, código) que eligió la persona, o None. Si hay un archivo subido, manda el archivo."""
+    left, right = st.columns(2, gap="medium")
+    with left.container(border=True):
+        st.markdown(":material/content_paste: **Pegá tu código**")
+        pasted = st.text_area("Código", height=240, placeholder="Pegá acá tu script de Python…",
+                              label_visibility="collapsed")
+    with right.container(border=True, height="stretch"):  # la misma altura que el panel del código
+        st.markdown(":material/upload_file: **O subí un archivo .py**")
+        uploaded = st.file_uploader("Archivo de Python", type=["py"], label_visibility="collapsed")
+    if uploaded is not None:
+        return uploaded.name, uploaded.getvalue().decode("utf-8", errors="replace")
+    return ("script.py", pasted) if pasted.strip() else None
 
 
-def show_analysis(analysis) -> None:
-    prep, sec = analysis.prepared, analysis.seconds
-    cols = st.columns(4)
-    cols[0].metric("Validador", seconds(sec["validador"]))
-    cols[1].metric("Retrieval", seconds(sec["retrieval"]))
-    cols[2].metric("Reranker", seconds(sec["reranker"]) if analysis.version != "base" else "-")
-    cols[3].metric("Total sin LLM", seconds(sec["total"]))
-    st.caption("La primera consulta que no está en el caché de embeddings incluye cargar el modelo (y el reranker, la "
-               "primera vez que se usa).")
-
-    st.markdown("**Imports del script** (validador: AST + API de PyPI)")
-    st.dataframe(import_rows(prep.results), hide_index=True, width="stretch")
-    if not prep.contexts:
-        st.success("Ningún import deprecado ni inexistente: no hay nada que corregir.")
-        return
-    st.markdown("**Imports problemáticos** (retrieval contra el umbral)")
-    st.dataframe(target_rows(prep.contexts, analysis.threshold), hide_index=True, width="stretch")
-    for c in prep.contexts:
-        if c.chunks:
-            with st.expander(f"Fragmentos que vería el LLM para `{c.module}` ({len(c.chunks)})"):
-                for ch in c.chunks:
-                    st.caption(f"{ch['header']} · {ch['n_tokens']} tokens")
-                    st.code(ch["text"], language="markdown")
-
-
-def show_fix(fix, original: str, name: str) -> None:
+def show_result(fix, original: str, name: str) -> None:
     result = fix.result
-    if result.llm_error:
-        st.warning("La respuesta del LLM se cortó por el tope de tokens: el script queda igual.")
-    for msg in result.edit_errors:
-        st.warning(f"No se aplicaron los cambios (todo o nada): {msg}")
-    if (note := retry_note(result)) is not None:
-        abstained, problems = note
-        (st.warning if abstained else st.info)(
-            ("La corrección no pasó la post-validación ni después del reintento: el sistema se abstiene y el script "
-             "queda igual." if abstained else
-             "La primera respuesta no pasó la post-validación y el reintento la corrigió.") +
-            "".join(f"\n- {p.splitlines()[0]}" for p in problems))
-    cols = st.columns(4)
-    cols[0].metric("LLM", seconds(fix.seconds) if fix.paid["input_tokens"] else "del caché")
-    cols[1].metric("Tokens pagados (entrada)", f"{fix.paid['input_tokens']:,}".replace(",", "."))
-    cols[2].metric("Tokens pagados (salida)", f"{fix.paid['output_tokens']:,}".replace(",", "."))
-    cols[3].metric("USD pagados", f"{fix.paid['usd']:.5f}".replace(".", ","),
-                   help="0 si las respuestas ya estaban en el caché del LLM; incluye el reintento si lo hubo")
-    st.markdown("**Decisiones**")
-    st.dataframe(decision_rows(result.report), hide_index=True, width="stretch")
+    st.divider()
+    st.subheader("Resultado")
+    for level, text in outcome(result):
+        if level == "success":
+            st.success(text, icon=":material/check_circle:")
+        else:
+            st.warning(text, icon=":material/warning:")
     diff = unified_diff(original, result.code, name)
     if diff:
-        st.markdown("**Cambios sugeridos** (revisalos antes de aplicarlos)")
-        tab_diff, tab_fixed = st.tabs(["Diff", "Script corregido"])
+        tab_diff, tab_fixed = st.tabs([":material/difference: Cambios", ":material/code: Script corregido"])
         tab_diff.code(diff, language="diff")
         tab_fixed.code(result.code, language="python", line_numbers=True)
-    else:
-        st.info("El script queda igual.")
-    new = [e for e in result.report if e.get("new_imports")]
-    if new:
-        st.caption("Post-validación: imports nuevos en el script corregido → " +
-                   ", ".join(f"`{i['module']}` ({i['status']})" for i in new[0]["new_imports"]))
-    left, right = st.columns(2)
-    left.download_button("Descargar el script corregido", result.code, fixed_name(name), "text/x-python")
-    right.download_button("Descargar el reporte JSON", report_json(result), f"{name.removesuffix('.py')}.report.json",
-                          "application/json")
-    with st.expander("Reporte completo"):
-        st.json(report_json(result))
+    if decisions := decision_rows(result.report):
+        st.markdown(":material/description: **Reporte**")
+        st.table(pd.DataFrame(decisions).style.hide(axis="index"))  # st.table parte el motivo en varias líneas
+    left, right = st.columns(2, gap="medium")
+    if diff:
+        left.download_button("Descargar el script corregido", result.code, fixed_name(name), "text/x-python",
+                             icon=":material/download:", type="primary", width="stretch")
+    (right if diff else left).download_button("Descargar el reporte JSON", report_json(result),
+                                              f"{name.removesuffix('.py')}.report.json", "application/json",
+                                              icon=":material/data_object:", width="stretch")
+
+
+def run(eng: Engine, code: str):
+    """(análisis, corrección) o un mensaje de error para la persona."""
+    try:
+        analysis = eng.analyze(code)
+    except SyntaxError as e:
+        return f"El script no parsea como Python: {e}"
+    except Exception as e:  # noqa: BLE001  (sin red para bajar el reranker, índice roto, ...)
+        return f"No se pudo analizar el script: {type(e).__name__}: {e}"
+    if analysis.prepared.prompt is not None and not os.environ.get("OPENAI_API_KEY"):
+        return "Falta `OPENAI_API_KEY` en `.env`: sin ella no se puede consultar al LLM para corregir el script."
+    try:
+        return analysis, eng.fix(analysis)
+    except Exception as e:  # noqa: BLE001  (la API no responde, la key no sirve, se acabó la cuota, ...)
+        return f"El LLM no respondió ({type(e).__name__}: {e}). Probá de nuevo en un rato."
 
 
 def main() -> None:
-    st.title("Corrector de dependencias alucinadas o deprecadas")
-    st.caption("TP3 · 73.69 Large Language Models · Grupo 7. RAG sobre la documentación de 101 librerías de Python.")
+    st.html(CSS)
+    st.html('<div class="app-header">'
+            "<h1>Corrector de Dependencias Alucinadas o Deprecadas de Python</h1>"
+            "<p>Sube tu código para verificar y corregir sus dependencias.</p></div>")
     try:
         eng = engine()
         empty = eng.chunks() == 0
@@ -165,65 +112,23 @@ def main() -> None:
     if empty:
         st.error(f"El índice `{eng.collection}` no existe o está vacío: armarlo con build_index.py.")
         return
-    version, generator, threshold, budget = sidebar(eng)
     picked = script_input()
-    if picked is None:
-        st.info("Elegí un ejemplo, subí un archivo o pegá código.")
+    key = None if picked is None else hashlib.sha256("\x00".join(picked).encode()).hexdigest()  # nombre + código
+    if st.button("Corregir", type="primary", disabled=picked is None, icon=":material/auto_fix_high:",
+                 width="stretch"):
+        name, code = picked
+        with st.spinner("Revisando las dependencias y corrigiendo el script…"):
+            st.session_state.run = (key, name, code, run(eng, code))
+    if "run" not in st.session_state:
         return
-    name, code = picked
-    with st.expander(f"Script: `{name}`", expanded=False):
-        st.code(code, language="python")
-
-    key = hashlib.sha256(f"{code}\x00{version}\x00{generator}\x00{threshold}\x00{budget}".encode()).hexdigest()
-    st.subheader("1 · Analizar (sin LLM, sin costo de API)")
-    if st.button("Analizar", type="primary"):
-        for stale in ("analysis", "fix", "error"):
-            st.session_state.pop(stale, None)
-        try:
-            with st.spinner("Validando y recuperando…" if version == "base" else
-                            "Validando, recuperando y reordenando (el reranker tarda)…"):
-                st.session_state.analysis = (key, eng.analyze(code, version, threshold, budget, generator))
-        except SyntaxError as e:
-            st.session_state.error = (key, f"El script no parsea como Python: {e}")
-        except Exception as e:  # noqa: BLE001  (sin red para bajar el reranker, índice roto, ...)
-            st.session_state.error = (key, f"No se pudo analizar el script: {type(e).__name__}: {e}")
-    if st.session_state.get("error", (None,))[0] == key:  # se guarda: sigue a la vista si la página se vuelve a correr
-        st.error(st.session_state.error[1])
+    if st.session_state.run[0] != key:  # cambió la entrada: el resultado anterior se descarta (no vuelve solo)
+        del st.session_state.run
         return
-    if "analysis" not in st.session_state:
+    _, name, code, outcome_ = st.session_state.run  # se guarda: sigue a la vista si la página se vuelve a correr
+    if isinstance(outcome_, str):
+        st.error(outcome_, icon=":material/error:")
         return
-    if st.session_state.analysis[0] != key:
-        st.info("Cambió el script o la configuración: volvé a analizar para ver el resultado.")
-        return
-    analysis = st.session_state.analysis[1]
-    show_analysis(analysis)
-
-    model = GENERATORS[generator].llm
-    st.subheader(f"2 · Corregir con {model}")
-    if analysis.llm_estimate is None:
-        if analysis.prepared.contexts:
-            st.info("Ningún import problemático pasa el umbral: no se llama al LLM (costo 0) y el reporte los marca "
-                    "como «sin reemplazo confiable».")
-        return
-    est = analysis.llm_estimate
-    st.caption(f"Estimado: {est['input_tokens']:,} tokens de entrada".replace(",", ".") +
-               f" + ~{est['output_tokens_estimate']} de salida ≈ {est['usd']:.5f} USD".replace(".", ",") +
-               (" · **ya está en el caché: no se paga**" if analysis.llm_cached else "") +
-               (" · un reintento, si hace falta, se paga aparte" if GENERATORS[generator].retry else ""))
-    can_call = analysis.llm_cached or bool(os.environ.get("OPENAI_API_KEY"))
-    if not can_call:
-        st.warning("Falta `OPENAI_API_KEY` en `.env` y esta respuesta no está en el caché: el paso 2 no se puede "
-                   "correr. El paso 1 no usa la API.")
-    if st.button("Corregir", type="primary", disabled=not can_call):
-        st.session_state.pop("fix", None)
-        try:
-            with st.spinner(f"Consultando a {model}…"):
-                st.session_state.fix = (key, eng.fix(analysis))
-        except Exception as e:  # noqa: BLE001  (la API no responde, la key no sirve, se acabó la cuota, ...)
-            st.error(f"El LLM no respondió ({type(e).__name__}: {e}). El script queda igual: los imports "
-                     "problemáticos ya están marcados en el paso 1.")
-    if st.session_state.get("fix", (None,))[0] == key:
-        show_fix(st.session_state.fix[1], code, name)
+    show_result(outcome_[1], code, name)
 
 
 main()

@@ -1,6 +1,7 @@
 """Gráficos del estudio del generador (docs/agents/metricas.md §3-§4). No usa API ni modelos: lee los análisis de las
-corridas permisivas de dev (analyze_generation.py), su detalle (para reconstruir el nivel 1 anterior), el acuerdo de
-la revisión manual (review_generation.py agreement) y la comparación de jueces (review_generation.py judge-vs-opus).
+corridas permisivas de dev (analyze_generation.py), su detalle (para reconstruir el nivel 1 anterior), el acuerdo
+gpt-4o-mini vs. Opus sobre la muestra (review_agreement.json, ya generado) y la comparación de jueces
+(review_generation.py judge-vs-opus).
 
 Uso:
     uv run --group analysis python src/scripts/plots_generation.py

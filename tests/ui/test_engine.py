@@ -8,7 +8,7 @@ from tprag.generate.context import Reranker
 from tprag.generate.pipeline import prepare
 from tprag.generate.prompt import PROMPTS
 from tprag.generate.llm import CHAT_MODELS
-from tprag.generate.schema import Edit, GeneratorOutput, ImportDecision, ImportDecisionV2, ScriptOutput, ScriptOutputV2
+from tprag.generate.schema import ImportDecisionV2, ScriptOutputV2
 from tprag.ui import engine as eng
 from tprag.validate.packages import normalize
 from tprag.validate.pypi import PackageInfo
@@ -46,27 +46,6 @@ class FakeScorer:
         return [1.0 - i for i in range(len(pairs))]
 
 
-class FakeLLM:
-    """Como CachedLLM: estimate / missing / contadores de tokens, y la respuesta de un reemplazo."""
-
-    def __init__(self):
-        self.input_tokens = self.output_tokens = 0
-
-    def estimate(self, prompts):
-        return {"calls": len(prompts), "input_tokens": 100, "output_tokens_estimate": 700, "usd": 0.001}
-
-    def missing(self, prompts):
-        return list(prompts)
-
-    def __call__(self, system, user):
-        self.input_tokens += 1000
-        self.output_tokens += 200
-        return GeneratorOutput(
-            imports=[ImportDecision(module="PyPDF2", script_usage="lee un PDF", matching_fragment="pypdf > x",
-                                    decision="reemplazado", replacement_package="pypdf", reason="r", sources=["h"])],
-            edits=[Edit(antes="from PyPDF2 import PdfReader", despues="from pypdf import PdfReader")])
-
-
 def test_timed_prepare_returns_what_prepare_returns_plus_stage_times():
     docs = [doc(0), doc(1)]
     reranker = Reranker("k1-rr2", FakeScorer(), 2)
@@ -98,39 +77,19 @@ def fake_engine(monkeypatch, objects):
     return e, threads
 
 
-def test_engine_runs_everything_in_one_worker_thread_and_reports_paid_tokens(monkeypatch):
-    llm = FakeLLM()
-    e, threads = fake_engine(monkeypatch, {"store": FakeStore([doc(0)], 0.9), "pypi": fetch, eng.NOT_ITERATED: llm})
-    analysis = e.analyze(CODE, "base", 0.4, 2000)
-    assert analysis.llm_estimate["usd"] == 0.001 and analysis.llm_cached is False
-    assert analysis.seconds["reranker"] == 0.0
-    fix = e.fix(analysis)
-    assert "from pypdf import PdfReader" in fix.result.code
-    assert fix.paid == {"input_tokens": 1000, "output_tokens": 200, "usd": CHAT_MODELS["gpt-4o-mini"].usd(1000, 200)}
-    assert len(set(threads)) == 1 and threads[0] != threading.get_ident()
-
-
-def test_below_the_threshold_there_is_no_llm_estimate(monkeypatch):
-    e, _ = fake_engine(monkeypatch, {"store": FakeStore([doc(0)], 0.1), "pypi": fetch, eng.NOT_ITERATED: FakeLLM()})
-    analysis = e.analyze(CODE, "base", 0.4, 2000)
-    assert analysis.prepared.prompt is None and analysis.llm_estimate is None
-
-
-def test_reranker_version_uses_the_variant(monkeypatch):
-    scorer = FakeScorer()
-    objects = {"store": FakeStore([doc(0), doc(1)], 0.9), "pypi": fetch, eng.NOT_ITERATED: FakeLLM(),
-               "k1-rr30": Reranker("k1-rr30", scorer, 30)}
-    e, _ = fake_engine(monkeypatch, objects)
-    analysis = e.analyze(CODE, "k1-rr30", -100.0, 2000)
-    assert scorer.calls == 1 and analysis.prepared.contexts[0].reranker == "k1-rr30"
-
-
-class FakeScriptLLM(FakeLLM):
-    """El LLM del generador iterado: devuelve el script completo; una respuesta por llamada, en orden."""
+class FakeScriptLLM:
+    """Como CachedLLM con el esquema del sistema final: estimate / missing / contadores de tokens, y el script
+    completo; una respuesta por llamada, en orden."""
 
     def __init__(self, scripts):
-        super().__init__()
+        self.input_tokens = self.output_tokens = 0
         self.scripts, self.prompts = list(scripts), []
+
+    def estimate(self, prompts):
+        return {"calls": len(prompts), "input_tokens": 100, "output_tokens_estimate": 700, "usd": 0.001}
+
+    def missing(self, prompts):
+        return list(prompts)
 
     def __call__(self, system, user):
         self.input_tokens += 1000
@@ -146,41 +105,68 @@ GOOD = CODE.replace("from PyPDF2 import", "from pypdf import")
 BROKEN = GOOD.replace("PdfReader(path)", "PdfLoader(path)")  # deja un nombre sin definir
 
 
-def iterated_engine(monkeypatch, scripts):
-    llm = FakeScriptLLM(scripts)
-    e, _ = fake_engine(monkeypatch, {"store": FakeStore([doc(0)], 0.9), "pypi": fetch, eng.ITERATED: llm})
-    return e, llm
+def system_engine(monkeypatch, scripts, best=0.9):
+    llm, scorer = FakeScriptLLM(scripts), FakeScorer()
+    objects = {"store": FakeStore([doc(0), doc(1)], best), "pypi": fetch, "llm": llm,
+               "reranker": Reranker(eng.system.RERANKER, scorer, 30)}
+    e, threads = fake_engine(monkeypatch, objects)
+    return e, llm, scorer, threads
 
 
-def test_generators_match_the_evaluated_systems():
-    iterated, plain = eng.GENERATORS[eng.ITERATED], eng.GENERATORS[eng.NOT_ITERATED]
-    assert (iterated.llm, iterated.first, iterated.retry, iterated.prompt) == ("gpt-4.1-mini", "script", "script", "v3")
-    assert iterated.schema() is ScriptOutputV2
-    assert (plain.llm, plain.first, plain.retry, plain.prompt) == ("gpt-4o-mini", "edits", None, "v1")
-    assert plain.schema() is None
-    assert eng.Generator("gpt-4o-mini", first="script", retry="script").schema() is ScriptOutput
+def test_system_is_the_chosen_variant():
+    s = eng.system
+    assert (s.COLLECTION, s.RERANKER, s.BUDGET) == ("s3-1024__e4__r1__cap150", "k1-rr30", 2000)
+    assert (s.LLM, s.FORMAT, s.PROMPT) == ("gpt-4.1-mini", "script", "v3")
 
 
-def test_iterated_generator_asks_for_the_full_script_with_the_v3_prompt(monkeypatch):
-    e, llm = iterated_engine(monkeypatch, [GOOD])
-    analysis = e.analyze(CODE, "base", 0.4, 2000, eng.ITERATED)
+def test_engine_runs_everything_in_one_worker_thread_and_reports_paid_tokens(monkeypatch):
+    monkeypatch.setattr(eng.system, "threshold", lambda: -100.0)
+    e, llm, scorer, threads = system_engine(monkeypatch, [GOOD])
+    analysis = e.analyze(CODE)
+    assert scorer.calls == 1 and analysis.prepared.contexts[0].reranker == "k1-rr30"
     fix = e.fix(analysis)
     assert fix.result.code == GOOD and fix.result.output_format == "script" and fix.result.retry is None
     assert llm.prompts[0][0] == PROMPTS["v3"]["script"] and len(llm.prompts) == 1
-    assert fix.paid["usd"] == CHAT_MODELS["gpt-4.1-mini"].usd(1000, 200)
+    assert fix.paid == {"input_tokens": 1000, "output_tokens": 200, "usd": CHAT_MODELS["gpt-4.1-mini"].usd(1000, 200)}
+    assert len(set(threads)) == 1 and threads[0] != threading.get_ident()
 
 
-def test_iterated_generator_retries_once_and_counts_both_calls(monkeypatch):
-    e, llm = iterated_engine(monkeypatch, [BROKEN, GOOD])
-    fix = e.fix(e.analyze(CODE, "base", 0.4, 2000, eng.ITERATED))
+def test_below_the_threshold_there_is_no_prompt_for_the_llm(monkeypatch):
+    monkeypatch.setattr(eng.system, "threshold", lambda: 100.0)
+    e, *_ = system_engine(monkeypatch, [])
+    analysis = e.analyze(CODE)
+    assert analysis.prepared.prompt is None
+
+
+def test_retries_once_and_counts_both_calls(monkeypatch):
+    monkeypatch.setattr(eng.system, "threshold", lambda: -100.0)
+    e, llm, *_ = system_engine(monkeypatch, [BROKEN, GOOD])
+    fix = e.fix(e.analyze(CODE))
     assert fix.result.code == GOOD and len(llm.prompts) == 2
     assert fix.result.retry["remaining"] == [] and "PdfLoader" in fix.result.retry["problems"][0]
     assert fix.paid["input_tokens"] == 2000 and fix.paid["output_tokens"] == 400
 
 
-def test_iterated_generator_abstains_when_the_retry_is_still_wrong(monkeypatch):
-    e, llm = iterated_engine(monkeypatch, [BROKEN, BROKEN])
-    fix = e.fix(e.analyze(CODE, "base", 0.4, 2000, eng.ITERATED))
+def test_abstains_when_the_retry_is_still_wrong(monkeypatch):
+    monkeypatch.setattr(eng.system, "threshold", lambda: -100.0)
+    e, llm, *_ = system_engine(monkeypatch, [BROKEN, BROKEN])
+    fix = e.fix(e.analyze(CODE))
     assert fix.result.code == CODE and len(llm.prompts) == 2
     assert fix.result.retry["remaining"] and all(d["decision"] == "sin_reemplazo_confiable"
                                                  for d in fix.result.report if "decision" in d)
+
+
+def test_without_imports_for_the_llm_the_fix_does_not_create_it(monkeypatch):
+    monkeypatch.setattr(eng.system, "threshold", lambda: 100.0)
+    e, *_ = system_engine(monkeypatch, [])
+    fix = e.fix(e.analyze(CODE))
+    assert fix.result.llm_called is False and fix.result.code == CODE and fix.paid["usd"] == 0.0
+
+
+def test_the_ui_does_not_use_the_study_caches_for_the_llm_or_the_query_embeddings(monkeypatch):
+    calls = []
+    monkeypatch.setattr(eng.system, "open_index", lambda cache=True: calls.append(("index", cache)) or "store")
+    monkeypatch.setattr(eng.system, "chat_llm", lambda cache=True: calls.append(("llm", cache)) or "llm")
+    e = eng.Engine()
+    assert e._run(e._get, "store") == "store" and e._run(e._get, "llm") == "llm"
+    assert calls == [("index", False), ("llm", False)]

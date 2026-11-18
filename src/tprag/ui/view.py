@@ -1,72 +1,41 @@
-"""Lo que muestra la interfaz, sin Streamlit: tablas, diff, reporte y ejemplos. Funciones puras (se testean solas)."""
+"""Lo que muestra la interfaz, sin Streamlit: el resultado, la tabla de decisiones, el diff y el reporte. Funciones puras (se testean solas)."""
 
 import difflib
 import json
-from pathlib import Path
 
-from tprag.generate.context import TargetContext
 from tprag.generate.pipeline import FixResult
 from tprag.generate.schema import REPLACED
-from tprag.validate.validate import ImportResult
-
-STATUS = {  # estado del validador → (etiqueta, va al RAG)
-    "stdlib": ("biblioteca estándar", False),
-    "ok": ("existe en PyPI", False),
-    "deprecated": ("deprecado", True),
-    "not_found": ("no existe en PyPI", True),
-    "unknown": ("sin datos de PyPI", False),
-}
-WARNINGS = {"no_recent_release": "sin releases recientes",  # advertencia del validador → etiqueta
-            "known_vulnerabilities": "vulnerabilidades conocidas"}
-EXAMPLE_SUBSETS = ("manual_deprecated", "negative")  # scripts realistas escritos a mano (el sintético es más fácil)
-
-
-def warning_text(warning: dict) -> str:
-    """Una advertencia del validador en palabras, con su detalle (la fecha de la última release, los CVE)."""
-    label = WARNINGS.get(warning["code"], warning["code"])
-    return f"{label} ({warning['detail']})" if warning.get("detail") else label
-
-
-def import_rows(results: list[ImportResult]) -> list[dict]:
-    """Una fila por import: qué dijo el validador (el preprocesamiento: decide qué va al RAG)."""
-    return [{"línea": r.line, "import": r.module, "paquete": r.package or "-",
-             "estado": STATUS.get(r.status, (r.status, False))[0],
-             "va al RAG": "sí" if r.to_rag else "no",
-             "motivo": r.reason or "",
-             "advertencias": "; ".join(warning_text(w) for w in r.warnings)} for r in results]
-
-
-def target_rows(contexts: list[TargetContext], threshold: float) -> list[dict]:
-    """Una fila por import problemático: confianza del retrieval contra el umbral y qué llega al LLM."""
-    rows = []
-    for c in contexts:
-        packages = list(dict.fromkeys(ch["package"] for ch in c.chunks))
-        rows.append({"import": c.module, "estado": STATUS.get(c.status, (c.status, False))[0],
-                     "confianza": None if c.score is None else round(c.score, 4), "umbral": round(threshold, 4),
-                     "pasa": "sí" if c.passed else "no",
-                     "fragmentos al LLM": len(c.chunks),
-                     "tokens de contexto": sum(ch.get("n_tokens", 0) for ch in c.chunks),
-                     "librerías en el contexto": ", ".join(packages) or "-"})
-    return rows
 
 
 def decision_rows(report: list[dict]) -> list[dict]:
     """Una fila por import que pasó por el generador (los que tienen decisión). El reemplazo es el paquete que quedó
     importado (post-validación); si es de la biblioteca estándar no hay paquete, y se muestra el que nombró el LLM."""
-    return [{"import": e["module"], "decisión": "reemplazado" if e["decision"] == REPLACED else "sin reemplazo confiable",
-             "reemplazo": e.get("replacement_package") or e.get("replacement_package_llm") or "-",
-             "motivo": e.get("reason", ""),
-             "fuentes": len(e.get("sources", []))} for e in report if "decision" in e]
+    return [{"Import": e["module"], "Decisión": "reemplazado" if e["decision"] == REPLACED else "sin reemplazo confiable",
+             "Reemplazo": e.get("replacement_package") or e.get("replacement_package_llm") or "-",
+             "Motivo": e.get("reason", ""),
+             "Fuentes": len(e.get("sources", []))} for e in report if "decision" in e]
 
 
-def retry_note(result: FixResult) -> tuple[bool, list[str]] | None:
-    """Qué pasó en la post-validación del generador iterado: None si la primera respuesta no tuvo problemas (o no hubo
-    iteración); si no, (se abstuvo, problemas). Los problemas son los que quedaron después del reintento si el sistema
-    se abstuvo, y los de la primera respuesta si el reintento los arregló."""
-    if not result.retry:
-        return None
-    left = result.retry["remaining"]
-    return bool(left), list(left or result.retry["problems"])
+def outcome(result: FixResult) -> list[tuple[str, str]]:
+    """El resultado en una o dos líneas para la persona: [(nivel, texto)], con nivel "success" o "warning"."""
+    decided = [e for e in result.report if "decision" in e]
+    if not decided:
+        return [("success", "No hay dependencias deprecadas ni inexistentes: el script no necesita cambios.")]
+    if result.llm_error or result.edit_errors:
+        return [("warning", "No se pudo aplicar la corrección: el script queda igual.")]
+    out = []
+    replaced = [f"`{e['module']}` por `{e.get('replacement_package') or e.get('replacement_package_llm')}`"
+                for e in decided if e["decision"] == REPLACED]
+    if replaced:
+        out.append(("success", "Se reemplazó " + _join(replaced) + "."))
+    if kept := [f"`{e['module']}`" for e in decided if e["decision"] != REPLACED]:
+        out.append(("warning", "No se encontró un reemplazo confiable para " + _join(kept) + ": queda igual en el "
+                    "script."))
+    return out
+
+
+def _join(parts: list[str]) -> str:
+    return parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " y " + parts[-1]
 
 
 def unified_diff(original: str, fixed: str, name: str = "script.py") -> str:
@@ -85,15 +54,3 @@ def report_json(result: FixResult) -> str:
 def fixed_name(name: str) -> str:
     stem = name[:-3] if name.endswith(".py") else name
     return f"{stem}.fixed.py"
-
-
-def load_examples(eval_dir: Path, subsets: tuple[str, ...] = EXAMPLE_SUBSETS) -> dict[str, dict]:
-    """Scripts del dataset de evaluación para probar la app: id → {"task", "code", "subset", "split"}."""
-    out = {}
-    for path in sorted(eval_dir.glob("*.jsonl")):
-        for line in path.read_text(encoding="utf-8").splitlines():
-            if line.strip():
-                item = json.loads(line)
-                if item.get("subset") in subsets:
-                    out[item["id"]] = {k: item.get(k) for k in ("task", "code", "subset", "split")}
-    return out

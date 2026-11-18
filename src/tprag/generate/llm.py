@@ -153,3 +153,28 @@ class CachedLLM:
     @property
     def usd(self) -> float:
         return self.model.usd(self.input_tokens, self.output_tokens)
+
+
+class LiveLLM(CachedLLM):
+    """Como `CachedLLM`, pero sin caché: cada llamada va a la API y la respuesta no se guarda. Para la interfaz, que
+    corre el sistema real y no tiene que leer ni escribir el caché de los estudios."""
+
+    def __init__(self, model: ChatModel):
+        self.model = model
+        self._client = None
+        self.hits = self.misses = self.input_tokens = self.output_tokens = 0
+
+    def missing(self, prompts: list[tuple[str, str]]) -> list[tuple[str, str]]:
+        return list(dict.fromkeys(prompts))
+
+    def peek(self, system: str, user: str) -> BaseModel | None:
+        return None
+
+    def __call__(self, system: str, user: str) -> BaseModel:
+        response = self._call(system, user)
+        self.misses += 1
+        self.input_tokens += response["usage"]["input_tokens"]
+        self.output_tokens += response["usage"]["output_tokens"]
+        if response.get("error") == "length":
+            raise TruncatedOutput(response["raw"])
+        return self.output_schema.model_validate(response["output"])
