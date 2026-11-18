@@ -309,6 +309,53 @@ def fig_corrections_vs_threshold(analyses: dict[str, dict], out_dir: Path) -> Pa
     return _save(fig, out_dir, "8b_correcciones_vs_umbral")
 
 
+def _comma(x: float) -> str:
+    return f"{x:.2f}".replace("-", "−").replace(".", ",")
+
+
+def _counts(r: dict) -> str:
+    wrong = f" / {r[WRONG_CHANGE]} indebido{'s' if r[WRONG_CHANGE] > 1 else ''}" if r[WRONG_CHANGE] else ""
+    return f"{r[GOOD]} buenas / {r[BAD]} malas{wrong}"
+
+
+def fig_threshold_rerank(a: dict, out_dir: Path) -> Path:
+    """9: solo el reranker (el sistema final). Izquierda, correcciones buenas y malas + indebidos vs. umbral; derecha,
+    precisión vs. umbral (con al menos MIN_N correcciones). Marca el umbral elegido (regla de retrieval) y el que pide
+    precisión ≥ 0,8 (no elegido: casi no corrige nada)."""
+    fig, axes = _canvas(10, 3.6, cols=2, left=0.8, right=0.3, top=0.4, bottom=1.05, wspace=0.25)
+    rows, ch = finite_rows(a["sweep"]), _chosen(a)
+    strict = a["comparison"]["precision"]["row"]
+    ts = [t for t, _ in rows]
+    span = (ts[0], max(ts[-1], ch["threshold"]))
+    pad = (span[1] - span[0]) * 0.03
+    left, right = axes[0]
+    left.plot(ts, [r[GOOD] for _, r in rows], color=ORANGE, linewidth=LINE, drawstyle="steps-post")
+    left.plot(ts, [_harm(r) for _, r in rows], color=ORANGE, linewidth=LINE, linestyle="--", drawstyle="steps-post")
+    left.set_ylim(0, None)
+    left.set_ylabel("Correcciones (imports)", fontsize=9.5)
+    pts = [(t, r["precision"]) for t, r in rows if r[GOOD] + _harm(r) >= MIN_N]
+    right.plot([t for t, _ in pts], [p for _, p in pts], color=ORANGE, linewidth=LINE, drawstyle="steps-post")
+    right.set_ylim(0, 1.05)
+    right.set_ylabel("Precisión", fontsize=9.5)
+    for ax in (left, right):
+        ax.set_xlim(span[0] - pad, span[1] + pad)
+        ax.axvline(ch["threshold"], color=MUTED, linewidth=1, linestyle="--")
+        ax.axvline(strict["threshold"], color=MUTED, linewidth=1, linestyle="-.")
+        ax.set_xlabel("Umbral (score máximo del reranker)", fontsize=8.5)
+        _frame(ax, grid="y")
+    top = left.get_ylim()[1]
+    left.text(ch["threshold"], top * 0.04, f" elegido ({_comma(ch['threshold'])}):\n {_counts(ch)}", fontsize=8,
+              color=INK2)
+    left.text(strict["threshold"], top * 0.9, f"precisión ≥ 0,8 ({_comma(strict['threshold'])}): {_counts(strict)} ",
+              fontsize=8, color=INK2, ha="right")
+    right.text(ch["threshold"], 0.04, f" elegido: precisión {_comma(ch['precision'])}", fontsize=8, color=INK2)
+    right.text(strict["threshold"], 0.96, "precisión ≥ 0,8 ", fontsize=8, color=INK2, ha="right")
+    _legend(fig, [Line2D([], [], color=ORANGE, linewidth=LINE), Line2D([], [], color=ORANGE, linewidth=LINE,
+                                                                       linestyle="--")],
+            ["buenas", "malas + indebidos"], ncol=2, center=True)
+    return _save(fig, out_dir, "9_umbral_reranker")
+
+
 NOISE_GROUPS = ((CLEAN, "Contexto limpio"), (NOISY_FIRST, "Ruido, aceptable primero"),
                 (NOISY_LATER, "Ruido, aceptable después"), (NO_ANSWER, "Sin paquete aceptable"))
 
@@ -379,6 +426,212 @@ def fig_noise_relevance(extra: dict[str, dict], out_dir: Path) -> Path:
     return _save(fig, out_dir, "7b_ruido_relevancia")
 
 
+def success_vs_opus(records: list[dict], answers: list[dict], run: str, threshold: float) -> dict:
+    """Veredictos de Opus con rúbrica por **import** (la unidad del Éxito automático): positivos que pasan el umbral, en
+    scripts que Opus juzgó (los cambiados), separados por su éxito. Opus juzga el script entero; el veredicto vale para
+    todos sus imports (en la corrida sin iterar ningún script juzgado mezcla imports exitosos y no exitosos)."""
+    verdict = {a["id"]: a["output"]["preserves"] for a in answers if a["run"] == run}
+    out = {ok: {"si": 0, "parcial": 0, "no": 0} for ok in (True, False)}
+    for r in records:
+        if r["id"] not in verdict:
+            continue
+        for t in r["targets"]:
+            if t["expected"] == REPLACED and t["retrieval_score"] is not None and t["retrieval_score"] >= threshold:
+                out[t["success"]][verdict[r["id"]]] += 1
+    return out
+
+
+def fig_validation_opus(success: dict, faith: dict, out_dir: Path) -> Path:
+    """10a: cuánto coincide Opus 5.5 con rúbrica con lo que marcó cada métrica automática (sin iterar, reranker, dev),
+    separado por lo que dijo la métrica. Éxito automático por import (`success_vs_opus`): exitoso coincide con `si`,
+    no exitoso con `no` (`parcial` no coincide). Faithfulness por nombre de la API (`faith_vs_opus.json`): fiel coincide
+    con respaldado, no fiel con no respaldado."""
+    conf = faith["confusion"]
+    rows = (  # (etiqueta, coincide, total); None = separación entre métricas
+        ("Éxito Automático: exitoso", success[True]["si"], sum(success[True].values())),
+        ("Éxito Automático: no exitoso", success[False]["no"], sum(success[False].values())),
+        None,
+        ("Faithfulness: fiel", conf["fiel_respaldado"], conf["fiel_respaldado"] + conf["falso_fiel"]),
+        ("Faithfulness: no fiel", conf["no_fiel_no_respaldado"], conf["falso_no_fiel"] + conf["no_fiel_no_respaldado"]),
+    )
+    fig, ((ax,),) = _canvas(8, 2.9, left=2.3, right=1.3, top=0.15, bottom=0.6)
+    ax.set_xlim(0, 1)
+    ax.set_ylim(len(rows) - 0.5, -0.5)
+    ticks = [y for y, r in enumerate(rows) if r]
+    ax.set_yticks(ticks)
+    ax.set_yticklabels([rows[y][0] for y in ticks], color=INK2)
+    ax.set_xticks([0, 0.25, 0.5, 0.75, 1])
+    ax.set_xticklabels(["0", "25%", "50%", "75%", "100%"])
+    ax.set_xlabel("Coincide con Opus", fontsize=9.5)
+    _frame(ax)
+    for y in ticks:
+        _, ok, n = rows[y]
+        _bar(ax, y, ok / n, 0.6, ACCENT)
+        ax.text(ok / n + 0.015, y, f"{round(100 * ok / n)}%  ({ok} / {n})", va="center", fontsize=9, color=INK)
+    return _save(fig, out_dir, "10a_validacion_exito_faithfulness")
+
+
+def fig_validation_judge(rubric: dict, out_dir: Path) -> Path:
+    """10b: veredictos de preservación de la tarea de gpt-4o-mini (el juez de LLM as a Judge, sin rúbrica) y de Opus 5.5
+    con rúbrica sobre los mismos scripts (sin iterar, reranker, dev; `judge_rubric.json`). Barras agrupadas por
+    veredicto: muestran que gpt contesta casi todo `parcial` donde Opus contesta `no`. El valor de cada veredicto va en
+    el eje y el promedio de cada juez (LLM as a Judge), en la leyenda."""
+    total = rubric["runs"]["rerank"]["judges"]["sin rúbrica"]["total"]
+    raters = (("gpt-4o-mini", "gpt-4o-mini (LLM as a Judge)", GRAY), ("opus", "Opus 5.5", ACCENT))
+    verdicts = (("si", "Sí (= 1)"), ("parcial", "Parcial (= 0,5)"), ("no", "No (= 0)"))
+    fig, ((ax,),) = _canvas(7, 3.2, left=1.25, right=0.6, top=0.15, bottom=1.05)
+    xmax = max(total["verdicts"][r][v] for r, _, _ in raters for v, _ in verdicts)
+    ax.set_xlim(0, xmax * 1.12)
+    ax.set_ylim(len(verdicts) - 0.5, -0.5)
+    ax.set_yticks(range(len(verdicts)))
+    ax.set_yticklabels([label for _, label in verdicts], color=INK2)
+    ax.set_xlabel(f"Scripts (n = {total['n']})", fontsize=9.5)
+    _frame(ax)
+    h, gap = 0.34, 0.04
+    for i, (v, _) in enumerate(verdicts):
+        for j, (r, _, color) in enumerate(raters):
+            y, n = i + (j - 0.5) * (h + gap), total["verdicts"][r][v]
+            _bar(ax, y, n, h, color)
+            ax.text(n + xmax * 0.012, y, str(n), va="center", fontsize=9, color=INK)
+    _legend(fig, [Patch(color=c) for _, _, c in raters],
+            [f"{label}: {total['mean'][r]:.2f}".replace("0.", "0,") for r, label, _ in raters], ncol=2, center=True)
+    return _save(fig, out_dir, "10b_validacion_juez")
+
+
+CAUSES = {  # causa del diagnóstico → (etiqueta, ¿del retrieval?); la correcta = una librería aceptable en el contexto
+    "migra_a_medias": ("Migra a medias", False),
+    "no_aplica_los_cambios": ("No aplica los cambios", False),
+    "elige_mal_con_la_correcta": ("Elige mal, con la correcta en el contexto", False),
+    "elige_mal_sin_la_correcta": ("Elige mal, sin la correcta en el contexto", True),
+    "no_parsea": ("No parsea", False),
+    "debajo_del_umbral": ("Debajo del umbral", True),
+    "llm_se_abstiene_con_la_correcta": ("Se abstiene, con la correcta en el contexto", False),
+    "llm_se_abstiene_sin_la_correcta": ("Se abstiene, sin la correcta en el contexto", True),
+    "respuesta_cortada": ("Respuesta cortada", False),
+    "abstencion_postvalidacion": ("Abstención de la post-validación", False),
+    "otro": ("Otro", False),
+}
+
+
+def fig_diagnosis(diagnosis: dict, out_dir: Path, name: str = "11_diagnostico", xmax: int | None = None) -> Path:
+    """11: por qué fallan los imports no exitosos (`diagnose_generation.py`; una causa por import), una barra por causa
+    ordenadas de mayor a menor. Azul = del generador (tenía la librería correcta en el contexto o el problema es cómo
+    la usó); gris = del retrieval (no llegó al LLM o no tenía la correcta). Sin las causas con 0 imports. `xmax` fija
+    la escala para comparar dos diagnósticos (14 usa la de 11)."""
+    rows = sorted(((n, *CAUSES[c]) for c, n in diagnosis["causes"].items() if n), key=lambda r: -r[0])
+    totals = {flag: sum(n for n, _, f in rows if f is flag) for flag in (False, True)}
+    color = {False: ACCENT, True: GRAY}
+    fig, ((ax,),) = _canvas(8, 3.4, left=3.0, right=0.4, top=0.15, bottom=0.95)
+    xmax = xmax or rows[0][0]
+    ax.set_xlim(0, xmax * 1.1)
+    ax.set_ylim(len(rows) - 0.5, -0.5)
+    ax.set_yticks(range(len(rows)))
+    ax.set_yticklabels([label for _, label, _ in rows], color=INK2)
+    ax.set_xlabel(f"Imports no exitosos (n = {sum(totals.values())})", fontsize=9.5)
+    _frame(ax)
+    for y, (n, _, retrieval) in enumerate(rows):
+        _bar(ax, y, n, 0.62, color[retrieval])
+        ax.text(n + xmax * 0.012, y, str(n), va="center", fontsize=9, color=INK)
+    _legend(fig, [Patch(color=color[False]), Patch(color=color[True])],
+            [f"Generador: {totals[False]}", f"Retrieval: {totals[True]}"], ncol=2, center=True)
+    return _save(fig, out_dir, name)
+
+
+STEP_METRICS = (("success_pos", "Éxito Automático", ACCENT), ("precision", "Precisión", ORANGE),
+                ("negative_rejection", "Negative Rejection", "#1baf7a"))  # ranuras 1-3 de la paleta de referencia
+
+
+def fig_steps(steps: dict[str, dict], out_dir: Path, name: str = "12_resultados_por_paso") -> Path:
+    """12: Éxito automático, Precisión y Negative Rejection por paso de la iteración (sin iterar y las variantes que
+    quedaron), con el umbral elegido. `steps`: nombre → `counts` (tprag.eval.threshold) de esa corrida. También para
+    test (15), con otro `name`."""
+    fig, ((ax,),) = _canvas(8, 3.4, left=0.7, right=0.3, top=0.2, bottom=0.95)
+    w = 0.26
+    ax.set_xlim(-0.6, len(steps) - 0.4)
+    ax.set_ylim(0, 1.12)
+    ax.set_xticks(range(len(steps)))
+    ax.set_xticklabels(list(steps), color=INK2)
+    ax.set_yticks([0, 0.25, 0.5, 0.75, 1])
+    ax.set_yticklabels(["0", "0,25", "0,5", "0,75", "1"])
+    _frame(ax, grid="y")
+    for i, c in enumerate(steps.values()):
+        for j, (key, _, color) in enumerate(STEP_METRICS):
+            x = i + (j - 1) * w
+            ax.bar(x, c[key], width=w - 0.03, color=color, linewidth=0)
+            ax.text(x, c[key] + 0.02, f"{c[key]:.2f}".replace(".", ","), ha="center", va="bottom", fontsize=8.5,
+                    color=INK)
+    _legend(fig, [Patch(color=color) for _, _, color in STEP_METRICS], [label for _, label, _ in STEP_METRICS],
+            ncol=3, center=True)
+    return _save(fig, out_dir, name)
+
+
+def fig_confirmed(steps: dict[str, dict], positives: int, judges: dict[str, dict], out_dir: Path,
+                  name: str = "13_exito_confirmado") -> Path:
+    """13: por paso, cuatro barras en el mismo eje (0-1): Éxito automático y Éxito confirmado, en imports sobre los
+    positivos de dev (`steps`: nombre → `success_vs_opus`; confirmado = éxito automático en un script que Opus con
+    rúbrica marca `si`), y LLM as a Judge (gpt-4o-mini) y la preservación según Opus 5.5 con rúbrica, promedios por
+    script sobre los mismos scripts cambiados (`judges`: nombre → {"gpt-4o-mini": media, "opus": media}; sí = 1,
+    parcial = 0,5, no = 0). La leyenda dice la unidad de cada barra."""
+    series = (
+        (f"Éxito Automático (imports, n = {positives})", "#2a78d6",
+         lambda k: (sum(steps[k][True].values()) / positives, sum(steps[k][True].values()))),
+        (f"Éxito Confirmado por Opus 5.5 (imports, n = {positives})", "#104281",
+         lambda k: (steps[k][True]["si"] / positives, steps[k][True]["si"])),
+        ("LLM as a Judge, gpt-4o-mini (media por script)", GRAY, lambda k: (judges[k]["gpt-4o-mini"], None)),
+        ("Preservación según Opus 5.5 (media por script)", "#1baf7a", lambda k: (judges[k]["opus"], None)),
+    )
+    names = list(steps)
+    fig, ((ax,),) = _canvas(10, 3.8, left=0.6, right=0.3, top=0.2, bottom=1.25)
+    w = 0.2
+    ax.set_xlim(-0.55, len(names) - 0.45)
+    ax.set_ylim(0, 1)
+    ax.set_xticks(range(len(names)))
+    ax.set_xticklabels(names, color=INK2)
+    ax.set_yticks([0, 0.25, 0.5, 0.75, 1])
+    ax.set_yticklabels(["0", "0,25", "0,5", "0,75", "1"])
+    _frame(ax, grid="y")
+    for i, k in enumerate(names):
+        for j, (_, color, get) in enumerate(series):
+            v, n = get(k)
+            x = i + (j - 1.5) * w
+            ax.bar(x, v, width=w - 0.025, color=color, linewidth=0)
+            label = f"{v:.2f}".replace(".", ",") + (f"\n({n})" if n is not None else "")
+            ax.text(x, v + 0.015, label, ha="center", va="bottom", fontsize=8, color=INK, linespacing=1.1)
+    _legend(fig, [Patch(color=c) for _, c, _ in series], [label for label, _, _ in series], ncol=2, center=True)
+    return _save(fig, out_dir, name)
+
+
+def fig_dev_vs_test(dev: dict, test: dict, passed: dict[str, float], out_dir: Path, variant: str = "k1-rr30") -> Path:
+    """17: el retrieval con reranker en dev y en test (`rerank_full_{dev,test_iter7check}_analysis.json`), con IC 95%
+    por bootstrap, más la fracción de positivos que pasan el umbral elegido en dev (`passed`: split → fracción; sin IC).
+    Explica por qué el sistema cae en test: llegan menos imports al LLM y con peor contexto."""
+    metrics = (("pkg_hit@1", "Package Hit@1"), ("span_hit@2000", "Span Hit@2000"), ("auroc_rr", "AUROC del reranker"))
+    splits = (("dev", "Dev", GRAY), ("test", "Test", ACCENT))
+    labels = [label for _, label in metrics] + ["Positivos que pasan el umbral"]
+    fig, ((ax,),) = _canvas(9, 3.5, left=0.6, right=0.3, top=0.2, bottom=0.95)
+    w = 0.34
+    ax.set_xlim(-0.6, len(labels) - 0.4)
+    ax.set_ylim(0, 1.08)
+    ax.set_xticks(range(len(labels)))
+    ax.set_xticklabels(labels, color=INK2)
+    ax.set_yticks([0, 0.25, 0.5, 0.75, 1])
+    ax.set_yticklabels(["0", "0,25", "0,5", "0,75", "1"])
+    _frame(ax, grid="y")
+    for j, (split, _, color) in enumerate(splits):
+        m = (dev if split == "dev" else test)["variants"][variant]["metrics"]
+        values = [(m[k]["value"], m[k]["ci"]) for k, _ in metrics] + [(passed[split], None)]
+        for i, (v, ci) in enumerate(values):
+            x = i + (j - 0.5) * w
+            ax.bar(x, v, width=w - 0.03, color=color, linewidth=0)
+            top = v
+            if ci:
+                ax.errorbar(x, v, yerr=[[v - ci[0]], [ci[1] - v]], fmt="none", ecolor=INK2, elinewidth=0.9, capsize=3)
+                top = ci[1]
+            ax.text(x, top + 0.02, f"{v:.2f}".replace(".", ","), ha="center", va="bottom", fontsize=8.5, color=INK)
+    _legend(fig, [Patch(color=c) for _, _, c in splits], [label for _, label, _ in splits], ncol=2, center=True)
+    return _save(fig, out_dir, "17_retrieval_dev_vs_test")
+
+
 def generation_figures(analyses: dict[str, dict], level1: dict[str, dict[str, dict]], agreement: dict,
                        judges: dict, extra: dict[str, dict], out_dir: Path) -> list[Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -386,6 +639,6 @@ def generation_figures(analyses: dict[str, dict], level1: dict[str, dict[str, di
             *(fig_agreement_pair(agreement, pair, label, name, out_dir) for pair, label, name in PAIRS),
             fig_mean_score(judges, out_dir),
             fig_metrics_vs_threshold(analyses, out_dir), fig_precision_vs_threshold(analyses, out_dir),
-            fig_corrections_vs_threshold(analyses, out_dir),
+            fig_corrections_vs_threshold(analyses, out_dir), fig_threshold_rerank(analyses["rerank"], out_dir),
             fig_negative_rejection(extra, out_dir),
             fig_noise_relevance(extra, out_dir)]
